@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -25,4 +24,3 @@ Things you may want to cover:
 * ...
 =======
 # Mediyumm
->>>>>>> c840b4bdaa9e5f565d58d85cd982ad588a9fbfd0
