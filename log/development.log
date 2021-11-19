@@ -1,0 +1,37 @@
+Started GET "/" for ::1 at 2021-11-19 14:23:46 -0800
+
+ActiveRecord::NoDatabaseError - FATAL:  database "Mediyumm_development" does not exist:
+
+Started POST "/__better_errors/45c6368ca9ecd5d4/variables" for ::1 at 2021-11-19 14:23:46 -0800
+  [1m[35m (380.0ms)[0m  [1m[35mCREATE DATABASE "Mediyumm_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (334.3ms)[0m  [1m[35mCREATE DATABASE "Mediyumm_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2021-11-19 14:25:09 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 908ms (Views: 907.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 14:26:45 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 20ms (Views: 19.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 14:27:03 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 283ms (Views: 281.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 14:27:05 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 19ms (Views: 18.3ms | ActiveRecord: 0.0ms)
+
+
