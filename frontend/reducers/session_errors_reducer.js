@@ -2,9 +2,9 @@ import { RECEIVE_SESSION_ERRORS, RECEIVE_CURRENT_USER } from "../actions/session
 
 const _nullErrors = []
 
-export default (state={}, action) => {
+export default (state=[], action) => {
   Object.freeze(state)
-  let nextState = Object.assign({}, state)
+  let nextState = state.slice()
   switch (action.type) {
     case RECEIVE_SESSION_ERRORS:
       return action.errors 
