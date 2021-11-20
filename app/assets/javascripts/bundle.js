@@ -1,6 +1,77 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./frontend/actions/session_actions.js":
+/*!*********************************************!*\
+  !*** ./frontend/actions/session_actions.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "RECEIVE_CURRENT_USER": () => (/* binding */ RECEIVE_CURRENT_USER),
+/* harmony export */   "SIGNOUT_CURRENT_USER": () => (/* binding */ SIGNOUT_CURRENT_USER),
+/* harmony export */   "RECEIVE_SESSION_ERRORS": () => (/* binding */ RECEIVE_SESSION_ERRORS),
+/* harmony export */   "receiveCurrentUser": () => (/* binding */ receiveCurrentUser),
+/* harmony export */   "signoutCurrentUser": () => (/* binding */ signoutCurrentUser),
+/* harmony export */   "receiveErrors": () => (/* binding */ receiveErrors),
+/* harmony export */   "signIn": () => (/* binding */ signIn),
+/* harmony export */   "signUp": () => (/* binding */ signUp),
+/* harmony export */   "signOut": () => (/* binding */ signOut)
+/* harmony export */ });
+/* harmony import */ var _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/session_api_util */ "./frontend/util/session_api_util.js");
+
+var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
+var SIGNOUT_CURRENT_USER = 'SIGNOUT_CURRENT_USER';
+var RECEIVE_SESSION_ERRORS = 'RECEIVE_ERRORS';
+var receiveCurrentUser = function receiveCurrentUser(user) {
+  return {
+    type: RECEIVE_CURRENT_USER,
+    user: user
+  };
+};
+var signoutCurrentUser = function signoutCurrentUser() {
+  return {
+    type: SIGNOUT_CURRENT_USER
+  };
+};
+var receiveErrors = function receiveErrors(errors) {
+  return {
+    type: RECEIVE_SESSION_ERRORS,
+    errors: errors
+  };
+};
+var signIn = function signIn(user) {
+  return function (dispatch) {
+    return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__.signIn(user).then(function (user) {
+      return dispatch(receiveCurrentUser(user));
+    }, function (error) {
+      return dispatch(receiveErrors(error.responseJSON));
+    });
+  };
+};
+var signUp = function signUp(user) {
+  return function (dispatch) {
+    return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__.signUp(user).then(function (user) {
+      return dispatch(receiveCurrentUser(user));
+    }, function (error) {
+      return dispatch(receiveErrors(error.responseJSON));
+    });
+  };
+};
+var signOut = function signOut() {
+  return function (dispatch) {
+    return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__.signOut().then(function () {
+      return dispatch(signoutCurrentUser());
+    }, function (error) {
+      return dispatch(receiveErrors(error.responseJSON));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/components/app.jsx":
 /*!*************************************!*\
   !*** ./frontend/components/app.jsx ***!
@@ -59,10 +130,10 @@ var Root = function Root(_ref) {
 
 /***/ }),
 
-/***/ "./frontend/reducers/root_reducer.jsx":
-/*!********************************************!*\
-  !*** ./frontend/reducers/root_reducer.jsx ***!
-  \********************************************/
+/***/ "./frontend/reducers/errors_reducer.js":
+/*!*********************************************!*\
+  !*** ./frontend/reducers/errors_reducer.js ***!
+  \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -70,10 +141,112 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./session_errors_reducer */ "./frontend/reducers/session_errors_reducer.js");
 
-var rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_0__.combineReducers)({});
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_1__.combineReducers)({
+  session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__["default"]
+}));
+
+/***/ }),
+
+/***/ "./frontend/reducers/root_reducer.js":
+/*!*******************************************!*\
+  !*** ./frontend/reducers/root_reducer.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var _errors_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./errors_reducer */ "./frontend/reducers/errors_reducer.js");
+/* harmony import */ var _session_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./session_reducer */ "./frontend/reducers/session_reducer.js");
+
+
+
+var rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
+  errors: _errors_reducer__WEBPACK_IMPORTED_MODULE_0__["default"],
+  session: _session_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+});
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (rootReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/session_errors_reducer.js":
+/*!*****************************************************!*\
+  !*** ./frontend/reducers/session_errors_reducer.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+
+var _nullErrors = [];
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  var nextState = Object.assign({}, state);
+
+  switch (action.type) {
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_SESSION_ERRORS:
+      return action.errors;
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_CURRENT_USER:
+      return _nullErrors;
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./frontend/reducers/session_reducer.js":
+/*!**********************************************!*\
+  !*** ./frontend/reducers/session_reducer.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+
+var _nullUser = {
+  id: null
+};
+
+var SessionReducer = function SessionReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  var nextState = Object.assign({}, state);
+
+  switch (action.type) {
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_CURRENT_USER:
+      nextState[id] = action.user.id;
+      return nextState;
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.SIGNOUT_CURRENT_USER:
+      return _nullUser;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SessionReducer);
 
 /***/ }),
 
@@ -92,7 +265,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux-thunk */ "./node_modules/redux-thunk/es/index.js");
 /* harmony import */ var redux_logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux-logger */ "./node_modules/redux-logger/dist/redux-logger.js");
 /* harmony import */ var redux_logger__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux_logger__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _reducers_root_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../reducers/root_reducer */ "./frontend/reducers/root_reducer.jsx");
+/* harmony import */ var _reducers_root_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../reducers/root_reducer */ "./frontend/reducers/root_reducer.js");
 
 
 
@@ -104,6 +277,46 @@ var configureStore = function configureStore() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (configureStore);
+
+/***/ }),
+
+/***/ "./frontend/util/session_api_util.js":
+/*!*******************************************!*\
+  !*** ./frontend/util/session_api_util.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "signIn": () => (/* binding */ signIn),
+/* harmony export */   "signUp": () => (/* binding */ signUp),
+/* harmony export */   "signOut": () => (/* binding */ signOut)
+/* harmony export */ });
+var signIn = function signIn(user) {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/session',
+    data: {
+      user: user
+    }
+  });
+};
+var signUp = function signUp(user) {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/users',
+    data: {
+      user: user
+    }
+  });
+};
+var signOut = function signOut() {
+  return $.ajax({
+    method: 'DELETE',
+    url: '/api/session'
+  });
+};
 
 /***/ }),
 
