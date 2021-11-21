@@ -192,7 +192,8 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       email: '',
-      password: ''
+      password: '',
+      name: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
@@ -433,13 +434,17 @@ var SessionReducer = function SessionReducer() {
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_CURRENT_USER:
-      nextState[id] = action.user.id;
-      return nextState;
+      debugger;
+      return Object.assign(nextState, {
+        id: action.user.id
+      });
+    // return nextState
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.SIGNOUT_CURRENT_USER:
       return _nullUser;
 
     default:
+      // debugger
       return state;
   }
 };
