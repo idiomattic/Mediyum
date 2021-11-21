@@ -2,7 +2,7 @@ class Api::SessionsController < ApplicationController
   before_action :require_signed_in, only: [:destroy]
   
   def create
-    @user = User.find_by_credentials(params[:user][:email], [:user][:password])
+    @user = User.find_by_credentials(params[:user][:email], params[:user][:password])
     if @user
       sign_in(@user)
       render :template => "api/users/show"

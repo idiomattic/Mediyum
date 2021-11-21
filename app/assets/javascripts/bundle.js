@@ -13,9 +13,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "RECEIVE_CURRENT_USER": () => (/* binding */ RECEIVE_CURRENT_USER),
 /* harmony export */   "SIGNOUT_CURRENT_USER": () => (/* binding */ SIGNOUT_CURRENT_USER),
 /* harmony export */   "RECEIVE_SESSION_ERRORS": () => (/* binding */ RECEIVE_SESSION_ERRORS),
-/* harmony export */   "receiveCurrentUser": () => (/* binding */ receiveCurrentUser),
-/* harmony export */   "signoutCurrentUser": () => (/* binding */ signoutCurrentUser),
-/* harmony export */   "receiveErrors": () => (/* binding */ receiveErrors),
 /* harmony export */   "signIn": () => (/* binding */ signIn),
 /* harmony export */   "signUp": () => (/* binding */ signUp),
 /* harmony export */   "signOut": () => (/* binding */ signOut)
@@ -24,30 +21,34 @@ __webpack_require__.r(__webpack_exports__);
 
 var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 var SIGNOUT_CURRENT_USER = 'SIGNOUT_CURRENT_USER';
-var RECEIVE_SESSION_ERRORS = 'RECEIVE_ERRORS';
+var RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+
 var receiveCurrentUser = function receiveCurrentUser(user) {
   return {
     type: RECEIVE_CURRENT_USER,
     user: user
   };
 };
+
 var signoutCurrentUser = function signoutCurrentUser() {
   return {
     type: SIGNOUT_CURRENT_USER
   };
 };
-var receiveErrors = function receiveErrors(errors) {
+
+var receiveSessionErrors = function receiveSessionErrors(errors) {
   return {
     type: RECEIVE_SESSION_ERRORS,
     errors: errors
   };
 };
+
 var signIn = function signIn(user) {
   return function (dispatch) {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__.signIn(user).then(function (user) {
       return dispatch(receiveCurrentUser(user));
     }, function (error) {
-      return dispatch(receiveErrors(error.responseJSON));
+      return dispatch(receiveSessionErrors(error.responseJSON));
     });
   };
 };
@@ -56,7 +57,7 @@ var signUp = function signUp(user) {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__.signUp(user).then(function (user) {
       return dispatch(receiveCurrentUser(user));
     }, function (error) {
-      return dispatch(receiveErrors(error.responseJSON));
+      return dispatch(receiveSessionErrors(error.responseJSON));
     });
   };
 };
@@ -65,7 +66,7 @@ var signOut = function signOut() {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__.signOut().then(function () {
       return dispatch(signoutCurrentUser());
     }, function (error) {
-      return dispatch(receiveErrors(error.responseJSON));
+      return dispatch(receiveSessionErrors(error.responseJSON));
     });
   };
 };
@@ -434,17 +435,14 @@ var SessionReducer = function SessionReducer() {
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_CURRENT_USER:
-      debugger;
       return Object.assign(nextState, {
         id: action.user.id
       });
-    // return nextState
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.SIGNOUT_CURRENT_USER:
       return _nullUser;
 
     default:
-      // debugger
       return state;
   }
 };
