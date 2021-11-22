@@ -555,6 +555,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       this.props.action(this.state);
+      this.props.hideModal();
     }
   }, {
     key: "update",
