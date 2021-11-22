@@ -10,7 +10,8 @@ class UserNav extends React.Component {
 
     return(
       <div className='user-nav'>
-        User
+        <h2>In User Nav</h2>
+
       </div>
     )
   }

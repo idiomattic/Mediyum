@@ -11,9 +11,9 @@ class GuestNav extends React.Component {
 
     return(
       <div className='guest-nav'>
-        <h2>In Guest Nav</h2>
         <div className='nav-buttons'>
           <Link to='/' onClick={() => this.props.displayModal('Sign In')}>Sign In</Link>
+          <Link to='/' onClick={() => this.props.displayModal('Sign Up')}>Get Started</Link>
 
         </div>
       </div>

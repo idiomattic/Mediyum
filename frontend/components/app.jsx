@@ -7,16 +7,14 @@ import Modal from './modal/modal_container'
 
 const App = () => (
   <div id='app'>
-    <header>
+    <header className='app-header'>
       <h2>Medium</h2>
       <Modal />
-    </header>
-    <Routes>
-      <Route exact path='/' element={<HeaderContainer />}/>
-      {/* <Route exact path='/' element={<SignUpFormContainer />}/> */}
-      {/* <Route exact path='/signin' element={<SignInFormContainer />}/> */}
+      <Routes>
+        <Route exact path='/' element={<HeaderContainer />}/>
 
-    </Routes>
+      </Routes>
+    </header>
   </div>
 )
 
