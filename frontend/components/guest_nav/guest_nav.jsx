@@ -13,7 +13,7 @@ class GuestNav extends React.Component {
       <div className='guest-nav'>
         <div className='nav-buttons'>
           <Link to='/' onClick={() => this.props.displayModal('Sign In')}>Sign In</Link>
-          <Link to='/' onClick={() => this.props.displayModal('Sign Up')}>Get Started</Link>
+          <Link className='black-button' to='/' onClick={() => this.props.displayModal('Sign Up')}>Get Started</Link>
 
         </div>
       </div>

@@ -9,12 +9,12 @@ const App = () => (
   <div id='app'>
     <header className='app-header'>
       <h2>Medium</h2>
-      <Modal />
       <Routes>
         <Route exact path='/' element={<HeaderContainer />}/>
 
       </Routes>
     </header>
+      <Modal />
   </div>
 )
 
