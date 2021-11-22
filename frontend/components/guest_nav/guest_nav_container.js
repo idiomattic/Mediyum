@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import GuestNav from "./guest_nav";
 import { signIn, signUp } from "../../actions/session_actions";
+import { displayModal } from "../../actions/modal_actions";
 
 const mSTP = state => ({
   currentUserId: state.session.currentUserId
@@ -8,7 +9,8 @@ const mSTP = state => ({
 
 const mDTP = dispatch => ({
   signIn: () => dispatch(signIn()),
-  signUp: () => dispatch(signUp())
+  signUp: () => dispatch(signUp()),
+  displayModal: formType => dispatch(displayModal(formType))
 })
 
 export default connect(mSTP, mDTP)(GuestNav)

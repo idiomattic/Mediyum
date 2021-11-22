@@ -1,5 +1,5 @@
 import React from "react"
-import SignUpFormContainer from './session/signup_form_container'
+import SignUpFormContainer from '../session/signup_form_container'
 
 class UserNav extends React.Component {
   constructor(props) {
