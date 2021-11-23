@@ -1,5 +1,6 @@
 import React from "react"
 import SignUpFormContainer from '../session/signup_form_container'
+import { Link } from "react-router-dom"
 
 class UserNav extends React.Component {
   constructor(props) {
@@ -10,8 +11,7 @@ class UserNav extends React.Component {
 
     return(
       <div className='user-nav'>
-        <h2>In User Nav</h2>
-
+        <Link to='/' onClick={() => this.props.signOut()}>Sign Out</Link>
       </div>
     )
   }

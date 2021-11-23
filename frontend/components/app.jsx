@@ -9,11 +9,11 @@ const App = () => (
   <div id='app'>
     <header className='app-header'>
       <h2>Mediyum</h2>
-
-        <AuthRoute exact path='/' component={HeaderContainer}/>
-        <ProtectedRoute exact path='/feed' component={HomeContainer}/>
-
+      <Route path='/' component={HeaderContainer}/>
     </header>
+    <div className='app-body'>
+      <ProtectedRoute exact path='/feed' component={HomeContainer}/>
+    </div>
     <Modal />
   </div>
 )
