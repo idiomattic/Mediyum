@@ -17,7 +17,7 @@ const mDTP = dispatch => ({
   otherForm: (
     <p className='other-form-prompt'>
       No account?
-      <Link to='/' onClick={() => displayModal('Sign Up')} className='other-form-link'> Create One</Link>
+      <Link to='/' onClick={() => dispatch(displayModal('Sign Up'))} className='other-form-link'> Create One</Link>
     </p>
   )
 })

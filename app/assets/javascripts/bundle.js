@@ -685,7 +685,7 @@ var mDTP = function mDTP(dispatch) {
     }, "No account?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
       to: "/",
       onClick: function onClick() {
-        return (0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__.displayModal)('Sign Up');
+        return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__.displayModal)('Sign Up'));
       },
       className: "other-form-link"
     }, " Create One"))
@@ -744,7 +744,7 @@ var mDTP = function mDTP(dispatch) {
     }, "Already have an account?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
       to: "/",
       onClick: function onClick() {
-        return (0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__.displayModal)('Sign In');
+        return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__.displayModal)('Sign In'));
       },
       className: "other-form-link"
     }, " Sign In"))
