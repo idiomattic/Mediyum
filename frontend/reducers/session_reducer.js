@@ -4,7 +4,7 @@ const _nullUser = {
   id: null
 }
 
-const SessionReducer = (state={}, action) => {
+const SessionReducer = (state=_nullUser, action) => {
   Object.freeze(state)
   let nextState = Object.assign({}, state)
   switch (action.type) {

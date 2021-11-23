@@ -8,12 +8,12 @@ import Modal from './modal/modal_container'
 const App = () => (
   <div id='app'>
     <header className='app-header'>
-      <h2>Mediyum</h2>
-      <Routes>
-        <Route exact path='/' element={<HeaderContainer />}/>
-        <Route exact path='/feed' element={<HomeContainer />}/>
-      </Routes>
+      <h2 className='logo'>Mediyum</h2>
+      <Route path='/' component={HeaderContainer}/>
     </header>
+    <div className='app-body'>
+      <ProtectedRoute exact path='/feed' component={HomeContainer}/>
+    </div>
     <Modal />
   </div>
 )

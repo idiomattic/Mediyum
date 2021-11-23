@@ -22,3 +22,11 @@ h2 {
   font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 24px;
 }
+
+.home-page {
+  display: flex;
+}
+
+.logo {
+  font-weight: bold;
+}

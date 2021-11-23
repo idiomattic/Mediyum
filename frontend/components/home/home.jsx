@@ -10,7 +10,6 @@ class Home extends React.Component {
     const {currentUserId} = this.props
     return(
       <div className='home-page'>
-        <HeaderContainer/>
         <p>Home</p>
       </div>
     )

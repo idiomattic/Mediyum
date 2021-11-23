@@ -10,6 +10,7 @@ const receiveCurrentUser = user => ({
   user
 })
 
+
 const signoutCurrentUser = () => ({
   type: SIGNOUT_CURRENT_USER
 })
@@ -26,7 +27,7 @@ const clearSessionErrors = () => ({
 export const signIn = user => dispatch => (
   SessionApiUtil.signIn(user)
     .then(user => dispatch(receiveCurrentUser(user)),
-      error => dispatch(receiveSessionErrors(error.responseJSON)))
+      errors => dispatch(receiveSessionErrors(errors.responseJSON)))
 )
 
 export const signUp = user => dispatch => (
