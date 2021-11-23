@@ -43,6 +43,7 @@ class SessionForm extends React.Component {
       <div className='session-form-div'>
         <h2 className='form-greeting' >{this.formGreeting()}</h2>
         <form className='session-form' onSubmit={this.handleSubmit}>
+          <span className='close-button' onClick={() => this.props.hideModal()}>&times;</span>
           <label>Your Email
             <br />
             <input className='credentials' 

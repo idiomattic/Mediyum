@@ -1,8 +1,8 @@
 import React from 'react'
 import { Route, Redirect, Routes, Link, HashRouter } from 'react-router-dom'
-import SignInFormContainer from './session/signin_form_container'
-import SignUpFormContainer from './session/signup_form_container'
+import { AuthRoute, ProtectedRoute } from '../util/route_util'
 import HeaderContainer from './header/header_container'
+import HomeContainer from './home/home_container'
 import Modal from './modal/modal_container'
 
 const App = () => (
@@ -11,10 +11,10 @@ const App = () => (
       <h2>Mediyum</h2>
       <Routes>
         <Route exact path='/' element={<HeaderContainer />}/>
-
+        <Route exact path='/feed' element={<HomeContainer />}/>
       </Routes>
     </header>
-      <Modal />
+    <Modal />
   </div>
 )
 
