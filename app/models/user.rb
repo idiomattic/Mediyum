@@ -18,7 +18,7 @@ class User < ApplicationRecord
   has_many :stories,
     primary_key: :id,
     foreign_key: :author_id,
-    class: :Story
+    class_name: :Story
 
   after_initialize :ensure_session_token
 
