@@ -8,7 +8,7 @@ import Modal from './modal/modal_container'
 const App = () => (
   <div id='app'>
     <header className='app-header'>
-      <h2>Medium</h2>
+      <h2>Mediyum</h2>
       <Routes>
         <Route exact path='/' element={<HeaderContainer />}/>
 

@@ -22,6 +22,27 @@
 }
 
 .credentials {
+  text-align: center;
   outline: none;
   width: 270px;
+  border-width: 0 0 1px;
+  border-color: black;
+  margin: 10px 0 30px 0;
+}
+
+.session-error-list {
+  color: rgb(201, 74, 74);
+}
+
+.other-form-prompt {
+  margin: 30px 0 0 0;
+}
+
+.other-form-link {
+  font-weight: bold;
+  color: rgb(26, 137, 23);
+}
+
+.form-greeting {
+  margin: 0 0 30px 0;
 }

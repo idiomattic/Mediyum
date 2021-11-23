@@ -14,7 +14,8 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     this.props.action(this.state)
-    this.props.hideModal()
+      .then(() => this.props.hideModal())
+      .then(() => this.props.clearErrors())
   }
 
   update(field) {
@@ -25,7 +26,7 @@ class SessionForm extends React.Component {
 
   handleErrors() {
     return(
-      <ul>
+      <ul className='session-error-list'>
         {this.props.errors.map((error, i) => (
           <li key={i}>{error}</li>
         ))}
@@ -33,11 +34,15 @@ class SessionForm extends React.Component {
     )
   }
 
+  formGreeting() {
+    return (this.props.formType === 'Sign In') ? 'Welcome Back.' : 'Join Mediyum.'
+  }
+
   render() {
     return(
       <div className='session-form-div'>
+        <h2 className='form-greeting' >{this.formGreeting()}</h2>
         <form className='session-form' onSubmit={this.handleSubmit}>
-        {this.handleErrors()}
           <label>Your Email
             <br />
             <input className='credentials' type="email" value={this.state.email} onChange={this.update('email')} />
@@ -48,7 +53,11 @@ class SessionForm extends React.Component {
             <input className='credentials' type="password" value={this.state.password} onChange={this.update('password')} />
           </label>
           <br />
-          <input type="submit" value={this.props.formType} />
+          {this.handleErrors()}
+          <br />
+          <input className='black-button' type="submit" value={this.props.formType} />
+          <br />
+          {this.props.otherForm}
         </form>
       </div>
     )

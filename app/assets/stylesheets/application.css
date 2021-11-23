@@ -20,8 +20,5 @@ a, u {
 
 h2 {
   font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
-}
-
-.credentials {
-  text-align: center;
+  font-size: 24px;
 }
