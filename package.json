@@ -1,5 +1,5 @@
 {
-  "name": "mediyumm",
+  "name": "mediyum",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.16.0",
@@ -35,13 +35,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/matthewlese/Mediyumm.git"
+    "url": "git+https://github.com/matthewlese/Mediyum.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/matthewlese/Mediyumm/issues"
+    "url": "https://github.com/matthewlese/Mediyum/issues"
   },
-  "homepage": "https://github.com/matthewlese/Mediyumm#readme"
+  "homepage": "https://github.com/matthewlese/Mediyum#readme"
 }
