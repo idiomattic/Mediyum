@@ -1829,3 +1829,8 @@ Processing by StaticPagesController#root as HTML
 Completed 200 OK in 27ms (Views: 26.5ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for ::1 at 2021-11-22 16:56:17 -0800
+
+ActiveRecord::NoDatabaseError - FATAL:  database "Mediyum_development" does not exist:
+
+Started POST "/__better_errors/fae1c2f4a79fd354/variables" for ::1 at 2021-11-22 16:56:17 -0800
