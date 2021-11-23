@@ -4,21 +4,13 @@ import { Route, Redirect, withRouter } from "react-router";
 
 const Auth = ({ component: Component, path, signedIn, exact }) => (
   <Route path={path} exact={exact} render={props => (
-    !signedIn ? (
-      <Component {...props}/>
-    ) : (
-      <Redirect to='/' />
-    )
+    !signedIn ? <Component {...props}/> : <Redirect to='/'/>
   )}/>
 )
 
-const Protected = ({ component: Component, path, loggedIn, exact }) => (
+const Protected = ({ component: Component, path, signedIn, exact }) => (
   <Route path={path} exact={exact} render={(props) => (
-    loggedIn ? (
-      <Component {...props} />
-    ) : (
-      <Redirect to="/login" />
-    )
+    signedIn ? <Component {...props} /> : <Redirect to="/" />
   )}/>
 );
 
@@ -26,5 +18,5 @@ const mSTP = state => ({
   signedIn: Boolean(state.session.currentUserId)
 })
 
-// export const AuthRoute = withRouter(connect(mSTP)(Auth))
-// export const ProtectedRoute = withRouter(connect(mSTP)(Protected))
+export const AuthRoute = withRouter(connect(mSTP)(Auth))
+export const ProtectedRoute = withRouter(connect(mSTP)(Protected))
