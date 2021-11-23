@@ -11,6 +11,13 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  demoState() {
+    this.setState({
+      email: 'demo@demo.demo',
+      password: 'qwerty'
+    })
+  }
+
   handleSubmit(e) {
     e.preventDefault()
     this.props.action(this.state)
@@ -35,7 +42,7 @@ class SessionForm extends React.Component {
   }
 
   formGreeting() {
-    return (this.props.formType === 'Sign In') ? 'Welcome Back.' : 'Join Mediyum.'
+    return this.props.formType === 'Sign In' ? 'Welcome Back.' : 'Join Mediyum.'
   }
 
   render() {
