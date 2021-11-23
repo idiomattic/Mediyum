@@ -17,3 +17,11 @@ a, u {
   padding: 7px 16px 9px;
   border-radius: 99em;
 }
+
+h2 {
+  font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+.credentials {
+  text-align: center;
+}
