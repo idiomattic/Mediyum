@@ -4,7 +4,7 @@ class Api::StoriesController < ApplicationController
     if @story.save
       render :template => 'api/stories/show'
     else
-      render json: @story.errors.full_messages, status 422
+      render json: @story.errors.full_messages, status: 422
     end
   end
 
@@ -24,7 +24,7 @@ class Api::StoriesController < ApplicationController
       render :template => 'api/stories/show'
       render json: ['Updates saved.']
     else
-      render json: @story.errors.full_messages, status 422
+      render json: @story.errors.full_messages, status: 422
     end
   end
   

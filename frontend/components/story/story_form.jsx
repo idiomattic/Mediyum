@@ -12,6 +12,7 @@ class StoryForm extends React.Component {
   }
 
   handleSubmit(e) {
+    console.log(this.props)
     e.preventDefault()
     this.props.action(this.state)
   }
