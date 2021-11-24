@@ -8,9 +8,15 @@ class StoriesIndex extends React.Component {
   }
 
   render() {
+    const { stories } = this.props
     return(
       <div className='stories-index'>
-        <StoriesIndexItem />
+        <h2 className='recommended-stories'>RECOMMENDED FOR YOU</h2>
+        <ul className='stories-list'>
+          {
+            stories.map((story, i) => <StoriesIndexItem story={story} key={i} />)
+          }
+        </ul>
       </div>
     )
   }

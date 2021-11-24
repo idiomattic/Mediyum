@@ -2,7 +2,9 @@ import React from "react";
 
 const StoriesIndexItem = props => {
   return(
-    <div>asdf</div>
+    <li key={props.key}>
+      <h3 className='story-item-title'>{props.story.title}</h3>
+    </li>
   )
 }
 

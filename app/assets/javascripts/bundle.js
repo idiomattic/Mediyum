@@ -279,10 +279,6 @@ var App = function App() {
     exact: true,
     path: "/feed",
     component: _home_home_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
-    exact: true,
-    path: "/stories",
-    component: _story_stories_index_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     exact: true,
     path: "/stories/new",
@@ -560,7 +556,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _header_header_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header/header_container */ "./frontend/components/header/header_container.js");
+/* harmony import */ var _story_stories_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../story/stories_index */ "./frontend/components/story/stories_index.jsx");
+/* harmony import */ var _story_stories_index_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../story/stories_index_container */ "./frontend/components/story/stories_index_container.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -586,6 +583,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var Home = /*#__PURE__*/function (_React$Component) {
   _inherits(Home, _React$Component);
 
@@ -603,7 +601,7 @@ var Home = /*#__PURE__*/function (_React$Component) {
       var currentUserId = this.props.currentUserId;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "home-page"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Home"));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_story_stories_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null));
     }
   }]);
 
@@ -1134,9 +1132,19 @@ var StoriesIndex = /*#__PURE__*/function (_React$Component) {
   _createClass(StoriesIndex, [{
     key: "render",
     value: function render() {
+      var stories = this.props.stories;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "stories-index"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_stories_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+        className: "recommended-stories"
+      }, "RECOMMENDED FOR YOU"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+        className: "stories-list"
+      }, stories.map(function (story, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_stories_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          story: story,
+          key: i
+        });
+      })));
     }
   }]);
 
@@ -1164,10 +1172,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var _nullStories = [];
 
 var mSTP = function mSTP(state) {
   return {
-    currentUserId: state.session.currentUserId
+    currentUserId: state.session.currentUserId,
+    stories: Object.values(state.entities.stories) || _nullStories
   };
 };
 
@@ -1198,7 +1208,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var StoriesIndexItem = function StoriesIndexItem(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "asdf");
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    key: props.key
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
+    className: "story-item-title"
+  }, props.story.title));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StoriesIndexItem);
