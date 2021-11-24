@@ -3,7 +3,8 @@ import StoryForm from "./story_form";
 import { createStory, clearErrors } from "../../actions/story_actions";
 
 const mSTP = state => ({
-  currentUserId: state.session.currentUserId
+  currentUserId: state.session.currentUserId,
+  formType: 'Create Story'
 })
 
 const mDTP = dispatch => ({
