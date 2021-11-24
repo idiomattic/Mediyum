@@ -1114,8 +1114,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
 
 var _nullErrors = [];
-
-var sessionErrorsReducer = function sessionErrorsReducer() {
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
@@ -1134,9 +1133,7 @@ var sessionErrorsReducer = function sessionErrorsReducer() {
     default:
       return state;
   }
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (sessionErrorsReducer);
+});
 
 /***/ }),
 
@@ -1156,8 +1153,7 @@ __webpack_require__.r(__webpack_exports__);
 var _nullUser = {
   id: null
 };
-
-var SessionReducer = function SessionReducer() {
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _nullUser;
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
@@ -1175,9 +1171,7 @@ var SessionReducer = function SessionReducer() {
     default:
       return state;
   }
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SessionReducer);
+});
 
 /***/ }),
 
@@ -1213,19 +1207,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-var UsersReducer = function UsersReducer() {
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+var currentUserId = null;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
   var nextState = Object.assign({}, state);
 
   switch (action.type) {
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_CURRENT_USER:
+      currentUserId = action.user.id;
+      console.log(currentUserId);
+      return Object.assign(nextState, _defineProperty({}, currentUserId, action.user));
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.SIGNOUT_CURRENT_USER:
+      console.log(currentUserId);
+      delete nextState[currentUserId];
+      currentUserId = null;
+      return nextState;
+
     default:
       return state;
   }
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UsersReducer);
+});
 
 /***/ }),
 
@@ -1299,7 +1307,6 @@ var Protected = function Protected(_ref2) {
       path = _ref2.path,
       signedIn = _ref2.signedIn,
       exact = _ref2.exact;
-  console.log('inside Protected', signedIn);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router__WEBPACK_IMPORTED_MODULE_2__.Route, {
     path: path,
     exact: exact,
@@ -1312,7 +1319,6 @@ var Protected = function Protected(_ref2) {
 };
 
 var mSTP = function mSTP(state) {
-  console.log('inside mSTP', state.session.currentUserId);
   return {
     signedIn: Boolean(state.session.currentUserId)
   };

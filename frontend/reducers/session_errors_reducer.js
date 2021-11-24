@@ -2,7 +2,7 @@ import { RECEIVE_SESSION_ERRORS, RECEIVE_CURRENT_USER, CLEAR_SESSION_ERRORS } fr
 
 const _nullErrors = []
 
-const sessionErrorsReducer = (state=[], action) => {
+export default (state=[], action) => {
   Object.freeze(state)
   let nextState = state.slice()
   switch (action.type) {
@@ -16,5 +16,3 @@ const sessionErrorsReducer = (state=[], action) => {
       return state
   }
 }
-
-export default sessionErrorsReducer
