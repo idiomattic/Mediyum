@@ -8,10 +8,8 @@ export default (state={}, action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       currentUserId = action.user.id
-      console.log(currentUserId)
       return Object.assign(nextState, { [currentUserId]: action.user})
     case SIGNOUT_CURRENT_USER:
-      console.log(currentUserId)
       delete nextState[currentUserId]
       currentUserId = null
       return nextState

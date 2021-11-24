@@ -12,6 +12,6 @@ export default (state={}, action) => {
       delete nextState[action.storyId]
       return nextState
     default:
-      break;
+      return state
   }
 }
