@@ -5,8 +5,11 @@ import HeaderContainer from './header/header_container'
 import HomeContainer from './home/home_container'
 import Modal from './modal/modal_container'
 import StoryFormContainer from './story/create_story_form_container'
+import StoriesIndexContainer from './story/stories_index_container'
+import StoryShowContainer from './story/story_show_container'
 
-const App = () => (
+const App = () => {
+  return(
   <div id='app'>
     <header className='app-header'>
       <h2 className='logo'>Mediyum</h2>
@@ -14,10 +17,13 @@ const App = () => (
     </header>
     <div className='app-body'>
       <ProtectedRoute exact path='/feed' component={HomeContainer}/>
+      <Route exact path='/stories' component={StoriesIndexContainer}/>
       <ProtectedRoute exact path='/stories/new' component={StoryFormContainer}/>
+      <ProtectedRoute exact path='/stories/:storyId' component={StoryShowContainer}/>
     </div>
     <Modal />
   </div>
-)
+  )
+}
 
 export default App

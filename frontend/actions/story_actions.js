@@ -42,8 +42,8 @@ export const fetchStories = stories => dispatch => (
       errors => dispatch(receiveStoryErrors(errors.responseJSON)))
 )
 
-export const fetchStory = story => dispatch => (
-  StoryApiUtil.fetchStory(story)
+export const fetchStory = storyId => dispatch => (
+  StoryApiUtil.fetchStory(storyId)
     .then(story => dispatch(receiveStory(story)),
       errors => dispatch(receiveStoryErrors(errors.responseJSON)))
 )

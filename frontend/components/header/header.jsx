@@ -8,8 +8,9 @@ class Header extends React.Component {
   }
 
   render() {
+    // console.log(this.props.history)
     const {currentUserId} = this.props
-    const barDisplay = currentUserId ? <UserNavContainer /> : <GuestNavContainer />
+    const barDisplay = currentUserId ? <UserNavContainer /> : <GuestNavContainer history={this.props.history}/>
     return(
       <div className='header-navbar'>
         {barDisplay}

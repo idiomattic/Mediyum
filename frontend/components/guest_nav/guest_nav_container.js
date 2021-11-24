@@ -10,8 +10,7 @@ const mSTP = state => ({
 const mDTP = dispatch => ({
   signIn: user => dispatch(signIn(user)),
   signUp: () => dispatch(signUp()),
-  displayModal: formType => dispatch(displayModal(formType)),
-  // signInDemo: demoUser => dispatch(signInDemo(demoUser))
+  displayModal: formType => dispatch(displayModal(formType))
 })
 
 export default connect(mSTP, mDTP)(GuestNav)
