@@ -7,14 +7,14 @@ class UserNav extends React.Component {
     super(props)
   }
 
-  showDropdown() {
+  // showDropdown() {
     
-  }
+  // }
 
   render() {
     return(
       <div className='user-nav'>
-        {/* <Button className='user-dropdown'onClick={() => this.showDropdown()}></Button> */}
+        <button className='user-dropdown'onClick={() => this.props.displayModal()}>Dropdown</button>
         <Link to='/' onClick={() => this.props.signOut()}>Sign Out</Link>
       </div>
     )

@@ -1642,19 +1642,23 @@ var UserNav = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, UserNav);
 
     return _super.call(this, props);
-  }
+  } // showDropdown() {
+  // }
+
 
   _createClass(UserNav, [{
-    key: "showDropdown",
-    value: function showDropdown() {}
-  }, {
     key: "render",
     value: function render() {
       var _this = this;
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "user-nav"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "user-dropdown",
+        onClick: function onClick() {
+          return _this.props.displayModal();
+        }
+      }, "Dropdown"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
         to: "/",
         onClick: function onClick() {
           return _this.props.signOut();
@@ -1683,7 +1687,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _user_nav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./user_nav */ "./frontend/components/user_nav/user_nav.jsx");
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
 
 
 
@@ -1696,8 +1702,11 @@ var mSTP = function mSTP(state) {
 
 var mDTP = function mDTP(dispatch) {
   return {
+    displayModal: function displayModal() {
+      return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__.displayModal)('Dropdown'));
+    },
     signOut: function signOut() {
-      return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.signOut)());
+      return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__.signOut)());
     }
   };
 };
