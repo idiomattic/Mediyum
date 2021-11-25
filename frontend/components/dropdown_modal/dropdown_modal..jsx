@@ -5,18 +5,18 @@ function DropdownModal({modal, hideModal}) {
     return null;
   }
   return (
-    <div className="dropdown-modal-background" onClick={hideModal}>
-      <div className="dropdown-modal-child" onClick={e => e.stopPropagation()}>
+    // <div className="dropdown-modal-background" onClick={hideModal}>
+      // <div className="dropdown-modal-child" onClick={e => e.stopPropagation()}>
         <ul className='dropdown-list'>
           <li className='write-story'>
             Write a story
           </li>
-          <li className='sign-out'>
+          <li className='sign-out' onClick={() => this.props.signOut()}>
             Sign out
           </li>
         </ul>
-      </div>
-    </div>
+      // </div>
+    // </div>
   );
 }
 

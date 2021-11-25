@@ -309,6 +309,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function DropdownModal(_ref) {
+  var _this = this;
+
   var modal = _ref.modal,
       hideModal = _ref.hideModal;
 
@@ -316,21 +318,23 @@ function DropdownModal(_ref) {
     return null;
   }
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "dropdown-modal-background",
-    onClick: hideModal
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "dropdown-modal-child",
-    onClick: function onClick(e) {
-      return e.stopPropagation();
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
-    className: "dropdown-list"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-    className: "write-story"
-  }, "Write a story"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-    className: "sign-out"
-  }, "Sign out"))));
+  return (
+    /*#__PURE__*/
+    // <div className="dropdown-modal-background" onClick={hideModal}>
+    // <div className="dropdown-modal-child" onClick={e => e.stopPropagation()}>
+    react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+      className: "dropdown-list"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+      className: "write-story"
+    }, "Write a story"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+      className: "sign-out",
+      onClick: function onClick() {
+        return _this.props.signOut();
+      }
+    }, "Sign out")) // </div>
+    // </div>
+
+  );
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DropdownModal);
@@ -351,6 +355,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 /* harmony import */ var _dropdown_modal___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dropdown_modal. */ "./frontend/components/dropdown_modal/dropdown_modal..jsx");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
 
 
 
@@ -365,6 +371,9 @@ var mDTP = function mDTP(dispatch) {
   return {
     hideModal: function hideModal() {
       return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__.hideModal)());
+    },
+    signOut: function signOut() {
+      return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__.signOut)());
     }
   };
 };
@@ -1653,7 +1662,7 @@ var UserNav = /*#__PURE__*/function (_React$Component) {
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "user-nav"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "user-dropdown",
         onClick: function onClick() {
           return _this.props.displayModal();

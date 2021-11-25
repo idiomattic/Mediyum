@@ -10,10 +10,10 @@ function Modal({modal, hideModal}) {
   let component;
   switch (modal) {
     case 'Sign In':
-      component = <SignInFormContainer />;
+      component = <SignInFormContainer />
       break
     case 'Sign Up':
-      component = <SignUpFormContainer />;
+      component = <SignUpFormContainer />
       break
     case 'Dropdown':
       component = <DropdownModalContainer />
@@ -22,8 +22,8 @@ function Modal({modal, hideModal}) {
       return null;
   }
   return (
-    <div className="modal-background" onClick={hideModal}>
-      <div className="modal-child" onClick={e => e.stopPropagation()}>
+    <div className={"modal-background"} onClick={hideModal}>
+      <div className={"modal-child"} onClick={e => e.stopPropagation()}>
         { component }
       </div>
     </div>
