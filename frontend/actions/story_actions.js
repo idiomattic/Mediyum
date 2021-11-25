@@ -36,8 +36,8 @@ export const createStory = story => dispatch => (
       errors => dispatch(receiveStoryErrors(errors.responseJSON)))
 )
 
-export const fetchStories = stories => dispatch => (
-  StoryApiUtil.fetchStories(stories)
+export const fetchStories = () => dispatch => (
+  StoryApiUtil.fetchStories()
     .then(stories => dispatch(receiveStories(stories)),
       errors => dispatch(receiveStoryErrors(errors.responseJSON)))
 )

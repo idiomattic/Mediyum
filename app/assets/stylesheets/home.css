@@ -1,4 +1,41 @@
-.recommended-stories {
+.index-nav > h2 {
   font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
+  padding: 0 12px 12px 0;
+  border-bottom: 1px solid rgba(230, 230, 230, 1);
+}
+
+.index-nav > .recommended-stories {
+  font-weight: 800;
+  border-bottom: 1px solid rgb(41, 41, 41);
+}
+
+.right-padding {
+  flex: 1;
+}
+
+.stories-index {
+  margin: 0 48px 0 48px;
+  width: 100%;
+  padding: 56px 0 0 0;
+}
+
+.index-nav {
+  /* padding: 0 0 8px 0; */
+  display: flex;
+  /* border-bottom: 1px solid rgba(230, 230, 230, 1); */
+}
+
+.stories-list {
+  padding: 30px 0 0 0;
+}
+
+.story-list-item {
+  margin: 0 0 32px 0;
+}
+
+.story-item-title {
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
 }

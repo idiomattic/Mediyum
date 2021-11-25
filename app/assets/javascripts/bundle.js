@@ -189,9 +189,9 @@ var createStory = function createStory(story) {
     });
   };
 };
-var fetchStories = function fetchStories(stories) {
+var fetchStories = function fetchStories() {
   return function (dispatch) {
-    return _util_story_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchStories(stories).then(function (stories) {
+    return _util_story_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchStories().then(function (stories) {
       return dispatch(receiveStories(stories));
     }, function (errors) {
       return dispatch(receiveStoryErrors(errors.responseJSON));
@@ -1130,19 +1130,30 @@ var StoriesIndex = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(StoriesIndex, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchStories();
+    }
+  }, {
     key: "render",
     value: function render() {
       var stories = this.props.stories;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "stories-index"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "index-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+        className: "following-stories"
+      }, "FOLLOWING"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
         className: "recommended-stories"
-      }, "RECOMMENDED FOR YOU"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+      }, "RECOMMENDED FOR YOU"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+        className: "right-padding"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "stories-list"
       }, stories.map(function (story, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_stories_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          story: story,
-          key: i
+          key: i,
+          story: story
         });
       })));
     }
@@ -1183,8 +1194,8 @@ var mSTP = function mSTP(state) {
 
 var mDTP = function mDTP(dispatch) {
   return {
-    fetchStories: function fetchStories(stories) {
-      return dispatch((0,_actions_story_actions__WEBPACK_IMPORTED_MODULE_2__.fetchStories)(stories));
+    fetchStories: function fetchStories() {
+      return dispatch((0,_actions_story_actions__WEBPACK_IMPORTED_MODULE_2__.fetchStories)());
     }
   };
 };
@@ -1209,7 +1220,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var StoriesIndexItem = function StoriesIndexItem(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-    key: props.key
+    className: "story-list-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
     className: "story-item-title"
   }, props.story.title));
@@ -1991,15 +2002,19 @@ var createStory = function createStory(story) {
     }
   });
 };
-var fetchStories = function fetchStories(stories) {
+var fetchStories = function fetchStories() {
   return $.ajax({
     method: 'GET',
-    url: '/api/stories',
-    data: {
-      stories: stories
-    }
+    url: '/api/stories'
   });
-};
+}; // export const fetchStories = stories => (
+//   $.ajax({
+//     method: 'GET',
+//     url: '/api/stories',
+//     data: {stories}
+//   })
+// )
+
 var fetchStory = function fetchStory(storyId) {
   return $.ajax({
     method: 'GET',
