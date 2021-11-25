@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import DropdownModalContainer from "../dropdown_modal/dropdown_modal_container";
 import SignInFormContainer from "../session/signin_form_container";
 import SignUpFormContainer from '../session/signup_form_container'
 
@@ -11,10 +11,10 @@ function Modal({modal, hideModal}) {
   switch (modal) {
     case 'Sign In':
       component = <SignInFormContainer />;
-      break;
     case 'Sign Up':
       component = <SignUpFormContainer />;
-      break;
+    case 'Dropdown':
+      component = <DropdownModalContainer />
     default:
       return null;
   }

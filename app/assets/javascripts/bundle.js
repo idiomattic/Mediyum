@@ -294,6 +294,85 @@ var App = function App() {
 
 /***/ }),
 
+/***/ "./frontend/components/dropdown_modal/dropdown_modal..jsx":
+/*!****************************************************************!*\
+  !*** ./frontend/components/dropdown_modal/dropdown_modal..jsx ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+function DropdownModal(_ref) {
+  var modal = _ref.modal,
+      hideModal = _ref.hideModal;
+
+  if (!modal) {
+    return null;
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "dropdown-modal-background",
+    onClick: hideModal
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "dropdown-modal-child",
+    onClick: function onClick(e) {
+      return e.stopPropagation();
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+    className: "dropdown-list"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    className: "write-story"
+  }, "Write a story"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+    className: "sign-out"
+  }, "Sign out"))));
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DropdownModal);
+
+/***/ }),
+
+/***/ "./frontend/components/dropdown_modal/dropdown_modal_container.js":
+/*!************************************************************************!*\
+  !*** ./frontend/components/dropdown_modal/dropdown_modal_container.js ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _dropdown_modal___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dropdown_modal. */ "./frontend/components/dropdown_modal/dropdown_modal..jsx");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+
+
+
+var mSTP = function mSTP(state) {
+  return {
+    modal: state.ui.modal
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {
+    hideModal: function hideModal() {
+      return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__.hideModal)());
+    }
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_2__.connect)(mSTP, mDTP)(_dropdown_modal___WEBPACK_IMPORTED_MODULE_1__["default"]));
+
+/***/ }),
+
 /***/ "./frontend/components/guest_nav/guest_nav.jsx":
 /*!*****************************************************!*\
   !*** ./frontend/components/guest_nav/guest_nav.jsx ***!
@@ -654,7 +733,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _dropdown_modal_dropdown_modal_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../dropdown_modal/dropdown_modal_container */ "./frontend/components/dropdown_modal/dropdown_modal_container.js");
 /* harmony import */ var _session_signin_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../session/signin_form_container */ "./frontend/components/session/signin_form_container.js");
 /* harmony import */ var _session_signup_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../session/signup_form_container */ "./frontend/components/session/signup_form_container.js");
 
@@ -675,11 +754,12 @@ function Modal(_ref) {
   switch (modal) {
     case 'Sign In':
       component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_session_signin_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], null);
-      break;
 
     case 'Sign Up':
       component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_session_signup_form_container__WEBPACK_IMPORTED_MODULE_3__["default"], null);
-      break;
+
+    case 'Dropdown':
+      component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_dropdown_modal_dropdown_modal_container__WEBPACK_IMPORTED_MODULE_1__["default"], null);
 
     default:
       return null;
@@ -1562,6 +1642,9 @@ var UserNav = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(UserNav, [{
+    key: "showDropdown",
+    value: function showDropdown() {}
+  }, {
     key: "render",
     value: function render() {
       var _this = this;
