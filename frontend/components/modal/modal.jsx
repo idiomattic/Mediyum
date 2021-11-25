@@ -11,10 +11,13 @@ function Modal({modal, hideModal}) {
   switch (modal) {
     case 'Sign In':
       component = <SignInFormContainer />;
+      break
     case 'Sign Up':
       component = <SignUpFormContainer />;
+      break
     case 'Dropdown':
       component = <DropdownModalContainer />
+      break
     default:
       return null;
   }

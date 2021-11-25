@@ -754,12 +754,15 @@ function Modal(_ref) {
   switch (modal) {
     case 'Sign In':
       component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_session_signin_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], null);
+      break;
 
     case 'Sign Up':
       component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_session_signup_form_container__WEBPACK_IMPORTED_MODULE_3__["default"], null);
+      break;
 
     case 'Dropdown':
       component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_dropdown_modal_dropdown_modal_container__WEBPACK_IMPORTED_MODULE_1__["default"], null);
+      break;
 
     default:
       return null;
