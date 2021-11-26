@@ -1,12 +1,12 @@
 import React from "react";
 
-class StoryForm extends React.Component {
+class UpdateStoryForm extends React.Component {
   constructor(props) {
     super(props)
+    let { currentStoryId, preloadedInfo } = this.props
     this.state = {
-      title: '',
-      body: '',
-      author_id: this.props.currentUserId
+      title: preloadedInfo.title,
+      body: preloadedInfo.body
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -52,4 +52,4 @@ class StoryForm extends React.Component {
   }
 }
 
-export default StoryForm
+export default UpdateStoryForm

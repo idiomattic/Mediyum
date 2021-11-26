@@ -36,6 +36,12 @@ export const createStory = story => dispatch => (
       errors => dispatch(receiveStoryErrors(errors.responseJSON)))
 )
 
+export const updateStory = story => dispatch => (
+  StoryApiUtil.updateStory(story)
+    .then(story => dispatch(receiveStory(story)),
+      errors => dispatch(receiveStoryErrors(errors.responseJSON)))
+)
+
 export const fetchStories = () => dispatch => (
   StoryApiUtil.fetchStories()
     .then(stories => dispatch(receiveStories(stories)),
@@ -48,11 +54,6 @@ export const fetchStory = storyId => dispatch => (
       errors => dispatch(receiveStoryErrors(errors.responseJSON)))
 )
 
-export const updateStory = story => dispatch => (
-  StoryApiUtil.updateStory(story)
-    .then(story => dispatch(receiveStory(story)),
-      errors => dispatch(receiveStoryErrors(errors.responseJSON)))
-)
 
 export const deleteStory = storyId => dispatch => (
   StoryApiUtil.deleteStory(storyId)

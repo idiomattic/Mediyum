@@ -14,8 +14,13 @@ class DropdownModal extends React.Component {
   }
 
   redirectToStoryForm() {
+    this.props.hideModal()
     this.props.history.push('/stories/new')
-    debugger
+  }
+
+  redirectToFeed() {
+    this.props.hideModal()
+    this.props.history.push('/feed')
   }
 
   render() {
@@ -24,7 +29,9 @@ class DropdownModal extends React.Component {
       <ul className='dropdown-list'>
         <li className='write-story'>
           <Link to='/stories/new' onClick={() => this.redirectToStoryForm()}>Write a story</Link>
-          {/* <Redirect to='/' onClick={() => this.redirectToStoryForm()}>Write a story</Redirect> */}
+        </li>
+        <li>
+          <Link to='/feed' onClick={() => this.redirectToFeed()}>Stories</Link>
         </li>
         <li className='sign-out'>
           <Link to='/' onClick={() => this.handleSignout()}>Sign Out</Link>

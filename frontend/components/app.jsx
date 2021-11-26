@@ -5,7 +5,7 @@ import HeaderContainer from './header/header_container'
 import HomeContainer from './home/home_container'
 import Modal from './modal/modal_container'
 import StoryFormContainer from './story/create_story_form_container'
-import StoriesIndexContainer from './story/stories_index_container'
+import UpdateStoryFormContainer from './story/update_story_form_container'
 import StoryShowContainer from './story/story_show_container'
 
 const App = () => {
@@ -24,6 +24,7 @@ const App = () => {
         <ProtectedRoute exact path='/feed' component={HomeContainer}/>
         <ProtectedRoute exact path='/stories/new' component={StoryFormContainer}/>
         <ProtectedRoute exact path='/stories/:storyId' component={StoryShowContainer}/>
+        <ProtectedRoute exact path='/stories/:storyId/edit' component={UpdateStoryFormContainer}/>
       </Switch>
     </div>
     <Modal />

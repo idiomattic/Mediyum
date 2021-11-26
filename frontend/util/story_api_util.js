@@ -30,7 +30,7 @@ export const fetchStory = storyId => (
 export const updateStory = story => (
   $.ajax({
     method: 'PATCH',
-    url: `/api/stories${story.id}`,
+    url: `/api/stories/${story.id}`,
     data: {story}
   })
 )
