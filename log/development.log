@@ -11203,3 +11203,259 @@ Processing by Api::StoriesController#index as JSON
 Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.9ms)
 
 
+Started GET "/" for ::1 at 2021-11-26 10:08:13 -0800
+
+PG::ConnectionBad - could not connect to server: No such file or directory
+	Is the server running locally and accepting
+	connections on Unix domain socket "/var/run/postgresql/.s.PGSQL.5432"?:
+
+Started POST "/__better_errors/cef577fa649f0e63/variables" for ::1 at 2021-11-26 10:08:13 -0800
+Started GET "/" for ::1 at 2021-11-26 10:08:51 -0800
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/matthew/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  Rendered static_pages/root.html.erb within layouts/application (16.8ms)
+Completed 200 OK in 692ms (Views: 686.2ms | ActiveRecord: 4.4ms)
+
+
+Started POST "/api/session" for ::1 at 2021-11-26 10:08:53 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demo@demo.demo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@demo.demo"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:28
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "JiVPyLEGEfhyfOziQwlGUg"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:53
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:43
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@demo.demo"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:43
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "JiVPyLEGEfhyfOziQwlGUg"], ["updated_at", "2021-11-26 18:08:54.140445"], ["id", 1]]
+  ↳ app/models/user.rb:43
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:43
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered api/users/show.json.jbuilder (2.1ms)
+Completed 200 OK in 244ms (Views: 4.3ms | ActiveRecord: 8.2ms)
+
+
+Started GET "/api/stories" for ::1 at 2021-11-26 10:08:54 -0800
+Processing by Api::StoriesController#index as JSON
+  Rendering api/stories/index.json.jbuilder
+  [1m[36mStory Load (2.2ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/views/api/stories/index.json.jbuilder:1
+  Rendered api/stories/_story.json.jbuilder (0.6ms)
+  Rendered api/stories/_story.json.jbuilder (0.1ms)
+  Rendered api/stories/_story.json.jbuilder (0.1ms)
+  Rendered api/stories/index.json.jbuilder (16.0ms)
+Completed 200 OK in 23ms (Views: 12.0ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/api/stories/1" for ::1 at 2021-11-26 10:08:56 -0800
+Processing by Api::StoriesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stories_controller.rb:17
+  Rendering api/stories/show.json.jbuilder
+  Rendered api/stories/_story.json.jbuilder (0.4ms)
+  Rendered api/stories/show.json.jbuilder (1.7ms)
+Completed 200 OK in 7ms (Views: 4.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/stories" for ::1 at 2021-11-26 10:08:58 -0800
+Processing by Api::StoriesController#index as JSON
+  Rendering api/stories/index.json.jbuilder
+  [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/views/api/stories/index.json.jbuilder:1
+  Rendered api/stories/_story.json.jbuilder (0.6ms)
+  Rendered api/stories/_story.json.jbuilder (0.2ms)
+  Rendered api/stories/_story.json.jbuilder (0.1ms)
+  Rendered api/stories/index.json.jbuilder (4.9ms)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/api/session" for ::1 at 2021-11-26 10:09:42 -0800
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "JiVPyLEGEfhyfOziQwlGUg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "llH0z9DJ-S-tVHMTZnDUnA"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:53
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:43
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@demo.demo"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:43
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "llH0z9DJ-S-tVHMTZnDUnA"], ["updated_at", "2021-11-26 18:09:42.496073"], ["id", 1]]
+  ↳ app/models/user.rb:43
+  [1m[35m (12.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:43
+Completed 200 OK in 23ms (Views: 0.2ms | ActiveRecord: 14.4ms)
+
+
+Started POST "/api/session" for ::1 at 2021-11-26 10:09:43 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demo@demo.demo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@demo.demo"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:28
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "CXq8S2s3FMJ8vsM3CqZZPA"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:53
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:43
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@demo.demo"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:43
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "CXq8S2s3FMJ8vsM3CqZZPA"], ["updated_at", "2021-11-26 18:09:44.019276"], ["id", 1]]
+  ↳ app/models/user.rb:43
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:43
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  Rendered api/users/show.json.jbuilder (1.6ms)
+Completed 200 OK in 215ms (Views: 3.1ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/api/stories" for ::1 at 2021-11-26 10:09:44 -0800
+Processing by Api::StoriesController#index as JSON
+  Rendering api/stories/index.json.jbuilder
+  [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/views/api/stories/index.json.jbuilder:1
+  Rendered api/stories/_story.json.jbuilder (0.4ms)
+  Rendered api/stories/_story.json.jbuilder (0.1ms)
+  Rendered api/stories/_story.json.jbuilder (0.0ms)
+  Rendered api/stories/index.json.jbuilder (4.0ms)
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2021-11-26 10:15:57 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "CXq8S2s3FMJ8vsM3CqZZPA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 333ms (Views: 331.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/stories" for ::1 at 2021-11-26 10:15:58 -0800
+Processing by Api::StoriesController#index as JSON
+  Rendering api/stories/index.json.jbuilder
+  [1m[36mStory Load (0.9ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/views/api/stories/index.json.jbuilder:1
+  Rendered api/stories/_story.json.jbuilder (0.5ms)
+  Rendered api/stories/_story.json.jbuilder (0.1ms)
+  Rendered api/stories/_story.json.jbuilder (0.3ms)
+  Rendered api/stories/index.json.jbuilder (6.8ms)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for ::1 at 2021-11-26 10:17:57 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "CXq8S2s3FMJ8vsM3CqZZPA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 307ms (Views: 306.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/stories" for ::1 at 2021-11-26 10:17:58 -0800
+Processing by Api::StoriesController#index as JSON
+  Rendering api/stories/index.json.jbuilder
+  [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/views/api/stories/index.json.jbuilder:1
+  Rendered api/stories/_story.json.jbuilder (0.5ms)
+  Rendered api/stories/_story.json.jbuilder (0.1ms)
+  Rendered api/stories/_story.json.jbuilder (0.1ms)
+  Rendered api/stories/index.json.jbuilder (5.0ms)
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2021-11-26 10:19:11 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "CXq8S2s3FMJ8vsM3CqZZPA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 310ms (Views: 308.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/stories" for ::1 at 2021-11-26 10:19:12 -0800
+Processing by Api::StoriesController#index as JSON
+  Rendering api/stories/index.json.jbuilder
+  [1m[36mStory Load (1.5ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/views/api/stories/index.json.jbuilder:1
+  Rendered api/stories/_story.json.jbuilder (0.5ms)
+  Rendered api/stories/_story.json.jbuilder (0.5ms)
+  Rendered api/stories/_story.json.jbuilder (0.1ms)
+  Rendered api/stories/index.json.jbuilder (12.4ms)
+Completed 200 OK in 14ms (Views: 12.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for ::1 at 2021-11-26 10:19:51 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "CXq8S2s3FMJ8vsM3CqZZPA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 341ms (Views: 338.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/stories" for ::1 at 2021-11-26 10:19:52 -0800
+Processing by Api::StoriesController#index as JSON
+  Rendering api/stories/index.json.jbuilder
+  [1m[36mStory Load (1.2ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/views/api/stories/index.json.jbuilder:1
+  Rendered api/stories/_story.json.jbuilder (1.2ms)
+  Rendered api/stories/_story.json.jbuilder (0.2ms)
+  Rendered api/stories/_story.json.jbuilder (0.1ms)
+  Rendered api/stories/index.json.jbuilder (15.3ms)
+Completed 200 OK in 20ms (Views: 18.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for ::1 at 2021-11-26 10:21:10 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "CXq8S2s3FMJ8vsM3CqZZPA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 322ms (Views: 319.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/stories" for ::1 at 2021-11-26 10:21:11 -0800
+Processing by Api::StoriesController#index as JSON
+  Rendering api/stories/index.json.jbuilder
+  [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/views/api/stories/index.json.jbuilder:1
+  Rendered api/stories/_story.json.jbuilder (0.5ms)
+  Rendered api/stories/_story.json.jbuilder (0.2ms)
+  Rendered api/stories/_story.json.jbuilder (0.1ms)
+  Rendered api/stories/index.json.jbuilder (6.0ms)
+Completed 200 OK in 10ms (Views: 8.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2021-11-26 10:21:51 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "CXq8S2s3FMJ8vsM3CqZZPA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  Rendered api/users/_user.json.jbuilder (0.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 305ms (Views: 304.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/stories" for ::1 at 2021-11-26 10:21:52 -0800
+Processing by Api::StoriesController#index as JSON
+  Rendering api/stories/index.json.jbuilder
+  [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/views/api/stories/index.json.jbuilder:1
+  Rendered api/stories/_story.json.jbuilder (0.5ms)
+  Rendered api/stories/_story.json.jbuilder (0.2ms)
+  Rendered api/stories/_story.json.jbuilder (0.1ms)
+  Rendered api/stories/index.json.jbuilder (5.0ms)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.5ms)
+
+

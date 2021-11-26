@@ -1,27 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function DropdownModal({modal, hideModal}) {
-  if (!modal) {
-    return null;
+// function DropdownModal({modal, hideModal}) {
+class DropdownModal extends React.Component {
+  constructor(props) {
+    super(props)
   }
+  // if (!modal) {
+  //   return null;
+  // }
 
+  // handleSignout() {
+  //   console.log(this.props)
+  // }
 
-
-  return (
-    // <div className="dropdown-modal-background" onClick={hideModal}>
-      // <div className="dropdown-modal-child" onClick={e => e.stopPropagation()}>
-        <ul className='dropdown-list'>
-          <li className='write-story'>
-            Write a story
-          </li>
-          <li className='sign-out'>
-            <Link to='/' onClick={() => this.props.signOut()}>Sign Out</Link>
-          </li>
-        </ul>
-      // </div>
-    // </div>
-  );
+  render() {
+    let { modal, hideModal, signOut } = this.props
+    return !modal ? null : (
+      <ul className='dropdown-list'>
+        <li className='write-story'>
+          Write a story
+        </li>
+        <li className='sign-out'>
+          <Link to='/' onClick={() => signOut()}>Sign Out</Link>
+        </li>
+      </ul>
+    )
+  }
 }
 
 export default DropdownModal
