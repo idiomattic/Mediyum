@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { withRouter } from "react-router";
 
 // function DropdownModal({modal, hideModal}) {
@@ -23,7 +23,8 @@ class DropdownModal extends React.Component {
     return !modal ? null : (
       <ul className='dropdown-list'>
         <li className='write-story'>
-          <Link to='/' onClick={() => this.redirectToStoryForm()}>Write a story</Link>
+          <Link to='/stories/new' onClick={() => this.redirectToStoryForm()}>Write a story</Link>
+          {/* <Redirect to='/' onClick={() => this.redirectToStoryForm()}>Write a story</Redirect> */}
         </li>
         <li className='sign-out'>
           <Link to='/' onClick={() => this.handleSignout()}>Sign Out</Link>
