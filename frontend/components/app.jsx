@@ -13,11 +13,11 @@ const App = () => {
   <div id='app'>
     <header className='app-header'>
       <h2 className='logo'>Mediyum</h2>
-      <Route path='/' component={HeaderContainer}/>
+      <AuthRoute exact path='/' component={HeaderContainer}/>
+      <Route path='/feed' component={HeaderContainer}/>
     </header>
     <div className='app-body'>
       <ProtectedRoute exact path='/feed' component={HomeContainer}/>
-      {/* <Route exact path='/stories' component={StoriesIndexContainer}/> */}
       <ProtectedRoute exact path='/stories/new' component={StoryFormContainer}/>
       <ProtectedRoute exact path='/stories/:storyId' component={StoryShowContainer}/>
     </div>

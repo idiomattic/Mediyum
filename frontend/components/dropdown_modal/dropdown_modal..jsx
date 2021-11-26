@@ -1,18 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
 
 // function DropdownModal({modal, hideModal}) {
 class DropdownModal extends React.Component {
   constructor(props) {
     super(props)
   }
-  // if (!modal) {
-  //   return null;
-  // }
 
   handleSignout() {
     this.props.signOut()
     this.props.hideModal()
+  }
+
+  redirectToStoryForm() {
+    this.props.history.push('/stories/new')
+    debugger
   }
 
   render() {
@@ -20,7 +23,7 @@ class DropdownModal extends React.Component {
     return !modal ? null : (
       <ul className='dropdown-list'>
         <li className='write-story'>
-          Write a story
+          <Link to='/' onClick={() => this.redirectToStoryForm()}>Write a story</Link>
         </li>
         <li className='sign-out'>
           <Link to='/' onClick={() => this.handleSignout()}>Sign Out</Link>
@@ -30,4 +33,4 @@ class DropdownModal extends React.Component {
   }
 }
 
-export default DropdownModal
+export default withRouter(DropdownModal)
