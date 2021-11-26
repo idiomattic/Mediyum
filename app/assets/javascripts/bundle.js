@@ -344,14 +344,19 @@ var DropdownModal = /*#__PURE__*/function (_React$Component) {
   } // if (!modal) {
   //   return null;
   // }
-  // handleSignout() {
-  //   console.log(this.props)
-  // }
 
 
   _createClass(DropdownModal, [{
+    key: "handleSignout",
+    value: function handleSignout() {
+      this.props.signOut();
+      this.props.hideModal();
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this = this;
+
       var _this$props = this.props,
           modal = _this$props.modal,
           hideModal = _this$props.hideModal,
@@ -365,7 +370,7 @@ var DropdownModal = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
         to: "/",
         onClick: function onClick() {
-          return signOut();
+          return _this.handleSignout();
         }
       }, "Sign Out")));
     }

@@ -10,9 +10,10 @@ class DropdownModal extends React.Component {
   //   return null;
   // }
 
-  // handleSignout() {
-  //   console.log(this.props)
-  // }
+  handleSignout() {
+    this.props.signOut()
+    this.props.hideModal()
+  }
 
   render() {
     let { modal, hideModal, signOut } = this.props
@@ -22,7 +23,7 @@ class DropdownModal extends React.Component {
           Write a story
         </li>
         <li className='sign-out'>
-          <Link to='/' onClick={() => signOut()}>Sign Out</Link>
+          <Link to='/' onClick={() => this.handleSignout()}>Sign Out</Link>
         </li>
       </ul>
     )
