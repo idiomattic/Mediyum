@@ -1,5 +1,5 @@
 import { hideModal } from "../../actions/modal_actions";
-import CommentsModal from "./dropdown_modal.";
+import CommentsModal from "./comments_modal";
 import { connect } from "react-redux";
 
 const mSTP = state => ({
