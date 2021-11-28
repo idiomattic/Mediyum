@@ -10,4 +10,15 @@
 #  updated_at   :datetime         not null
 #
 class Comment < ApplicationRecord
+  validates :body, :commenter_id, :story_id, presence: true
+  
+  belongs_to :commenter,
+    primary_key: :id,
+    foreign_key: :commenter_id,
+    class_name: :User
+
+  belongs_to :story,
+    primary_key: :id,
+    foreign_key: :story_id,
+    class_name: :Story
 end
