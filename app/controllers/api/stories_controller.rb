@@ -21,7 +21,6 @@ class Api::StoriesController < ApplicationController
   def update
     @story = Story.find(params[:id])
     if (@story && @story.update(story_params))
-      render :template => 'api/stories/show'
       render json: ['Updates saved.']
     else
       render json: @story.errors.full_messages, status: 422

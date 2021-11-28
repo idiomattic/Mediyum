@@ -4,10 +4,7 @@ class UpdateStoryForm extends React.Component {
   constructor(props) {
     super(props)
     let { currentStoryId, preloadedInfo } = this.props
-    this.state = {
-      title: preloadedInfo.title,
-      body: preloadedInfo.body
-    }
+    this.state = preloadedInfo
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 

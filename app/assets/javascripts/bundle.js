@@ -536,22 +536,24 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
       this.props.fetchComments();
     }
   }, {
-    key: "mapCommentsToList",
-    value: function mapCommentsToList() {}
-  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
           modal = _this$props.modal,
           hideModal = _this$props.hideModal,
-          signOut = _this$props.signOut;
+          comments = _this$props.comments;
       return !modal ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comments-modal"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comment-form-box"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "comments-list"
-      }));
+      }, comments.map(function (comment, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comments_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: i,
+          comment: comment
+        });
+      })));
     }
   }]);
 
@@ -2062,10 +2064,7 @@ var UpdateStoryForm = /*#__PURE__*/function (_React$Component) {
     var _this$props = _this.props,
         currentStoryId = _this$props.currentStoryId,
         preloadedInfo = _this$props.preloadedInfo;
-    _this.state = {
-      title: preloadedInfo.title,
-      body: preloadedInfo.body
-    };
+    _this.state = preloadedInfo;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }

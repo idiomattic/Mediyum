@@ -12,12 +12,8 @@ class CommentsModal extends React.Component {
     this.props.fetchComments()
   }
 
-  mapCommentsToList() {
-
-  }
-
   render() {
-    let { modal, hideModal, signOut } = this.props
+    let { modal, hideModal, comments } = this.props
     return !modal ? null : (
       <div className='comments-modal'>
         <div className='comment-form-box'>
@@ -27,7 +23,9 @@ class CommentsModal extends React.Component {
         </div>
         <ul className="comments-list">
           {
-            
+            comments.map((comment, i) => 
+              <CommentsIndexItem key={i} comment={comment} />
+            )
           }
         </ul>
       </div>
