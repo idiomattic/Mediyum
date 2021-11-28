@@ -1,11 +1,27 @@
 import React from "react"
+import { withRouter } from "react-router"
 
 class StoryShow extends React.Component {
   constructor(props) {
     super(props)
   }
+
   componentDidMount() {
     this.props.fetchStory(this.props.storyId)
+  }
+  
+  editStory() {
+    this.props.history.push(`/stories/${this.props.storyId}/edit`)
+  }
+
+  canEdit() {
+    console.log('author_id', this.props.story.author_id)
+    console.log('currentUserId', this.props.currentUserId)
+    return this.props.story.author_id === this.props.currentUserId ? 
+      <button className='black-button' onClick={() => this.editStory()}>
+        Edit Story
+      </button> 
+      : null
   }
 
   render() {
@@ -17,9 +33,10 @@ class StoryShow extends React.Component {
       <div className='story-show'>
         <h2 className='story-title'>{story.title}</h2>
         <p className='story-body'>{story.body}</p>
+        {this.canEdit()}
       </div>
     )
   }
 }
 
-export default StoryShow
+export default withRouter(StoryShow)

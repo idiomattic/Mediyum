@@ -1569,6 +1569,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1593,6 +1594,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var StoryShow = /*#__PURE__*/function (_React$Component) {
   _inherits(StoryShow, _React$Component);
 
@@ -1610,6 +1612,25 @@ var StoryShow = /*#__PURE__*/function (_React$Component) {
       this.props.fetchStory(this.props.storyId);
     }
   }, {
+    key: "editStory",
+    value: function editStory() {
+      this.props.history.push("/stories/".concat(this.props.storyId, "/edit"));
+    }
+  }, {
+    key: "canEdit",
+    value: function canEdit() {
+      var _this = this;
+
+      console.log('author_id', this.props.story.author_id);
+      console.log('currentUserId', this.props.currentUserId);
+      return this.props.story.author_id === this.props.currentUserId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "black-button",
+        onClick: function onClick() {
+          return _this.editStory();
+        }
+      }, "Edit Story") : null;
+    }
+  }, {
     key: "render",
     value: function render() {
       var story = this.props.story;
@@ -1624,14 +1645,14 @@ var StoryShow = /*#__PURE__*/function (_React$Component) {
         className: "story-title"
       }, story.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "story-body"
-      }, story.body));
+      }, story.body), this.canEdit());
     }
   }]);
 
   return StoryShow;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StoryShow);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router__WEBPACK_IMPORTED_MODULE_1__.withRouter)(StoryShow));
 
 /***/ }),
 
