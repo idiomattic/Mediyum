@@ -22,6 +22,10 @@ class StoryShow extends React.Component {
       : null
   }
 
+  showCommentsModal() {
+    this.props.displayModal()
+  }
+
   render() {
     let { story } = this.props
     if (!story) {

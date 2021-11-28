@@ -1,10 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
+import CommentsIndexItem from "./comments_index_item";
 
 class CommentsModal extends React.Component {
   constructor(props) {
     super(props)
+  }
+
+  componentDidMount() {
+    this.props.fetchComments()
+  }
+
+  mapCommentsToList() {
+
   }
 
   render() {
@@ -16,12 +25,11 @@ class CommentsModal extends React.Component {
 
           </form>
         </div>
-        <li>
-          <Link to='/feed' onClick={() => this.redirectToFeed()}>Stories</Link>
-        </li>
-        <li className='sign-out'>
-          <Link to='/' onClick={() => this.handleSignout()}>Sign Out</Link>
-        </li>
+        <ul className="comments-list">
+          {
+            
+          }
+        </ul>
       </div>
     )
   }
