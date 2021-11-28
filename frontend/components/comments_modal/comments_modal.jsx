@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 
-class DropdownModal extends React.Component {
+class CommentsModal extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -40,4 +40,4 @@ class DropdownModal extends React.Component {
   }
 }
 
-export default withRouter(DropdownModal)
+export default withRouter(CommentsModal)
