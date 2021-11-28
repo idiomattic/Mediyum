@@ -15,8 +15,6 @@ class StoryShow extends React.Component {
   }
 
   canEdit() {
-    console.log('author_id', this.props.story.author_id)
-    console.log('currentUserId', this.props.currentUserId)
     return this.props.story.author_id === this.props.currentUserId ? 
       <button className='black-button' onClick={() => this.editStory()}>
         Edit Story

@@ -11,7 +11,6 @@ class UserNav extends React.Component {
     return(
       <div className='user-nav'>
         <div className='user-dropdown'onClick={() => this.props.displayModal()}>Dropdown</div>
-        <Link to='/' onClick={() => this.props.signOut()}>Sign Out</Link>
       </div>
     )
   }
