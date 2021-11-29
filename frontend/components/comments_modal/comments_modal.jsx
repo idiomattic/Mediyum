@@ -5,11 +5,19 @@ import CommentsIndexItem from "./comments_index_item";
 
 class CommentsModal extends React.Component {
   constructor(props) {
-    super(props)
+    super(props),
+    this.state = {
+      body: ''
+    }
   }
 
   componentDidMount() {
     this.props.fetchComments()
+  }
+
+  handleSubmit() {
+    e.preventDefault()
+    this.props.createComment(this.state)
   }
 
   render() {
@@ -17,8 +25,10 @@ class CommentsModal extends React.Component {
     return !modal ? null : (
       <div className='comments-modal'>
         <div className='comment-form-box'>
-          <form>
-
+          <form className='comment-form'>
+            <textarea className='comment-form-body'></textarea>
+            <br />
+            <input type="submit" value="Save" />
           </form>
         </div>
         <ul className="comments-list">

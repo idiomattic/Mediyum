@@ -7,7 +7,7 @@ export default (state={}, action) => {
     case RECEIVE_STORIES:
       return action.stories
     case RECEIVE_STORY:
-      return Object.assign(nextState, { [action.story.id]: action.story })
+      return { [action.story.id]: action.story }
     case REMOVE_STORY:
       delete nextState[action.storyId]
       return nextState

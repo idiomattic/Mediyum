@@ -10,7 +10,7 @@ class UserNav extends React.Component {
   render() {
     return(
       <div className='user-nav'>
-        <div className='user-dropdown'onClick={() => this.props.displayModal()}>Dropdown</div>
+        <div className='user-dropdown'onClick={() => this.props.displayModal()}>User Dropdown</div>
       </div>
     )
   }

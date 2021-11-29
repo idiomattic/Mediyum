@@ -525,15 +525,26 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(CommentsModal);
 
   function CommentsModal(props) {
+    var _this;
+
     _classCallCheck(this, CommentsModal);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props), _this.state = {
+      body: ''
+    };
+    return _this;
   }
 
   _createClass(CommentsModal, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchComments();
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit() {
+      e.preventDefault();
+      this.props.createComment(this.state);
     }
   }, {
     key: "render",
@@ -546,7 +557,14 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
         className: "comments-modal"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comment-form-box"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+        className: "comment-form"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
+        className: "comment-form-body"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "submit",
+        value: "Save"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "comments-list"
       }, comments.map(function (comment, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comments_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -599,6 +617,9 @@ var mDTP = function mDTP(dispatch) {
     },
     fetchComments: function fetchComments() {
       return dispatch((0,_actions_comment_actions__WEBPACK_IMPORTED_MODULE_3__.fetchComments)());
+    },
+    createComment: function createComment(comment) {
+      return dispatch((0,_actions_comment_actions__WEBPACK_IMPORTED_MODULE_3__.createComment)(comment));
     }
   };
 };
@@ -2239,7 +2260,7 @@ var UserNav = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this.props.displayModal();
         }
-      }, "Dropdown"));
+      }, "User Dropdown"));
     }
   }]);
 
@@ -2541,7 +2562,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return action.stories;
 
     case _actions_story_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_STORY:
-      return Object.assign(nextState, _defineProperty({}, action.story.id, action.story));
+      return _defineProperty({}, action.story.id, action.story);
 
     case _actions_story_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_STORY:
       delete nextState[action.storyId];
