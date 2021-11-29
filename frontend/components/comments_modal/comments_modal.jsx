@@ -11,17 +11,10 @@ class CommentsModal extends React.Component {
       story_id: this.props.story.id,
       commenter_id: this.props.currentUserId
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
     this.props.fetchComments()
-  }
-
-  handleSubmit(e) {
-    e.preventDefault()
-    this.props.createComment(this.state)
-      .then(this.setState(this.state))
   }
 
   updateBody() {

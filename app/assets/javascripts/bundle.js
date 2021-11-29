@@ -780,7 +780,6 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
       story_id: _this.props.story.id,
       commenter_id: _this.props.currentUserId
     };
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -788,12 +787,6 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchComments();
-    }
-  }, {
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      e.preventDefault();
-      this.props.createComment(this.state).then(this.setState(this.state));
     }
   }, {
     key: "updateBody",
