@@ -19637,3 +19637,143 @@ Processing by Api::StoriesController#index as JSON
 Completed 200 OK in 9ms (Views: 8.6ms | ActiveRecord: 0.4ms)
 
 
+Started GET "/api/stories/39" for ::1 at 2021-11-29 10:00:48 -0800
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/matthew/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by Api::StoriesController#show as JSON
+  Parameters: {"id"=>"39"}
+  [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/api/stories_controller.rb:17
+  Rendering api/stories/show.json.jbuilder
+  Rendered api/stories/_story.json.jbuilder (0.3ms)
+  Rendered api/stories/show.json.jbuilder (1.6ms)
+Completed 200 OK in 18ms (Views: 3.5ms | ActiveRecord: 4.2ms)
+
+
+Started DELETE "/api/stories/[object%20Object]" for ::1 at 2021-11-29 10:00:49 -0800
+Processing by Api::StoriesController#destroy as JSON
+  Parameters: {"id"=>"[object Object]"}
+  [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/api/stories_controller.rb:31
+Completed 404 Not Found in 10ms (ActiveRecord: 0.7ms)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find Story with 'id'=[object Object]:
+  app/controllers/api/stories_controller.rb:31:in `destroy'
+
+Started GET "/" for ::1 at 2021-11-29 10:05:56 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Fosa91kGEXi6L1f5aq2mzA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  Rendered api/users/_user.json.jbuilder (0.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (25.8ms)
+Completed 200 OK in 941ms (Views: 936.0ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/api/stories/39" for ::1 at 2021-11-29 10:05:57 -0800
+Processing by Api::StoriesController#show as JSON
+  Parameters: {"id"=>"39"}
+  [1m[36mStory Load (1.1ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/api/stories_controller.rb:17
+  Rendering api/stories/show.json.jbuilder
+  Rendered api/stories/_story.json.jbuilder (0.6ms)
+  Rendered api/stories/show.json.jbuilder (4.7ms)
+Completed 200 OK in 15ms (Views: 9.6ms | ActiveRecord: 1.4ms)
+
+
+Started DELETE "/api/stories/39" for ::1 at 2021-11-29 10:06:00 -0800
+Processing by Api::StoriesController#destroy as JSON
+  Parameters: {"id"=>"39"}
+  [1m[36mStory Load (0.9ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/api/stories_controller.rb:31
+  [1m[36mStory Destroy (12.3ms)[0m  [1m[31mDELETE FROM "stories" WHERE "stories"."id" = $1[0m  [["id", 39]]
+  ↳ app/controllers/api/stories_controller.rb:32
+No template found for Api::StoriesController#destroy, rendering head :no_content
+Completed 204 No Content in 24ms (ActiveRecord: 13.6ms)
+
+
+Started GET "/api/stories" for ::1 at 2021-11-29 10:06:03 -0800
+Processing by Api::StoriesController#index as JSON
+  Rendering api/stories/index.json.jbuilder
+  [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/views/api/stories/index.json.jbuilder:1
+  Rendered api/stories/_story.json.jbuilder (0.4ms)
+  Rendered api/stories/_story.json.jbuilder (0.1ms)
+  Rendered api/stories/_story.json.jbuilder (0.2ms)
+  Rendered api/stories/_story.json.jbuilder (0.1ms)
+  Rendered api/stories/_story.json.jbuilder (0.1ms)
+  Rendered api/stories/_story.json.jbuilder (0.1ms)
+  Rendered api/stories/index.json.jbuilder (7.1ms)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/stories/38" for ::1 at 2021-11-29 10:06:05 -0800
+Processing by Api::StoriesController#show as JSON
+  Parameters: {"id"=>"38"}
+  [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+  ↳ app/controllers/api/stories_controller.rb:17
+  Rendering api/stories/show.json.jbuilder
+  Rendered api/stories/_story.json.jbuilder (0.4ms)
+  Rendered api/stories/show.json.jbuilder (1.4ms)
+Completed 200 OK in 6ms (Views: 3.4ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/api/stories/38" for ::1 at 2021-11-29 10:06:07 -0800
+Processing by Api::StoriesController#destroy as JSON
+  Parameters: {"id"=>"38"}
+  [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+  ↳ app/controllers/api/stories_controller.rb:31
+  [1m[36mStory Destroy (12.5ms)[0m  [1m[31mDELETE FROM "stories" WHERE "stories"."id" = $1[0m  [["id", 38]]
+  ↳ app/controllers/api/stories_controller.rb:32
+No template found for Api::StoriesController#destroy, rendering head :no_content
+Completed 204 No Content in 23ms (ActiveRecord: 13.2ms)
+
+
+Started GET "/api/stories" for ::1 at 2021-11-29 10:06:09 -0800
+Processing by Api::StoriesController#index as JSON
+  Rendering api/stories/index.json.jbuilder
+  [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/views/api/stories/index.json.jbuilder:1
+  Rendered api/stories/_story.json.jbuilder (0.7ms)
+  Rendered api/stories/_story.json.jbuilder (0.2ms)
+  Rendered api/stories/_story.json.jbuilder (0.1ms)
+  Rendered api/stories/_story.json.jbuilder (0.1ms)
+  Rendered api/stories/_story.json.jbuilder (0.1ms)
+  Rendered api/stories/index.json.jbuilder (8.0ms)
+Completed 200 OK in 10ms (Views: 9.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/stories" for ::1 at 2021-11-29 10:06:27 -0800
+Processing by Api::StoriesController#create as JSON
+  Parameters: {"story"=>{"title"=>"testing delete with reroute", "body"=>"should go back to feed", "author_id"=>"1"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/stories_controller.rb:4
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stories_controller.rb:4
+  [1m[36mStory Create (0.8ms)[0m  [1m[32mINSERT INTO "stories" ("title", "body", "author_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "testing delete with reroute"], ["body", "should go back to feed"], ["author_id", 1], ["created_at", "2021-11-29 18:06:27.249991"], ["updated_at", "2021-11-29 18:06:27.249991"]]
+  ↳ app/controllers/api/stories_controller.rb:4
+  [1m[35m (11.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/stories_controller.rb:4
+  Rendering api/stories/show.json.jbuilder
+  Rendered api/stories/_story.json.jbuilder (0.3ms)
+  Rendered api/stories/show.json.jbuilder (1.1ms)
+Completed 200 OK in 26ms (Views: 2.6ms | ActiveRecord: 13.2ms)
+
+
+Started GET "/api/stories" for ::1 at 2021-11-29 10:06:27 -0800
+Processing by Api::StoriesController#index as JSON
+  Rendering api/stories/index.json.jbuilder
+  [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/views/api/stories/index.json.jbuilder:1
+  Rendered api/stories/_story.json.jbuilder (0.3ms)
+  Rendered api/stories/_story.json.jbuilder (0.1ms)
+  Rendered api/stories/_story.json.jbuilder (0.1ms)
+  Rendered api/stories/_story.json.jbuilder (0.3ms)
+  Rendered api/stories/_story.json.jbuilder (0.2ms)
+  Rendered api/stories/_story.json.jbuilder (0.2ms)
+  Rendered api/stories/index.json.jbuilder (7.6ms)
+Completed 200 OK in 10ms (Views: 8.7ms | ActiveRecord: 0.4ms)
+
+

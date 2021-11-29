@@ -2196,7 +2196,7 @@ var StoryShow = /*#__PURE__*/function (_React$Component) {
         }
       }, "Edit Story"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "black-button",
-        onClick: function onClick(storyId) {
+        onClick: function onClick() {
           return _this.props.deleteStory(storyId);
         }
       }, "Delete Story")) : null;

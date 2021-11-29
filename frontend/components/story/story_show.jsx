@@ -21,7 +21,7 @@ class StoryShow extends React.Component {
         <button className='black-button' onClick={() => this.editStory()}>
           Edit Story
         </button> 
-        <button className='black-button' onClick={storyId => this.props.deleteStory(storyId)}>
+        <button className='black-button' onClick={() => this.props.deleteStory(storyId)}>
           Delete Story
         </button> 
       </div>
