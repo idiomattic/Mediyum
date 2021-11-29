@@ -30,16 +30,10 @@ class CommentsIndexItem extends React.Component {
     })
   }
 
-  renderEditForm() {
-    return (
-      <CommentFormContainer comment={this.props.comment}/>
-    )
-  }
-
   render() {
     return this.state.editing ? (
       <li className='edit-comment-list-item'>
-        {this.renderEditForm()}
+        <CommentFormContainer comment={this.props.comment} />
       </li>
     ) : (
       <li className='comment-list-item'>

@@ -2,7 +2,8 @@ class Api::CommentsController < ApplicationController
 
   def index
     @comments = Comment.all
-    render json: @comments
+    # render json: @comments
+    render :template => 'api/comments/index'
   end
   
   def create
@@ -19,9 +20,9 @@ class Api::CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     if (@comment && @comment.update(comment_params))
       # render json: @comment
-      @comments = Comment.all
-      render json: @comments
-      # render :template => 'api/comments/index'
+      # @comments = Comment.all
+      # render json: @comments
+      render :template => 'api/comments/show'
     else
       render json: @comment.errors.full_messages, status: 422
     end
@@ -30,8 +31,8 @@ class Api::CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.delete if @comment
-    render @comment
-    # redirect_to api_story()
+    @comments = Comment.all
+    render :template => 'api/comments/index'
   end
 
   def comment_params

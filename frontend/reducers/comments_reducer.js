@@ -1,4 +1,4 @@
-import { RECEIVE_COMMENT, RECEIVE_COMMENTS, REMOVE_COMMENT } from '../actions/comment_actions'
+import { RECEIVE_COMMENT, RECEIVE_COMMENTS, REMOVE_COMMENT, UPDATE_COMMENT } from '../actions/comment_actions'
 
 export default (state={}, action) => {
   Object.freeze(state)
@@ -7,8 +7,10 @@ export default (state={}, action) => {
     case RECEIVE_COMMENTS:
       return action.comments
     case RECEIVE_COMMENT:
-      // debugger
       return Object.assign(nextState, { [action.comment.id]: action.comment })
+    case UPDATE_COMMENT:
+      nextState[action.comment.id] = action.comment
+      return nextState
     case REMOVE_COMMENT:
       delete nextState[action.commentId]
       return nextState

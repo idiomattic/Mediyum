@@ -12,6 +12,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "RECEIVE_COMMENTS": () => (/* binding */ RECEIVE_COMMENTS),
 /* harmony export */   "RECEIVE_COMMENT": () => (/* binding */ RECEIVE_COMMENT),
+/* harmony export */   "UPDATE_COMMENT": () => (/* binding */ UPDATE_COMMENT),
 /* harmony export */   "REMOVE_COMMENT": () => (/* binding */ REMOVE_COMMENT),
 /* harmony export */   "RECEIVE_COMMENT_ERRORS": () => (/* binding */ RECEIVE_COMMENT_ERRORS),
 /* harmony export */   "CLEAR_COMMENT_ERRORS": () => (/* binding */ CLEAR_COMMENT_ERRORS),
@@ -25,6 +26,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
 var RECEIVE_COMMENT = 'RECEIVE_COMMENT';
+var UPDATE_COMMENT = 'UPDATE_COMMENT';
 var REMOVE_COMMENT = 'REMOVE_COMMENT';
 var RECEIVE_COMMENT_ERRORS = 'RECEIVE_COMMENT_ERRORS';
 var CLEAR_COMMENT_ERRORS = 'CLEAR_COMMENT_ERRORS';
@@ -39,6 +41,13 @@ var receiveComments = function receiveComments(comments) {
 var receiveComment = function receiveComment(comment) {
   return {
     type: RECEIVE_COMMENT,
+    comment: comment
+  };
+};
+
+var editComment = function editComment(comment) {
+  return {
+    type: UPDATE_COMMENT,
     comment: comment
   };
 };
@@ -84,7 +93,7 @@ var fetchComments = function fetchComments() {
 var updateComment = function updateComment(comment) {
   return function (dispatch) {
     return _util_comment_api_util__WEBPACK_IMPORTED_MODULE_0__.updateComment(comment).then(function (comment) {
-      return dispatch(receiveComment(comment));
+      return dispatch(editComment(comment));
     }, function (errors) {
       return dispatch(receiveCommentErrors(errors.responseJSON));
     });
@@ -657,18 +666,13 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "renderEditForm",
-    value: function renderEditForm() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comment_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        comment: this.props.comment
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
       return this.state.editing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
         className: "edit-comment-list-item"
-      }, this.renderEditForm()) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comment_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        comment: this.props.comment
+      })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
         className: "comment-list-item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "comment-item-body"
@@ -2633,8 +2637,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return action.comments;
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_COMMENT:
-      // debugger
       return Object.assign(nextState, _defineProperty({}, action.comment.id, action.comment));
+
+    case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__.UPDATE_COMMENT:
+      nextState[action.comment.id] = action.comment;
+      return nextState;
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_COMMENT:
       delete nextState[action.commentId];
