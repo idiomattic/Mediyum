@@ -2020,6 +2020,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -2046,6 +2047,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var StoryForm = /*#__PURE__*/function (_React$Component) {
   _inherits(StoryForm, _React$Component);
 
@@ -2069,16 +2071,20 @@ var StoryForm = /*#__PURE__*/function (_React$Component) {
   _createClass(StoryForm, [{
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this2 = this;
+
       e.preventDefault();
-      this.props.action(this.state);
+      this.props.action(this.state).then(function (res) {
+        return _this2.props.history.push("/feed");
+      });
     }
   }, {
     key: "update",
     value: function update(field) {
-      var _this2 = this;
+      var _this3 = this;
 
       return function (e) {
-        return _this2.setState(_defineProperty({}, field, e.target.value));
+        return _this3.setState(_defineProperty({}, field, e.target.value));
       };
     }
   }, {
@@ -2110,7 +2116,7 @@ var StoryForm = /*#__PURE__*/function (_React$Component) {
   return StoryForm;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StoryForm);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router__WEBPACK_IMPORTED_MODULE_1__.withRouter)(StoryForm));
 
 /***/ }),
 
@@ -2174,16 +2180,26 @@ var StoryShow = /*#__PURE__*/function (_React$Component) {
       this.props.history.push("/stories/".concat(this.props.storyId, "/edit"));
     }
   }, {
-    key: "canEdit",
-    value: function canEdit() {
+    key: "isOwner",
+    value: function isOwner() {
       var _this = this;
 
-      return this.props.story.author_id === this.props.currentUserId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      var _this$props = this.props,
+          deleteStory = _this$props.deleteStory,
+          story = _this$props.story,
+          storyId = _this$props.storyId,
+          currentUserId = _this$props.currentUserId;
+      return story.author_id === currentUserId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "black-button",
         onClick: function onClick() {
           return _this.editStory();
         }
-      }, "Edit Story") : null;
+      }, "Edit Story"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "black-button",
+        onClick: function onClick(storyId) {
+          return _this.props.deleteStory(storyId);
+        }
+      }, "Delete Story")) : null;
     }
   }, {
     key: "showCommentsModal",
@@ -2212,7 +2228,7 @@ var StoryShow = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this2.showCommentsModal();
         }
-      }, "Comments"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.canEdit());
+      }, "Comments"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.isOwner());
     }
   }]);
 
@@ -2260,6 +2276,9 @@ var mDTP = function mDTP(dispatch) {
     },
     fetchStory: function fetchStory(storyId) {
       return dispatch((0,_actions_story_actions__WEBPACK_IMPORTED_MODULE_2__.fetchStory)(storyId));
+    },
+    deleteStory: function deleteStory(storyId) {
+      return dispatch((0,_actions_story_actions__WEBPACK_IMPORTED_MODULE_2__.deleteStory)(storyId));
     }
   };
 };

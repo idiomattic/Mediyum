@@ -14,12 +14,18 @@ class StoryShow extends React.Component {
     this.props.history.push(`/stories/${this.props.storyId}/edit`)
   }
 
-  canEdit() {
-    return this.props.story.author_id === this.props.currentUserId ? 
-      <button className='black-button' onClick={() => this.editStory()}>
-        Edit Story
-      </button> 
-      : null
+  isOwner() {
+    let { deleteStory, story, storyId, currentUserId } = this.props
+    return story.author_id === currentUserId ? (
+      <div>
+        <button className='black-button' onClick={() => this.editStory()}>
+          Edit Story
+        </button> 
+        <button className='black-button' onClick={storyId => this.props.deleteStory(storyId)}>
+          Delete Story
+        </button> 
+      </div>
+      ) : null
   }
 
   showCommentsModal() {
@@ -41,7 +47,7 @@ class StoryShow extends React.Component {
           Comments
         </div>
         <br />
-        {this.canEdit()}
+        {this.isOwner()}
       </div>
     )
   }

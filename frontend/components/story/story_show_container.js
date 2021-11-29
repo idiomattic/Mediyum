@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import StoryShow from "./story_show";
-import { fetchStory } from "../../actions/story_actions";
+import { fetchStory, deleteStory } from "../../actions/story_actions";
 import { displayModal } from "../../actions/modal_actions";
 
 const mSTP = (state, {match}) => {
@@ -14,7 +14,8 @@ const mSTP = (state, {match}) => {
 
 const mDTP = dispatch => ({
   displayModal: () => dispatch(displayModal('Comments')),
-  fetchStory: storyId => dispatch(fetchStory(storyId))
+  fetchStory: storyId => dispatch(fetchStory(storyId)),
+  deleteStory: storyId => dispatch(deleteStory(storyId))
 })
 
 export default connect(mSTP, mDTP)(StoryShow)

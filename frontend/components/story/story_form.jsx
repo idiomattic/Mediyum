@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router";
 
 class StoryForm extends React.Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class StoryForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     this.props.action(this.state)
+      .then(res => this.props.history.push(`/feed`))
   }
 
   update(field) {
@@ -52,4 +54,4 @@ class StoryForm extends React.Component {
   }
 }
 
-export default StoryForm
+export default withRouter(StoryForm)
