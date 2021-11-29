@@ -32,7 +32,7 @@ class CommentsModal extends React.Component {
   }
 
   render() {
-    let { modal, hideModal, comments } = this.props
+    let { modal, hideModal, comments, updateComment, deleteComment } = this.props
     return !modal ? null : (
       <div className='comments-modal'>
         <div className='comment-form-box'>
@@ -48,7 +48,11 @@ class CommentsModal extends React.Component {
         <ul className="comments-list">
           {
             comments.map((comment, i) => 
-              <CommentsIndexItem key={i} comment={comment} currentUserId={this.props.currentUserId}/>
+              <CommentsIndexItem key={i} 
+                comment={comment} 
+                currentUserId={this.props.currentUserId}
+                updateComment={updateComment}
+                deleteComment={deleteComment}/>
             )
           }
         </ul>

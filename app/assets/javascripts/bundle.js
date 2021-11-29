@@ -461,18 +461,28 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(CommentsIndexItem, [{
-    key: "canEdit",
-    value: function canEdit() {
+    key: "isOwner",
+    value: function isOwner() {
       var _this = this;
 
-      console.log(this.props.comment.commenter_id);
-      console.log(this.props);
-      return this.props.comment.commenter_id === this.props.currentUserId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      var _this$props = this.props,
+          comment = _this$props.comment,
+          currentUserId = _this$props.currentUserId,
+          updateComment = _this$props.updateComment,
+          deleteComment = _this$props.deleteComment;
+      return comment.commenter_id === currentUserId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "comment-buttons"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "comment-edit-button",
         onClick: function onClick() {
           return _this.editComment();
         }
-      }, "Edit") : null;
+      }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "comment-delete-button",
+        onClick: function onClick() {
+          return deleteComment(comment.id);
+        }
+      }, "Delete")) : null;
     }
   }, {
     key: "editComment",
@@ -486,7 +496,7 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
         className: "comment-list-item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "comment-item-body"
-      }, this.props.comment.body), this.canEdit());
+      }, this.props.comment.body), this.isOwner());
     }
   }]);
 
@@ -588,7 +598,9 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           modal = _this$props.modal,
           hideModal = _this$props.hideModal,
-          comments = _this$props.comments;
+          comments = _this$props.comments,
+          updateComment = _this$props.updateComment,
+          deleteComment = _this$props.deleteComment;
       return !modal ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comments-modal"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -610,7 +622,9 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comments_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: i,
           comment: comment,
-          currentUserId: _this3.props.currentUserId
+          currentUserId: _this3.props.currentUserId,
+          updateComment: updateComment,
+          deleteComment: deleteComment
         });
       })));
     }
@@ -663,6 +677,12 @@ var mDTP = function mDTP(dispatch) {
     },
     createComment: function createComment(comment) {
       return dispatch((0,_actions_comment_actions__WEBPACK_IMPORTED_MODULE_3__.createComment)(comment));
+    },
+    deleteComment: function deleteComment(commentId) {
+      return dispatch((0,_actions_comment_actions__WEBPACK_IMPORTED_MODULE_3__.deleteComment)(commentId));
+    },
+    updateComment: function updateComment(comment) {
+      return dispatch((0,_actions_comment_actions__WEBPACK_IMPORTED_MODULE_3__.updateComment)(comment));
     }
   };
 };

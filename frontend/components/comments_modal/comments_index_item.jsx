@@ -6,13 +6,18 @@ class CommentsIndexItem extends React.Component {
     super(props)
   }
 
-  canEdit() {
-    console.log(this.props.comment.commenter_id)
-    console.log(this.props)
-    return this.props.comment.commenter_id === this.props.currentUserId ? 
-      <button className='comment-edit-button' onClick={() => this.editComment()}>
-        Edit
-      </button> 
+  isOwner() {
+    let { comment, currentUserId, updateComment, deleteComment } = this.props
+    return comment.commenter_id === currentUserId ? 
+      <div className='comment-buttons'>
+        <button className='comment-edit-button' onClick={() => this.editComment()}>
+          Edit
+        </button>
+        <button className='comment-delete-button' onClick={() => deleteComment(comment.id)}>
+          Delete
+        </button>
+      </div>
+      
       : null
   }
 
@@ -24,7 +29,7 @@ class CommentsIndexItem extends React.Component {
     return(
       <li className='comment-list-item'>
         <p className='comment-item-body'>{this.props.comment.body}</p>
-        {this.canEdit()}
+        {this.isOwner()}
       </li>
     )
   }
