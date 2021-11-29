@@ -6,3 +6,11 @@
 .comment-buttons {
   display: flex;
 }
+
+.comments-list li:first-child {
+  margin-top: 20px;
+}
+
+.comments-list li:not(:last-child){
+  margin-bottom: 20px;
+}

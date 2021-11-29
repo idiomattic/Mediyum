@@ -657,7 +657,9 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return this.state.editing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, this.renderEditForm()) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+      return this.state.editing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+        className: "edit-comment-list-item"
+      }, this.renderEditForm()) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
         className: "comment-list-item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "comment-item-body"
