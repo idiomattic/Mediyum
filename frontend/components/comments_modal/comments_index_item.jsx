@@ -14,7 +14,7 @@ class CommentsIndexItem extends React.Component {
     let { comment, currentUserId, updateComment, deleteComment } = this.props
     return comment.commenter_id === currentUserId ? 
       <div className='comment-buttons'>
-        <button className='comment-edit-button' onClick={() => this.editComment()}>
+        <button className='comment-edit-button' onClick={() => this.toggleEditing()}>
           Edit
         </button>
         <button className='comment-delete-button' onClick={() => deleteComment(comment.id)}>
@@ -24,7 +24,7 @@ class CommentsIndexItem extends React.Component {
     : null
   }
 
-  editComment() {
+  toggleEditing() {
     this.setState({
       editing: !this.state.editing
     })
@@ -33,7 +33,7 @@ class CommentsIndexItem extends React.Component {
   render() {
     return this.state.editing ? (
       <li className='edit-comment-list-item'>
-        <CommentFormContainer comment={this.props.comment} />
+        <CommentFormContainer comment={this.props.comment} toggleEditing={this.toggleEditing}/>
       </li>
     ) : (
       <li className='comment-list-item'>

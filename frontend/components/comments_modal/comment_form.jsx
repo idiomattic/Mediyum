@@ -21,11 +21,12 @@ class CommentForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    this.props.comment ? (
-      this.props.updateComment(this.state)
+    let { comment, toggleEditing, updateComment, createComment } = this.props
+    comment ? (
+      updateComment(this.state)
         .then(this.resetState())
     ) : (
-      this.props.createComment(this.state)
+      createComment(this.state)
         .then(this.resetState())
     )
   }

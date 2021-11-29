@@ -489,7 +489,12 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      this.props.comment ? this.props.updateComment(this.state).then(this.resetState()) : this.props.createComment(this.state).then(this.resetState());
+      var _this$props = this.props,
+          comment = _this$props.comment,
+          toggleEditing = _this$props.toggleEditing,
+          updateComment = _this$props.updateComment,
+          createComment = _this$props.createComment;
+      comment ? updateComment(this.state).then(this.resetState()) : createComment(this.state).then(this.resetState());
     }
   }, {
     key: "updateBody",
@@ -649,7 +654,7 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "comment-edit-button",
         onClick: function onClick() {
-          return _this2.editComment();
+          return _this2.toggleEditing();
         }
       }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "comment-delete-button",
@@ -659,8 +664,8 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
       }, "Delete")) : null;
     }
   }, {
-    key: "editComment",
-    value: function editComment() {
+    key: "toggleEditing",
+    value: function toggleEditing() {
       this.setState({
         editing: !this.state.editing
       });
@@ -671,7 +676,8 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
       return this.state.editing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
         className: "edit-comment-list-item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comment_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        comment: this.props.comment
+        comment: this.props.comment,
+        toggleEditing: this.toggleEditing
       })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
         className: "comment-list-item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
