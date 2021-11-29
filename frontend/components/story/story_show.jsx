@@ -14,6 +14,12 @@ class StoryShow extends React.Component {
     this.props.history.push(`/stories/${this.props.storyId}/edit`)
   }
 
+  handleDelete() {
+    let { deleteStory, storyId, history } = this.props
+    deleteStory(storyId)
+      .then(res => history.push('/feed'))
+  }
+
   isOwner() {
     let { deleteStory, story, storyId, currentUserId } = this.props
     return story.author_id === currentUserId ? (
@@ -21,7 +27,7 @@ class StoryShow extends React.Component {
         <button className='black-button' onClick={() => this.editStory()}>
           Edit Story
         </button> 
-        <button className='black-button' onClick={() => this.props.deleteStory(storyId)}>
+        <button className='black-button' onClick={() => this.handleDelete()}>
           Delete Story
         </button> 
       </div>

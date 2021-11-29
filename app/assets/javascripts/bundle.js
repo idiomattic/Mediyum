@@ -2180,15 +2180,26 @@ var StoryShow = /*#__PURE__*/function (_React$Component) {
       this.props.history.push("/stories/".concat(this.props.storyId, "/edit"));
     }
   }, {
+    key: "handleDelete",
+    value: function handleDelete() {
+      var _this$props = this.props,
+          deleteStory = _this$props.deleteStory,
+          storyId = _this$props.storyId,
+          history = _this$props.history;
+      deleteStory(storyId).then(function (res) {
+        return history.push('/feed');
+      });
+    }
+  }, {
     key: "isOwner",
     value: function isOwner() {
       var _this = this;
 
-      var _this$props = this.props,
-          deleteStory = _this$props.deleteStory,
-          story = _this$props.story,
-          storyId = _this$props.storyId,
-          currentUserId = _this$props.currentUserId;
+      var _this$props2 = this.props,
+          deleteStory = _this$props2.deleteStory,
+          story = _this$props2.story,
+          storyId = _this$props2.storyId,
+          currentUserId = _this$props2.currentUserId;
       return story.author_id === currentUserId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "black-button",
         onClick: function onClick() {
@@ -2197,7 +2208,7 @@ var StoryShow = /*#__PURE__*/function (_React$Component) {
       }, "Edit Story"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "black-button",
         onClick: function onClick() {
-          return _this.props.deleteStory(storyId);
+          return _this.handleDelete();
         }
       }, "Delete Story")) : null;
     }
