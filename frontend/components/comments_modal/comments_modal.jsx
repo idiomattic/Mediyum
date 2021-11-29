@@ -11,15 +11,22 @@ class CommentsModal extends React.Component {
       story_id: this.props.story.id,
       commenter_id: this.props.currentUserId
     }
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
     this.props.fetchComments()
   }
 
-  handleSubmit() {
+  handleSubmit(e) {
     e.preventDefault()
     this.props.createComment(this.state)
+  }
+
+  updateBody() {
+    return e => this.setState({
+      body: e.target.value
+    })
   }
 
   render() {
@@ -27,8 +34,11 @@ class CommentsModal extends React.Component {
     return !modal ? null : (
       <div className='comments-modal'>
         <div className='comment-form-box'>
-          <form className='comment-form'>
-            <textarea className='comment-form-body' placeholder='What are your thoughts?'></textarea>
+          <form className='comment-form' onSubmit={this.handleSubmit}>
+            <textarea className='comment-form-body'
+              placeholder='What are your thoughts?' 
+              value={this.state.body}
+              onChange={this.updateBody()}/>
             <br />
             <input type="submit" value="Save" />
           </form>

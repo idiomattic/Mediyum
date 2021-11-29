@@ -534,6 +534,7 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
       story_id: _this.props.story.id,
       commenter_id: _this.props.currentUserId
     };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -544,9 +545,20 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "handleSubmit",
-    value: function handleSubmit() {
+    value: function handleSubmit(e) {
       e.preventDefault();
       this.props.createComment(this.state);
+    }
+  }, {
+    key: "updateBody",
+    value: function updateBody() {
+      var _this2 = this;
+
+      return function (e) {
+        return _this2.setState({
+          body: e.target.value
+        });
+      };
     }
   }, {
     key: "render",
@@ -560,10 +572,13 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comment-form-box"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
-        className: "comment-form"
+        className: "comment-form",
+        onSubmit: this.handleSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
         className: "comment-form-body",
-        placeholder: "What are your thoughts?"
+        placeholder: "What are your thoughts?",
+        value: this.state.body,
+        onChange: this.updateBody()
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "submit",
         value: "Save"
