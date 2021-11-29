@@ -662,7 +662,7 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
     key: "editComment",
     value: function editComment() {
       this.setState({
-        editing: true
+        editing: !this.state.editing
       });
     }
   }, {

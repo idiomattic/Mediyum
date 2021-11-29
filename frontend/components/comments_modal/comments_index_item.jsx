@@ -26,7 +26,7 @@ class CommentsIndexItem extends React.Component {
 
   editComment() {
     this.setState({
-      editing: true
+      editing: !this.state.editing
     })
   }
 
