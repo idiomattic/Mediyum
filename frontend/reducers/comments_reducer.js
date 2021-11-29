@@ -7,6 +7,7 @@ export default (state={}, action) => {
     case RECEIVE_COMMENTS:
       return action.comments
     case RECEIVE_COMMENT:
+      // debugger
       return Object.assign(nextState, { [action.comment.id]: action.comment })
     case REMOVE_COMMENT:
       delete nextState[action.commentId]

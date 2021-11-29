@@ -468,10 +468,19 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(CommentForm, [{
+    key: "resetState",
+    value: function resetState() {
+      this.setState({
+        body: '',
+        story_id: this.props.story.id,
+        commenter_id: this.props.currentUserId
+      });
+    }
+  }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      this.props.comment ? this.props.updateComment(this.state).then(this.setState(this.state)) : this.props.createComment(this.state).then(this.setState(this.state));
+      this.props.comment ? this.props.updateComment(this.state).then(this.resetState()) : this.props.createComment(this.state).then(this.resetState());
     }
   }, {
     key: "updateBody",
@@ -2631,6 +2640,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return action.comments;
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_COMMENT:
+      // debugger
       return Object.assign(nextState, _defineProperty({}, action.comment.id, action.comment));
 
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_COMMENT:

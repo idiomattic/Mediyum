@@ -11,14 +11,22 @@ class CommentForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  resetState() {
+    this.setState({
+      body: '',
+      story_id: this.props.story.id,
+      commenter_id: this.props.currentUserId
+    })
+  }
+
   handleSubmit(e) {
     e.preventDefault()
     this.props.comment ? (
       this.props.updateComment(this.state)
-        .then(this.setState(this.state))
+        .then(this.resetState())
     ) : (
       this.props.createComment(this.state)
-        .then(this.setState(this.state))
+        .then(this.resetState())
     )
   }
 
