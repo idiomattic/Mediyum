@@ -1944,6 +1944,8 @@ var StoryShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var story = this.props.story;
 
       if (!story) {
@@ -1954,9 +1956,14 @@ var StoryShow = /*#__PURE__*/function (_React$Component) {
         className: "story-show"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
         className: "story-title"
-      }, story.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+      }, story.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "story-body"
-      }, story.body), this.canEdit());
+      }, story.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "comments-button",
+        onClick: function onClick() {
+          return _this2.showCommentsModal();
+        }
+      }, "Comments"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.canEdit());
     }
   }]);
 

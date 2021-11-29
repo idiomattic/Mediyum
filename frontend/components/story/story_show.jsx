@@ -34,7 +34,13 @@ class StoryShow extends React.Component {
     return(
       <div className='story-show'>
         <h2 className='story-title'>{story.title}</h2>
+        <br />
         <p className='story-body'>{story.body}</p>
+        <br />
+        <div className='comments-button' onClick={() => this.showCommentsModal()}>
+          Comments
+        </div>
+        <br />
         {this.canEdit()}
       </div>
     )
