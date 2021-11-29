@@ -3,6 +3,7 @@ import React from "react";
 class CommentForm extends React.Component {
   constructor(props) {
     super(props)
+    
     this.state = {
       body: '',
       story_id: this.props.story.id,

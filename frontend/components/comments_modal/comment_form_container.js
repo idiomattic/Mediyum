@@ -3,13 +3,16 @@ import CommentForm from "./comment_form";
 import { connect } from "react-redux";
 import { createComment, updateComment } from "../../actions/comment_actions";
 
-const _nullComments = []
+const _nullComment = {}
 
-const mSTP = state => ({
-  modal: state.ui.modal,
-  story: Object.values(state.entities.stories)[0],
-  currentUserId: state.session.currentUserId
-});
+const mSTP = state => {
+  
+  return({
+    modal: state.ui.modal,
+    story: Object.values(state.entities.stories)[0],
+    currentUserId: state.session.currentUserId
+  })
+};
 
 const mDTP = dispatch => ({
   hideModal: () => dispatch(hideModal()),

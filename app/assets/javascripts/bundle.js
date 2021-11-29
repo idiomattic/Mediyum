@@ -531,7 +531,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _nullComments = [];
+var _nullComment = {};
 
 var mSTP = function mSTP(state) {
   return {
@@ -571,7 +571,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _comment_form_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./comment_form_container */ "./frontend/components/comments_modal/comment_form_container.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -597,21 +598,28 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
   _inherits(CommentsIndexItem, _React$Component);
 
   var _super = _createSuper(CommentsIndexItem);
 
   function CommentsIndexItem(props) {
+    var _this;
+
     _classCallCheck(this, CommentsIndexItem);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    state = {
+      editing: false
+    };
+    return _this;
   }
 
   _createClass(CommentsIndexItem, [{
     key: "isOwner",
     value: function isOwner() {
-      var _this = this;
+      var _this2 = this;
 
       var _this$props = this.props,
           comment = _this$props.comment,
@@ -623,7 +631,7 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "comment-edit-button",
         onClick: function onClick() {
-          return _this.editComment();
+          return _this2.editComment();
         }
       }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "comment-delete-button",
@@ -635,12 +643,21 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "editComment",
     value: function editComment() {
-      console.log('editing comment');
+      this.setState({
+        editing: true
+      });
+    }
+  }, {
+    key: "renderEditForm",
+    value: function renderEditForm() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comment_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        comment: this.props.comment
+      });
     }
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+      return this.state.editing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, this.renderEditForm()) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
         className: "comment-list-item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "comment-item-body"
@@ -651,7 +668,7 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
   return CommentsIndexItem;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router__WEBPACK_IMPORTED_MODULE_1__.withRouter)(CommentsIndexItem));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router__WEBPACK_IMPORTED_MODULE_2__.withRouter)(CommentsIndexItem));
 
 /***/ }),
 
@@ -2934,7 +2951,7 @@ var Auth = function Auth(_ref) {
       path = _ref.path,
       signedIn = _ref.signedIn,
       exact = _ref.exact;
-  console.log('in auth route', path);
+  // console.log('in auth route', path)
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router__WEBPACK_IMPORTED_MODULE_2__.Route, {
     path: path,
     exact: exact,
@@ -2951,7 +2968,7 @@ var Protected = function Protected(_ref2) {
       path = _ref2.path,
       signedIn = _ref2.signedIn,
       exact = _ref2.exact;
-  console.log('in protected route', path);
+  // console.log('in protected route', path)
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router__WEBPACK_IMPORTED_MODULE_2__.Route, {
     path: path,
     exact: exact,

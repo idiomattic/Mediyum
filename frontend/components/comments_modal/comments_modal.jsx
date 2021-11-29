@@ -35,16 +35,6 @@ class CommentsModal extends React.Component {
     return !modal ? null : (
       <div className='comments-modal'>
         {<CommentFormContainer />}
-        {/* <div className='comment-form-box'>
-          <form className='comment-form' onSubmit={this.handleSubmit}>
-            <textarea className='comment-form-body'
-              placeholder='What are your thoughts?' 
-              value={this.state.body}
-              onChange={this.updateBody()}/>
-            <br />
-            <input type="submit" value="Save" />
-          </form>
-        </div> */}
         <ul className="comments-list">
           {
             comments.map((comment, i) => 

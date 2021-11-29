@@ -1,9 +1,13 @@
 import React from "react";
 import { withRouter } from "react-router";
+import CommentFormContainer from "./comment_form_container";
 
 class CommentsIndexItem extends React.Component {
   constructor(props) {
     super(props)
+    state = {
+      editing: false
+    }
   }
 
   isOwner() {
@@ -22,11 +26,23 @@ class CommentsIndexItem extends React.Component {
   }
 
   editComment() {
-    console.log('editing comment')
+    this.setState({
+      editing: true
+    })
+  }
+
+  renderEditForm() {
+    return (
+      <CommentFormContainer comment={this.props.comment}/>
+    )
   }
 
   render() {
-    return(
+    return this.state.editing ? (
+      <li>
+        {this.renderEditForm()}
+      </li>
+    ) : (
       <li className='comment-list-item'>
         <p className='comment-item-body'>{this.props.comment.body}</p>
         {this.isOwner()}

@@ -18010,3 +18010,33 @@ Processing by Api::CommentsController#index as JSON
 Completed 200 OK in 26ms (Views: 10.4ms | ActiveRecord: 11.1ms)
 
 
+Started GET "/api/comments" for ::1 at 2021-11-29 08:41:50 -0800
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/matthew/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by Api::CommentsController#index as JSON
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/api/comments_controller.rb:5
+Completed 200 OK in 25ms (Views: 16.9ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/" for ::1 at 2021-11-29 08:54:42 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "QwXOWda6758IGEAuoFNVeQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (76.0ms)
+Completed 200 OK in 1076ms (Views: 1062.3ms | ActiveRecord: 11.5ms)
+
+
+Started GET "/api/stories/36" for ::1 at 2021-11-29 08:54:44 -0800
+Processing by Api::StoriesController#show as JSON
+  Parameters: {"id"=>"36"}
+  [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/api/stories_controller.rb:17
+  Rendering api/stories/show.json.jbuilder
+  Rendered api/stories/_story.json.jbuilder (0.5ms)
+  Rendered api/stories/show.json.jbuilder (2.2ms)
+Completed 200 OK in 53ms (Views: 5.2ms | ActiveRecord: 14.6ms)
+
+
