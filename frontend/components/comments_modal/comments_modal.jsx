@@ -30,8 +30,14 @@ class CommentsModal extends React.Component {
     })
   }
 
+  filterComments() {
+    let { comments } = this.props
+    return comments.select(comment => comment.story_id === this.state.story_id)
+  }
+
   render() {
     let { modal, hideModal, comments, updateComment, deleteComment } = this.props
+    const storyComments = this.filterComments()
     return !modal ? null : (
       <div className='comments-modal'>
         {<CommentFormContainer />}

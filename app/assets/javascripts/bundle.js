@@ -758,9 +758,19 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
+    key: "filterComments",
+    value: function filterComments() {
+      var _this3 = this;
+
+      var comments = this.props.comments;
+      return comments.select(function (comment) {
+        return comment.story_id === _this3.state.story_id;
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       var _this$props = this.props,
           modal = _this$props.modal,
@@ -768,6 +778,7 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
           comments = _this$props.comments,
           updateComment = _this$props.updateComment,
           deleteComment = _this$props.deleteComment;
+      var storyComments = this.filterComments();
       return !modal ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comments-modal"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comment_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
@@ -776,7 +787,7 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comments_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: i,
           comment: comment,
-          currentUserId: _this3.props.currentUserId,
+          currentUserId: _this4.props.currentUserId,
           updateComment: updateComment,
           deleteComment: deleteComment
         });
