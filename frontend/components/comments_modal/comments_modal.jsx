@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import CommentsIndexItem from "./comments_index_item";
+import CommentFormContainer from "./comment_form_container";
 
 class CommentsModal extends React.Component {
   constructor(props) {
@@ -20,7 +20,6 @@ class CommentsModal extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    debugger
     this.props.createComment(this.state)
       .then(this.setState(this.state))
   }
@@ -35,7 +34,8 @@ class CommentsModal extends React.Component {
     let { modal, hideModal, comments, updateComment, deleteComment } = this.props
     return !modal ? null : (
       <div className='comments-modal'>
-        <div className='comment-form-box'>
+        {<CommentFormContainer />}
+        {/* <div className='comment-form-box'>
           <form className='comment-form' onSubmit={this.handleSubmit}>
             <textarea className='comment-form-body'
               placeholder='What are your thoughts?' 
@@ -44,7 +44,7 @@ class CommentsModal extends React.Component {
             <br />
             <input type="submit" value="Save" />
           </form>
-        </div>
+        </div> */}
         <ul className="comments-list">
           {
             comments.map((comment, i) => 
