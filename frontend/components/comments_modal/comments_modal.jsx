@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router";
-import CommentsIndexItem from "./comments_index_item";
+import CommentsIndexItemContainer from "./comments_index_item_container";
 import CommentFormContainer from "./comment_form_container";
 
 class CommentsModal extends React.Component {
@@ -44,11 +44,7 @@ class CommentsModal extends React.Component {
         <ul className="comments-list">
           {
             storyComments.map((comment, i) => 
-              <CommentsIndexItem key={i} 
-                comment={comment} 
-                currentUserId={this.props.currentUserId}
-                updateComment={updateComment}
-                deleteComment={deleteComment}/>
+              <CommentsIndexItemContainer key={i} comment={comment} />
             )
           }
         </ul>
