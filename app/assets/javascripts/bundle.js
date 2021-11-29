@@ -2024,6 +2024,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -2050,6 +2051,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var UpdateStoryForm = /*#__PURE__*/function (_React$Component) {
   _inherits(UpdateStoryForm, _React$Component);
 
@@ -2061,27 +2063,36 @@ var UpdateStoryForm = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, UpdateStoryForm);
 
     _this = _super.call(this, props);
-    var _this$props = _this.props,
-        currentStoryId = _this$props.currentStoryId,
-        preloadedInfo = _this$props.preloadedInfo;
+    var preloadedInfo = _this.props.preloadedInfo;
     _this.state = preloadedInfo;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.changed = false;
     return _this;
   }
 
   _createClass(UpdateStoryForm, [{
+    key: "redirectToShow",
+    value: function redirectToShow() {
+      this.props.history.push("/stories/".concat(this.state.id));
+    }
+  }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this2 = this;
+
       e.preventDefault();
-      this.props.action(this.state);
+      this.changed ? this.props.action(this.state).then(function (res) {
+        return _this2.redirectToShow();
+      }) : this.redirectToShow();
     }
   }, {
     key: "update",
     value: function update(field) {
-      var _this2 = this;
+      var _this3 = this;
 
+      this.changed = true;
       return function (e) {
-        return _this2.setState(_defineProperty({}, field, e.target.value));
+        return _this3.setState(_defineProperty({}, field, e.target.value));
       };
     }
   }, {
@@ -2113,7 +2124,7 @@ var UpdateStoryForm = /*#__PURE__*/function (_React$Component) {
   return UpdateStoryForm;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UpdateStoryForm);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router__WEBPACK_IMPORTED_MODULE_1__.withRouter)(UpdateStoryForm));
 
 /***/ }),
 

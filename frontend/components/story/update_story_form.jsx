@@ -1,19 +1,29 @@
 import React from "react";
+import { withRouter } from "react-router";
 
 class UpdateStoryForm extends React.Component {
   constructor(props) {
     super(props)
-    let { currentStoryId, preloadedInfo } = this.props
+    let { preloadedInfo } = this.props
     this.state = preloadedInfo
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.changed = false
+  }
+
+  redirectToShow() {
+    this.props.history.push(`/stories/${this.state.id}`)
   }
 
   handleSubmit(e) {
     e.preventDefault()
-    this.props.action(this.state)
+    this.changed ? 
+      this.props.action(this.state)
+        .then(res => this.redirectToShow())
+      : this.redirectToShow()
   }
 
   update(field) {
+    this.changed = true
     return e => this.setState({
       [field]: e.target.value
     })
@@ -49,4 +59,4 @@ class UpdateStoryForm extends React.Component {
   }
 }
 
-export default UpdateStoryForm
+export default withRouter(UpdateStoryForm)
