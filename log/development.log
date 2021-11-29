@@ -18040,3 +18040,105 @@ Processing by Api::StoriesController#show as JSON
 Completed 200 OK in 53ms (Views: 5.2ms | ActiveRecord: 14.6ms)
 
 
+Started GET "/" for ::1 at 2021-11-29 08:55:28 -0800
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/matthew/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "QwXOWda6758IGEAuoFNVeQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (23.1ms)
+Completed 200 OK in 1012ms (Views: 1007.2ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/api/stories/36" for ::1 at 2021-11-29 08:55:30 -0800
+Processing by Api::StoriesController#show as JSON
+  Parameters: {"id"=>"36"}
+  [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/api/stories_controller.rb:17
+  Rendering api/stories/show.json.jbuilder
+  Rendered api/stories/_story.json.jbuilder (0.3ms)
+  Rendered api/stories/show.json.jbuilder (1.4ms)
+Completed 200 OK in 45ms (Views: 3.1ms | ActiveRecord: 10.1ms)
+
+
+Started GET "/api/comments" for ::1 at 2021-11-29 08:55:32 -0800
+Processing by Api::CommentsController#index as JSON
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/api/comments_controller.rb:5
+Completed 200 OK in 30ms (Views: 14.0ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/" for ::1 at 2021-11-29 08:56:51 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "QwXOWda6758IGEAuoFNVeQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  Rendered api/users/_user.json.jbuilder (1.0ms)
+  Rendered static_pages/root.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 424ms (Views: 421.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/stories/36" for ::1 at 2021-11-29 08:56:52 -0800
+Processing by Api::StoriesController#show as JSON
+  Parameters: {"id"=>"36"}
+  [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/api/stories_controller.rb:17
+  Rendering api/stories/show.json.jbuilder
+  Rendered api/stories/_story.json.jbuilder (1.5ms)
+  Rendered api/stories/show.json.jbuilder (6.7ms)
+Completed 200 OK in 19ms (Views: 16.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/comments" for ::1 at 2021-11-29 08:57:31 -0800
+Processing by Api::CommentsController#index as JSON
+  [1m[36mComment Load (1.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/api/comments_controller.rb:5
+Completed 200 OK in 14ms (Views: 12.0ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/api/comments" for ::1 at 2021-11-29 08:57:43 -0800
+Processing by Api::CommentsController#create as JSON
+  Parameters: {"comment"=>{"body"=>"asdfasdf", "story_id"=>"36", "commenter_id"=>"1"}}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/comments_controller.rb:10
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/comments_controller.rb:10
+  [1m[36mStory Load (1.1ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/api/comments_controller.rb:10
+  [1m[36mComment Create (6.7ms)[0m  [1m[32mINSERT INTO "comments" ("body", "commenter_id", "story_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "asdfasdf"], ["commenter_id", 1], ["story_id", 36], ["created_at", "2021-11-29 16:57:43.180422"], ["updated_at", "2021-11-29 16:57:43.180422"]]
+  ↳ app/controllers/api/comments_controller.rb:10
+  [1m[35m (5.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/comments_controller.rb:10
+Completed 200 OK in 62ms (Views: 0.5ms | ActiveRecord: 15.5ms)
+
+
+Started GET "/" for ::1 at 2021-11-29 08:57:46 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "QwXOWda6758IGEAuoFNVeQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  Rendered api/users/_user.json.jbuilder (1.2ms)
+  Rendered static_pages/root.html.erb within layouts/application (12.7ms)
+Completed 200 OK in 63ms (Views: 59.8ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/stories/36" for ::1 at 2021-11-29 08:57:47 -0800
+Processing by Api::StoriesController#show as JSON
+  Parameters: {"id"=>"36"}
+  [1m[36mStory Load (2.9ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/api/stories_controller.rb:17
+  Rendering api/stories/show.json.jbuilder
+  Rendered api/stories/_story.json.jbuilder (1.2ms)
+  Rendered api/stories/show.json.jbuilder (14.5ms)
+Completed 200 OK in 36ms (Views: 22.8ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/api/comments" for ::1 at 2021-11-29 08:57:48 -0800
+Processing by Api::CommentsController#index as JSON
+  [1m[36mComment Load (3.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/api/comments_controller.rb:5
+Completed 200 OK in 15ms (Views: 11.3ms | ActiveRecord: 3.0ms)
+
+

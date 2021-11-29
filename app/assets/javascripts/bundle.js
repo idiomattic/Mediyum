@@ -610,7 +610,7 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, CommentsIndexItem);
 
     _this = _super.call(this, props);
-    state = {
+    _this.state = {
       editing: false
     };
     return _this;

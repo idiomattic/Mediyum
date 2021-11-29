@@ -5,7 +5,7 @@ import CommentFormContainer from "./comment_form_container";
 class CommentsIndexItem extends React.Component {
   constructor(props) {
     super(props)
-    state = {
+    this.state = {
       editing: false
     }
   }
@@ -21,8 +21,7 @@ class CommentsIndexItem extends React.Component {
           Delete
         </button>
       </div>
-      
-      : null
+    : null
   }
 
   editComment() {
