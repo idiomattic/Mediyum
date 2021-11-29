@@ -20,7 +20,9 @@ class CommentsModal extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
+    debugger
     this.props.createComment(this.state)
+      .then(this.setState(this.state))
   }
 
   updateBody() {
@@ -46,7 +48,7 @@ class CommentsModal extends React.Component {
         <ul className="comments-list">
           {
             comments.map((comment, i) => 
-              <CommentsIndexItem key={i} comment={comment} />
+              <CommentsIndexItem key={i} comment={comment} currentUserId={this.props.currentUserId}/>
             )
           }
         </ul>

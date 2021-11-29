@@ -461,13 +461,32 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(CommentsIndexItem, [{
+    key: "canEdit",
+    value: function canEdit() {
+      var _this = this;
+
+      console.log(this.props.comment.commenter_id);
+      console.log(this.props);
+      return this.props.comment.commenter_id === this.props.currentUserId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "comment-edit-button",
+        onClick: function onClick() {
+          return _this.editComment();
+        }
+      }, "Edit") : null;
+    }
+  }, {
+    key: "editComment",
+    value: function editComment() {
+      console.log('editing comment');
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
         className: "comment-list-item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "comment-item-body"
-      }, this.props.comment.body));
+      }, this.props.comment.body), this.canEdit());
     }
   }]);
 
@@ -547,7 +566,8 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      this.props.createComment(this.state);
+      debugger;
+      this.props.createComment(this.state).then(this.setState(this.state));
     }
   }, {
     key: "updateBody",
@@ -563,6 +583,8 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var _this$props = this.props,
           modal = _this$props.modal,
           hideModal = _this$props.hideModal,
@@ -587,7 +609,8 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
       }, comments.map(function (comment, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comments_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: i,
-          comment: comment
+          comment: comment,
+          currentUserId: _this3.props.currentUserId
         });
       })));
     }
