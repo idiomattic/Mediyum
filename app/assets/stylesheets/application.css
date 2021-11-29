@@ -3,7 +3,7 @@
 @import 'header.css';
 @import 'storyShow.css';
 @import 'home.css';
-@import 'comments.scss';
+@import 'comments.css';
 
 a, u {
   text-decoration: none;
