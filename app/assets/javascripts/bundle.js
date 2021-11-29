@@ -763,7 +763,7 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
       var _this3 = this;
 
       var comments = this.props.comments;
-      return comments.select(function (comment) {
+      return comments.filter(function (comment) {
         return comment.story_id === _this3.state.story_id;
       });
     }
@@ -783,7 +783,7 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
         className: "comments-modal"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comment_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "comments-list"
-      }, comments.map(function (comment, i) {
+      }, storyComments.map(function (comment, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comments_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: i,
           comment: comment,

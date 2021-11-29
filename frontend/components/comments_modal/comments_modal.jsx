@@ -32,7 +32,7 @@ class CommentsModal extends React.Component {
 
   filterComments() {
     let { comments } = this.props
-    return comments.select(comment => comment.story_id === this.state.story_id)
+    return comments.filter(comment => comment.story_id === this.state.story_id)
   }
 
   render() {
@@ -43,7 +43,7 @@ class CommentsModal extends React.Component {
         {<CommentFormContainer />}
         <ul className="comments-list">
           {
-            comments.map((comment, i) => 
+            storyComments.map((comment, i) => 
               <CommentsIndexItem key={i} 
                 comment={comment} 
                 currentUserId={this.props.currentUserId}
