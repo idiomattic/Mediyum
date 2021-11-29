@@ -19857,3 +19857,96 @@ Processing by Api::StoriesController#index as JSON
 Completed 200 OK in 13ms (Views: 12.1ms | ActiveRecord: 0.4ms)
 
 
+Started GET "/" for ::1 at 2021-11-29 10:13:41 -0800
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/matthew/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Fosa91kGEXi6L1f5aq2mzA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (21.0ms)
+Completed 200 OK in 586ms (Views: 581.5ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/api/stories" for ::1 at 2021-11-29 10:13:42 -0800
+Processing by Api::StoriesController#index as JSON
+  Rendering api/stories/index.json.jbuilder
+  [1m[36mStory Load (0.9ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/views/api/stories/index.json.jbuilder:1
+  Rendered api/stories/_story.json.jbuilder (0.4ms)
+  Rendered api/stories/_story.json.jbuilder (0.1ms)
+  Rendered api/stories/_story.json.jbuilder (0.1ms)
+  Rendered api/stories/_story.json.jbuilder (0.1ms)
+  Rendered api/stories/_story.json.jbuilder (0.1ms)
+  Rendered api/stories/index.json.jbuilder (22.7ms)
+Completed 200 OK in 47ms (Views: 18.7ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/api/stories/37" for ::1 at 2021-11-29 10:13:44 -0800
+Processing by Api::StoriesController#show as JSON
+  Parameters: {"id"=>"37"}
+  [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/api/stories_controller.rb:17
+  Rendering api/stories/show.json.jbuilder
+  Rendered api/stories/_story.json.jbuilder (0.4ms)
+  Rendered api/stories/show.json.jbuilder (2.3ms)
+Completed 200 OK in 7ms (Views: 3.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/comments" for ::1 at 2021-11-29 10:13:45 -0800
+Processing by Api::CommentsController#index as JSON
+  [1m[36mComment Load (1.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/api/comments_controller.rb:5
+Completed 200 OK in 19ms (Views: 9.9ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/" for ::1 at 2021-11-29 10:13:52 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Fosa91kGEXi6L1f5aq2mzA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  Rendered api/users/_user.json.jbuilder (1.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 51ms (Views: 48.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/stories/37" for ::1 at 2021-11-29 10:13:53 -0800
+Processing by Api::StoriesController#show as JSON
+  Parameters: {"id"=>"37"}
+  [1m[36mStory Load (0.9ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/api/stories_controller.rb:17
+  Rendering api/stories/show.json.jbuilder
+  Rendered api/stories/_story.json.jbuilder (0.6ms)
+  Rendered api/stories/show.json.jbuilder (4.9ms)
+Completed 200 OK in 15ms (Views: 9.5ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/comments" for ::1 at 2021-11-29 10:13:55 -0800
+Processing by Api::CommentsController#index as JSON
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ app/controllers/api/comments_controller.rb:5
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for ::1 at 2021-11-29 10:13:56 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Fosa91kGEXi6L1f5aq2mzA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 23ms (Views: 21.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/stories/37" for ::1 at 2021-11-29 10:13:57 -0800
+Processing by Api::StoriesController#show as JSON
+  Parameters: {"id"=>"37"}
+  [1m[36mStory Load (1.2ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/api/stories_controller.rb:17
+  Rendering api/stories/show.json.jbuilder
+  Rendered api/stories/_story.json.jbuilder (0.5ms)
+  Rendered api/stories/show.json.jbuilder (3.8ms)
+Completed 200 OK in 14ms (Views: 8.2ms | ActiveRecord: 1.6ms)
+
+
