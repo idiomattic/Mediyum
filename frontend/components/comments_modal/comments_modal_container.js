@@ -7,7 +7,9 @@ const _nullComments = []
 
 const mSTP = state => ({
   modal: state.ui.modal,
-  comments: Object.values(state.entities.comments) || _nullComments
+  comments: Object.values(state.entities.comments) || _nullComments,
+  story: Object.values(state.entities.stories)[0],
+  currentUserId: state.session.currentUserId
 });
 
 const mDTP = dispatch => ({

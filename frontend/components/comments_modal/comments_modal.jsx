@@ -7,7 +7,9 @@ class CommentsModal extends React.Component {
   constructor(props) {
     super(props),
     this.state = {
-      body: ''
+      body: '',
+      story_id: this.props.story.id,
+      commenter_id: this.props.currentUserId
     }
   }
 
@@ -26,7 +28,7 @@ class CommentsModal extends React.Component {
       <div className='comments-modal'>
         <div className='comment-form-box'>
           <form className='comment-form'>
-            <textarea className='comment-form-body'></textarea>
+            <textarea className='comment-form-body' placeholder='What are your thoughts?'></textarea>
             <br />
             <input type="submit" value="Save" />
           </form>

@@ -530,7 +530,9 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, CommentsModal);
 
     _this = _super.call(this, props), _this.state = {
-      body: ''
+      body: '',
+      story_id: _this.props.story.id,
+      commenter_id: _this.props.currentUserId
     };
     return _this;
   }
@@ -560,7 +562,8 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         className: "comment-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
-        className: "comment-form-body"
+        className: "comment-form-body",
+        placeholder: "What are your thoughts?"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "submit",
         value: "Save"
@@ -606,7 +609,9 @@ var _nullComments = [];
 var mSTP = function mSTP(state) {
   return {
     modal: state.ui.modal,
-    comments: Object.values(state.entities.comments) || _nullComments
+    comments: Object.values(state.entities.comments) || _nullComments,
+    story: Object.values(state.entities.stories)[0],
+    currentUserId: state.session.currentUserId
   };
 };
 
