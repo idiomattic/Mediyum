@@ -3,19 +3,23 @@ import React from "react";
 class CommentForm extends React.Component {
   constructor(props) {
     super(props)
-    
-    this.state = {
-      body: '',
-      story_id: this.props.story.id,
-      commenter_id: this.props.currentUserId
-    }
+    this.state = this.props.comment || {
+        body: '',
+        story_id: this.props.story.id,
+        commenter_id: this.props.currentUserId
+      }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleSubmit(e) {
     e.preventDefault()
-    this.props.createComment(this.state)
-      .then(this.setState(this.state))
+    this.props.comment ? (
+      this.props.updateComment(this.state)
+        .then(this.setState(this.state))
+    ) : (
+      this.props.createComment(this.state)
+        .then(this.setState(this.state))
+    )
   }
 
   updateBody() {

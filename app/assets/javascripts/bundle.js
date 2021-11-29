@@ -458,7 +458,7 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, CommentForm);
 
     _this = _super.call(this, props);
-    _this.state = {
+    _this.state = _this.props.comment || {
       body: '',
       story_id: _this.props.story.id,
       commenter_id: _this.props.currentUserId
@@ -471,7 +471,7 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      this.props.createComment(this.state).then(this.setState(this.state));
+      this.props.comment ? this.props.updateComment(this.state).then(this.setState(this.state)) : this.props.createComment(this.state).then(this.setState(this.state));
     }
   }, {
     key: "updateBody",
