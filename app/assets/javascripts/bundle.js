@@ -1079,6 +1079,12 @@ var DropdownModal = /*#__PURE__*/function (_React$Component) {
       this.props.history.push('/feed');
     }
   }, {
+    key: "redirectToShow",
+    value: function redirectToShow() {
+      this.props.hideModal();
+      this.props.history.push("/users/".concat(this.props.currentUserId));
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this = this;
@@ -1090,6 +1096,13 @@ var DropdownModal = /*#__PURE__*/function (_React$Component) {
       return !modal ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "dropdown-list"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+        className: "user-show-button"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+        to: "/users/".concat(this.props.currentUserId),
+        onClick: function onClick() {
+          return _this.redirectToShow();
+        }
+      }, "Show Page")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
         className: "write-story"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
         to: "/stories/new",
@@ -1141,6 +1154,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(state) {
   return {
+    currentUserId: state.session.currentUserId,
     modal: state.ui.modal
   };
 };

@@ -1,19 +1,28 @@
-import { connect } from "react-redux";
+import React from "react"
+import { withRouter } from "react-router"
 
+class UserShow extends React.Component {
+  constructor(props) {
+    super(props)
+  }
 
-const mSTP = (state, {match}) => {
-  const storyId = parseInt(match.params.storyId)
-  return({
-    currentUserId: state.session.currentUserId,
-    story: state.entities.stories[storyId],
-    storyId
-  })
+  componentDidMount() {
+    this.props.fetchUser(this.props.userId)
+  }
+
+  render() {
+    let { user } = this.props
+    if (!user) {
+      return null
+    }
+    return(
+      <div className='user-show'>
+        <h2 className='user-title'>Name: {user.name}</h2>
+        <br />
+        
+      </div>
+    )
+  }
 }
 
-const mDTP = dispatch => ({
-  displayModal: () => dispatch(displayModal('Comments')),
-  fetchStory: storyId => dispatch(fetchStory(storyId)),
-  deleteStory: storyId => dispatch(deleteStory(storyId))
-})
-
-export default connect(mSTP, mDTP)(StoryShow)
+export default withRouter(StoryShow)

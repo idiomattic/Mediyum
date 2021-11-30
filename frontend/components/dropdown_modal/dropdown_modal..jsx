@@ -22,10 +22,18 @@ class DropdownModal extends React.Component {
     this.props.history.push('/feed')
   }
 
+  redirectToShow() {
+    this.props.hideModal()
+    this.props.history.push(`/users/${this.props.currentUserId}`)
+  }
+
   render() {
     let { modal, hideModal, signOut } = this.props
     return !modal ? null : (
       <ul className='dropdown-list'>
+        <li className='user-show-button'>
+          <Link to={`/users/${this.props.currentUserId}`} onClick={() => this.redirectToShow()}>Show Page</Link>
+        </li>
         <li className='write-story'>
           <Link to='/stories/new' onClick={() => this.redirectToStoryForm()}>Write a story</Link>
         </li>

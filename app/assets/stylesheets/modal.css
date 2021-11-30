@@ -18,7 +18,7 @@
   z-index: 100;
 } */
 
-.dropdown-list li:nth-child(-n+2) {
+.dropdown-list li:not(:last-child) {
   margin: 0 0 20px 0;
 }
 

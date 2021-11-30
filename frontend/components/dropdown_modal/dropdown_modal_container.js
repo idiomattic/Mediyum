@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { signOut } from "../../actions/session_actions";
 
 const mSTP = state => ({
+  currentUserId: state.session.currentUserId,
   modal: state.ui.modal
 });
 
