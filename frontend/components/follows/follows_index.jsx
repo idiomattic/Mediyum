@@ -20,9 +20,7 @@ class FollowsIndex extends React.Component {
         <div className='index-nav'>
 
         </div>
-        <ul className='stories-list'>
-          
-        </ul>
+
       </div>
     )
   }

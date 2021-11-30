@@ -6,7 +6,6 @@ import { signOut } from "../../actions/session_actions";
 const mSTP = state => {
   let currentUserId = state.session.currentUserId
   let currentUser = state.entities.users[currentUserId]
-  debugger
   return({
     currentUserId,
     currentUser,

@@ -1,1 +1,13 @@
 json.extract! user, :id, :name, :email
+
+json.stories user.stories
+
+json.comments user.comments
+
+json.follows user.follows
+
+json.received_follows user.received_follows
+
+json.users_followed user.users_followed
+
+json.users_following user.users_following
