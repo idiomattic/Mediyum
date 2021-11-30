@@ -9,7 +9,7 @@ class Api::FollowsController < ApplicationController
     if @follow.save
       render json: ['followed']
     else
-      render json: @follow.errors.full_messages
+      render json: @follow.errors.full_messages, status: 422
     end
   end
 
