@@ -7,8 +7,12 @@ Rails.application.routes.draw do
     resources :stories, only: [:create, :destroy, :index, :show, :update]
     resources :comments, only: [:create, :destroy, :update, :index]
     resources :follows, only: [:create, :destroy]
+    resources :yums, only: [:create, :destroy]
+
     resources :users, only: [:show] do
       resources :follows, only: [:index]
+      resources :yums, only: [:index]
     end
+    
   end
 end

@@ -21,4 +21,14 @@ class Comment < ApplicationRecord
     primary_key: :id,
     foreign_key: :story_id,
     class_name: :Story
+
+  has_many :yums,
+    primary_key: :id,
+    foreign_key: :comment_id,
+    class_name: :Yum,
+    optional: true
+
+  has_many :users_who_yummed,
+    through: :yums,
+    source: :yummer
 end

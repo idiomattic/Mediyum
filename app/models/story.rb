@@ -26,5 +26,8 @@ class Story < ApplicationRecord
     primary_key: :id,
     foreign_key: :story_id,
     class_name: :Yum
-    
+  
+  has_many :users_who_yummed,
+    through: :yums,
+    source: :yummer
 end
