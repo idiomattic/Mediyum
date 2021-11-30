@@ -932,12 +932,7 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          modal = _this$props.modal,
-          hideModal = _this$props.hideModal,
-          comments = _this$props.comments,
-          updateComment = _this$props.updateComment,
-          deleteComment = _this$props.deleteComment;
+      var modal = this.props.modal;
       var storyComments = this.filterComments();
       return !modal ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comments-modal"
@@ -2173,27 +2168,35 @@ var StoriesIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "redirectToShow",
     value: function redirectToShow() {
-      var authorId = this.props.story.author.id;
-      this.props.history.push("/users/".concat(authorId));
+      var story = this.props.story;
+      console.log('in redirect', this.props);
+      this.props.history.push("/users/".concat(story.author.id));
     }
   }, {
     key: "author",
     value: function author() {
-      var storyAuthor = this.props.story.author.name;
+      var _this2 = this;
+
+      var story = this.props.story;
+      console.log('in author', this.props); // debugger
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-        to: "/users/".concat(storyAuthor.id)
-      }, storyAuthor);
+        to: "/users/".concat(story.author.id),
+        onClick: function onClick() {
+          return _this2.redirectToShow();
+        }
+      }, story.author.name);
     }
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
         className: "story-list-item"
       }, this.author(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
         onClick: function onClick() {
-          return _this2.handleClick();
+          return _this3.handleClick();
         },
         className: "story-item-title"
       }, this.props.story.title));

@@ -1,4 +1,5 @@
-json.extract! user, :id, :name, :email
+# json.extract! user, :id, :name, :email
+json.(user, :id, :name, :email)
 
 json.stories user.stories
 

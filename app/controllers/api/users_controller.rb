@@ -1,7 +1,7 @@
 class Api::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    render :show
+    render :template => 'api/users/show'
   end
   
   def create

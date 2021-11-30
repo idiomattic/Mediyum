@@ -13,14 +13,17 @@ class StoriesIndexItem extends React.Component {
   }
 
   redirectToShow() {
-    let authorId = this.props.story.author.id
-    this.props.history.push(`/users/${authorId}`)
+    let {story} = this.props
+    console.log('in redirect', this.props)
+    this.props.history.push(`/users/${story.author.id}`)
   }
-
+  
   author() {
-    let storyAuthor = this.props.story.author.name
+    let {story} = this.props
+    console.log('in author', this.props)
+    // debugger
     return(
-      <Link to={`/users/${storyAuthor.id}`} >{storyAuthor}</Link>
+      <Link to={`/users/${story.author.id}`} onClick={() => this.redirectToShow()}>{story.author.name}</Link>
     )
   }
 
