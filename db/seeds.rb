@@ -14,3 +14,7 @@ users = User.create([{ email: 'steve@demo.demo', password: '111111', name: 'Stev
 { email: 'suzie@demo.demo', password: '111111', name: 'Suzie'}])
 
 stories = Story.create([{ title: 'How to test that your stories are working', body: 'seed some data, firstly', author_id: 3}])
+
+follows = Follow.create([{ follower_id: 1, followee_id: 2},
+  { follower_id: 1, followee_id: 3},
+  { follower_id: 2, followee_id: 3}])

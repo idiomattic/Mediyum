@@ -25,10 +25,10 @@ class Comment < ApplicationRecord
   has_many :yums,
     primary_key: :id,
     foreign_key: :comment_id,
-    class_name: :Yum,
-    optional: true
+    class_name: :Yum
+    # optional: true
 
-  has_many :users_who_yummed,
-    through: :yums,
-    source: :yummer
+  # has_many :users_who_yummed,
+  #   through: :yums,
+  #   source: :yummer
 end

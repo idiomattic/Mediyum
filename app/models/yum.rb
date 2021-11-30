@@ -28,5 +28,5 @@ class Yum < ApplicationRecord
     primary_key: :id,
     foreign_key: :comment_id,
     class_name: :Comment,
-    optional: true
+    # optional: true
 end
