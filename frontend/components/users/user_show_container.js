@@ -6,10 +6,13 @@ import { createFollow, deleteFollow, fetchFollows } from "../../actions/follow_a
 
 const mSTP = (state, {match}) => {
   const userId = parseInt(match.params.userId)
+  const user = state.entities.users[userId]
+  // debugger
   return({
     currentUserId: state.session.currentUserId,
-    user: state.entities.users[userId],
-    userId
+    user,
+    userId,
+    // followed: Boolean(user.users_following[currentUserId])
   })
 }
 

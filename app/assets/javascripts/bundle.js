@@ -3090,10 +3090,13 @@ __webpack_require__.r(__webpack_exports__);
 var mSTP = function mSTP(state, _ref) {
   var match = _ref.match;
   var userId = parseInt(match.params.userId);
+  var user = state.entities.users[userId]; // debugger
+
   return {
     currentUserId: state.session.currentUserId,
-    user: state.entities.users[userId],
-    userId: userId
+    user: user,
+    userId: userId // followed: Boolean(user.users_following[currentUserId])
+
   };
 };
 
@@ -3493,7 +3496,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/user_actions */ "./frontend/actions/user_actions.js");
+/* harmony import */ var _actions_story_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/story_actions */ "./frontend/actions/story_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -3519,6 +3524,13 @@ var currentUserId = null;
 
     case _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__.RECEIVE_USERS:
       return action.users;
+
+    case _actions_story_actions__WEBPACK_IMPORTED_MODULE_2__.RECEIVE_STORIES:
+      // debugger
+      Object.values(action.stories).forEach(function (story) {
+        Object.assign(nextState, _defineProperty({}, story.author.id, story.author));
+      });
+      return nextState;
 
     default:
       return state;
