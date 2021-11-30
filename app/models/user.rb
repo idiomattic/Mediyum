@@ -25,21 +25,21 @@ class User < ApplicationRecord
     foreign_key: :commenter_id,
     class_name: :Comment
 
-  has_many :follows,
+  has_many :follows, #their own follows
     primary_key: :id,
     foreign_key: :follower_id,
     class_name: :Follow
 
-  has_many :received_follows,
+  has_many :received_follows, #follows of them
     primary_key: :id,
     foreign_key: :followee_id,
     class_name: :Follow
 
-  has_many :users_followed,
+  has_many :users_followed, #users they are following
     through: :follows,
     source: :followee
 
-  has_many :users_following,
+  has_many :users_following, #users following them
     through: :received_follows,
     source: :follower
 
