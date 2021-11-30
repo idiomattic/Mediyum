@@ -28,11 +28,11 @@ class DropdownModal extends React.Component {
   }
 
   render() {
-    let { modal, hideModal, signOut } = this.props
+    let { modal, currentUserId, currentUser } = this.props
     return !modal ? null : (
       <ul className='dropdown-list'>
         <li className='user-show-button'>
-          <Link to={`/users/${this.props.currentUserId}`} onClick={() => this.redirectToShow()}>Show Page</Link>
+          <Link to={`/users/${currentUserId}`} onClick={() => this.redirectToShow()}>{currentUser.name}</Link>
         </li>
         <li className='write-story'>
           <Link to='/stories/new' onClick={() => this.redirectToStoryForm()}>Write a story</Link>
