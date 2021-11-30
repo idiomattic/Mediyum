@@ -7,7 +7,7 @@ class YumsController < ApplicationController
   def create
     @yum = Yum.new(yum_params)
     if @yum.save
-      render json: @yum
+      render :template => 'api/yums/show'
     else
       render json: @yum.errors.full_messages, status: 422
     end
