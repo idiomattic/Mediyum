@@ -9,7 +9,7 @@ export default (state={}, action) => {
     case RECEIVE_FOLLOW:
       return { [action.follow.id]: action.follow }
     case REMOVE_FOLLOW:
-      delete nextState[action.followId]
+      delete nextState[action.follow.id]
       return nextState
     default:
       return state

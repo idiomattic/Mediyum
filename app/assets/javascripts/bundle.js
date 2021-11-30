@@ -3275,7 +3275,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return _defineProperty({}, action.follow.id, action.follow);
 
     case _actions_follow_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_FOLLOW:
-      delete nextState[action.followId];
+      delete nextState[action.follow.id];
       return nextState;
 
     default:
