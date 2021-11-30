@@ -10,7 +10,8 @@ const mSTP = state => ({
 })
 
 const mDTP = dispatch => ({
-  fetchFollows: () => dispatch(fetchFollows())
+  fetchFollows: () => dispatch(fetchFollows()),
+  
 })
 
 export default connect(mSTP, mDTP)(StoriesIndex)

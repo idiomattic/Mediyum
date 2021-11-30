@@ -6,12 +6,12 @@ class FollowsIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchStories()
+    this.props.fetchFollows()
   }
 
   render() {
     return(
-      <div className='stories-index'>
+      <div className='follows-index'>
         <div className='index-nav'>
 
         </div>
