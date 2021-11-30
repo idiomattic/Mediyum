@@ -1,0 +1,2 @@
+module YumsHelper
+end

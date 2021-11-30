@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_29_231946) do
+ActiveRecord::Schema.define(version: 2021_11_30_215315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,17 @@ ActiveRecord::Schema.define(version: 2021_11_29_231946) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name"
+  end
+
+  create_table "yums", force: :cascade do |t|
+    t.integer "yummer_id", null: false
+    t.integer "story_id", null: false
+    t.integer "comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_yums_on_comment_id"
+    t.index ["story_id"], name: "index_yums_on_story_id"
+    t.index ["yummer_id"], name: "index_yums_on_yummer_id"
   end
 
 end

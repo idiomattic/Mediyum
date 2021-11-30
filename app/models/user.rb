@@ -43,6 +43,11 @@ class User < ApplicationRecord
     through: :received_follows,
     source: :follower
 
+  has_many :yums,
+    primary_key: :id,
+    foreign_key: :yummer_id,
+    class_name: :Yum
+
   after_initialize :ensure_session_token
 
   attr_reader :password

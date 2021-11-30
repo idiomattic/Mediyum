@@ -1,7 +1,6 @@
 class Api::FollowsController < ApplicationController
   def index
     @follows = Follow.all
-    # render :index
     render :template => 'api/follows/index'
   end
 

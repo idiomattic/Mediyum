@@ -21,4 +21,10 @@ class Story < ApplicationRecord
     primary_key: :id,
     foreign_key: :story_id,
     class_name: :Comment
+
+  has_many :yums,
+    primary_key: :id,
+    foreign_key: :story_id,
+    class_name: :Yum
+    
 end
