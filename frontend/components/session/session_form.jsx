@@ -51,12 +51,25 @@ class SessionForm extends React.Component {
     return this.props.formType === 'Sign In' ? 'Welcome Back.' : 'Join Mediyum.'
   }
 
+  nameField() {
+    return this.props.formType === 'Sign Up' ? 
+      <>
+        <label>Your Name
+          <br />
+          <input type="text" className='credentials' value={this.state.name} onChange={this.update('name')}/>
+        </label>
+        <br />
+      </>
+      : null
+  }
+
   render() {
     return(
       <div className='session-form-div'>
         <h2 className='form-greeting' >{this.formGreeting()}</h2>
         <form className='session-form' onSubmit={this.handleSubmit}>
           <span className='close-button' onClick={() => this.props.hideModal()}>&times;</span>
+          {this.nameField()}
           <label>Your Email
             <br />
             <input className='credentials' 

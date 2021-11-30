@@ -1774,6 +1774,16 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       return this.props.formType === 'Sign In' ? 'Welcome Back.' : 'Join Mediyum.';
     }
   }, {
+    key: "nameField",
+    value: function nameField() {
+      return this.props.formType === 'Sign Up' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Your Name", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "text",
+        className: "credentials",
+        value: this.state.name,
+        onChange: this.update('name')
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null)) : null;
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this4 = this;
@@ -1790,7 +1800,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this4.props.hideModal();
         }
-      }, "\xD7"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Your Email", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }, "\xD7"), this.nameField(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Your Email", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         className: "credentials",
         type: "email",
         value: this.state.email,
