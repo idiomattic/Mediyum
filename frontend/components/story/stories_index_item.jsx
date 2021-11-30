@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router";
+import { Link } from "react-router-dom";
 
 class StoriesIndexItem extends React.Component {
   constructor(props) {
@@ -11,8 +12,16 @@ class StoriesIndexItem extends React.Component {
     this.props.history.push(`/stories/${this.props.story.id}`)
   }
 
+  redirectToShow() {
+    let authorId = this.props.story.author.id
+    this.props.history.push(`/users/${authorId}`)
+  }
+
   author() {
-    debugger
+    let storyAuthor = this.props.story.author.name
+    return(
+      <Link to={`/users/${storyAuthor.id}`} >{storyAuthor}</Link>
+    )
   }
 
   render() {
