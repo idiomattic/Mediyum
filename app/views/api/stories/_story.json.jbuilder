@@ -1,4 +1,5 @@
-json.extract! story, :id, :title, :body, :author_id
+# json.extract! story, :id, :title, :body, :author_id
+json.(story, :id, :title, :body, :author_id)
 
 json.author story.author
 
