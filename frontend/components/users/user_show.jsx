@@ -1,12 +1,15 @@
 import React from "react"
 import { withRouter } from "react-router"
-import StoriesIndexItem from '../story/stories_index_item'
 import UserStoriesIndexItem from "../story/user_story_index_item"
 
 
 class UserShow extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      follower_id: this.props.currentUserId,
+      followee_id: this.props.userId
+    }
   }
 
   componentDidMount() {
@@ -26,15 +29,16 @@ class UserShow extends React.Component {
     )
   }
 
-  toggleFollow() {
-    console.log('trying to toggle follow on this user')
+  displayToggleFollow() {
+    console.log('trying to toggle follow on this user', this.state)
+    return (
+      <button className='green-button' onClick={() => this.displayToggleFollow()}>Follow</button>
+    )
   }
 
   isSelf() {
     let {userId, currentUserId} = this.props
-    return userId === currentUserId ? null : (
-      <button className='green-button' onClick={() => this.toggleFollow()}>Follow</button>
-    )
+    return userId === currentUserId ? null : this.displayToggleFollow()
   }
 
   render() {
