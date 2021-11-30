@@ -157,10 +157,10 @@ var receiveFollow = function receiveFollow(follow) {
   };
 };
 
-var removeFollow = function removeFollow(followId) {
+var removeFollow = function removeFollow(follow) {
   return {
     type: REMOVE_FOLLOW,
-    followId: followId
+    follow: follow
   };
 };
 
@@ -195,10 +195,10 @@ var fetchFollows = function fetchFollows() {
     });
   };
 };
-var deleteFollow = function deleteFollow(followId) {
+var deleteFollow = function deleteFollow(follow) {
   return function (dispatch) {
-    return _util_follow_api_util__WEBPACK_IMPORTED_MODULE_0__.deleteFollow(followId).then(function () {
-      return dispatch(removeFollow(followId));
+    return _util_follow_api_util__WEBPACK_IMPORTED_MODULE_0__.deleteFollow(follow).then(function () {
+      return dispatch(removeFollow(follow));
     }, function (errors) {
       return dispatch(receiveFollowErrors(errors.responseJSON));
     });
@@ -3653,10 +3653,10 @@ var createFollow = function createFollow(follow) {
     }
   });
 };
-var deleteFollow = function deleteFollow(followId) {
+var deleteFollow = function deleteFollow(follow) {
   return $.ajax({
     method: 'DELETE',
-    url: "/api/follows/".concat(followId)
+    url: "/api/follows/".concat(follow.id)
   });
 };
 
