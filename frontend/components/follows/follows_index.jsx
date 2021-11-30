@@ -9,6 +9,11 @@ class FollowsIndex extends React.Component {
     this.props.fetchFollows()
   }
 
+  // filterFollows() {
+  //   let { follows } = this.props
+  //   return follows.filter(follow => follow.followee_id === this.state.user_id)
+  // }
+
   render() {
     return(
       <div className='follows-index'>
