@@ -35,8 +35,8 @@ export const createFollow = follow => dispatch => (
     .then(follow => dispatch(receiveFollow(follow)),
       errors => dispatch(receiveFollowErrors(errors.responseJSON)))
 )
-export const fetchFollows = follows => dispatch => (
-  FollowApiUtil.fetchFollows(follows)
+export const fetchFollows = () => dispatch => (
+  FollowApiUtil.fetchFollows()
     .then(follows => dispatch(receiveFollows(follows)),
       errors => dispatch(receiveFollowErrors(errors.responseJSON)))
 )
