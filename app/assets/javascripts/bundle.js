@@ -2992,8 +2992,10 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      follower_id: _this.props.currentUserId,
-      followee_id: _this.props.userId
+      follow: {
+        follower_id: _this.props.currentUserId,
+        followee_id: _this.props.userId
+      }
     };
     return _this;
   }
@@ -3018,17 +3020,23 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
       }));
     }
   }, {
-    key: "displayToggleFollow",
-    value: function displayToggleFollow() {
+    key: "toggleFollow",
+    value: function toggleFollow() {}
+  }, {
+    key: "displayFollowButton",
+    value: function displayFollowButton() {
       var _this2 = this;
 
-      console.log('trying to toggle follow on this user', this.state);
+      console.log('trying to toggle follow on this user', this.state, this.props);
+      var users_following = this.props.user.users_following;
+      var following = Boolean(users_following.includes(this.props.currentUserId));
+      var buttonText = !following ? 'Follow' : 'Following';
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "green-button",
         onClick: function onClick() {
-          return _this2.displayToggleFollow();
+          return _this2.toggleFollow();
         }
-      }, "Follow");
+      }, buttonText);
     }
   }, {
     key: "isSelf",
@@ -3036,7 +3044,7 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           userId = _this$props.userId,
           currentUserId = _this$props.currentUserId;
-      return userId === currentUserId ? null : this.displayToggleFollow();
+      return userId === currentUserId ? null : this.displayFollowButton();
     }
   }, {
     key: "render",
@@ -3092,8 +3100,7 @@ __webpack_require__.r(__webpack_exports__);
 var mSTP = function mSTP(state, _ref) {
   var match = _ref.match;
   var userId = parseInt(match.params.userId);
-  var user = state.entities.users[userId]; // debugger // state.entities.users does not have the followee for some reason
-
+  var user = state.entities.users[userId];
   return {
     currentUserId: state.session.currentUserId,
     user: user,

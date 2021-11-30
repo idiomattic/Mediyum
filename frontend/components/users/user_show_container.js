@@ -7,7 +7,6 @@ import { createFollow, deleteFollow, fetchFollows } from "../../actions/follow_a
 const mSTP = (state, {match}) => {
   const userId = parseInt(match.params.userId)
   const user = state.entities.users[userId]
-  // debugger // state.entities.users does not have the followee for some reason
   return({
     currentUserId: state.session.currentUserId,
     user,

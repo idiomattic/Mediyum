@@ -7,8 +7,10 @@ class UserShow extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      follower_id: this.props.currentUserId,
-      followee_id: this.props.userId
+      follow :{
+        follower_id: this.props.currentUserId,
+        followee_id: this.props.userId
+      }
     }
   }
 
@@ -29,17 +31,23 @@ class UserShow extends React.Component {
     )
   }
 
-  displayToggleFollow() {
-    console.log('trying to toggle follow on this user', this.state)
+  toggleFollow() {
 
+  }
+
+  displayFollowButton() {
+    console.log('trying to toggle follow on this user', this.state, this.props)
+    let {users_following} = this.props.user
+    let following = Boolean(users_following.includes(this.props.currentUserId))
+    let buttonText = !following ? 'Follow' : 'Following'
     return (
-      <button className='green-button' onClick={() => this.displayToggleFollow()}>Follow</button>
+      <button className='green-button' onClick={() => this.toggleFollow()}>{buttonText}</button>
     )
   }
 
   isSelf() {
     let {userId, currentUserId} = this.props
-    return userId === currentUserId ? null : this.displayToggleFollow()
+    return userId === currentUserId ? null : this.displayFollowButton()
   }
 
   render() {
