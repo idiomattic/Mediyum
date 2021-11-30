@@ -12,7 +12,7 @@ class StoriesIndexItem extends React.Component {
   }
 
   author() {
-    console.log(this.props.story.author)
+    debugger
   }
 
   render() {

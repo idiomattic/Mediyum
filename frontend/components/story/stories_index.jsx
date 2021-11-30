@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "react-router-dom"
 import StoriesIndexItem from "./stories_index_item"
 
 class StoriesIndex extends React.Component {

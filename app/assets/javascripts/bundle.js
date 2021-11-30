@@ -2024,7 +2024,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-
 var StoriesIndex = /*#__PURE__*/function (_React$Component) {
   _inherits(StoriesIndex, _React$Component);
 
@@ -2172,7 +2171,7 @@ var StoriesIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "author",
     value: function author() {
-      console.log(this.props.story.author);
+      debugger;
     }
   }, {
     key: "render",
