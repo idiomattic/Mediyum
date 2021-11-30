@@ -4,6 +4,7 @@
 @import 'storyShow.css';
 @import 'home.css';
 @import 'comments.css';
+@import 'userShow.css';
 
 a, u {
   text-decoration: none;
@@ -12,6 +13,15 @@ a, u {
 
 .black-button {
   background-color: black;
+  border-color: black;
+  color: white;
+  padding: 7px 16px 9px;
+  border-radius: 99em;
+}
+
+.green-button {
+  background-color: rgb(26, 137, 23);
+  border-color: rgb(26, 137, 23);;
   color: white;
   padding: 7px 16px 9px;
   border-radius: 99em;
