@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { fetchUser, updateUser, deleteUser } from "../../actions/user_actions";
 import { fetchStories } from "../../actions/story_actions";
+import UserShow from "./user_show";
 
 const mSTP = (state, {match}) => {
   const userId = parseInt(match.params.userId)
@@ -19,4 +20,4 @@ const mDTP = dispatch => ({
   fetchStories: () => dispatch(fetchStories())
 })
 
-export default connect(mSTP, mDTP)(StoryShow)
+export default connect(mSTP, mDTP)(UserShow)

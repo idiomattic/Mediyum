@@ -7,6 +7,7 @@ import Modal from './modal/modal_container'
 import StoryFormContainer from './story/create_story_form_container'
 import UpdateStoryFormContainer from './story/update_story_form_container'
 import StoryShowContainer from './story/story_show_container'
+import UserShowContainer from './users/user_show_container'
 
 const App = () => {
   return(
@@ -25,6 +26,7 @@ const App = () => {
         <ProtectedRoute exact path='/stories/new' component={StoryFormContainer}/>
         <ProtectedRoute exact path='/stories/:storyId' component={StoryShowContainer}/>
         <ProtectedRoute exact path='/stories/:storyId/edit' component={UpdateStoryFormContainer}/>
+        <ProtectedRoute exact path='/users/:userId' component={UserShowContainer}/>
       </Switch>
     </div>
     <Modal />

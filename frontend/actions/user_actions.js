@@ -30,14 +30,14 @@ const clearUserErrors = () => ({
   type: CLEAR_USER_ERRORS
 })
 
-export const fetchUsers = () => dispatch => (
-  UserApiUtil.fetchUsers()
-    .then(users => dispatch(receiveUsers(users)),
-      errors => dispatch(receiveUserErrors(errors.responseJSON)))
-)
+// export const fetchUsers = () => dispatch => (
+//   UserApiUtil.fetchUsers()
+//     .then(users => dispatch(receiveUsers(users)),
+//       errors => dispatch(receiveUserErrors(errors.responseJSON)))
+// )
 
 export const fetchUser = userId => dispatch => (
-  UserApiUtil.fetchUsers(userId)
+  UserApiUtil.fetchUser(userId)
     .then(user => dispatch(receiveUser(user)),
       errors => dispatch(receiveUserErrors(errors.responseJSON)))
 )

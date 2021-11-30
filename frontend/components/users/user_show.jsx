@@ -25,4 +25,4 @@ class UserShow extends React.Component {
   }
 }
 
-export default withRouter(StoryShow)
+export default withRouter(UserShow)
