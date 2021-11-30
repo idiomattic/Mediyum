@@ -11,9 +11,14 @@ class StoriesIndexItem extends React.Component {
     this.props.history.push(`/stories/${this.props.story.id}`)
   }
 
+  author() {
+    console.log(this.props.story.author)
+  }
+
   render() {
     return(
       <li className='story-list-item'>
+        {this.author()}
         <h3 onClick={() => this.handleClick()} className='story-item-title'>{this.props.story.title}</h3>
       </li>
     )

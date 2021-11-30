@@ -26688,3 +26688,671 @@ Processing by Api::UsersController#show as JSON
 Completed 200 OK in 20ms (Views: 14.3ms | ActiveRecord: 3.7ms)
 
 
+Started GET "/" for ::1 at 2021-11-29 20:33:42 -0800
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/matthew/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Q8zcGSX70-aQfp83i55Ddg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mStory Load (0.6ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 8]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 8]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 8]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 8]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 8]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 8]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  Rendered api/users/_user.json.jbuilder (57.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (94.8ms)
+Completed 200 OK in 832ms (Views: 818.1ms | ActiveRecord: 13.5ms)
+
+
+Started GET "/api/users/8" for ::1 at 2021-11-29 20:33:43 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:3
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (1.3ms)
+  [1m[36mStory Load (0.9ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 8]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 8]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mFollow Load (1.1ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 8]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 8]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 8]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 8]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (28.6ms)
+Completed 200 OK in 45ms (Views: 27.7ms | ActiveRecord: 8.3ms)
+
+
+Started DELETE "/api/session" for ::1 at 2021-11-29 20:33:46 -0800
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Q8zcGSX70-aQfp83i55Ddg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UDXeb8ga4l-8Bw3k7lX2Aw"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:76
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:66
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "davidlese16@gmail.com"], ["id", 8], ["LIMIT", 1]]
+  ↳ app/models/user.rb:66
+  [1m[36mUser Update (1.1ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "UDXeb8ga4l-8Bw3k7lX2Aw"], ["updated_at", "2021-11-30 04:33:46.035164"], ["id", 8]]
+  ↳ app/models/user.rb:66
+Started GET "/api/stories" for ::1 at 2021-11-29 20:33:46 -0800
+Processing by Api::StoriesController#index as JSON
+  [1m[35m (14.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:66
+Completed 200 OK in 39ms (Views: 0.4ms | ActiveRecord: 18.6ms)
+
+
+  Rendering api/stories/index.json.jbuilder
+  [1m[36mStory Load (0.9ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/views/api/stories/index.json.jbuilder:1
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:3
+  Rendered api/stories/_story.json.jbuilder (9.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:3
+  Rendered api/stories/_story.json.jbuilder (2.2ms)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:3
+  Rendered api/stories/_story.json.jbuilder (3.7ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:3
+  Rendered api/stories/_story.json.jbuilder (1.4ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:3
+  Rendered api/stories/_story.json.jbuilder (3.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:3
+  Rendered api/stories/_story.json.jbuilder (1.8ms)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 1]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 2]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 35]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 36]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 37]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 41]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  Rendered api/stories/index.json.jbuilder (51.6ms)
+Completed 200 OK in 59ms (Views: 48.8ms | ActiveRecord: 9.1ms)
+
+
+Started POST "/api/session" for ::1 at 2021-11-29 20:33:47 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demo@demo.demo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@demo.demo"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "66d7lWeqX8TQWMNCJ28qVQ"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:76
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:66
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@demo.demo"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:66
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "66d7lWeqX8TQWMNCJ28qVQ"], ["updated_at", "2021-11-30 04:33:47.598666"], ["id", 1]]
+  ↳ app/models/user.rb:66
+  [1m[35m (12.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:66
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (13.7ms)
+Completed 200 OK in 229ms (Views: 12.8ms | ActiveRecord: 16.2ms)
+
+
+Started GET "/api/stories" for ::1 at 2021-11-29 20:33:47 -0800
+Processing by Api::StoriesController#index as JSON
+  Rendering api/stories/index.json.jbuilder
+  [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/views/api/stories/index.json.jbuilder:1
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:3
+  Rendered api/stories/_story.json.jbuilder (2.7ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:3
+  Rendered api/stories/_story.json.jbuilder (2.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:3
+  Rendered api/stories/_story.json.jbuilder (2.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:3
+  Rendered api/stories/_story.json.jbuilder (2.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:3
+  Rendered api/stories/_story.json.jbuilder (2.2ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:3
+  Rendered api/stories/_story.json.jbuilder (2.0ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 1]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 2]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 35]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 36]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 37]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 41]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  Rendered api/stories/index.json.jbuilder (35.2ms)
+Completed 200 OK in 38ms (Views: 32.5ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/api/users/1" for ::1 at 2021-11-29 20:33:50 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:3
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mFollow Load (0.8ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (19.7ms)
+Completed 200 OK in 22ms (Views: 16.7ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/api/stories/36" for ::1 at 2021-11-29 20:33:52 -0800
+Processing by Api::StoriesController#show as JSON
+  Parameters: {"id"=>"36"}
+  [1m[36mStory Load (0.6ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+  ↳ app/controllers/api/stories_controller.rb:17
+  Rendering api/stories/show.json.jbuilder
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:3
+  Rendered api/stories/_story.json.jbuilder (2.7ms)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 36]]
+  ↳ app/views/api/stories/show.json.jbuilder:2
+  Rendered api/stories/show.json.jbuilder (7.0ms)
+Completed 200 OK in 13ms (Views: 7.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/users/1" for ::1 at 2021-11-29 20:33:54 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:3
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (1.2ms)
+  [1m[36mStory Load (1.0ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (15.7ms)
+Completed 200 OK in 19ms (Views: 13.8ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/" for ::1 at 2021-11-29 20:40:20 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "66d7lWeqX8TQWMNCJ28qVQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mStory Load (0.6ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  Rendered api/users/_user.json.jbuilder (20.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (24.8ms)
+Completed 200 OK in 363ms (Views: 357.8ms | ActiveRecord: 4.2ms)
+
+
+  [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" ORDER BY "stories"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Started GET "/" for ::1 at 2021-11-29 20:45:46 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "66d7lWeqX8TQWMNCJ28qVQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  Rendered api/users/_user.json.jbuilder (12.0ms)
+  Rendered static_pages/root.html.erb within layouts/application (16.5ms)
+Completed 200 OK in 38ms (Views: 34.4ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/api/users/1" for ::1 at 2021-11-29 20:45:46 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:3
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (1.0ms)
+  [1m[36mStory Load (0.9ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mFollow Load (0.8ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (24.3ms)
+Completed 200 OK in 30ms (Views: 22.3ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/" for ::1 at 2021-11-29 20:49:18 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "66d7lWeqX8TQWMNCJ28qVQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  Rendered api/users/_user.json.jbuilder (22.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (27.6ms)
+Completed 200 OK in 405ms (Views: 399.7ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/api/users/1" for ::1 at 2021-11-29 20:49:19 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:3
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (1.1ms)
+  [1m[36mStory Load (1.4ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mFollow Load (0.8ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (45.6ms)
+Completed 200 OK in 60ms (Views: 50.1ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/api/users/1" for ::1 at 2021-11-29 20:50:19 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:3
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (2.3ms)
+  [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mFollow Load (3.0ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (31.5ms)
+Completed 200 OK in 38ms (Views: 28.6ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/" for ::1 at 2021-11-29 20:52:00 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "66d7lWeqX8TQWMNCJ28qVQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  Rendered api/users/_user.json.jbuilder (14.6ms)
+  Rendered static_pages/root.html.erb within layouts/application (18.2ms)
+Completed 200 OK in 391ms (Views: 385.4ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/api/users/1" for ::1 at 2021-11-29 20:52:01 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:3
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (1.6ms)
+  [1m[36mStory Load (0.6ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mFollow Load (0.7ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mFollow Load (0.6ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (29.0ms)
+Completed 200 OK in 37ms (Views: 28.5ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/" for ::1 at 2021-11-29 20:53:04 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "66d7lWeqX8TQWMNCJ28qVQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mStory Load (0.3ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  Rendered api/users/_user.json.jbuilder (12.8ms)
+  Rendered static_pages/root.html.erb within layouts/application (16.2ms)
+Completed 200 OK in 34ms (Views: 30.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/api/users/1" for ::1 at 2021-11-29 20:53:05 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:3
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (1.8ms)
+  [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mFollow Load (1.2ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (30.1ms)
+Completed 200 OK in 35ms (Views: 27.5ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/" for ::1 at 2021-11-29 20:54:15 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "66d7lWeqX8TQWMNCJ28qVQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mFollow Load (0.6ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mFollow Load (0.8ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  Rendered api/users/_user.json.jbuilder (22.2ms)
+  Rendered static_pages/root.html.erb within layouts/application (27.5ms)
+Completed 200 OK in 365ms (Views: 358.6ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/" for ::1 at 2021-11-29 20:54:34 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "66d7lWeqX8TQWMNCJ28qVQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  Rendered api/users/_user.json.jbuilder (19.6ms)
+  Rendered static_pages/root.html.erb within layouts/application (24.9ms)
+Completed 200 OK in 355ms (Views: 349.8ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/api/users/1" for ::1 at 2021-11-29 20:54:35 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:3
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (1.6ms)
+  [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mFollow Load (1.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (30.0ms)
+Completed 200 OK in 35ms (Views: 27.4ms | ActiveRecord: 5.6ms)
+
+
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "demo user"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Demo User"], ["LIMIT", 1]]
+  [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+Started GET "/" for ::1 at 2021-11-29 20:56:58 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "66d7lWeqX8TQWMNCJ28qVQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  Rendered api/users/_user.json.jbuilder (12.7ms)
+  Rendered static_pages/root.html.erb within layouts/application (15.5ms)
+Completed 200 OK in 345ms (Views: 341.9ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/api/users/1" for ::1 at 2021-11-29 20:56:59 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:3
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (3.4ms)
+  [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mFollow Load (0.6ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mFollow Load (0.8ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (33.0ms)
+Completed 200 OK in 39ms (Views: 31.3ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/" for ::1 at 2021-11-29 20:58:55 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "66d7lWeqX8TQWMNCJ28qVQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mStory Load (0.4ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  Rendered api/users/_user.json.jbuilder (14.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (19.7ms)
+Completed 200 OK in 368ms (Views: 363.6ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/api/users/1" for ::1 at 2021-11-29 20:58:56 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:3
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (1.2ms)
+  [1m[36mStory Load (1.4ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mFollow Load (0.6ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mFollow Load (0.6ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (30.3ms)
+Completed 200 OK in 48ms (Views: 29.7ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/" for ::1 at 2021-11-29 20:59:00 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "66d7lWeqX8TQWMNCJ28qVQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mStory Load (0.5ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mFollow Load (0.6ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:14
+  Rendered api/users/_user.json.jbuilder (19.1ms)
+  Rendered static_pages/root.html.erb within layouts/application (24.9ms)
+Completed 200 OK in 67ms (Views: 61.5ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/api/users/1" for ::1 at 2021-11-29 20:59:00 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:3
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (1.7ms)
+  [1m[36mStory Load (0.6ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mFollow Load (1.0ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followee_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followee_id" = $1[0m  [["followee_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (29.8ms)
+Completed 200 OK in 37ms (Views: 30.2ms | ActiveRecord: 4.8ms)
+
+
