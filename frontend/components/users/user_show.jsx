@@ -17,7 +17,7 @@ class UserShow extends React.Component {
   }
 
   myStories() {
-    const stories = this.props.user.stories
+    const stories = this.props.user.stories || []
     return(
       <ul className='users-stories-list'>
         {
@@ -31,7 +31,7 @@ class UserShow extends React.Component {
 
   displayToggleFollow() {
     console.log('trying to toggle follow on this user', this.state)
-    
+
     return (
       <button className='green-button' onClick={() => this.displayToggleFollow()}>Follow</button>
     )

@@ -2274,11 +2274,13 @@ var StoriesIndexItem = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       var story = this.props.story;
+      var author = this.props.story.author; // debugger
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
         className: "story-list-item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-        to: "/users/".concat(story.author.id)
-      }, story.author.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
+        to: "/users/".concat(author.id)
+      }, author.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
         onClick: function onClick() {
           return _this2.handleClick();
         },
@@ -3004,7 +3006,7 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "myStories",
     value: function myStories() {
-      var stories = this.props.user.stories;
+      var stories = this.props.user.stories || [];
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "users-stories-list"
       }, stories.map(function (story, i) {
@@ -3090,7 +3092,7 @@ __webpack_require__.r(__webpack_exports__);
 var mSTP = function mSTP(state, _ref) {
   var match = _ref.match;
   var userId = parseInt(match.params.userId);
-  var user = state.entities.users[userId]; // debugger
+  var user = state.entities.users[userId]; // debugger // state.entities.users does not have the followee for some reason
 
   return {
     currentUserId: state.session.currentUserId,
