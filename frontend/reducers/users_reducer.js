@@ -1,4 +1,5 @@
 import { RECEIVE_CURRENT_USER, SIGNOUT_CURRENT_USER } from "../actions/session_actions"
+import { RECEIVE_USER, RECEIVE_USERS } from '../actions/user_actions'
 
 let currentUserId = null
 
@@ -13,6 +14,10 @@ export default (state={}, action) => {
       delete nextState[currentUserId]
       currentUserId = null
       return nextState
+    case RECEIVE_USER:
+      return Object.assign(nextState, { [action.user.id]: action.user})
+    case RECEIVE_USERS:
+      return action.users
     default:
       return state
   }
