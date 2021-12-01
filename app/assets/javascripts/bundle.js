@@ -3024,12 +3024,15 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
     value: function toggleFollow() {
       var _this$props = this.props,
           followers = _this$props.followers,
-          userId = _this$props.userId,
-          currentUserId = _this$props.currentUserId;
+          currentUserId = _this$props.currentUserId,
+          receivedFollows = _this$props.receivedFollows;
       var following = Boolean(followers[currentUserId]);
 
       if (following) {
-        this.props.deleteFollow(this.state);
+        var followToDelete = Object.values(receivedFollows).filter(function (follow) {
+          return follow.follower_id === 1;
+        })[0];
+        this.props.deleteFollow(followToDelete);
       }
     }
   }, {
@@ -3116,7 +3119,8 @@ var mSTP = function mSTP(state, _ref) {
     currentUserId: state.session.currentUserId,
     user: user,
     userId: userId,
-    followers: state.entities.users.followers
+    followers: state.entities.users.followers,
+    receivedFollows: state.entities.follows
   };
 };
 

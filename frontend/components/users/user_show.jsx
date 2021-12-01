@@ -32,10 +32,11 @@ class UserShow extends React.Component {
   }
 
   toggleFollow() {
-    let {followers, userId, currentUserId} = this.props
+    let {followers, currentUserId, receivedFollows} = this.props
     let following = Boolean(followers[currentUserId])
     if (following) {
-      this.props.deleteFollow(this.state)
+      let followToDelete = Object.values(receivedFollows).filter(follow => follow.follower_id === 1)[0]
+      this.props.deleteFollow(followToDelete)
     }
   }
 

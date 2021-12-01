@@ -11,7 +11,8 @@ const mSTP = (state, {match}) => {
     currentUserId: state.session.currentUserId,
     user,
     userId,
-    followers: state.entities.users.followers
+    followers: state.entities.users.followers,
+    receivedFollows: state.entities.follows
   })
 }
 
