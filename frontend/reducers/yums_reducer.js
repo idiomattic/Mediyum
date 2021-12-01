@@ -8,7 +8,7 @@ export default (state={}, action) => {
     case RECEIVE_YUMS:
       return action.yums
     case RECEIVE_YUM:
-      return { [action.yum.id]: action.yum }
+      return Object.assign(nextState, { [action.yum.id]: action.yum })
     case REMOVE_YUM:
       delete nextState[action.yum.id]
       return nextState

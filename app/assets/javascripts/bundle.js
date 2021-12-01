@@ -2659,7 +2659,7 @@ var StoryShow = /*#__PURE__*/function (_React$Component) {
 
       var story = this.props.story;
 
-      if (!story) {
+      if (!story || !story.author) {
         return null;
       }
 
@@ -2728,9 +2728,10 @@ __webpack_require__.r(__webpack_exports__);
 var mSTP = function mSTP(state, _ref) {
   var match = _ref.match;
   var storyId = parseInt(match.params.storyId);
+  var story = state.entities.stories[storyId];
   return {
     currentUserId: state.session.currentUserId,
-    story: state.entities.stories[storyId],
+    story: story,
     storyId: storyId
   };
 };
@@ -3816,7 +3817,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return action.yums;
 
     case _actions_yum_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_YUM:
-      return _defineProperty({}, action.yum.id, action.yum);
+      return Object.assign(nextState, _defineProperty({}, action.yum.id, action.yum));
 
     case _actions_yum_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_YUM:
       delete nextState[action.yum.id];

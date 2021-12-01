@@ -48,12 +48,11 @@ class StoryShow extends React.Component {
 
   handleYum() {
     this.props.createYum(this.state)
-      
   }
   
   render() {
     let { story } = this.props
-    if (!story) {
+    if (!story || !story.author) {
       return null
     }
     return(
