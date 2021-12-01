@@ -70,7 +70,6 @@ class RecipeShow extends React.Component {
     if (!recipe || !recipe.author) {
       return null
     }
-    console.log('in show render', this.props)
     return(
       <div className='recipe-show'>
         <h2 className='recipe-title'>{recipe.title}</h2>
@@ -87,7 +86,6 @@ class RecipeShow extends React.Component {
             </div>
             <div className='yum-count'>
               {this.state.yumCount}
-              {/* {this.yumCount()} */}
             </div>
           </div>
           <div className='comments-button' onClick={() => this.showCommentsModal()}>

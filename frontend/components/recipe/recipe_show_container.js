@@ -9,15 +9,13 @@ const mSTP = (state, {match}) => {
   let recipe = state.entities.recipes[recipeId]
   let yums = recipe ? recipe.yums : null
   let yumCount = yums ? yums.length : 0
-  return(
-    {
-      currentUserId: state.session.currentUserId,
-      recipe,
-      recipeId,
-      yums,
-      yumCount
-    }
-  )
+  return({
+    currentUserId: state.session.currentUserId,
+    recipe,
+    recipeId,
+    yums,
+    yumCount
+  })
 }
 
 const mDTP = dispatch => ({

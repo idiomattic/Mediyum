@@ -2119,7 +2119,6 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
         return null;
       }
 
-      console.log('in show render', this.props);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "recipe-show"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
