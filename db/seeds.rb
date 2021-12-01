@@ -1,3 +1,4 @@
+
 demo = User.create([
   { email: 'demo@demo.demo', password: 'qwerty', name: 'Demo User'}
 ])

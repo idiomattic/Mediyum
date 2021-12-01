@@ -7,10 +7,12 @@ import { createYum } from "../../actions/yum_actions";
 const mSTP = (state, {match}) => {
   const storyId = parseInt(match.params.storyId)
   const story = state.entities.stories[storyId]
+  const yums = story ? story.yums : null
   return({
     currentUserId: state.session.currentUserId,
     story,
-    storyId
+    storyId,
+    yums
   })
 }
 

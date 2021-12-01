@@ -48115,3 +48115,482 @@ Processing by Api::UsersController#show as JSON
 Completed 200 OK in 47ms (Views: 30.8ms | ActiveRecord: 13.4ms)
 
 
+Started DELETE "/api/follows/21" for ::1 at 2021-12-01 09:24:45 -0800
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/matthew/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by Api::FollowsController#destroy as JSON
+  Parameters: {"id"=>"21"}
+  [1m[36mFollow Load (0.6ms)[0m  [1m[34mSELECT  "follows".* FROM "follows" WHERE "follows"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/api/follows_controller.rb:17
+  [1m[36mFollow Destroy (3.8ms)[0m  [1m[31mDELETE FROM "follows" WHERE "follows"."id" = $1[0m  [["id", 21]]
+  ↳ app/controllers/api/follows_controller.rb:18
+  Rendering api/follows/index.json.jbuilder
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows"[0m
+  ↳ app/views/api/follows/index.json.jbuilder:1
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/follows/_follow.json.jbuilder:4
+  Rendered api/follows/_follow.json.jbuilder (33.9ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/follows/_follow.json.jbuilder:4
+  Rendered api/follows/_follow.json.jbuilder (2.7ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/follows/_follow.json.jbuilder:4
+  Rendered api/follows/_follow.json.jbuilder (4.2ms)
+  Rendered api/follows/index.json.jbuilder (49.3ms)
+Completed 200 OK in 84ms (Views: 47.3ms | ActiveRecord: 14.7ms)
+
+
+Started POST "/api/follows" for ::1 at 2021-12-01 09:24:46 -0800
+Processing by Api::FollowsController#create as JSON
+  Parameters: {"follow"=>{"follower_id"=>"1", "followed_user_id"=>"7"}}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/follows_controller.rb:9
+  [1m[36mFollow Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."followed_user_id" = $2 LIMIT $3[0m  [["follower_id", 1], ["followed_user_id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/follows_controller.rb:9
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/follows_controller.rb:9
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/follows_controller.rb:9
+  [1m[36mFollow Create (1.4ms)[0m  [1m[32mINSERT INTO "follows" ("follower_id", "followed_user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["follower_id", 1], ["followed_user_id", 7], ["created_at", "2021-12-01 17:24:47.017110"], ["updated_at", "2021-12-01 17:24:47.017110"]]
+  ↳ app/controllers/api/follows_controller.rb:9
+  [1m[35m (12.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/follows_controller.rb:9
+  Rendering api/follows/show.json.jbuilder
+  Rendered api/follows/_follow.json.jbuilder (0.7ms)
+  Rendered api/follows/show.json.jbuilder (7.8ms)
+Completed 200 OK in 62ms (Views: 11.0ms | ActiveRecord: 16.8ms)
+
+
+Started GET "/api/stories" for ::1 at 2021-12-01 09:24:51 -0800
+Processing by Api::StoriesController#index as JSON
+  Rendering api/stories/index.json.jbuilder
+  [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ app/views/api/stories/index.json.jbuilder:1
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:4
+  Rendered api/stories/_story.json.jbuilder (23.9ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:4
+  Rendered api/stories/_story.json.jbuilder (2.2ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:4
+  Rendered api/stories/_story.json.jbuilder (1.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:4
+  Rendered api/stories/_story.json.jbuilder (1.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:4
+  Rendered api/stories/_story.json.jbuilder (2.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:4
+  Rendered api/stories/_story.json.jbuilder (1.3ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:4
+  Rendered api/stories/_story.json.jbuilder (1.4ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:4
+  Rendered api/stories/_story.json.jbuilder (1.5ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:4
+  Rendered api/stories/_story.json.jbuilder (1.5ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:4
+  Rendered api/stories/_story.json.jbuilder (1.7ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:4
+  Rendered api/stories/_story.json.jbuilder (1.3ms)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 1]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mYum Load (0.7ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."story_id" = $1[0m  [["story_id", 1]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."story_id" = $1[0m  [["story_id", 1]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 35]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mYum Load (0.4ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."story_id" = $1[0m  [["story_id", 35]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."story_id" = $1[0m  [["story_id", 35]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 36]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mYum Load (0.5ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."story_id" = $1[0m  [["story_id", 36]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."story_id" = $1[0m  [["story_id", 36]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 37]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mYum Load (0.4ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."story_id" = $1[0m  [["story_id", 37]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."story_id" = $1[0m  [["story_id", 37]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 41]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mYum Load (0.4ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."story_id" = $1[0m  [["story_id", 41]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."story_id" = $1[0m  [["story_id", 41]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 42]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mYum Load (0.4ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."story_id" = $1[0m  [["story_id", 42]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."story_id" = $1[0m  [["story_id", 42]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 43]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mYum Load (0.4ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."story_id" = $1[0m  [["story_id", 43]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."story_id" = $1[0m  [["story_id", 43]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 44]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mYum Load (0.3ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."story_id" = $1[0m  [["story_id", 44]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."story_id" = $1[0m  [["story_id", 44]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 45]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mYum Load (0.4ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."story_id" = $1[0m  [["story_id", 45]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."story_id" = $1[0m  [["story_id", 45]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 46]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mYum Load (0.4ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."story_id" = $1[0m  [["story_id", 46]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."story_id" = $1[0m  [["story_id", 46]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 47]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mYum Load (0.3ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."story_id" = $1[0m  [["story_id", 47]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."story_id" = $1[0m  [["story_id", 47]]
+  ↳ app/views/api/stories/index.json.jbuilder:6
+  Rendered api/stories/index.json.jbuilder (165.9ms)
+Completed 200 OK in 183ms (Views: 141.2ms | ActiveRecord: 28.5ms)
+
+
+Started GET "/api/stories/42" for ::1 at 2021-12-01 09:24:53 -0800
+Processing by Api::StoriesController#show as JSON
+  Parameters: {"id"=>"42"}
+  [1m[36mStory Load (0.9ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  ↳ app/controllers/api/stories_controller.rb:17
+  Rendering api/stories/show.json.jbuilder
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:4
+  Rendered api/stories/_story.json.jbuilder (3.7ms)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 42]]
+  ↳ app/views/api/stories/show.json.jbuilder:2
+  [1m[36mYum Load (0.6ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."story_id" = $1[0m  [["story_id", 42]]
+  ↳ app/views/api/stories/show.json.jbuilder:2
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."story_id" = $1[0m  [["story_id", 42]]
+  ↳ app/views/api/stories/show.json.jbuilder:2
+  Rendered api/stories/show.json.jbuilder (16.2ms)
+Completed 200 OK in 25ms (Views: 17.2ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/api/yums" for ::1 at 2021-12-01 09:24:54 -0800
+Processing by Api::YumsController#create as JSON
+  Parameters: {"yum"=>{"yummer_id"=>"1", "story_id"=>"42"}}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/yums_controller.rb:9
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/yums_controller.rb:9
+  [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  ↳ app/controllers/api/yums_controller.rb:9
+  [1m[36mYum Create (0.8ms)[0m  [1m[32mINSERT INTO "yums" ("yummer_id", "story_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["yummer_id", 1], ["story_id", 42], ["created_at", "2021-12-01 17:24:54.846303"], ["updated_at", "2021-12-01 17:24:54.846303"]]
+  ↳ app/controllers/api/yums_controller.rb:9
+  [1m[35m (4.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/yums_controller.rb:9
+  Rendering api/yums/show.json.jbuilder
+  Rendered api/yums/_yum.json.jbuilder (0.5ms)
+  Rendered api/yums/show.json.jbuilder (2.6ms)
+Completed 200 OK in 29ms (Views: 5.4ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 09:24:56 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "TWsBPEicrL1_eaGDMgLCIQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mStory Load (0.6ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mFollow Load (0.7ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mFollow Load (0.6ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  Rendered api/users/_user.json.jbuilder (44.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (53.1ms)
+Completed 200 OK in 854ms (Views: 847.4ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/api/stories/42" for ::1 at 2021-12-01 09:24:58 -0800
+Processing by Api::StoriesController#show as JSON
+  Parameters: {"id"=>"42"}
+  [1m[36mStory Load (1.5ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  ↳ app/controllers/api/stories_controller.rb:17
+  Rendering api/stories/show.json.jbuilder
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:4
+  Rendered api/stories/_story.json.jbuilder (6.5ms)
+  [1m[36mComment Load (1.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 42]]
+  ↳ app/views/api/stories/show.json.jbuilder:2
+  [1m[36mYum Load (0.9ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."story_id" = $1[0m  [["story_id", 42]]
+  ↳ app/views/api/stories/show.json.jbuilder:2
+  [1m[36mUser Load (5.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."story_id" = $1[0m  [["story_id", 42]]
+  ↳ app/views/api/stories/show.json.jbuilder:2
+  Rendered api/stories/show.json.jbuilder (28.8ms)
+Completed 200 OK in 41ms (Views: 25.9ms | ActiveRecord: 10.2ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 09:26:06 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "TWsBPEicrL1_eaGDMgLCIQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mStory Load (1.1ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mFollow Load (1.0ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mFollow Load (0.8ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  Rendered api/users/_user.json.jbuilder (39.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (48.3ms)
+Completed 200 OK in 462ms (Views: 451.9ms | ActiveRecord: 7.7ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 09:26:43 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "TWsBPEicrL1_eaGDMgLCIQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mStory Load (0.9ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mComment Load (2.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mFollow Load (0.8ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mFollow Load (0.9ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  Rendered api/users/_user.json.jbuilder (33.2ms)
+  Rendered static_pages/root.html.erb within layouts/application (38.8ms)
+Completed 200 OK in 493ms (Views: 484.2ms | ActiveRecord: 7.3ms)
+
+
+Started GET "/api/stories/42" for ::1 at 2021-12-01 09:26:44 -0800
+Processing by Api::StoriesController#show as JSON
+  Parameters: {"id"=>"42"}
+  [1m[36mStory Load (0.8ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  ↳ app/controllers/api/stories_controller.rb:17
+  Rendering api/stories/show.json.jbuilder
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:4
+  Rendered api/stories/_story.json.jbuilder (10.8ms)
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 42]]
+  ↳ app/views/api/stories/show.json.jbuilder:2
+  [1m[36mYum Load (1.0ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."story_id" = $1[0m  [["story_id", 42]]
+  ↳ app/views/api/stories/show.json.jbuilder:2
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."story_id" = $1[0m  [["story_id", 42]]
+  ↳ app/views/api/stories/show.json.jbuilder:2
+  Rendered api/stories/show.json.jbuilder (37.4ms)
+Completed 200 OK in 43ms (Views: 36.7ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 09:27:33 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "TWsBPEicrL1_eaGDMgLCIQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mStory Load (1.6ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mComment Load (1.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mFollow Load (1.2ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mFollow Load (0.8ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  Rendered api/users/_user.json.jbuilder (36.7ms)
+  Rendered static_pages/root.html.erb within layouts/application (49.0ms)
+Completed 200 OK in 470ms (Views: 460.0ms | ActiveRecord: 8.8ms)
+
+
+Started GET "/api/stories/42" for ::1 at 2021-12-01 09:27:34 -0800
+Processing by Api::StoriesController#show as JSON
+  Parameters: {"id"=>"42"}
+  [1m[36mStory Load (1.0ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  ↳ app/controllers/api/stories_controller.rb:17
+  Rendering api/stories/show.json.jbuilder
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:4
+  Rendered api/stories/_story.json.jbuilder (12.1ms)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 42]]
+  ↳ app/views/api/stories/show.json.jbuilder:2
+  [1m[36mYum Load (0.6ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."story_id" = $1[0m  [["story_id", 42]]
+  ↳ app/views/api/stories/show.json.jbuilder:2
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."story_id" = $1[0m  [["story_id", 42]]
+  ↳ app/views/api/stories/show.json.jbuilder:2
+  Rendered api/stories/show.json.jbuilder (28.1ms)
+Completed 200 OK in 44ms (Views: 30.1ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 09:27:48 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "TWsBPEicrL1_eaGDMgLCIQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mComment Load (1.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mFollow Load (0.8ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mFollow Load (1.0ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  Rendered api/users/_user.json.jbuilder (41.2ms)
+  Rendered static_pages/root.html.erb within layouts/application (53.9ms)
+Completed 200 OK in 493ms (Views: 483.4ms | ActiveRecord: 8.5ms)
+
+
+Started GET "/api/stories/42" for ::1 at 2021-12-01 09:27:49 -0800
+Processing by Api::StoriesController#show as JSON
+  Parameters: {"id"=>"42"}
+  [1m[36mStory Load (1.2ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  ↳ app/controllers/api/stories_controller.rb:17
+  Rendering api/stories/show.json.jbuilder
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:4
+  Rendered api/stories/_story.json.jbuilder (10.8ms)
+  [1m[36mComment Load (4.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 42]]
+  ↳ app/views/api/stories/show.json.jbuilder:2
+  [1m[36mYum Load (0.7ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."story_id" = $1[0m  [["story_id", 42]]
+  ↳ app/views/api/stories/show.json.jbuilder:2
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."story_id" = $1[0m  [["story_id", 42]]
+  ↳ app/views/api/stories/show.json.jbuilder:2
+  Rendered api/stories/show.json.jbuilder (59.4ms)
+Completed 200 OK in 81ms (Views: 64.6ms | ActiveRecord: 8.6ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 09:28:26 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "TWsBPEicrL1_eaGDMgLCIQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mStory Load (1.0ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mFollow Load (0.9ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mFollow Load (0.7ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  Rendered api/users/_user.json.jbuilder (61.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (73.5ms)
+Completed 200 OK in 593ms (Views: 586.1ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/api/stories/42" for ::1 at 2021-12-01 09:28:28 -0800
+Processing by Api::StoriesController#show as JSON
+  Parameters: {"id"=>"42"}
+  [1m[36mStory Load (1.4ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  ↳ app/controllers/api/stories_controller.rb:17
+  Rendering api/stories/show.json.jbuilder
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:4
+  Rendered api/stories/_story.json.jbuilder (10.1ms)
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 42]]
+  ↳ app/views/api/stories/show.json.jbuilder:2
+  [1m[36mYum Load (1.1ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."story_id" = $1[0m  [["story_id", 42]]
+  ↳ app/views/api/stories/show.json.jbuilder:2
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."story_id" = $1[0m  [["story_id", 42]]
+  ↳ app/views/api/stories/show.json.jbuilder:2
+  Rendered api/stories/show.json.jbuilder (25.5ms)
+Completed 200 OK in 34ms (Views: 23.1ms | ActiveRecord: 7.2ms)
+
+
+Started POST "/api/yums" for ::1 at 2021-12-01 09:28:32 -0800
+Processing by Api::YumsController#create as JSON
+  Parameters: {"yum"=>{"yummer_id"=>"1", "story_id"=>"42"}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/yums_controller.rb:9
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/yums_controller.rb:9
+  [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  ↳ app/controllers/api/yums_controller.rb:9
+  [1m[36mYum Create (1.1ms)[0m  [1m[32mINSERT INTO "yums" ("yummer_id", "story_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["yummer_id", 1], ["story_id", 42], ["created_at", "2021-12-01 17:28:32.749190"], ["updated_at", "2021-12-01 17:28:32.749190"]]
+  ↳ app/controllers/api/yums_controller.rb:9
+  [1m[35m (13.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/yums_controller.rb:9
+  Rendering api/yums/show.json.jbuilder
+  Rendered api/yums/_yum.json.jbuilder (0.6ms)
+  Rendered api/yums/show.json.jbuilder (3.5ms)
+Completed 200 OK in 35ms (Views: 6.3ms | ActiveRecord: 16.3ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 09:28:35 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "TWsBPEicrL1_eaGDMgLCIQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mStory Load (0.6ms)[0m  [1m[34mSELECT "stories".* FROM "stories" WHERE "stories"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mFollow Load (0.8ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mFollow Load (0.8ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  Rendered api/users/_user.json.jbuilder (31.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (39.2ms)
+Completed 200 OK in 90ms (Views: 82.3ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/api/stories/42" for ::1 at 2021-12-01 09:28:36 -0800
+Processing by Api::StoriesController#show as JSON
+  Parameters: {"id"=>"42"}
+  [1m[36mStory Load (0.9ms)[0m  [1m[34mSELECT  "stories".* FROM "stories" WHERE "stories"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  ↳ app/controllers/api/stories_controller.rb:17
+  Rendering api/stories/show.json.jbuilder
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/stories/_story.json.jbuilder:4
+  Rendered api/stories/_story.json.jbuilder (15.3ms)
+  [1m[36mComment Load (1.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."story_id" = $1[0m  [["story_id", 42]]
+  ↳ app/views/api/stories/show.json.jbuilder:2
+  [1m[36mYum Load (0.7ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."story_id" = $1[0m  [["story_id", 42]]
+  ↳ app/views/api/stories/show.json.jbuilder:2
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."story_id" = $1[0m  [["story_id", 42]]
+  ↳ app/views/api/stories/show.json.jbuilder:2
+  Rendered api/stories/show.json.jbuilder (40.7ms)
+Completed 200 OK in 48ms (Views: 39.4ms | ActiveRecord: 5.9ms)
+
+

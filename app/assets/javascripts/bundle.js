@@ -2657,7 +2657,7 @@ var StoryShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "yumCount",
     value: function yumCount() {
-      var yums = this.props.story.yums;
+      var yums = this.props.yums;
       return yums.length || 0;
     }
   }, {
@@ -2744,10 +2744,12 @@ var mSTP = function mSTP(state, _ref) {
   var match = _ref.match;
   var storyId = parseInt(match.params.storyId);
   var story = state.entities.stories[storyId];
+  var yums = story ? story.yums : null;
   return {
     currentUserId: state.session.currentUserId,
     story: story,
-    storyId: storyId
+    storyId: storyId,
+    yums: yums
   };
 };
 

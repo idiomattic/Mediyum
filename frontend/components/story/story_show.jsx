@@ -49,7 +49,7 @@ class StoryShow extends React.Component {
   }
 
   yumCount() {
-    let {yums} = this.props.story
+    let {yums} = this.props
     return yums.length || 0
   }
 
