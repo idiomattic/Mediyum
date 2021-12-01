@@ -11,7 +11,7 @@ class FollowsIndex extends React.Component {
 
   // filterFollows() {
   //   let { follows } = this.props
-  //   return follows.filter(follow => follow.followee_id === this.state.user_id)
+  //   return follows.filter(follow => follow.followed_user_id === this.state.user_id)
   // }
 
   render() {

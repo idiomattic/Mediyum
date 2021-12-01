@@ -1,7 +1,7 @@
 class Api::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @followees = @user.users_following
+    @users_following = @user.users_following
     render :template => 'api/users/show'
   end
   

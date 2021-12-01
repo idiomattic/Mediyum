@@ -32,12 +32,12 @@ class User < ApplicationRecord
 
   has_many :received_follows, #follows of them
     primary_key: :id,
-    foreign_key: :followee_id,
+    foreign_key: :followed_user_id,
     class_name: :Follow
 
   has_many :users_followed, #users they are following
     through: :follows,
-    source: :followee
+    source: :followed_user
 
   has_many :users_following, #users following them
     through: :received_follows,

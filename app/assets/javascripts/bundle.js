@@ -2994,7 +2994,7 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       follow: {
         follower_id: _this.props.currentUserId,
-        followee_id: _this.props.userId
+        followed_user_id: _this.props.userId
       }
     };
     return _this;

@@ -1,7 +1,7 @@
 json.partial! 'api/users/user', user: @user
 
-unless @followees.empty?
-  @followees.each do |followee|
-    json.partial! 'api/users/user', user: followee
+unless @users_following.empty?
+  @users_following.each do |user_following|
+    json.partial! 'api/users/user', user: user_following
   end
 end

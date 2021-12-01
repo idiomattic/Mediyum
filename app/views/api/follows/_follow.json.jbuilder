@@ -1,6 +1,6 @@
-# json.extract! follow, :id, :follower_id, :followee_id
-json.(follow, :id, :follower_id, :followee_id)
+# json.extract! follow, :id, :follower_id, :followed_user_id
+json.(follow, :id, :follower_id, :followed_user_id)
 
 # json.follower follow.follower
 
-# json.followee follow.followee
+# json.followed_user_id follow.followed_user_id

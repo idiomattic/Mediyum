@@ -9,7 +9,7 @@ class UserShow extends React.Component {
     this.state = {
       follow :{
         follower_id: this.props.currentUserId,
-        followee_id: this.props.userId
+        followed_user_id: this.props.userId
       }
     }
   }
