@@ -3032,9 +3032,13 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
         var followToDelete = Object.values(receivedFollows).filter(function (follow) {
           return follow.follower_id === 1;
         })[0];
-        this.props.deleteFollow(followToDelete);
+        this.props.deleteFollow(followToDelete).then(this.setState({
+          following: false
+        }));
       } else {
-        this.props.createFollow(this.state.follow);
+        this.props.createFollow(this.state.follow).then(this.setState({
+          following: true
+        }));
       }
     }
   }, {
@@ -3065,7 +3069,6 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log(this.props);
       var _this$props4 = this.props,
           user = _this$props4.user,
           userId = _this$props4.userId;
@@ -3531,7 +3534,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/user_actions */ "./frontend/actions/user_actions.js");
 /* harmony import */ var _actions_story_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/story_actions */ "./frontend/actions/story_actions.js");
+/* harmony import */ var _actions_follow_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../actions/follow_actions */ "./frontend/actions/follow_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -3573,6 +3578,14 @@ var currentUserId = null;
       Object.values(action.stories).forEach(function (story) {
         Object.assign(nextState, _defineProperty({}, story.author.id, story.author));
       });
+      return nextState;
+
+    case _actions_follow_actions__WEBPACK_IMPORTED_MODULE_3__.RECEIVE_FOLLOW:
+      nextState['followers'][action.follow.follower_id] = action.follow.follower;
+      return nextState;
+
+    case _actions_follow_actions__WEBPACK_IMPORTED_MODULE_3__.REMOVE_FOLLOW:
+      delete nextState['followers'][action.follow.follower_id];
       return nextState;
 
     default:
