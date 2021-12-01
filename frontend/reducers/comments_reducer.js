@@ -1,4 +1,5 @@
 import { RECEIVE_COMMENT, RECEIVE_COMMENTS, REMOVE_COMMENT, UPDATE_COMMENT } from '../actions/comment_actions'
+import { HIDE_MODAL } from '../actions/modal_actions'
 
 export default (state={}, action) => {
   Object.freeze(state)
@@ -14,6 +15,8 @@ export default (state={}, action) => {
     case REMOVE_COMMENT:
       delete nextState[action.commentId]
       return nextState
+    case HIDE_MODAL:
+      return {}
     default:
       return state
   }

@@ -9,8 +9,9 @@ export default (state={}, action) => {
     case RECEIVE_RECIPES:
       return action.recipes
     case RECEIVE_RECIPE:
-      Object.assign(nextState, {[action.recipe.id]: action.recipe})
-      return nextState
+      // Object.assign(nextState, {[action.recipe.id]: action.recipe})
+      // return nextState
+      return {[action.recipe.id]: action.recipe}
     case REMOVE_RECIPE:
       delete nextState[action.recipeId]
       return nextState

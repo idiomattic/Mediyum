@@ -7,25 +7,37 @@ class CommentsModal extends React.Component {
   constructor(props) {
     super(props),
     this.state = {
-      body: '',
-      recipe_id: this.props.recipe.id,
-      commenter_id: this.props.currentUserId
+      commentsArr: [],
+      comment: {
+        body: '',
+        recipe_id: this.props.recipe.id,
+        commenter_id: this.props.currentUserId
+      }
     }
   }
 
   componentDidMount() {
+    let {fetchComments, recipe} = this.props
+    let filteredCommentsArr
     this.props.fetchComments()
+      .then(res => {
+        filteredCommentsArr = this.filterComments()
+      })
+    this.setState({
+      commentsArr: filteredCommentsArr
+    })
   }
 
   updateBody() {
     return e => this.setState({
-      body: e.target.value
+      comment: {body: e.target.value}
     })
   }
 
   filterComments() {
     let { comments } = this.props
-    return comments.filter(comment => comment.recipe_id === this.state.recipe_id)
+    let filteredComments = comments.filter(comment => comment.recipe_id === this.state.comment.recipe_id)
+    return(filteredComments)
   }
 
   render() {

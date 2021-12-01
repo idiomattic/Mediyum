@@ -1088,9 +1088,12 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, CommentsModal);
 
     _this = _super.call(this, props), _this.state = {
-      body: '',
-      recipe_id: _this.props.recipe.id,
-      commenter_id: _this.props.currentUserId
+      commentsArr: [],
+      comment: {
+        body: '',
+        recipe_id: _this.props.recipe.id,
+        commenter_id: _this.props.currentUserId
+      }
     };
     return _this;
   }
@@ -1098,28 +1101,42 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
   _createClass(CommentsModal, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchComments();
+      var _this2 = this;
+
+      var _this$props = this.props,
+          fetchComments = _this$props.fetchComments,
+          recipe = _this$props.recipe;
+      var filteredCommentsArr;
+      this.props.fetchComments().then(function (res) {
+        filteredCommentsArr = _this2.filterComments();
+      });
+      this.setState({
+        commentsArr: filteredCommentsArr
+      });
     }
   }, {
     key: "updateBody",
     value: function updateBody() {
-      var _this2 = this;
+      var _this3 = this;
 
       return function (e) {
-        return _this2.setState({
-          body: e.target.value
+        return _this3.setState({
+          comment: {
+            body: e.target.value
+          }
         });
       };
     }
   }, {
     key: "filterComments",
     value: function filterComments() {
-      var _this3 = this;
+      var _this4 = this;
 
       var comments = this.props.comments;
-      return comments.filter(function (comment) {
-        return comment.recipe_id === _this3.state.recipe_id;
+      var filteredComments = comments.filter(function (comment) {
+        return comment.recipe_id === _this4.state.comment.recipe_id;
       });
+      return filteredComments;
     }
   }, {
     key: "render",
@@ -3407,7 +3424,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/comment_actions */ "./frontend/actions/comment_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
@@ -3430,6 +3449,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_COMMENT:
       delete nextState[action.commentId];
       return nextState;
+
+    case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__.HIDE_MODAL:
+      return {};
 
     default:
       return state;
@@ -3602,8 +3624,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return action.recipes;
 
     case _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__.RECEIVE_RECIPE:
-      Object.assign(nextState, _defineProperty({}, action.recipe.id, action.recipe));
-      return nextState;
+      // Object.assign(nextState, {[action.recipe.id]: action.recipe})
+      // return nextState
+      return _defineProperty({}, action.recipe.id, action.recipe);
 
     case _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__.REMOVE_RECIPE:
       delete nextState[action.recipeId];
@@ -3931,7 +3954,13 @@ var createComment = function createComment(comment) {
       comment: comment
     }
   });
-};
+}; // const fetchComment = comment => (
+//   $.ajax({
+//     method: 'GET',
+//     url: `/api/comments/${comment.id}`
+//   })
+// )
+
 var fetchComments = function fetchComments() {
   return $.ajax({
     method: 'GET',
