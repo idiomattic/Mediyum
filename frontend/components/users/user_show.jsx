@@ -56,6 +56,14 @@ class UserShow extends React.Component {
     )
   }
 
+  followerCount() {
+    let {followers} = this.props
+    let followersCount = Object.values(followers).length
+    return(
+      <div className='followerCount'>{`${followersCount} Followers`}</div>
+    )
+  }
+
   isSelf() {
     let {userId, currentUserId} = this.props
     return userId === currentUserId ? null : this.displayFollowButton()
@@ -70,6 +78,7 @@ class UserShow extends React.Component {
       <div className='user-show'>
         <div className='user-show-header'>
           <h2 className='user-title'>{user.name}</h2>
+          {this.followerCount()}
           {this.isSelf()}
         </div>
         <br />

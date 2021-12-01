@@ -3059,6 +3059,15 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
       }, buttonText);
     }
   }, {
+    key: "followerCount",
+    value: function followerCount() {
+      var followers = this.props.followers;
+      var followersCount = Object.values(followers).length;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "followerCount"
+      }, "".concat(followersCount, " Followers"));
+    }
+  }, {
     key: "isSelf",
     value: function isSelf() {
       var _this$props3 = this.props,
@@ -3083,7 +3092,7 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
         className: "user-show-header"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
         className: "user-title"
-      }, user.name), this.isSelf()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.myStories());
+      }, user.name), this.followerCount(), this.isSelf()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.myStories());
     }
   }]);
 
