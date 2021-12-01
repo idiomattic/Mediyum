@@ -3021,7 +3021,9 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "toggleFollow",
-    value: function toggleFollow() {}
+    value: function toggleFollow() {
+      console.log(this.props.followers);
+    }
   }, {
     key: "displayFollowButton",
     value: function displayFollowButton() {
@@ -3104,8 +3106,8 @@ var mSTP = function mSTP(state, _ref) {
   return {
     currentUserId: state.session.currentUserId,
     user: user,
-    userId: userId // followed: Boolean(user.users_following[currentUserId])
-
+    userId: userId,
+    followers: state.entities.users.followers
   };
 };
 
@@ -3529,6 +3531,15 @@ var currentUserId = null;
       return nextState;
 
     case _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__.RECEIVE_USER:
+      var usersFollowing = {};
+
+      if (action.user.users_following.length > 0) {
+        action.user.users_following.forEach(function (user) {
+          usersFollowing[user.id] = user;
+        });
+      }
+
+      nextState['followers'] = usersFollowing;
       return Object.assign(nextState, _defineProperty({}, action.user.id, action.user));
 
     case _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__.RECEIVE_USERS:

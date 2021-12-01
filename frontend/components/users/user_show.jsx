@@ -32,7 +32,7 @@ class UserShow extends React.Component {
   }
 
   toggleFollow() {
-    
+    console.log(this.props.followers)
   }
 
   displayFollowButton() {

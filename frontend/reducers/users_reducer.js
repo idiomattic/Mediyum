@@ -16,6 +16,11 @@ export default (state={}, action) => {
       currentUserId = null
       return nextState
     case RECEIVE_USER:
+      let usersFollowing = {}
+      if (action.user.users_following.length > 0) {
+        action.user.users_following.forEach(user => {usersFollowing[user.id] = user})
+      }
+      nextState['followers'] = usersFollowing
       return Object.assign(nextState, { [action.user.id]: action.user})
     case RECEIVE_USERS:
       return action.users
