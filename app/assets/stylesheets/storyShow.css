@@ -1,3 +1,7 @@
+.story-show {
+  margin: 0 64px 0 64px;
+}
+
 .story-title {
   font-family: fell, Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 48px;
@@ -6,4 +10,14 @@
 .story-body {
   font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 21px;
+}
+
+.story-footer {
+  display: flex;
+  position: absolute;
+  bottom: 10%;
+}
+
+.story-footer div:last-child {
+  margin-left: 24px;
 }

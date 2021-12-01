@@ -26,11 +26,6 @@ class StoriesIndex extends React.Component {
               <StoriesIndexItemContainer key={i} story={story} />
             )
           }
-          {/* {
-            stories.map((story, i) => 
-              <StoriesIndexItem key={i} story={story} />
-            )
-          } */}
         </ul>
       </div>
     )

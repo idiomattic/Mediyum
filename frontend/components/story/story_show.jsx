@@ -49,8 +49,13 @@ class StoryShow extends React.Component {
         <br />
         <p className='story-body'>{story.body}</p>
         <br />
-        <div className='comments-button' onClick={() => this.showCommentsModal()}>
-          Comments
+        <div className='story-footer'>
+          <div className='yum-button'>
+            Yum
+          </div>
+          <div className='comments-button' onClick={() => this.showCommentsModal()}>
+            Comments
+          </div>
         </div>
         <br />
         {this.isOwner()}
