@@ -1,6 +1,7 @@
 import React from "react"
 import { withRouter } from "react-router"
 import UserStoriesIndexItem from "../story/user_story_index_item"
+import { Link } from "react-router-dom"
 
 
 class UserShow extends React.Component {
@@ -80,6 +81,7 @@ class UserShow extends React.Component {
           <h2 className='user-title'>{user.name}</h2>
           {this.followerCount()}
           {this.isSelf()}
+          <Link to='/feed'>Feed</Link>
         </div>
         <br />
         {this.myStories()}
