@@ -48,6 +48,7 @@ class StoryShow extends React.Component {
 
   handleYum() {
     this.props.createYum(this.state)
+      
   }
   
   render() {
