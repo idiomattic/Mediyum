@@ -1,5 +1,6 @@
 import React from "react"
 import StoriesIndexItem from "./stories_index_item"
+import StoriesIndexItemContainer from "./stories_index_item_container"
 
 class StoriesIndex extends React.Component {
   constructor(props) {
@@ -22,9 +23,14 @@ class StoriesIndex extends React.Component {
         <ul className='stories-list'>
           {
             stories.map((story, i) => 
-              <StoriesIndexItem key={i} story={story} />
+              <StoriesIndexItemContainer key={i} story={story} />
             )
           }
+          {/* {
+            stories.map((story, i) => 
+              <StoriesIndexItem key={i} story={story} />
+            )
+          } */}
         </ul>
       </div>
     )

@@ -5,15 +5,12 @@ import { fetchComments, createComment, deleteComment, updateComment } from "../.
 const _nullComments = []
 
 const mSTP = state => {
-  debugger
   return({
     currentUserId: state.session.currentUserId
   })
 };
 
 const mDTP = dispatch => ({
-  deleteComment: commentId => dispatch(deleteComment(commentId)),
-  updateComment: comment => dispatch(updateComment(comment))
 });
 
 export default connect(mSTP, mDTP)(StoriesIndexItem);
