@@ -15,6 +15,7 @@ class RecipeShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchRecipe(this.props.recipeId)
+      .then(res => this.setYumCount())
   }
   
   editRecipe() {
@@ -49,19 +50,19 @@ class RecipeShow extends React.Component {
     this.props.displayModal()
   }
 
-  yumCount() {
-    // let {yums} = this.props
-    // this.setState({ yumCount: this.props.yumCount})
-    // return this.state.yumCount
-    // console.log(yums)
-    // return yums.length || 0
-  }
-
   handleYum() {
     this.props.createYum(this.state.yum)
-      .then(this.setState(
+      .then(res => this.setState(
         { yumCount: this.props.yumCount}
       ))
+  }
+
+  setYumCount() {
+    if (this.props.recipe) {
+      this.setState({
+        yumCount: this.props.yumCount
+      })
+    }
   }
   
   render() {
@@ -69,11 +70,6 @@ class RecipeShow extends React.Component {
     if (!recipe || !recipe.author) {
       return null
     }
-    // let test
-    // if (recipe.yums) {
-    //   test = recipe.yums
-    // } 
-    // console.log('test', test)
     console.log('in show render', this.props)
     return(
       <div className='recipe-show'>

@@ -2034,7 +2034,11 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   _createClass(RecipeShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchRecipe(this.props.recipeId);
+      var _this2 = this;
+
+      this.props.fetchRecipe(this.props.recipeId).then(function (res) {
+        return _this2.setYumCount();
+      });
     }
   }, {
     key: "editRecipe",
@@ -2055,7 +2059,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "isOwner",
     value: function isOwner() {
-      var _this2 = this;
+      var _this3 = this;
 
       var _this$props2 = this.props,
           deleteRecipe = _this$props2.deleteRecipe,
@@ -2065,12 +2069,12 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       return recipe.author_id === currentUserId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "black-button",
         onClick: function onClick() {
-          return _this2.editRecipe();
+          return _this3.editRecipe();
         }
       }, "Edit Recipe"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "black-button",
         onClick: function onClick() {
-          return _this2.handleDelete();
+          return _this3.handleDelete();
         }
       }, "Delete Recipe")) : null;
     }
@@ -2085,35 +2089,35 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       this.props.displayModal();
     }
   }, {
-    key: "yumCount",
-    value: function yumCount() {// let {yums} = this.props
-      // this.setState({ yumCount: this.props.yumCount})
-      // return this.state.yumCount
-      // console.log(yums)
-      // return yums.length || 0
-    }
-  }, {
     key: "handleYum",
     value: function handleYum() {
-      this.props.createYum(this.state.yum).then(this.setState({
-        yumCount: this.props.yumCount
-      }));
+      var _this4 = this;
+
+      this.props.createYum(this.state.yum).then(function (res) {
+        return _this4.setState({
+          yumCount: _this4.props.yumCount
+        });
+      });
+    }
+  }, {
+    key: "setYumCount",
+    value: function setYumCount() {
+      if (this.props.recipe) {
+        this.setState({
+          yumCount: this.props.yumCount
+        });
+      }
     }
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this5 = this;
 
       var recipe = this.props.recipe;
 
       if (!recipe || !recipe.author) {
         return null;
-      } // let test
-      // if (recipe.yums) {
-      //   test = recipe.yums
-      // } 
-      // console.log('test', test)
-
+      }
 
       console.log('in show render', this.props);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2125,7 +2129,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "author",
         onClick: function onClick() {
-          return _this3.redirectToShow(recipe.author_id);
+          return _this5.redirectToShow(recipe.author_id);
         }
       }, recipe.author.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "recipe-body"
@@ -2136,14 +2140,14 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "yum-button",
         onClick: function onClick() {
-          return _this3.handleYum();
+          return _this5.handleYum();
         }
       }, "Yum"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "yum-count"
       }, this.state.yumCount)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comments-button",
         onClick: function onClick() {
-          return _this3.showCommentsModal();
+          return _this5.showCommentsModal();
         }
       }, "Comments")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.isOwner());
     }
@@ -2183,9 +2187,7 @@ var mSTP = function mSTP(state, _ref) {
   var recipeId = parseInt(match.params.recipeId);
   var recipe = state.entities.recipes[recipeId];
   var yums = recipe ? recipe.yums : null;
-  var yumCount = yums ? yums.length : 0; // console.log('recipe', recipe)
-  // console.log('yums', yums)
-
+  var yumCount = yums ? yums.length : 0;
   return {
     currentUserId: state.session.currentUserId,
     recipe: recipe,

@@ -9,8 +9,6 @@ const mSTP = (state, {match}) => {
   let recipe = state.entities.recipes[recipeId]
   let yums = recipe ? recipe.yums : null
   let yumCount = yums ? yums.length : 0
-  // console.log('recipe', recipe)
-  // console.log('yums', yums)
   return(
     {
       currentUserId: state.session.currentUserId,
