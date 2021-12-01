@@ -21,3 +21,11 @@
 .story-footer div:last-child {
   margin-left: 24px;
 }
+
+.author {
+  cursor: pointer;
+}
+
+.story-info {
+  margin-bottom: 40px;
+}

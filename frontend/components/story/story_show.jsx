@@ -1,5 +1,5 @@
 import React from "react"
-import { withRouter } from "react-router"
+import { Redirect, withRouter } from "react-router"
 
 class StoryShow extends React.Component {
   constructor(props) {
@@ -34,10 +34,18 @@ class StoryShow extends React.Component {
       ) : null
   }
 
+  redirectToShow(authorId) {
+    this.props.history.push(`/users/${authorId}`)
+  }
+
   showCommentsModal() {
     this.props.displayModal()
   }
 
+  yumCount() {
+    
+  }
+  
   render() {
     let { story } = this.props
     if (!story) {
@@ -47,6 +55,9 @@ class StoryShow extends React.Component {
       <div className='story-show'>
         <h2 className='story-title'>{story.title}</h2>
         <br />
+        <div className='story-info'>
+          <div className='author' onClick={() => this.redirectToShow(story.author_id)}>{story.author.name}</div>
+        </div>
         <p className='story-body'>{story.body}</p>
         <br />
         <div className='story-footer'>

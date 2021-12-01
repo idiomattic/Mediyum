@@ -545,6 +545,102 @@ var clearErrors = function clearErrors() {
 
 /***/ }),
 
+/***/ "./frontend/actions/yum_actions.js":
+/*!*****************************************!*\
+  !*** ./frontend/actions/yum_actions.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "RECEIVE_YUMS": () => (/* binding */ RECEIVE_YUMS),
+/* harmony export */   "RECEIVE_YUM": () => (/* binding */ RECEIVE_YUM),
+/* harmony export */   "REMOVE_YUM": () => (/* binding */ REMOVE_YUM),
+/* harmony export */   "RECEIVE_YUM_ERRORS": () => (/* binding */ RECEIVE_YUM_ERRORS),
+/* harmony export */   "CLEAR_YUM_ERRORS": () => (/* binding */ CLEAR_YUM_ERRORS),
+/* harmony export */   "createYum": () => (/* binding */ createYum),
+/* harmony export */   "fetchYums": () => (/* binding */ fetchYums),
+/* harmony export */   "deleteYum": () => (/* binding */ deleteYum),
+/* harmony export */   "clearErrors": () => (/* binding */ clearErrors)
+/* harmony export */ });
+/* harmony import */ var _util_yum_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/yum_api_util */ "./frontend/util/yum_api_util.js");
+
+var RECEIVE_YUMS = 'RECEIVE_YUMS';
+var RECEIVE_YUM = 'RECEIVE_YUM';
+var REMOVE_YUM = 'REMOVE_YUM';
+var RECEIVE_YUM_ERRORS = 'RECEIVE_YUM_ERRORS';
+var CLEAR_YUM_ERRORS = 'CLEAR_YUM_ERRORS';
+
+var receiveYums = function receiveYums(yums) {
+  return {
+    type: RECEIVE_YUMS,
+    yums: yums
+  };
+};
+
+var receiveYum = function receiveYum(yum) {
+  return {
+    type: RECEIVE_YUM,
+    yum: yum
+  };
+};
+
+var removeYum = function removeYum(yum) {
+  return {
+    type: REMOVE_YUM,
+    yum: yum
+  };
+};
+
+var receiveYumErrors = function receiveYumErrors(errors) {
+  return {
+    type: RECEIVE_YUM_ERRORS,
+    errors: errors
+  };
+};
+
+var clearYumErrors = function clearYumErrors() {
+  return {
+    type: CLEAR_YUM_ERRORS
+  };
+};
+
+var createYum = function createYum(yum) {
+  return function (dispatch) {
+    return _util_yum_api_util__WEBPACK_IMPORTED_MODULE_0__.createYum(yum).then(function (yum) {
+      return dispatch(receiveYum(yum));
+    }, function (errors) {
+      return dispatch(receiveYumErrors(errors.responseJSON));
+    });
+  };
+};
+var fetchYums = function fetchYums() {
+  return function (dispatch) {
+    return _util_yum_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchYums().then(function (yums) {
+      return dispatch(receiveYums(yums));
+    }, function (errors) {
+      return dispatch(receiveYumErrors(errors.responseJSON));
+    });
+  };
+};
+var deleteYum = function deleteYum(yum) {
+  return function (dispatch) {
+    return _util_yum_api_util__WEBPACK_IMPORTED_MODULE_0__.deleteYum(yum).then(function () {
+      return dispatch(removeYum(yum));
+    }, function (errors) {
+      return dispatch(receiveYumErrors(errors.responseJSON));
+    });
+  };
+};
+var clearErrors = function clearErrors() {
+  return function (dispatch) {
+    return dispatch(clearYumErrors());
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/components/app.jsx":
 /*!*************************************!*\
   !*** ./frontend/components/app.jsx ***!
@@ -2535,10 +2631,18 @@ var StoryShow = /*#__PURE__*/function (_React$Component) {
       }, "Delete Story")) : null;
     }
   }, {
+    key: "redirectToShow",
+    value: function redirectToShow(authorId) {
+      this.props.history.push("/users/".concat(authorId));
+    }
+  }, {
     key: "showCommentsModal",
     value: function showCommentsModal() {
       this.props.displayModal();
     }
+  }, {
+    key: "yumCount",
+    value: function yumCount() {}
   }, {
     key: "render",
     value: function render() {
@@ -2554,7 +2658,14 @@ var StoryShow = /*#__PURE__*/function (_React$Component) {
         className: "story-show"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
         className: "story-title"
-      }, story.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+      }, story.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "story-info"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "author",
+        onClick: function onClick() {
+          return _this2.redirectToShow(story.author_id);
+        }
+      }, story.author.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "story-body"
       }, story.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "story-footer"
@@ -3277,21 +3388,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
 /* harmony import */ var _stories_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./stories_reducer */ "./frontend/reducers/stories_reducer.js");
 /* harmony import */ var _comments_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./comments_reducer */ "./frontend/reducers/comments_reducer.js");
 /* harmony import */ var _follows_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./follows_reducer */ "./frontend/reducers/follows_reducer.js");
+/* harmony import */ var _yums_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./yums_reducer */ "./frontend/reducers/yums_reducer.js");
 
 
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_4__.combineReducers)({
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_5__.combineReducers)({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_0__["default"],
   stories: _stories_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   comments: _comments_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  follows: _follows_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
+  follows: _follows_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
+  yums: _yums_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
 }));
 
 /***/ }),
@@ -3646,6 +3760,45 @@ var currentUserId = null;
 
 /***/ }),
 
+/***/ "./frontend/reducers/yums_reducer.js":
+/*!*******************************************!*\
+  !*** ./frontend/reducers/yums_reducer.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_yum_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/yum_actions */ "./frontend/actions/yum_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  var nextState = Object.assign({}, state);
+
+  switch (action.type) {
+    case _actions_yum_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_YUMS:
+      return action.yums;
+
+    case _actions_yum_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_YUM:
+      return _defineProperty({}, action.yum.id, action.yum);
+
+    case _actions_yum_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_YUM:
+      delete nextState[action.yum.id];
+      return nextState;
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
 /***/ "./frontend/store/store.js":
 /*!*********************************!*\
   !*** ./frontend/store/store.js ***!
@@ -3956,6 +4109,43 @@ var deleteUser = function deleteUser(userId) {
   return $.ajax({
     method: 'DELETE',
     url: "/api/users/".concat(userId)
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/yum_api_util.js":
+/*!***************************************!*\
+  !*** ./frontend/util/yum_api_util.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "fetchYums": () => (/* binding */ fetchYums),
+/* harmony export */   "createYum": () => (/* binding */ createYum),
+/* harmony export */   "deleteYum": () => (/* binding */ deleteYum)
+/* harmony export */ });
+var fetchYums = function fetchYums() {
+  return $.ajax({
+    method: 'GET',
+    url: '/api/yums'
+  });
+};
+var createYum = function createYum(yum) {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/yums',
+    data: {
+      yum: yum
+    }
+  });
+};
+var deleteYum = function deleteYum(yum) {
+  return $.ajax({
+    method: 'DELETE',
+    url: "/api/yums/".concat(yum.id)
   });
 };
 
