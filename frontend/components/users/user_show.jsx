@@ -37,6 +37,8 @@ class UserShow extends React.Component {
     if (following) {
       let followToDelete = Object.values(receivedFollows).filter(follow => follow.follower_id === 1)[0]
       this.props.deleteFollow(followToDelete)
+    } else {
+      this.props.createFollow(this.state.follow)
     }
   }
 

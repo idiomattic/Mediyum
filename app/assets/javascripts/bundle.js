@@ -3033,6 +3033,8 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
           return follow.follower_id === 1;
         })[0];
         this.props.deleteFollow(followToDelete);
+      } else {
+        this.props.createFollow(this.state.follow);
       }
     }
   }, {
