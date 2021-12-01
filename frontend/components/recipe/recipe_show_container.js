@@ -6,14 +6,20 @@ import { createYum } from "../../actions/yum_actions";
 
 const mSTP = (state, {match}) => {
   const recipeId = parseInt(match.params.recipeId)
-  const recipe = state.entities.recipes[recipeId]
-  const yums = recipe ? recipe.yums : null
-  return({
-    currentUserId: state.session.currentUserId,
-    recipe,
-    recipeId,
-    yums
-  })
+  let recipe = state.entities.recipes[recipeId]
+  let yums = recipe ? recipe.yums : null
+  let yumCount = yums ? yums.length : 0
+  // console.log('recipe', recipe)
+  // console.log('yums', yums)
+  return(
+    {
+      currentUserId: state.session.currentUserId,
+      recipe,
+      recipeId,
+      yums,
+      yumCount
+    }
+  )
 }
 
 const mDTP = dispatch => ({

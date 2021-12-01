@@ -2022,6 +2022,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
+      yumCount: _this.props.yumCount,
       yum: {
         yummer_id: props.currentUserId,
         recipe_id: props.recipeId
@@ -2085,16 +2086,18 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "yumCount",
-    value: function yumCount() {
-      var yums = this.props.yums;
-      return yums.length || 0;
+    value: function yumCount() {// let {yums} = this.props
+      // this.setState({ yumCount: this.props.yumCount})
+      // return this.state.yumCount
+      // console.log(yums)
+      // return yums.length || 0
     }
   }, {
     key: "handleYum",
     value: function handleYum() {
-      this.props.createYum(this.state.yum); // .then(this.setState({
-      //   yum: Object.assign({}, this.state)
-      // }))
+      this.props.createYum(this.state.yum).then(this.setState({
+        yumCount: this.props.yumCount
+      }));
     }
   }, {
     key: "render",
@@ -2105,8 +2108,14 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
 
       if (!recipe || !recipe.author) {
         return null;
-      }
+      } // let test
+      // if (recipe.yums) {
+      //   test = recipe.yums
+      // } 
+      // console.log('test', test)
 
+
+      console.log('in show render', this.props);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "recipe-show"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
@@ -2131,7 +2140,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
         }
       }, "Yum"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "yum-count"
-      }, this.yumCount())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, this.state.yumCount)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comments-button",
         onClick: function onClick() {
           return _this3.showCommentsModal();
@@ -2174,11 +2183,15 @@ var mSTP = function mSTP(state, _ref) {
   var recipeId = parseInt(match.params.recipeId);
   var recipe = state.entities.recipes[recipeId];
   var yums = recipe ? recipe.yums : null;
+  var yumCount = yums ? yums.length : 0; // console.log('recipe', recipe)
+  // console.log('yums', yums)
+
   return {
     currentUserId: state.session.currentUserId,
     recipe: recipe,
     recipeId: recipeId,
-    yums: yums
+    yums: yums,
+    yumCount: yumCount
   };
 };
 
@@ -2397,6 +2410,9 @@ var RecipesIndexItem = /*#__PURE__*/function (_React$Component) {
       this.props.history.push("/users/".concat(recipe.author.id));
     }
   }, {
+    key: "getDate",
+    value: function getDate() {}
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -2410,14 +2426,18 @@ var RecipesIndexItem = /*#__PURE__*/function (_React$Component) {
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
         className: "recipe-list-item"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "recipe-info-wrapper"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "author-link-wrapper"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
         to: "/users/".concat(author.id)
-      }, author.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
+      }, author.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
         onClick: function onClick() {
           return _this2.handleClick();
         },
         className: "recipe-item-title"
-      }, this.props.recipe.title));
+      }, this.props.recipe.title)));
     }
   }]);
 
@@ -3596,6 +3616,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     case _actions_yum_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_YUM:
       // Object.assign(nextState, {[action.yum.recipe.id]: action.yum.recipe})
       // debugger
+      nextState[action.yum.recipe.id].yums.push(action.yum); // nextState.recipes.yums[action.yum.id] = action.yum
+      // return Object.assign(nextState, { [action.yum.id]: action.yum })
+      // debugger
+
       return nextState;
 
     default:

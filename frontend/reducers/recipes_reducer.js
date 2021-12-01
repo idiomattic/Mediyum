@@ -20,6 +20,10 @@ export default (state={}, action) => {
     case RECEIVE_YUM:
       // Object.assign(nextState, {[action.yum.recipe.id]: action.yum.recipe})
       // debugger
+      nextState[action.yum.recipe.id].yums.push(action.yum)
+      // nextState.recipes.yums[action.yum.id] = action.yum
+      // return Object.assign(nextState, { [action.yum.id]: action.yum })
+      // debugger
       return nextState
     default:
       return state

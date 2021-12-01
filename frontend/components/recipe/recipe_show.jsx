@@ -5,6 +5,7 @@ class RecipeShow extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      yumCount: this.props.yumCount,
       yum: {
         yummer_id: props.currentUserId,
         recipe_id: props.recipeId
@@ -49,15 +50,18 @@ class RecipeShow extends React.Component {
   }
 
   yumCount() {
-    let {yums} = this.props
-    return yums.length || 0
+    // let {yums} = this.props
+    // this.setState({ yumCount: this.props.yumCount})
+    // return this.state.yumCount
+    // console.log(yums)
+    // return yums.length || 0
   }
 
   handleYum() {
     this.props.createYum(this.state.yum)
-      // .then(this.setState({
-      //   yum: Object.assign({}, this.state)
-      // }))
+      .then(this.setState(
+        { yumCount: this.props.yumCount}
+      ))
   }
   
   render() {
@@ -65,6 +69,12 @@ class RecipeShow extends React.Component {
     if (!recipe || !recipe.author) {
       return null
     }
+    // let test
+    // if (recipe.yums) {
+    //   test = recipe.yums
+    // } 
+    // console.log('test', test)
+    console.log('in show render', this.props)
     return(
       <div className='recipe-show'>
         <h2 className='recipe-title'>{recipe.title}</h2>
@@ -80,7 +90,8 @@ class RecipeShow extends React.Component {
               Yum
             </div>
             <div className='yum-count'>
-              {this.yumCount()}
+              {this.state.yumCount}
+              {/* {this.yumCount()} */}
             </div>
           </div>
           <div className='comments-button' onClick={() => this.showCommentsModal()}>

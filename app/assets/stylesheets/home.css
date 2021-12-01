@@ -40,3 +40,7 @@
   font-weight: 800;
   cursor: pointer;
 }
+
+.author-link-wrapper {
+  padding-bottom: 8px;
+}

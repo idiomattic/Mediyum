@@ -18,6 +18,10 @@ class RecipesIndexItem extends React.Component {
     this.props.history.push(`/users/${recipe.author.id}`)
   }
 
+  getDate() {
+    
+  }
+
   render() {
     let {recipe} = this.props
     let {author} = this.props.recipe
@@ -26,8 +30,14 @@ class RecipesIndexItem extends React.Component {
     }
     return(
       <li className='recipe-list-item'>
-        <Link to={`/users/${author.id}`} >{author.name}</Link>
-        <h3 onClick={() => this.handleClick()} className='recipe-item-title'>{this.props.recipe.title}</h3>
+        <div className='recipe-info-wrapper'>
+          <div className='author-link-wrapper'>
+            <Link to={`/users/${author.id}`} >{author.name}</Link>
+          </div>
+          <h3 onClick={() => this.handleClick()} className='recipe-item-title'>
+            {this.props.recipe.title}
+          </h3>
+        </div>
       </li>
     )
   }
