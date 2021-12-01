@@ -1,7 +1,7 @@
 # json.extract! user, :id, :name, :email
 json.(user, :id, :name, :email)
 
-json.stories user.stories
+json.recipes user.recipes
 
 json.comments user.comments
 

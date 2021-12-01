@@ -21,6 +21,6 @@ class Api::YumsController < ApplicationController
   end
 
   def yum_params
-    params.require(:yum).permit(:yummer_id, :story_id, :comment_id)
+    params.require(:yum).permit(:yummer_id, :recipe_id, :comment_id)
   end
 end

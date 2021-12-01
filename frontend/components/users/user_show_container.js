@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { fetchUser, updateUser, deleteUser } from "../../actions/user_actions";
-import { fetchStories } from "../../actions/story_actions";
+import { fetchRecipes } from "../../actions/recipe_actions";
 import UserShow from "./user_show";
 import { createFollow, deleteFollow, fetchFollows } from "../../actions/follow_actions";
 
@@ -21,7 +21,7 @@ const mDTP = dispatch => ({
   fetchUser: userId => dispatch(fetchUser(userId)),
   updateUser: user => dispatch(updateUser(user)),
   deleteUser: userId => dispatch(deleteUser(userId)),
-  fetchStories: () => dispatch(fetchStories()),
+  fetchRecipes: () => dispatch(fetchRecipes()),
   createFollow: follow => dispatch(createFollow(follow)),
   deleteFollow: followId => dispatch(deleteFollow(followId)),
   fetchFollows: () => dispatch(fetchFollows())

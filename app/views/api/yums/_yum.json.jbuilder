@@ -1,7 +1,7 @@
-json.(yum, :id, :yummer_id, :story_id, :comment_id)
+json.(yum, :id, :yummer_id, :recipe_id, :comment_id)
 
 json.yummer yum.yummer
 
-json.story yum.story
+json.recipe yum.recipe
 
 json.comment yum.comment

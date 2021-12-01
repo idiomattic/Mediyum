@@ -5,22 +5,22 @@
 #  id           :bigint           not null, primary key
 #  body         :text             not null
 #  commenter_id :integer          not null
-#  story_id     :integer          not null
+#  recipe_id    :integer          not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
 class Comment < ApplicationRecord
-  validates :body, :commenter_id, :story_id, presence: true
+  validates :body, :commenter_id, :recipe_id, presence: true
   
   belongs_to :commenter,
     primary_key: :id,
     foreign_key: :commenter_id,
     class_name: :User
 
-  belongs_to :story,
+  belongs_to :recipe,
     primary_key: :id,
-    foreign_key: :story_id,
-    class_name: :Story
+    foreign_key: :recipe_id,
+    class_name: :Recipe
 
   has_many :yums,
     primary_key: :id,

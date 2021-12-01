@@ -10,13 +10,13 @@ users = User.create([
   { email: 'suzie@demo.demo', password: '111111', name: 'Suzie'}
 ])
 
-stories = Story.create([
-  { title: 'How to test that your stories are working', body: 'seed some data, firstly', author_id: 3}
+recipes = Recipe.create([
+  { title: 'How to test that your recipes are working', body: 'seed some data, firstly', author_id: 3}
 ])
 
 comments = Comment.create([
-  { body: 'just a plain old comment', commenter_id: 3, story_id: 1},
-  { body: 'I like this content', commenter_id: 7, story_id: 1}
+  { body: 'just a plain old comment', commenter_id: 3, recipe_id: 1},
+  { body: 'I like this content', commenter_id: 7, recipe_id: 1}
 ])
 
 follows = Follow.create([
@@ -26,8 +26,8 @@ follows = Follow.create([
 ])
 
 yums = Yum.create([
-  { yummer_id: 1, story_id: 1 },
-  { yummer_id: 1, story_id: 1, comment_id: 1 },
-  { yummer_id: 2, story_id: 1 },
-  { yummer_id: 2, story_id: 3 }
+  { yummer_id: 1, recipe_id: 1 },
+  { yummer_id: 1, recipe_id: 1, comment_id: 1 },
+  { yummer_id: 2, recipe_id: 1 },
+  { yummer_id: 2, recipe_id: 3 }
 ])

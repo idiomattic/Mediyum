@@ -4,9 +4,9 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util'
 import HeaderContainer from './header/header_container'
 import HomeContainer from './home/home_container'
 import Modal from './modal/modal_container'
-import StoryFormContainer from './story/create_story_form_container'
-import UpdateStoryFormContainer from './story/update_story_form_container'
-import StoryShowContainer from './story/story_show_container'
+import RecipeFormContainer from './recipe/create_recipe_form_container'
+import UpdateRecipeFormContainer from './recipe/update_recipe_form_container'
+import RecipeShowContainer from './recipe/recipe_show_container'
 import UserShowContainer from './users/user_show_container'
 
 const App = () => {
@@ -17,16 +17,16 @@ const App = () => {
       <Switch>
         <AuthRoute exact path='/' component={HeaderContainer}/>
         <Route path='/feed' component={HeaderContainer}/>
-        <Route path='/stories' component={HeaderContainer}/>
+        <Route path='/recipes' component={HeaderContainer}/>
         <Route path='/users' component={HeaderContainer}/>
       </Switch>
     </header>
     <div className='app-body'>
       <Switch>
         <ProtectedRoute exact path='/feed' component={HomeContainer}/>
-        <ProtectedRoute exact path='/stories/new' component={StoryFormContainer}/>
-        <ProtectedRoute exact path='/stories/:storyId' component={StoryShowContainer}/>
-        <ProtectedRoute exact path='/stories/:storyId/edit' component={UpdateStoryFormContainer}/>
+        <ProtectedRoute exact path='/recipes/new' component={RecipeFormContainer}/>
+        <ProtectedRoute exact path='/recipes/:recipeId' component={RecipeShowContainer}/>
+        <ProtectedRoute exact path='/recipes/:recipeId/edit' component={UpdateRecipeFormContainer}/>
         <ProtectedRoute exact path='/users/:userId' component={UserShowContainer}/>
       </Switch>
     </div>

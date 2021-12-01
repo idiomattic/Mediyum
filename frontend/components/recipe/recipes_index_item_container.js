@@ -1,4 +1,4 @@
-import StoriesIndexItem from "./stories_index_item";
+import RecipesIndexItem from "./recipes_index_item";
 import { connect } from "react-redux";
 import { fetchComments, createComment, deleteComment, updateComment } from "../../actions/comment_actions";
 
@@ -13,4 +13,4 @@ const mSTP = state => {
 const mDTP = dispatch => ({
 });
 
-export default connect(mSTP, mDTP)(StoriesIndexItem);
+export default connect(mSTP, mDTP)(RecipesIndexItem);

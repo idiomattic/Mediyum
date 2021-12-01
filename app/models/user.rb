@@ -15,10 +15,10 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true}
 
-  has_many :stories,
+  has_many :recipes,
     primary_key: :id,
     foreign_key: :author_id,
-    class_name: :Story
+    class_name: :Recipe
 
   has_many :comments,
     primary_key: :id,

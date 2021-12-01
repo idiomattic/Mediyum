@@ -12,9 +12,9 @@ class DropdownModal extends React.Component {
     this.props.hideModal()
   }
 
-  redirectToStoryForm() {
+  redirectToRecipeForm() {
     this.props.hideModal()
-    this.props.history.push('/stories/new')
+    this.props.history.push('/recipes/new')
   }
 
   redirectToFeed() {
@@ -34,11 +34,11 @@ class DropdownModal extends React.Component {
         <li className='user-show-button'>
           <Link to={`/users/${currentUserId}`} onClick={() => this.redirectToShow()}>{currentUser.name}</Link>
         </li>
-        <li className='write-story'>
-          <Link to='/stories/new' onClick={() => this.redirectToStoryForm()}>Write a story</Link>
+        <li className='write-recipe'>
+          <Link to='/recipes/new' onClick={() => this.redirectToRecipeForm()}>Write a recipe</Link>
         </li>
         <li>
-          <Link to='/feed' onClick={() => this.redirectToFeed()}>Stories</Link>
+          <Link to='/feed' onClick={() => this.redirectToFeed()}>Recipes</Link>
         </li>
         <li className='sign-out'>
           <Link to='/' onClick={() => this.handleSignout()}>Sign Out</Link>

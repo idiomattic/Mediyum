@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: stories
+# Table name: recipes
 #
 #  id         :bigint           not null, primary key
 #  title      :string           not null
@@ -9,7 +9,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Story < ApplicationRecord
+class Recipe < ApplicationRecord
   validates :title, :body, :author_id, presence: true
   
   belongs_to :author,
@@ -19,12 +19,12 @@ class Story < ApplicationRecord
 
   has_many :comments,
     primary_key: :id,
-    foreign_key: :story_id,
+    foreign_key: :recipe_id,
     class_name: :Comment
 
   has_many :yums,
     primary_key: :id,
-    foreign_key: :story_id,
+    foreign_key: :recipe_id,
     class_name: :Yum
   
   has_many :users_who_yummed,

@@ -1,24 +1,29 @@
 import React from "react";
 import { withRouter } from "react-router";
 
-class StoryForm extends React.Component {
+class UpdateRecipeForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      title: '',
-      body: '',
-      author_id: this.props.currentUserId
-    }
+    let { preloadedInfo } = this.props
+    this.state = preloadedInfo
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.changed = false
+  }
+
+  redirectToShow() {
+    this.props.history.push(`/recipes/${this.state.id}`)
   }
 
   handleSubmit(e) {
     e.preventDefault()
-    this.props.action(this.state)
-      .then(res => this.props.history.push(`/feed`))
+    this.changed ? 
+      this.props.action(this.state)
+        .then(res => this.redirectToShow())
+      : this.redirectToShow()
   }
 
   update(field) {
+    this.changed = true
     return e => this.setState({
       [field]: e.target.value
     })
@@ -26,11 +31,11 @@ class StoryForm extends React.Component {
 
   render() {
     return(
-      <div className='story-form-div'>
-        <form className='story-form' onSubmit={this.handleSubmit}>
+      <div className='recipe-form-div'>
+        <form className='recipe-form' onSubmit={this.handleSubmit}>
             <label>Title
               <br />
-              <input className='story-title' 
+              <input className='recipe-title' 
                 type="text" 
                 value={this.state.title} 
                 onChange={this.update('title')} />
@@ -38,7 +43,7 @@ class StoryForm extends React.Component {
             <br />
             <label>Body
               <br />
-              <textarea className='story-body' 
+              <textarea className='recipe-body' 
                 type="text" 
                 value={this.state.body} 
                 onChange={this.update('body')} />
@@ -54,4 +59,4 @@ class StoryForm extends React.Component {
   }
 }
 
-export default withRouter(StoryForm)
+export default withRouter(UpdateRecipeForm)

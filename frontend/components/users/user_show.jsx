@@ -1,6 +1,6 @@
 import React from "react"
 import { withRouter } from "react-router"
-import UserStoriesIndexItem from "../story/user_story_index_item"
+import UserRecipesIndexItem from "../recipe/user_recipes_index_item"
 import { Link } from "react-router-dom"
 
 
@@ -19,13 +19,13 @@ class UserShow extends React.Component {
     this.props.fetchUser(this.props.userId)
   }
 
-  myStories() {
-    const stories = this.props.user.stories || []
+  myRecipes() {
+    const recipes = this.props.user.recipes || []
     return(
-      <ul className='users-stories-list'>
+      <ul className='users-recipes-list'>
         {
-          stories.map((story, i) => 
-            <UserStoriesIndexItem key={i} story={story} className='users-stories-list-item'/>
+          recipes.map((recipe, i) => 
+            <UserRecipesIndexItem key={i} recipe={recipe} className='users-recipes-list-item'/>
           )
         }
       </ul>
@@ -84,7 +84,7 @@ class UserShow extends React.Component {
           <Link to='/feed'>Feed</Link>
         </div>
         <br />
-        {this.myStories()}
+        {this.myRecipes()}
       </div>
     )
   }

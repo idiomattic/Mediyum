@@ -1,18 +1,18 @@
-.story-show {
+.recipe-show {
   margin: 0 64px 0 64px;
 }
 
-.story-title {
+.recipe-title {
   font-family: fell, Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 48px;
 }
 
-.story-body {
+.recipe-body {
   font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 21px;
 }
 
-.story-footer {
+.recipe-footer {
   display: flex;
   position: absolute;
   bottom: 10%;
@@ -26,7 +26,7 @@
   cursor: pointer;
 }
 
-.story-info {
+.recipe-info {
   margin-bottom: 40px;
 }
 

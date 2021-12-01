@@ -8,7 +8,7 @@ class CommentsModal extends React.Component {
     super(props),
     this.state = {
       body: '',
-      story_id: this.props.story.id,
+      recipe_id: this.props.recipe.id,
       commenter_id: this.props.currentUserId
     }
   }
@@ -25,18 +25,18 @@ class CommentsModal extends React.Component {
 
   filterComments() {
     let { comments } = this.props
-    return comments.filter(comment => comment.story_id === this.state.story_id)
+    return comments.filter(comment => comment.recipe_id === this.state.recipe_id)
   }
 
   render() {
     let { modal } = this.props
-    const storyComments = this.filterComments()
+    const recipeComments = this.filterComments()
     return !modal ? null : (
       <div className='comments-modal'>
         {<CommentFormContainer />}
         <ul className="comments-list">
           {
-            storyComments.map((comment, i) => 
+            recipeComments.map((comment, i) => 
               <CommentsIndexItemContainer key={i} comment={comment} />
             )
           }

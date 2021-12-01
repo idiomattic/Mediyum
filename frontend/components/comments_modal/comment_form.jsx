@@ -5,7 +5,7 @@ class CommentForm extends React.Component {
     super(props)
     this.state = this.props.comment || {
         body: '',
-        story_id: this.props.story.id,
+        recipe_id: this.props.recipe.id,
         commenter_id: this.props.currentUserId
       }
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -14,7 +14,7 @@ class CommentForm extends React.Component {
   resetState() {
     this.setState({
       body: '',
-      story_id: this.props.story.id,
+      recipe_id: this.props.recipe.id,
       commenter_id: this.props.currentUserId
     })
   }

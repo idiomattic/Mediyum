@@ -1,29 +1,24 @@
 import React from "react";
 import { withRouter } from "react-router";
 
-class UpdateStoryForm extends React.Component {
+class RecipeForm extends React.Component {
   constructor(props) {
     super(props)
-    let { preloadedInfo } = this.props
-    this.state = preloadedInfo
+    this.state = {
+      title: '',
+      body: '',
+      author_id: this.props.currentUserId
+    }
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.changed = false
-  }
-
-  redirectToShow() {
-    this.props.history.push(`/stories/${this.state.id}`)
   }
 
   handleSubmit(e) {
     e.preventDefault()
-    this.changed ? 
-      this.props.action(this.state)
-        .then(res => this.redirectToShow())
-      : this.redirectToShow()
+    this.props.action(this.state)
+      .then(res => this.props.history.push(`/feed`))
   }
 
   update(field) {
-    this.changed = true
     return e => this.setState({
       [field]: e.target.value
     })
@@ -31,11 +26,11 @@ class UpdateStoryForm extends React.Component {
 
   render() {
     return(
-      <div className='story-form-div'>
-        <form className='story-form' onSubmit={this.handleSubmit}>
+      <div className='recipe-form-div'>
+        <form className='recipe-form' onSubmit={this.handleSubmit}>
             <label>Title
               <br />
-              <input className='story-title' 
+              <input className='recipe-title' 
                 type="text" 
                 value={this.state.title} 
                 onChange={this.update('title')} />
@@ -43,7 +38,7 @@ class UpdateStoryForm extends React.Component {
             <br />
             <label>Body
               <br />
-              <textarea className='story-body' 
+              <textarea className='recipe-body' 
                 type="text" 
                 value={this.state.body} 
                 onChange={this.update('body')} />
@@ -59,4 +54,4 @@ class UpdateStoryForm extends React.Component {
   }
 }
 
-export default withRouter(UpdateStoryForm)
+export default withRouter(RecipeForm)

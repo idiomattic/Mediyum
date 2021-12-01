@@ -1,5 +1,5 @@
 import { RECEIVE_YUMS, RECEIVE_YUM, REMOVE_YUM } from "../actions/yum_actions"
-import { RECEIVE_STORY } from "../actions/story_actions"
+import { RECEIVE_RECIPE } from "../actions/recipe_actions"
 
 export default (state={}, action) => {
   Object.freeze(state)
@@ -12,8 +12,8 @@ export default (state={}, action) => {
     case REMOVE_YUM:
       delete nextState[action.yum.id]
       return nextState
-    case RECEIVE_STORY:
-      action.story.yums.forEach(yum => {
+    case RECEIVE_RECIPE:
+      action.recipe.yums.forEach(yum => {
         nextState[yum.id] = yum
       });
       return nextState

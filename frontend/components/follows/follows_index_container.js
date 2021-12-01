@@ -13,4 +13,4 @@ const mDTP = dispatch => ({
   fetchFollows: () => dispatch(fetchFollows()),
 })
 
-export default connect(mSTP, mDTP)(StoriesIndex)
+export default connect(mSTP, mDTP)(RecipesIndex)

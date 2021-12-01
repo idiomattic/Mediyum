@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_30_235235) do
+ActiveRecord::Schema.define(version: 2021_12_01_173023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(version: 2021_11_30_235235) do
   create_table "comments", force: :cascade do |t|
     t.text "body", null: false
     t.integer "commenter_id", null: false
-    t.integer "story_id", null: false
+    t.integer "recipe_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["story_id"], name: "index_comments_on_story_id"
+    t.index ["recipe_id"], name: "index_comments_on_recipe_id"
   end
 
   create_table "follows", force: :cascade do |t|
@@ -33,14 +33,14 @@ ActiveRecord::Schema.define(version: 2021_11_30_235235) do
     t.index ["follower_id"], name: "index_follows_on_follower_id"
   end
 
-  create_table "stories", force: :cascade do |t|
+  create_table "recipes", force: :cascade do |t|
     t.string "title", null: false
     t.text "body", null: false
     t.integer "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "index_stories_on_author_id"
-    t.index ["title"], name: "index_stories_on_title"
+    t.index ["author_id"], name: "index_recipes_on_author_id"
+    t.index ["title"], name: "index_recipes_on_title"
   end
 
   create_table "users", force: :cascade do |t|
@@ -56,12 +56,12 @@ ActiveRecord::Schema.define(version: 2021_11_30_235235) do
 
   create_table "yums", force: :cascade do |t|
     t.integer "yummer_id", null: false
-    t.integer "story_id", null: false
+    t.integer "recipe_id", null: false
     t.integer "comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["comment_id"], name: "index_yums_on_comment_id"
-    t.index ["story_id"], name: "index_yums_on_story_id"
+    t.index ["recipe_id"], name: "index_yums_on_recipe_id"
     t.index ["yummer_id"], name: "index_yums_on_yummer_id"
   end
 

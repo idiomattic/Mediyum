@@ -48594,3 +48594,735 @@ Processing by Api::StoriesController#show as JSON
 Completed 200 OK in 48ms (Views: 39.4ms | ActiveRecord: 5.9ms)
 
 
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8451095875009820235)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to ChangeToRecipes (20211201173023)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (2.6ms)[0m  [1m[35mALTER TABLE "story" RENAME TO "recipe"[0m
+  ↳ db/migrate/20211201173023_change_to_recipes.rb:3
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(8451095875009820235)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8451095875009820235)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to ChangeToRecipes (20211201173023)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (8.0ms)[0m  [1m[35mALTER TABLE "stories" RENAME TO "recipes"[0m
+  ↳ db/migrate/20211201173023_change_to_recipes.rb:3
+  [1m[35m (1.3ms)[0m  [1m[35mALTER INDEX "stories_pkey" RENAME TO "recipes_pkey"[0m
+  ↳ db/migrate/20211201173023_change_to_recipes.rb:3
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "public"."stories_id_seq" RENAME TO "recipes_id_seq"[0m
+  ↳ db/migrate/20211201173023_change_to_recipes.rb:3
+  [1m[35m (0.6ms)[0m  [1m[35mALTER INDEX "index_stories_on_author_id" RENAME TO "index_recipes_on_author_id"[0m
+  ↳ db/migrate/20211201173023_change_to_recipes.rb:3
+  [1m[35m (0.6ms)[0m  [1m[35mALTER INDEX "index_stories_on_title" RENAME TO "index_recipes_on_title"[0m
+  ↳ db/migrate/20211201173023_change_to_recipes.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211201173023"]]
+  ↳ bin/rails:9
+  [1m[35m (4.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (1.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(8451095875009820235)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2021-12-01 09:54:34 -0800
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/matthew/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/97f551fcbde90d28/variables" for ::1 at 2021-12-01 09:54:35 -0800
+Started GET "/" for ::1 at 2021-12-01 09:57:25 -0800
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/matthew/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/ca137dd4f7db2a68/variables" for ::1 at 2021-12-01 09:57:25 -0800
+Started GET "/" for ::1 at 2021-12-01 09:57:39 -0800
+
+ActionController::RoutingError - Couldn't find Api::SessionsHelper, expected it to be defined in helpers/api/sessions_helper.rb:
+
+Started POST "/__better_errors/075fc2515f3bac4a/variables" for ::1 at 2021-12-01 09:57:39 -0800
+Started GET "/" for ::1 at 2021-12-01 09:58:36 -0800
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/matthew/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "TWsBPEicrL1_eaGDMgLCIQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mRecipe Load (0.8ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mFollow Load (0.6ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  Rendered api/users/_user.json.jbuilder (104.6ms)
+  Rendered static_pages/root.html.erb within layouts/application (152.5ms)
+Completed 200 OK in 1147ms (Views: 1124.4ms | ActiveRecord: 22.0ms)
+
+
+Started GET "/api/recipes" for ::1 at 2021-12-01 09:58:38 -0800
+Processing by Api::RecipesController#index as JSON
+  Rendering api/recipes/index.json.jbuilder
+  [1m[36mRecipe Load (1.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/api/recipes/index.json.jbuilder:1
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  Rendered api/recipes/_recipe.json.jbuilder (33.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  Rendered api/recipes/_recipe.json.jbuilder (2.5ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  Rendered api/recipes/_recipe.json.jbuilder (1.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  Rendered api/recipes/_recipe.json.jbuilder (2.1ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  Rendered api/recipes/_recipe.json.jbuilder (2.8ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  Rendered api/recipes/_recipe.json.jbuilder (1.6ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  Rendered api/recipes/_recipe.json.jbuilder (2.6ms)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  Rendered api/recipes/_recipe.json.jbuilder (4.2ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  Rendered api/recipes/_recipe.json.jbuilder (1.2ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  Rendered api/recipes/_recipe.json.jbuilder (1.4ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  Rendered api/recipes/_recipe.json.jbuilder (2.1ms)
+  Rendered api/recipes/index.json.jbuilder (77.3ms)
+Completed 500 Internal Server Error in 82ms (ActiveRecord: 4.2ms)
+
+
+
+ActiveRecord::StatementInvalid - PG::UndefinedColumn: ERROR:  column comments.recipe_id does not exist
+LINE 1: SELECT "comments".* FROM "comments" WHERE "comments"."recipe...
+                                                  ^
+: SELECT "comments".* FROM "comments" WHERE "comments"."recipe_id" = $1:
+  app/views/api/recipes/index.json.jbuilder:6:in `_app_views_api_recipes_index_json_jbuilder___2716244399930367199_18080'
+  app/controllers/api/recipes_controller.rb:13:in `index'
+
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (131.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Mediyum_development"[0m
+  ↳ bin/rails:9
+  [1m[35m (122.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Mediyum_test"[0m
+  ↳ bin/rails:9
+  [1m[35m (479.1ms)[0m  [1m[35mCREATE DATABASE "Mediyum_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (346.5ms)[0m  [1m[35mCREATE DATABASE "Mediyum_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35mSQL (0.9ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (24.9ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "body" text NOT NULL, "commenter_id" integer NOT NULL, "recipe_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (11.2ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_recipe_id" ON "comments"  ("recipe_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "follows" CASCADE[0m
+  ↳ db/schema.rb:27
+  [1m[35m (14.3ms)[0m  [1m[35mCREATE TABLE "follows" ("id" bigserial primary key, "follower_id" integer NOT NULL, "followed_user_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:27
+  [1m[35m (9.9ms)[0m  [1m[35mCREATE  INDEX  "index_follows_on_followed_user_id" ON "follows"  ("followed_user_id")[0m
+  ↳ db/schema.rb:27
+  [1m[35m (21.8ms)[0m  [1m[35mCREATE  INDEX  "index_follows_on_follower_id" ON "follows"  ("follower_id")[0m
+  ↳ db/schema.rb:27
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "recipes" CASCADE[0m
+  ↳ db/schema.rb:36
+  [1m[35m (19.0ms)[0m  [1m[35mCREATE TABLE "recipes" ("id" bigserial primary key, "title" character varying NOT NULL, "body" text NOT NULL, "author_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:36
+  [1m[35m (10.1ms)[0m  [1m[35mCREATE  INDEX  "index_recipes_on_author_id" ON "recipes"  ("author_id")[0m
+  ↳ db/schema.rb:36
+  [1m[35m (10.4ms)[0m  [1m[35mCREATE  INDEX  "index_recipes_on_title" ON "recipes"  ("title")[0m
+  ↳ db/schema.rb:36
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:46
+  [1m[35m (17.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying NOT NULL, "email" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:46
+  [1m[35m (10.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  ↳ db/schema.rb:46
+  [1m[35m (9.4ms)[0m  [1m[35mCREATE  INDEX  "index_users_on_name" ON "users"  ("name")[0m
+  ↳ db/schema.rb:46
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "yums" CASCADE[0m
+  ↳ db/schema.rb:57
+  [1m[35m (10.9ms)[0m  [1m[35mCREATE TABLE "yums" ("id" bigserial primary key, "yummer_id" integer NOT NULL, "recipe_id" integer NOT NULL, "comment_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:57
+  [1m[35m (9.7ms)[0m  [1m[35mCREATE  INDEX  "index_yums_on_comment_id" ON "yums"  ("comment_id")[0m
+  ↳ db/schema.rb:57
+  [1m[35m (9.8ms)[0m  [1m[35mCREATE  INDEX  "index_yums_on_recipe_id" ON "yums"  ("recipe_id")[0m
+  ↳ db/schema.rb:57
+  [1m[35m (12.8ms)[0m  [1m[35mCREATE  INDEX  "index_yums_on_yummer_id" ON "yums"  ("yummer_id")[0m
+  ↳ db/schema.rb:57
+  [1m[35m (16.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (3.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20211201173023)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (3.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20211130215315),
+(20211123220544),
+(20211129231946),
+(20211128212149),
+(20211130235235),
+(20211119230142);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (20.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-12-01 18:00:29.312627"], ["updated_at", "2021-12-01 18:00:29.312627"]]
+  ↳ db/schema.rb:13
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (19.3ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "body" text NOT NULL, "commenter_id" integer NOT NULL, "recipe_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (9.8ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_recipe_id" ON "comments"  ("recipe_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "follows" CASCADE[0m
+  ↳ db/schema.rb:27
+  [1m[35m (11.1ms)[0m  [1m[35mCREATE TABLE "follows" ("id" bigserial primary key, "follower_id" integer NOT NULL, "followed_user_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:27
+  [1m[35m (9.5ms)[0m  [1m[35mCREATE  INDEX  "index_follows_on_followed_user_id" ON "follows"  ("followed_user_id")[0m
+  ↳ db/schema.rb:27
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE  INDEX  "index_follows_on_follower_id" ON "follows"  ("follower_id")[0m
+  ↳ db/schema.rb:27
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "recipes" CASCADE[0m
+  ↳ db/schema.rb:36
+  [1m[35m (19.2ms)[0m  [1m[35mCREATE TABLE "recipes" ("id" bigserial primary key, "title" character varying NOT NULL, "body" text NOT NULL, "author_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:36
+  [1m[35m (10.1ms)[0m  [1m[35mCREATE  INDEX  "index_recipes_on_author_id" ON "recipes"  ("author_id")[0m
+  ↳ db/schema.rb:36
+  [1m[35m (9.9ms)[0m  [1m[35mCREATE  INDEX  "index_recipes_on_title" ON "recipes"  ("title")[0m
+  ↳ db/schema.rb:36
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:46
+  [1m[35m (18.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying NOT NULL, "email" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:46
+  [1m[35m (13.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  ↳ db/schema.rb:46
+  [1m[35m (10.7ms)[0m  [1m[35mCREATE  INDEX  "index_users_on_name" ON "users"  ("name")[0m
+  ↳ db/schema.rb:46
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "yums" CASCADE[0m
+  ↳ db/schema.rb:57
+  [1m[35m (10.8ms)[0m  [1m[35mCREATE TABLE "yums" ("id" bigserial primary key, "yummer_id" integer NOT NULL, "recipe_id" integer NOT NULL, "comment_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:57
+  [1m[35m (10.7ms)[0m  [1m[35mCREATE  INDEX  "index_yums_on_comment_id" ON "yums"  ("comment_id")[0m
+  ↳ db/schema.rb:57
+  [1m[35m (10.5ms)[0m  [1m[35mCREATE  INDEX  "index_yums_on_recipe_id" ON "yums"  ("recipe_id")[0m
+  ↳ db/schema.rb:57
+  [1m[35m (50.3ms)[0m  [1m[35mCREATE  INDEX  "index_yums_on_yummer_id" ON "yums"  ("yummer_id")[0m
+  ↳ db/schema.rb:57
+  [1m[35m (158.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (7.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20211201173023)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (5.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20211130215315),
+(20211123220544),
+(20211129231946),
+(20211128212149),
+(20211130235235),
+(20211119230142);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (22.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-12-01 18:00:29.824206"], ["updated_at", "2021-12-01 18:00:29.824206"]]
+  ↳ db/schema.rb:13
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Update (0.5ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2021-12-01 18:00:29.831574"], ["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/matthew/.rbenv/versions/2.7.4/bin/annotate:23
+Started GET "/" for ::1 at 2021-12-01 10:01:28 -0800
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/matthew/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+
+ActiveRecord::PendingMigrationError - Migrations are pending. To resolve this issue, run:
+        bin/rails db:migrate RAILS_ENV=development:
+
+Started POST "/__better_errors/3cce184bd72fd24b/variables" for ::1 at 2021-12-01 10:01:28 -0800
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2021-12-01 10:02:11 -0800
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/matthew/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "TWsBPEicrL1_eaGDMgLCIQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  Rendered static_pages/root.html.erb within layouts/application (21.9ms)
+Completed 200 OK in 468ms (Views: 464.4ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/api/session" for ::1 at 2021-12-01 10:02:27 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demo@demo.demo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@demo.demo"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:56
+Completed 401 Unauthorized in 6ms (Views: 0.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 10:02:36 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "TWsBPEicrL1_eaGDMgLCIQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  Rendered static_pages/root.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 37ms (Views: 36.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/session" for ::1 at 2021-12-01 10:02:44 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demo@demo.demo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@demo.demo"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:56
+Completed 401 Unauthorized in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "tortUysGxl-lAZ0_fZU5Ow"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:81
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:2
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@demo.demo"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:2
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Demo User"], ["email", "demo@demo.demo"], ["password_digest", "$2a$12$DJQQ.60JZa5Cd7eufG7m1.XsTDBVzhvF85z2FAzEEunR.OgtZyZoe"], ["session_token", "tortUysGxl-lAZ0_fZU5Ow"], ["created_at", "2021-12-01 18:03:03.479748"], ["updated_at", "2021-12-01 18:03:03.479748"]]
+  ↳ db/seeds.rb:2
+  [1m[35m (9.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:2
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "K3FHpQmgn6lKxNIcwhiUqg"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:81
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:6
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "matthewjlese@gmail.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:6
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Matt Lese"], ["email", "matthewjlese@gmail.com"], ["password_digest", "$2a$12$ftON1jDHoi.6m43Ymb7DbubIw8UNJ5pnOilbUQhcsb7fg38XG962K"], ["session_token", "K3FHpQmgn6lKxNIcwhiUqg"], ["created_at", "2021-12-01 18:03:03.685386"], ["updated_at", "2021-12-01 18:03:03.685386"]]
+  ↳ db/seeds.rb:6
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:6
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UtokdS95ZsJBIT-FP27Qlg"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:81
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:6
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "steve@demo.demo"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:6
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Steve"], ["email", "steve@demo.demo"], ["password_digest", "$2a$12$Uhpz9bhm2U4Blm/NAu9JTemsopUcxxysmJTd8fA1UZ6/Yxl.u68eq"], ["session_token", "UtokdS95ZsJBIT-FP27Qlg"], ["created_at", "2021-12-01 18:03:03.883142"], ["updated_at", "2021-12-01 18:03:03.883142"]]
+  ↳ db/seeds.rb:6
+  [1m[35m (3.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "HzVsmxvZkZitOlnQdkk9vw"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:81
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:6
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeff@demo.demo"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:6
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Jeff"], ["email", "jeff@demo.demo"], ["password_digest", "$2a$12$oNNEwNm4peKZuQSakTpGJuBJxc2vEjBkVIQD3mKQueYufZZCb7/Ly"], ["session_token", "HzVsmxvZkZitOlnQdkk9vw"], ["created_at", "2021-12-01 18:03:04.081766"], ["updated_at", "2021-12-01 18:03:04.081766"]]
+  ↳ db/seeds.rb:6
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "1x_oCKDOjlQdH3y_85djCQ"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:81
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:6
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "suzie@demo.demo"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:6
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Suzie"], ["email", "suzie@demo.demo"], ["password_digest", "$2a$12$GjiK4f/U1BHv/JF57YI8E.wYGxqcwUrbPrxeJ7oL1Wg6SBwdgufj6"], ["session_token", "1x_oCKDOjlQdH3y_85djCQ"], ["created_at", "2021-12-01 18:03:04.282104"], ["updated_at", "2021-12-01 18:03:04.282104"]]
+  ↳ db/seeds.rb:6
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:6
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:13
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:13
+  [1m[36mRecipe Create (0.7ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "body", "author_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "How to test that your recipes are working"], ["body", "seed some data, firstly"], ["author_id", 3], ["created_at", "2021-12-01 18:03:04.315968"], ["updated_at", "2021-12-01 18:03:04.315968"]]
+  ↳ db/seeds.rb:13
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:17
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mComment Create (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("body", "commenter_id", "recipe_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "just a plain old comment"], ["commenter_id", 3], ["recipe_id", 1], ["created_at", "2021-12-01 18:03:04.352822"], ["updated_at", "2021-12-01 18:03:04.352822"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:17
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:22
+  [1m[36mFollow Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."followed_user_id" = $2 LIMIT $3[0m  [["follower_id", 1], ["followed_user_id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:22
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:22
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:22
+  [1m[36mFollow Create (0.5ms)[0m  [1m[32mINSERT INTO "follows" ("follower_id", "followed_user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["follower_id", 1], ["followed_user_id", 2], ["created_at", "2021-12-01 18:03:04.394723"], ["updated_at", "2021-12-01 18:03:04.394723"]]
+  ↳ db/seeds.rb:22
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:22
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:22
+  [1m[36mFollow Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."followed_user_id" = $2 LIMIT $3[0m  [["follower_id", 1], ["followed_user_id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:22
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:22
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:22
+  [1m[36mFollow Create (0.3ms)[0m  [1m[32mINSERT INTO "follows" ("follower_id", "followed_user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["follower_id", 1], ["followed_user_id", 3], ["created_at", "2021-12-01 18:03:04.402979"], ["updated_at", "2021-12-01 18:03:04.402979"]]
+  ↳ db/seeds.rb:22
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:22
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:22
+  [1m[36mFollow Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."followed_user_id" = $2 LIMIT $3[0m  [["follower_id", 2], ["followed_user_id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:22
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:22
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:22
+  [1m[36mFollow Create (0.3ms)[0m  [1m[32mINSERT INTO "follows" ("follower_id", "followed_user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["follower_id", 2], ["followed_user_id", 3], ["created_at", "2021-12-01 18:03:04.410562"], ["updated_at", "2021-12-01 18:03:04.410562"]]
+  ↳ db/seeds.rb:22
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:22
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:28
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:28
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:28
+  [1m[36mYum Create (0.7ms)[0m  [1m[32mINSERT INTO "yums" ("yummer_id", "recipe_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["yummer_id", 1], ["recipe_id", 1], ["created_at", "2021-12-01 18:03:04.428364"], ["updated_at", "2021-12-01 18:03:04.428364"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:28
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:28
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:28
+  [1m[36mYum Create (0.3ms)[0m  [1m[32mINSERT INTO "yums" ("yummer_id", "recipe_id", "comment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["yummer_id", 1], ["recipe_id", 1], ["comment_id", 1], ["created_at", "2021-12-01 18:03:04.435704"], ["updated_at", "2021-12-01 18:03:04.435704"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:28
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:28
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:28
+  [1m[36mYum Create (0.3ms)[0m  [1m[32mINSERT INTO "yums" ("yummer_id", "recipe_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["yummer_id", 2], ["recipe_id", 1], ["created_at", "2021-12-01 18:03:04.442049"], ["updated_at", "2021-12-01 18:03:04.442049"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:28
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:28
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:28
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:28
+Started GET "/" for ::1 at 2021-12-01 10:03:13 -0800
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/matthew/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "TWsBPEicrL1_eaGDMgLCIQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  Rendered static_pages/root.html.erb within layouts/application (17.5ms)
+Completed 200 OK in 440ms (Views: 436.0ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/api/session" for ::1 at 2021-12-01 10:03:16 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demo@demo.demo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@demo.demo"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:56
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Ygh2UWeWfRNKRbX4TnLvhA"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:81
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:71
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@demo.demo"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:71
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "Ygh2UWeWfRNKRbX4TnLvhA"], ["updated_at", "2021-12-01 18:03:16.787758"], ["id", 1]]
+  ↳ app/models/user.rb:71
+  [1m[35m (11.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:71
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (23.4ms)
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  Rendered api/users/show.json.jbuilder (55.3ms)
+Completed 200 OK in 291ms (Views: 48.4ms | ActiveRecord: 26.5ms)
+
+
+Started GET "/api/recipes" for ::1 at 2021-12-01 10:03:16 -0800
+Processing by Api::RecipesController#index as JSON
+  Rendering api/recipes/index.json.jbuilder
+  [1m[36mRecipe Load (0.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/api/recipes/index.json.jbuilder:1
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  Rendered api/recipes/_recipe.json.jbuilder (10.4ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mYum Load (0.4ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  Rendered api/recipes/index.json.jbuilder (51.3ms)
+Completed 200 OK in 55ms (Views: 44.6ms | ActiveRecord: 9.2ms)
+
+
+Started GET "/api/recipes/1" for ::1 at 2021-12-01 10:03:21 -0800
+Processing by Api::RecipesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.6ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/recipes_controller.rb:17
+  Rendering api/recipes/show.json.jbuilder
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  Rendered api/recipes/_recipe.json.jbuilder (2.6ms)
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  ↳ app/views/api/recipes/show.json.jbuilder:2
+  [1m[36mYum Load (0.5ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  ↳ app/views/api/recipes/show.json.jbuilder:2
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  ↳ app/views/api/recipes/show.json.jbuilder:2
+  Rendered api/recipes/show.json.jbuilder (13.9ms)
+Completed 200 OK in 19ms (Views: 12.0ms | ActiveRecord: 4.0ms)
+
+
+Started POST "/api/yums" for ::1 at 2021-12-01 10:03:25 -0800
+Processing by Api::YumsController#create as JSON
+  Parameters: {"yum"=>{"yummer_id"=>"1", "recipe_id"=>"1"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/yums_controller.rb:9
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/yums_controller.rb:9
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/yums_controller.rb:9
+  [1m[36mYum Create (0.5ms)[0m  [1m[32mINSERT INTO "yums" ("yummer_id", "recipe_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["yummer_id", 1], ["recipe_id", 1], ["created_at", "2021-12-01 18:03:25.636006"], ["updated_at", "2021-12-01 18:03:25.636006"]]
+  ↳ app/controllers/api/yums_controller.rb:9
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/yums_controller.rb:9
+  Rendering api/yums/show.json.jbuilder
+  Rendered api/yums/_yum.json.jbuilder (0.4ms)
+  Rendered api/yums/show.json.jbuilder (2.1ms)
+Completed 200 OK in 24ms (Views: 4.4ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 10:03:26 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Ygh2UWeWfRNKRbX4TnLvhA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  Rendered api/users/_user.json.jbuilder (17.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (22.6ms)
+Completed 200 OK in 61ms (Views: 56.1ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/api/recipes/1" for ::1 at 2021-12-01 10:03:27 -0800
+Processing by Api::RecipesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (1.5ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/recipes_controller.rb:17
+  Rendering api/recipes/show.json.jbuilder
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  Rendered api/recipes/_recipe.json.jbuilder (4.6ms)
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  ↳ app/views/api/recipes/show.json.jbuilder:2
+  [1m[36mYum Load (0.6ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  ↳ app/views/api/recipes/show.json.jbuilder:2
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  ↳ app/views/api/recipes/show.json.jbuilder:2
+  Rendered api/recipes/show.json.jbuilder (33.1ms)
+Completed 200 OK in 45ms (Views: 34.3ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/api/users/3" for ::1 at 2021-12-01 10:03:29 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:3
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.8ms)
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 3]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 3]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 3]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mFollow Load (0.9ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 3]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 3]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 3]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  Rendered api/users/show.json.jbuilder (19.8ms)
+Completed 200 OK in 26ms (Views: 19.2ms | ActiveRecord: 3.8ms)
+
+
+Started DELETE "/api/follows/2" for ::1 at 2021-12-01 10:03:30 -0800
+Processing by Api::FollowsController#destroy as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT  "follows".* FROM "follows" WHERE "follows"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/follows_controller.rb:17
+  [1m[36mFollow Destroy (12.3ms)[0m  [1m[31mDELETE FROM "follows" WHERE "follows"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/follows_controller.rb:18
+  Rendering api/follows/index.json.jbuilder
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows"[0m
+  ↳ app/views/api/follows/index.json.jbuilder:1
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/follows/_follow.json.jbuilder:4
+  Rendered api/follows/_follow.json.jbuilder (5.7ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/follows/_follow.json.jbuilder:4
+  Rendered api/follows/_follow.json.jbuilder (2.0ms)
+  Rendered api/follows/index.json.jbuilder (11.8ms)
+Completed 200 OK in 31ms (Views: 12.4ms | ActiveRecord: 14.0ms)
+
+
+Started POST "/api/follows" for ::1 at 2021-12-01 10:03:30 -0800
+Processing by Api::FollowsController#create as JSON
+  Parameters: {"follow"=>{"follower_id"=>"1", "followed_user_id"=>"3"}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/follows_controller.rb:9
+  [1m[36mFollow Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "follows" WHERE "follows"."follower_id" = $1 AND "follows"."followed_user_id" = $2 LIMIT $3[0m  [["follower_id", 1], ["followed_user_id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/follows_controller.rb:9
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/follows_controller.rb:9
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/follows_controller.rb:9
+  [1m[36mFollow Create (1.0ms)[0m  [1m[32mINSERT INTO "follows" ("follower_id", "followed_user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["follower_id", 1], ["followed_user_id", 3], ["created_at", "2021-12-01 18:03:30.884495"], ["updated_at", "2021-12-01 18:03:30.884495"]]
+  ↳ app/controllers/api/follows_controller.rb:9
+  [1m[35m (11.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/follows_controller.rb:9
+  Rendering api/follows/show.json.jbuilder
+  Rendered api/follows/_follow.json.jbuilder (0.5ms)
+  Rendered api/follows/show.json.jbuilder (2.5ms)
+Completed 200 OK in 31ms (Views: 4.5ms | ActiveRecord: 14.1ms)
+
+
+Started GET "/api/recipes" for ::1 at 2021-12-01 10:03:32 -0800
+Processing by Api::RecipesController#index as JSON
+  Rendering api/recipes/index.json.jbuilder
+  [1m[36mRecipe Load (0.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/api/recipes/index.json.jbuilder:1
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  Rendered api/recipes/_recipe.json.jbuilder (2.6ms)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mYum Load (0.5ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  Rendered api/recipes/index.json.jbuilder (15.8ms)
+Completed 200 OK in 18ms (Views: 15.3ms | ActiveRecord: 2.3ms)
+
+

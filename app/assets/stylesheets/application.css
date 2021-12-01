@@ -1,10 +1,10 @@
 @import 'reset.css';
 @import 'modal.css';
 @import 'header.css';
-@import 'storyShow.css';
+@import 'recipe_show.css';
 @import 'home.css';
 @import 'comments.css';
-@import 'userShow.css';
+@import 'user_show.css';
 
 a, u {
   text-decoration: none;

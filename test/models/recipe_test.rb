@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: stories
+# Table name: recipes
 #
 #  id         :bigint           not null, primary key
 #  title      :string           not null
@@ -11,7 +11,7 @@
 #
 require 'test_helper'
 
-class StoryTest < ActiveSupport::TestCase
+class RecipeTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

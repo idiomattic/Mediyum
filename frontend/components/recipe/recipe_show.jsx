@@ -1,40 +1,40 @@
 import React from "react"
 import { Redirect, withRouter } from "react-router"
 
-class StoryShow extends React.Component {
+class RecipeShow extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       yum: {
         yummer_id: props.currentUserId,
-        story_id: props.storyId
+        recipe_id: props.recipeId
       }
     }
   }
 
   componentDidMount() {
-    this.props.fetchStory(this.props.storyId)
+    this.props.fetchRecipe(this.props.recipeId)
   }
   
-  editStory() {
-    this.props.history.push(`/stories/${this.props.storyId}/edit`)
+  editRecipe() {
+    this.props.history.push(`/recipes/${this.props.recipeId}/edit`)
   }
 
   handleDelete() {
-    let { deleteStory, storyId, history } = this.props
-    deleteStory(storyId)
+    let { deleteRecipe, recipeId, history } = this.props
+    deleteRecipe(recipeId)
       .then(res => history.push('/feed'))
   }
 
   isOwner() {
-    let { deleteStory, story, storyId, currentUserId } = this.props
-    return story.author_id === currentUserId ? (
+    let { deleteRecipe, recipe, recipeId, currentUserId } = this.props
+    return recipe.author_id === currentUserId ? (
       <div>
-        <button className='black-button' onClick={() => this.editStory()}>
-          Edit Story
+        <button className='black-button' onClick={() => this.editRecipe()}>
+          Edit Recipe
         </button> 
         <button className='black-button' onClick={() => this.handleDelete()}>
-          Delete Story
+          Delete Recipe
         </button> 
       </div>
       ) : null
@@ -61,20 +61,20 @@ class StoryShow extends React.Component {
   }
   
   render() {
-    let { story } = this.props
-    if (!story || !story.author) {
+    let { recipe } = this.props
+    if (!recipe || !recipe.author) {
       return null
     }
     return(
-      <div className='story-show'>
-        <h2 className='story-title'>{story.title}</h2>
+      <div className='recipe-show'>
+        <h2 className='recipe-title'>{recipe.title}</h2>
         <br />
-        <div className='story-info'>
-          <div className='author' onClick={() => this.redirectToShow(story.author_id)}>{story.author.name}</div>
+        <div className='recipe-info'>
+          <div className='author' onClick={() => this.redirectToShow(recipe.author_id)}>{recipe.author.name}</div>
         </div>
-        <p className='story-body'>{story.body}</p>
+        <p className='recipe-body'>{recipe.body}</p>
         <br />
-        <div className='story-footer'>
+        <div className='recipe-footer'>
           <div className='yum-nav'>
             <div className='yum-button' onClick={() => this.handleYum()}>
               Yum
@@ -94,4 +94,4 @@ class StoryShow extends React.Component {
   }
 }
 
-export default withRouter(StoryShow)
+export default withRouter(RecipeShow)
