@@ -21,6 +21,9 @@ class StoriesIndexItem extends React.Component {
   render() {
     let {story} = this.props
     let {author} = this.props.story
+    if (!story || !author) {
+      return null
+    }
     return(
       <li className='story-list-item'>
         <Link to={`/users/${author.id}`} >{author.name}</Link>

@@ -5,8 +5,10 @@ class StoryShow extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      yummer_id: props.currentUserId,
-      story_id: props.storyId
+      yum: {
+        yummer_id: props.currentUserId,
+        story_id: props.storyId
+      }
     }
   }
 
@@ -46,8 +48,16 @@ class StoryShow extends React.Component {
     this.props.displayModal()
   }
 
+  yumCount() {
+    let {yums} = this.props.story
+    return yums.length || 0
+  }
+
   handleYum() {
-    this.props.createYum(this.state)
+    this.props.createYum(this.state.yum)
+      // .then(this.setState({
+      //   yum: Object.assign({}, this.state)
+      // }))
   }
   
   render() {
@@ -70,7 +80,7 @@ class StoryShow extends React.Component {
               Yum
             </div>
             <div className='yum-count'>
-              {story.yums.length}
+              {this.yumCount()}
             </div>
           </div>
           <div className='comments-button' onClick={() => this.showCommentsModal()}>

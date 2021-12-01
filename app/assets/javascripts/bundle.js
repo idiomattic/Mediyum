@@ -2373,6 +2373,11 @@ var StoriesIndexItem = /*#__PURE__*/function (_React$Component) {
 
       var story = this.props.story;
       var author = this.props.story.author;
+
+      if (!story || !author) {
+        return null;
+      }
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
         className: "story-list-item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
@@ -2588,8 +2593,10 @@ var StoryShow = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      yummer_id: props.currentUserId,
-      story_id: props.storyId
+      yum: {
+        yummer_id: props.currentUserId,
+        story_id: props.storyId
+      }
     };
     return _this;
   }
@@ -2648,9 +2655,17 @@ var StoryShow = /*#__PURE__*/function (_React$Component) {
       this.props.displayModal();
     }
   }, {
+    key: "yumCount",
+    value: function yumCount() {
+      var yums = this.props.story.yums;
+      return yums.length || 0;
+    }
+  }, {
     key: "handleYum",
     value: function handleYum() {
-      this.props.createYum(this.state);
+      this.props.createYum(this.state.yum); // .then(this.setState({
+      //   yum: Object.assign({}, this.state)
+      // }))
     }
   }, {
     key: "render",
@@ -2687,7 +2702,7 @@ var StoryShow = /*#__PURE__*/function (_React$Component) {
         }
       }, "Yum"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "yum-count"
-      }, story.yums.length)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, this.yumCount())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comments-button",
         onClick: function onClick() {
           return _this3.showCommentsModal();
@@ -3669,10 +3684,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return action.stories;
 
     case _actions_story_actions__WEBPACK_IMPORTED_MODULE_1__.RECEIVE_STORY:
-      Object.assign(nextState, _defineProperty({}, action.story.id, action.story)); // nextState['yumCount'] = action.story.yums.length
-
+      Object.assign(nextState, _defineProperty({}, action.story.id, action.story));
       return nextState;
-    // return { [action.story.id]: action.story }
 
     case _actions_story_actions__WEBPACK_IMPORTED_MODULE_1__.REMOVE_STORY:
       delete nextState[action.storyId];
@@ -3683,9 +3696,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         nextState[story.id] = story;
       });
       return nextState;
-    // case RECEIVE_YUM:
-    //   nextState['yumCount']++
-    //   return nextState
+
+    case _actions_yum_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_YUM:
+      // Object.assign(nextState, {[action.yum.story.id]: action.yum.story})
+      // debugger
+      return nextState;
 
     default:
       return state;

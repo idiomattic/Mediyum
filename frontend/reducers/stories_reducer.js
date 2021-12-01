@@ -10,18 +10,17 @@ export default (state={}, action) => {
       return action.stories
     case RECEIVE_STORY:
       Object.assign(nextState, {[action.story.id]: action.story})
-      // nextState['yumCount'] = action.story.yums.length
       return nextState
-      // return { [action.story.id]: action.story }
     case REMOVE_STORY:
       delete nextState[action.storyId]
       return nextState
     case RECEIVE_USER:
       action.user.stories.forEach(story => {nextState[story.id] = story})
       return nextState
-    // case RECEIVE_YUM:
-    //   nextState['yumCount']++
-    //   return nextState
+    case RECEIVE_YUM:
+      // Object.assign(nextState, {[action.yum.story.id]: action.yum.story})
+      // debugger
+      return nextState
     default:
       return state
   }
