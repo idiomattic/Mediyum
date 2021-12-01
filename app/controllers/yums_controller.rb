@@ -1,4 +1,4 @@
-class YumsController < ApplicationController
+class Api::YumsController < ApplicationController
   def index
     @yums = Yum.all
     render :template => 'api/yums/index'

@@ -4,6 +4,10 @@ import { Redirect, withRouter } from "react-router"
 class StoryShow extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      yummer_id: props.currentUserId,
+      story_id: props.storyId
+    }
   }
 
   componentDidMount() {
@@ -42,8 +46,8 @@ class StoryShow extends React.Component {
     this.props.displayModal()
   }
 
-  yumCount() {
-
+  handleYum() {
+    this.props.createYum(this.state)
   }
   
   render() {
@@ -61,8 +65,13 @@ class StoryShow extends React.Component {
         <p className='story-body'>{story.body}</p>
         <br />
         <div className='story-footer'>
-          <div className='yum-button'>
-            {`Yum ${story.yums.length}`}
+          <div className='yum-nav'>
+            <div className='yum-button' onClick={() => this.handleYum()}>
+              Yum
+            </div>
+            <div className='yum-count'>
+              {story.yums.length}
+            </div>
           </div>
           <div className='comments-button' onClick={() => this.showCommentsModal()}>
             Comments

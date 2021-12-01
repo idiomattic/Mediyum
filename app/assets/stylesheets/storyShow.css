@@ -18,7 +18,7 @@
   bottom: 10%;
 }
 
-.story-footer div:last-child {
+.comments-button {
   margin-left: 24px;
 }
 
@@ -28,4 +28,16 @@
 
 .story-info {
   margin-bottom: 40px;
+}
+
+.yum-nav {
+  display: flex;
+}
+
+.yum-nav :first-child {
+  margin-right: 5px;
+}
+
+.yum-button {
+  cursor: pointer;
 }

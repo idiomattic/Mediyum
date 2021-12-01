@@ -2582,9 +2582,16 @@ var StoryShow = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(StoryShow);
 
   function StoryShow(props) {
+    var _this;
+
     _classCallCheck(this, StoryShow);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      yummer_id: props.currentUserId,
+      story_id: props.storyId
+    };
+    return _this;
   }
 
   _createClass(StoryShow, [{
@@ -2611,7 +2618,7 @@ var StoryShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "isOwner",
     value: function isOwner() {
-      var _this = this;
+      var _this2 = this;
 
       var _this$props2 = this.props,
           deleteStory = _this$props2.deleteStory,
@@ -2621,12 +2628,12 @@ var StoryShow = /*#__PURE__*/function (_React$Component) {
       return story.author_id === currentUserId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "black-button",
         onClick: function onClick() {
-          return _this.editStory();
+          return _this2.editStory();
         }
       }, "Edit Story"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "black-button",
         onClick: function onClick() {
-          return _this.handleDelete();
+          return _this2.handleDelete();
         }
       }, "Delete Story")) : null;
     }
@@ -2641,12 +2648,14 @@ var StoryShow = /*#__PURE__*/function (_React$Component) {
       this.props.displayModal();
     }
   }, {
-    key: "yumCount",
-    value: function yumCount() {}
+    key: "handleYum",
+    value: function handleYum() {
+      this.props.createYum(this.state);
+    }
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       var story = this.props.story;
 
@@ -2663,18 +2672,25 @@ var StoryShow = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "author",
         onClick: function onClick() {
-          return _this2.redirectToShow(story.author_id);
+          return _this3.redirectToShow(story.author_id);
         }
       }, story.author.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "story-body"
       }, story.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "story-footer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "yum-button"
-      }, "Yum ".concat(story.yums.length)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "yum-nav"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "yum-button",
+        onClick: function onClick() {
+          return _this3.handleYum();
+        }
+      }, "Yum"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "yum-count"
+      }, story.yums.length)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comments-button",
         onClick: function onClick() {
-          return _this2.showCommentsModal();
+          return _this3.showCommentsModal();
         }
       }, "Comments")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.isOwner());
     }
@@ -2702,6 +2718,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _story_show__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./story_show */ "./frontend/components/story/story_show.jsx");
 /* harmony import */ var _actions_story_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/story_actions */ "./frontend/actions/story_actions.js");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _actions_yum_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/yum_actions */ "./frontend/actions/yum_actions.js");
+
 
 
 
@@ -2727,6 +2745,9 @@ var mDTP = function mDTP(dispatch) {
     },
     deleteStory: function deleteStory(storyId) {
       return dispatch((0,_actions_story_actions__WEBPACK_IMPORTED_MODULE_2__.deleteStory)(storyId));
+    },
+    createYum: function createYum(yum) {
+      return dispatch((0,_actions_yum_actions__WEBPACK_IMPORTED_MODULE_4__.createYum)(yum));
     }
   };
 };

@@ -11,8 +11,6 @@
 #
 class Yum < ApplicationRecord
   validates :yummer_id, :story_id, presence: true
-  validates_uniqueness_of :yummer_id, :scope => [:story_id]
-  validates_uniqueness_of :yummer_id, :scope => [:comment_id]
 
   belongs_to :yummer,
     primary_key: :id,
