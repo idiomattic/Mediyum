@@ -30,4 +30,6 @@ class Recipe < ApplicationRecord
   has_many :users_who_yummed,
     through: :yums,
     source: :yummer
+
+  has_one_attached :photo
 end

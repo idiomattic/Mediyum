@@ -3273,10 +3273,11 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
     key: "followerCount",
     value: function followerCount() {
       var followers = this.props.followers;
-      var followersCount = Object.values(followers).length;
+      var followersCount = !followers ? 0 : Object.values(followers).length;
+      var unit = followersCount === 1 ? 'Follower' : 'Followers';
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "followerCount"
-      }, "".concat(followersCount, " Followers"));
+      }, "".concat(followersCount, " ").concat(unit));
     }
   }, {
     key: "isSelf",

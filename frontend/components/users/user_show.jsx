@@ -59,9 +59,10 @@ class UserShow extends React.Component {
 
   followerCount() {
     let {followers} = this.props
-    let followersCount = Object.values(followers).length
+    let followersCount = !followers ? 0 : Object.values(followers).length
+    let unit = (followersCount === 1) ? 'Follower' : 'Followers'
     return(
-      <div className='followerCount'>{`${followersCount} Followers`}</div>
+      <div className='followerCount'>{`${followersCount} ${unit}`}</div>
     )
   }
 
