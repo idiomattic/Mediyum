@@ -24,9 +24,9 @@ class Yum < ApplicationRecord
     foreign_key: :story_id,
     class_name: :Story
 
-  belongs_to :comment,
+  belongs_to :comment, optional: true,
     primary_key: :id,
     foreign_key: :comment_id,
-    class_name: :Comment,
+    class_name: :Comment
     # optional: true
 end

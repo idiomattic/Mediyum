@@ -1,7 +1,9 @@
 demo = User.create([
-  { email: 'demo@demo.demo', password: 'qwerty', name: 'Demo User'}])
+  { email: 'demo@demo.demo', password: 'qwerty', name: 'Demo User'}
+])
 
 users = User.create([
+  { email: 'matthewjlese@gmail.com', password: '111111', name: 'Matt Lese'},
   { email: 'steve@demo.demo', password: '111111', name: 'Steve'},
   { email: 'jeff@demo.demo', password: '111111', name: 'Jeff'},
   { email: 'suzie@demo.demo', password: '111111', name: 'Suzie'}

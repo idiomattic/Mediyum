@@ -2671,7 +2671,7 @@ var StoryShow = /*#__PURE__*/function (_React$Component) {
         className: "story-footer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "yum-button"
-      }, "Yum"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, "Yum ".concat(story.yums.length)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comments-button",
         onClick: function onClick() {
           return _this2.showCommentsModal();
@@ -3739,7 +3739,6 @@ var currentUserId = null;
       return action.users;
 
     case _actions_story_actions__WEBPACK_IMPORTED_MODULE_2__.RECEIVE_STORIES:
-      // debugger
       Object.values(action.stories).forEach(function (story) {
         Object.assign(nextState, _defineProperty({}, story.author.id, story.author));
       });
@@ -3772,7 +3771,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _actions_yum_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/yum_actions */ "./frontend/actions/yum_actions.js");
+/* harmony import */ var _actions_story_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/story_actions */ "./frontend/actions/story_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
@@ -3790,6 +3791,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     case _actions_yum_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_YUM:
       delete nextState[action.yum.id];
+      return nextState;
+
+    case _actions_story_actions__WEBPACK_IMPORTED_MODULE_1__.RECEIVE_STORY:
+      action.story.yums.forEach(function (yum) {
+        nextState[yum.id] = yum;
+      });
       return nextState;
 
     default:

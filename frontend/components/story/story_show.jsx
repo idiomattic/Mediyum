@@ -43,7 +43,7 @@ class StoryShow extends React.Component {
   }
 
   yumCount() {
-    
+
   }
   
   render() {
@@ -62,7 +62,7 @@ class StoryShow extends React.Component {
         <br />
         <div className='story-footer'>
           <div className='yum-button'>
-            Yum
+            {`Yum ${story.yums.length}`}
           </div>
           <div className='comments-button' onClick={() => this.showCommentsModal()}>
             Comments

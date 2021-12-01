@@ -26,7 +26,6 @@ export default (state={}, action) => {
     case RECEIVE_USERS:
       return action.users
     case RECEIVE_STORIES:
-      // debugger
       Object.values(action.stories).forEach(story => {
         Object.assign(nextState, {[story.author.id]: story.author})
       })
