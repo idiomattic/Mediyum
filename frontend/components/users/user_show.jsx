@@ -32,14 +32,16 @@ class UserShow extends React.Component {
   }
 
   toggleFollow() {
-    console.log(this.props.followers)
+    let {followers, userId, currentUserId} = this.props
+    let following = Boolean(followers[currentUserId])
+    if (following) {
+      this.props.deleteFollow(this.state)
+    }
   }
 
   displayFollowButton() {
-    console.log('trying to toggle follow on this user', this.state, this.props)
-    let {users_following} = this.props.user
-    let following = Boolean(users_following.includes(this.props.currentUserId))
-    let buttonText = !following ? 'Follow' : 'Following'
+    let {followers, userId, currentUserId} = this.props
+    let buttonText = followers[currentUserId] ? 'Following' : 'Follow'
     return (
       <button className='green-button' onClick={() => this.toggleFollow()}>{buttonText}</button>
     )

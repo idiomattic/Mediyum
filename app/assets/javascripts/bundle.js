@@ -3022,17 +3022,26 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "toggleFollow",
     value: function toggleFollow() {
-      console.log(this.props.followers);
+      var _this$props = this.props,
+          followers = _this$props.followers,
+          userId = _this$props.userId,
+          currentUserId = _this$props.currentUserId;
+      var following = Boolean(followers[currentUserId]);
+
+      if (following) {
+        this.props.deleteFollow(this.state);
+      }
     }
   }, {
     key: "displayFollowButton",
     value: function displayFollowButton() {
       var _this2 = this;
 
-      console.log('trying to toggle follow on this user', this.state, this.props);
-      var users_following = this.props.user.users_following;
-      var following = Boolean(users_following.includes(this.props.currentUserId));
-      var buttonText = !following ? 'Follow' : 'Following';
+      var _this$props2 = this.props,
+          followers = _this$props2.followers,
+          userId = _this$props2.userId,
+          currentUserId = _this$props2.currentUserId;
+      var buttonText = followers[currentUserId] ? 'Following' : 'Follow';
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "green-button",
         onClick: function onClick() {
@@ -3043,18 +3052,18 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "isSelf",
     value: function isSelf() {
-      var _this$props = this.props,
-          userId = _this$props.userId,
-          currentUserId = _this$props.currentUserId;
+      var _this$props3 = this.props,
+          userId = _this$props3.userId,
+          currentUserId = _this$props3.currentUserId;
       return userId === currentUserId ? null : this.displayFollowButton();
     }
   }, {
     key: "render",
     value: function render() {
       console.log(this.props);
-      var _this$props2 = this.props,
-          user = _this$props2.user,
-          userId = _this$props2.userId;
+      var _this$props4 = this.props,
+          user = _this$props4.user,
+          userId = _this$props4.userId;
 
       if (!user) {
         return null;
@@ -3260,7 +3269,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _actions_follow_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/follow_actions */ "./frontend/actions/follow_actions.js");
+/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/user_actions */ "./frontend/actions/user_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
@@ -3278,6 +3289,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     case _actions_follow_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_FOLLOW:
       delete nextState[action.follow.id];
+      return nextState;
+
+    case _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__.RECEIVE_USER:
+      action.user.received_follows.forEach(function (receivedFollow) {
+        nextState[receivedFollow.id] = receivedFollow;
+      });
       return nextState;
 
     default:
