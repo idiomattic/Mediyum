@@ -75,9 +75,12 @@ class RecipeShow extends React.Component {
         <h2 className='recipe-title'>{recipe.title}</h2>
         <br />
         <div className='recipe-info'>
+          <img className='recipe-author-photo' src={recipe.author.photoUrl}/>
           <div className='author' onClick={() => this.redirectToShow(recipe.author_id)}>{recipe.author.name}</div>
         </div>
         <p className='recipe-body'>{recipe.body}</p>
+        <br />
+        <img src={recipe.photoUrl} alt={recipe.title} />
         <br />
         <div className='recipe-footer'>
           <div className='yum-nav'>

@@ -23,13 +23,6 @@ class RecipesIndexItem extends React.Component {
   }
 
   authorPhoto(author) {
-    // const reader = new FileReader()
-    // reader.onloadend = () => this.setState({imageUrl: reader.result, imageFile: file})
-    // if (author.photo) {
-    //   return reader.readAsDataURL(author.photo)
-    // } else {
-    //   return 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png'
-    // }
     return author.photoUrl ? author.photoUrl : null //'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png'
   }
   

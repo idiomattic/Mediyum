@@ -2,6 +2,10 @@
   margin: 0 64px 0 64px;
 }
 
+.recipe-info {
+  display: flex;
+}
+
 .recipe-title {
   font-family: fell, Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 48px;
@@ -22,11 +26,19 @@
   margin-left: 24px;
 }
 
+.recipe-author-photo {
+  height: 40px;
+  width: auto;
+  border-radius: 20px;
+}
+
 .author {
   cursor: pointer;
 }
 
 .recipe-info {
+  display: flex;
+  align-items: center;
   margin-bottom: 40px;
 }
 

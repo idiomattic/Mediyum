@@ -2174,14 +2174,20 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
         className: "recipe-title"
       }, recipe.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "recipe-info"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        className: "recipe-author-photo",
+        src: recipe.author.photoUrl
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "author",
         onClick: function onClick() {
           return _this5.redirectToShow(recipe.author_id);
         }
       }, recipe.author.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "recipe-body"
-      }, recipe.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, recipe.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        src: recipe.photoUrl,
+        alt: recipe.title
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "recipe-footer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "yum-nav"
@@ -2516,13 +2522,6 @@ var RecipesIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "authorPhoto",
     value: function authorPhoto(author) {
-      // const reader = new FileReader()
-      // reader.onloadend = () => this.setState({imageUrl: reader.result, imageFile: file})
-      // if (author.photo) {
-      //   return reader.readAsDataURL(author.photo)
-      // } else {
-      //   return 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png'
-      // }
       return author.photoUrl ? author.photoUrl : null; //'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png'
     }
   }, {
