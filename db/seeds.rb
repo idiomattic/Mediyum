@@ -63,15 +63,21 @@ recipe7 = Recipe.create(title: 'Sauteed Mushrooms',
   body: 'Slice of pull apart mushrooms into small pieces.  Add to pan with a few tablespoons of water, season with salt, and set over medium-high heat.  Once water is evaporated off, add butter and/or olive oil.  Cook until desired browning is acheived.', 
   author_id: 16)
 
-
+cereal = URI.open('https://mediyum-dev.s3.us-west-1.amazonaws.com/cereal.png')
 egg = URI.open('https://mediyum-dev.s3.us-west-1.amazonaws.com/olive-oil-fried-egg.jpg')
-egg = URI.open('')
-egg = URI.open('')
-egg = URI.open('')
-egg = URI.open('')
-egg = URI.open('')
-egg = URI.open('')
+squash = URI.open('https://mediyum-dev.s3.us-west-1.amazonaws.com/squash.JPG')
+onions = URI.open('https://mediyum-dev.s3.us-west-1.amazonaws.com/onions.JPG')
+hotdog = URI.open('https://mediyum-dev.s3.us-west-1.amazonaws.com/hotdog.jpg')
+milksteak = URI.open('https://mediyum-dev.s3.us-west-1.amazonaws.com/milk+steak.jpg')
+mushrooms = URI.open('https://mediyum-dev.s3.us-west-1.amazonaws.com/mushrooms.jpg')
 
+recipe1.photo.attach(io: cereal, filename: 'cereal.jpg')
+recipe2.photo.attach(io: egg, filename: 'egg.jpg')
+recipe3.photo.attach(io: squash, filename: 'squash.jpg')
+recipe4.photo.attach(io: onions, filename: 'onions.jpg')
+recipe5.photo.attach(io: hotdog, filename: 'hotdog.jpg')
+recipe6.photo.attach(io: milksteak, filename: 'milksteak.jpg')
+recipe7.photo.attach(io: mushrooms, filename: 'mushrooms.jpg')
 
 comments = Comment.create([
   { body: 'will make this for my kids later!', commenter_id: 11, recipe_id: 1},
