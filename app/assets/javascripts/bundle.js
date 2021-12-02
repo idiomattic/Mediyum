@@ -2523,7 +2523,7 @@ var RecipesIndexItem = /*#__PURE__*/function (_React$Component) {
       // } else {
       //   return 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png'
       // }
-      return author.photoUrl ? author.photoUrl : 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png';
+      return author.photoUrl ? author.photoUrl : null; //'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png'
     }
   }, {
     key: "render",
