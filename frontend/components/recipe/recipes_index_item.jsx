@@ -5,6 +5,10 @@ import { Link } from "react-router-dom";
 class RecipesIndexItem extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      imageUrl: "",
+      imageFile: null
+    }
     this.handleClick = this.handleClick.bind(this)
   }
 
@@ -19,9 +23,14 @@ class RecipesIndexItem extends React.Component {
   }
 
   authorPhoto(author) {
-    // let {author} = this.props
-    debugger
-    return author.photoURL ? author.photoURL : 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png'
+    // const reader = new FileReader()
+    // reader.onloadend = () => this.setState({imageUrl: reader.result, imageFile: file})
+    // if (author.photo) {
+    //   return reader.readAsDataURL(author.photo)
+    // } else {
+    //   return 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png'
+    // }
+    return author.photoUrl ? author.photoUrl : 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png'
   }
   
 

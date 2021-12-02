@@ -2493,6 +2493,10 @@ var RecipesIndexItem = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, RecipesIndexItem);
 
     _this = _super.call(this, props);
+    _this.state = {
+      imageUrl: "",
+      imageFile: null
+    };
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -2512,9 +2516,14 @@ var RecipesIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "authorPhoto",
     value: function authorPhoto(author) {
-      // let {author} = this.props
-      debugger;
-      return author.photoURL ? author.photoURL : 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png';
+      // const reader = new FileReader()
+      // reader.onloadend = () => this.setState({imageUrl: reader.result, imageFile: file})
+      // if (author.photo) {
+      //   return reader.readAsDataURL(author.photo)
+      // } else {
+      //   return 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png'
+      // }
+      return author.photoUrl ? author.photoUrl : 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png';
     }
   }, {
     key: "render",
