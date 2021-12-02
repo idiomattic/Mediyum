@@ -2323,9 +2323,28 @@ var RecipesIndex = /*#__PURE__*/function (_React$Component) {
       this.props.fetchRecipes();
     }
   }, {
+    key: "filterForFollowing",
+    value: function filterForFollowing() {}
+  }, {
+    key: "showAll",
+    value: function showAll() {
+      var recipes = this.props.recipes;
+      return recipes.map(function (recipe, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_recipes_index_item_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          key: i,
+          recipe: recipe
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var recipes = this.props.recipes;
+
+      if (!recipes) {
+        return null;
+      }
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "recipes-index"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2338,12 +2357,7 @@ var RecipesIndex = /*#__PURE__*/function (_React$Component) {
         className: "right-padding"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "recipes-list"
-      }, recipes.map(function (recipe, i) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_recipes_index_item_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          key: i,
-          recipe: recipe
-        });
-      })));
+      }, this.showAll()));
     }
   }]);
 
