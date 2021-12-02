@@ -2312,9 +2312,15 @@ var RecipesIndex = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(RecipesIndex);
 
   function RecipesIndex(props) {
+    var _this;
+
     _classCallCheck(this, RecipesIndex);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      whichFeed: 'recommended'
+    };
+    return _this;
   }
 
   _createClass(RecipesIndex, [{
@@ -2324,7 +2330,10 @@ var RecipesIndex = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "filterForFollowing",
-    value: function filterForFollowing() {}
+    value: function filterForFollowing() {
+      var recipes = this.props.recipes;
+      debugger;
+    }
   }, {
     key: "showAll",
     value: function showAll() {
@@ -2335,6 +2344,11 @@ var RecipesIndex = /*#__PURE__*/function (_React$Component) {
           recipe: recipe
         });
       });
+    }
+  }, {
+    key: "toggleFeed",
+    value: function toggleFeed() {
+      return this.state.whichFeed === 'recommended' ? this.showAll() : this.filterForFollowing();
     }
   }, {
     key: "render",
@@ -2357,7 +2371,7 @@ var RecipesIndex = /*#__PURE__*/function (_React$Component) {
         className: "right-padding"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "recipes-list"
-      }, this.showAll()));
+      }, this.toggleFeed()));
     }
   }]);
 

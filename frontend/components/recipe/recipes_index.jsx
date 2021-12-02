@@ -5,6 +5,9 @@ import RecipesIndexItemContainer from "./recipes_index_item_container"
 class RecipesIndex extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      whichFeed: 'recommended'
+    }
   }
 
   componentDidMount() {
@@ -12,7 +15,8 @@ class RecipesIndex extends React.Component {
   }
 
   filterForFollowing() {
-
+    const {recipes} = this.props
+    debugger
   }
 
   showAll() {
@@ -22,6 +26,12 @@ class RecipesIndex extends React.Component {
         <RecipesIndexItemContainer key={i} recipe={recipe} />
       )
     )
+  }
+
+  toggleFeed() {
+    return this.state.whichFeed === 'recommended' ? 
+      this.showAll() 
+      : this.filterForFollowing()
   }
 
   render() {
@@ -42,7 +52,7 @@ class RecipesIndex extends React.Component {
               <RecipesIndexItemContainer key={i} recipe={recipe} />
             )
           } */}
-          {this.showAll()}
+          {this.toggleFeed()}
         </ul>
       </div>
     )

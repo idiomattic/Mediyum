@@ -58915,3 +58915,108 @@ Processing by Api::RecipesController#index as JSON
 Completed 200 OK in 82ms (Views: 69.9ms | ActiveRecord: 10.7ms)
 
 
+Started GET "/" for ::1 at 2021-12-01 18:51:31 -0800
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/matthew/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Az61HiDrZMximVQe0UHcEQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mRecipe Load (0.8ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.6ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (52.8ms)
+  Rendered static_pages/root.html.erb within layouts/application (77.7ms)
+Completed 200 OK in 1091ms (Views: 1074.1ms | ActiveRecord: 15.9ms)
+
+
+Started GET "/api/recipes" for ::1 at 2021-12-01 18:51:32 -0800
+Processing by Api::RecipesController#index as JSON
+  Rendering api/recipes/index.json.jbuilder
+  [1m[36mRecipe Load (2.6ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/api/recipes/index.json.jbuilder:1
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:6
+  Rendered api/recipes/_recipe.json.jbuilder (50.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:6
+  Rendered api/recipes/_recipe.json.jbuilder (3.2ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:6
+  Rendered api/recipes/_recipe.json.jbuilder (2.8ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:6
+  Rendered api/recipes/_recipe.json.jbuilder (2.6ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:6
+  Rendered api/recipes/_recipe.json.jbuilder (1.8ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:6
+  Rendered api/recipes/_recipe.json.jbuilder (1.3ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:6
+  Rendered api/recipes/_recipe.json.jbuilder (1.7ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:6
+  Rendered api/recipes/_recipe.json.jbuilder (1.6ms)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mYum Load (0.5ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mYum Load (0.3ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."recipe_id" = $1[0m  [["recipe_id", 3]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mYum Load (0.5ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 3]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 3]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."recipe_id" = $1[0m  [["recipe_id", 4]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mYum Load (0.4ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 4]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 4]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."recipe_id" = $1[0m  [["recipe_id", 5]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mYum Load (0.8ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 5]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 5]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."recipe_id" = $1[0m  [["recipe_id", 6]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mYum Load (0.5ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 6]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 6]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."recipe_id" = $1[0m  [["recipe_id", 7]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mYum Load (0.3ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 7]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 7]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."recipe_id" = $1[0m  [["recipe_id", 8]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mYum Load (0.4ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 8]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 8]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  Rendered api/recipes/index.json.jbuilder (177.8ms)
+Completed 200 OK in 186ms (Views: 131.0ms | ActiveRecord: 53.9ms)
+
+
