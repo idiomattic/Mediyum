@@ -2093,39 +2093,28 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     key: "editRecipe",
     value: function editRecipe() {
       this.props.history.push("/recipes/".concat(this.props.recipeId, "/edit"));
-    }
-  }, {
-    key: "handleDelete",
-    value: function handleDelete() {
-      var _this$props = this.props,
-          deleteRecipe = _this$props.deleteRecipe,
-          recipeId = _this$props.recipeId,
-          history = _this$props.history;
-      deleteRecipe(recipeId).then(function (res) {
-        return history.push('/feed');
-      });
-    }
+    } // handleDelete() {
+    //   let { deleteRecipe, recipeId, history } = this.props
+    //   deleteRecipe(recipeId)
+    //     .then(res => history.push('/feed'))
+    // }
+
   }, {
     key: "isOwner",
     value: function isOwner() {
       var _this3 = this;
 
-      var _this$props2 = this.props,
-          deleteRecipe = _this$props2.deleteRecipe,
-          recipe = _this$props2.recipe,
-          recipeId = _this$props2.recipeId,
-          currentUserId = _this$props2.currentUserId;
+      var _this$props = this.props,
+          deleteRecipe = _this$props.deleteRecipe,
+          recipe = _this$props.recipe,
+          recipeId = _this$props.recipeId,
+          currentUserId = _this$props.currentUserId;
       return recipe.author_id === currentUserId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "black-button",
         onClick: function onClick() {
           return _this3.editRecipe();
         }
-      }, "Edit Recipe"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        className: "black-button",
-        onClick: function onClick() {
-          return _this3.handleDelete();
-        }
-      }, "Delete Recipe")) : null;
+      }, "Edit Recipe")) : null;
     }
   }, {
     key: "redirectToShow",
@@ -2182,12 +2171,13 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this5.redirectToShow(recipe.author_id);
         }
-      }, recipe.author.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-        className: "recipe-body"
-      }, recipe.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      }, recipe.author.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         src: recipe.photoUrl,
-        alt: recipe.title
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        alt: recipe.title,
+        className: "recipe-photo"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+        className: "recipe-body"
+      }, recipe.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "recipe-footer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "yum-nav"
@@ -2682,8 +2672,21 @@ var UpdateRecipeForm = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
+    key: "handleDelete",
+    value: function handleDelete() {
+      var _this$props = this.props,
+          deleteRecipe = _this$props.deleteRecipe,
+          currentRecipeId = _this$props.currentRecipeId,
+          history = _this$props.history;
+      deleteRecipe(currentRecipeId).then(function (res) {
+        return history.push('/feed');
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "recipe-form-div"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
@@ -2703,7 +2706,12 @@ var UpdateRecipeForm = /*#__PURE__*/function (_React$Component) {
         className: "black-button",
         type: "submit",
         value: this.props.formType
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null)));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "black-button",
+        onClick: function onClick() {
+          return _this4.handleDelete();
+        }
+      }, "Delete Recipe")));
     }
   }]);
 
@@ -2737,7 +2745,8 @@ var mSTP = function mSTP(state) {
   return {
     currentUserId: state.session.currentUserId,
     formType: 'Update Recipe',
-    preloadedInfo: state.entities.recipes[currentRecipeId]
+    preloadedInfo: state.entities.recipes[currentRecipeId],
+    currentRecipeId: currentRecipeId
   };
 };
 
@@ -2748,6 +2757,9 @@ var mDTP = function mDTP(dispatch) {
     },
     clearErrors: function clearErrors() {
       return dispatch((0,_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_2__.clearErrors)());
+    },
+    deleteRecipe: function deleteRecipe(recipeId) {
+      return dispatch((0,_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_2__.deleteRecipe)(recipeId));
     }
   };
 };

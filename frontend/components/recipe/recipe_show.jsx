@@ -22,11 +22,11 @@ class RecipeShow extends React.Component {
     this.props.history.push(`/recipes/${this.props.recipeId}/edit`)
   }
 
-  handleDelete() {
-    let { deleteRecipe, recipeId, history } = this.props
-    deleteRecipe(recipeId)
-      .then(res => history.push('/feed'))
-  }
+  // handleDelete() {
+  //   let { deleteRecipe, recipeId, history } = this.props
+  //   deleteRecipe(recipeId)
+  //     .then(res => history.push('/feed'))
+  // }
 
   isOwner() {
     let { deleteRecipe, recipe, recipeId, currentUserId } = this.props
@@ -35,9 +35,9 @@ class RecipeShow extends React.Component {
         <button className='black-button' onClick={() => this.editRecipe()}>
           Edit Recipe
         </button> 
-        <button className='black-button' onClick={() => this.handleDelete()}>
+        {/* <button className='black-button' onClick={() => this.handleDelete()}>
           Delete Recipe
-        </button> 
+        </button>  */}
       </div>
       ) : null
   }
@@ -78,9 +78,9 @@ class RecipeShow extends React.Component {
           <img className='recipe-author-photo' src={recipe.author.photoUrl}/>
           <div className='author' onClick={() => this.redirectToShow(recipe.author_id)}>{recipe.author.name}</div>
         </div>
-        <p className='recipe-body'>{recipe.body}</p>
+        <img src={recipe.photoUrl} alt={recipe.title} className='recipe-photo'/>
         <br />
-        <img src={recipe.photoUrl} alt={recipe.title} />
+        <p className='recipe-body'>{recipe.body}</p>
         <br />
         <div className='recipe-footer'>
           <div className='yum-nav'>

@@ -29,6 +29,12 @@ class UpdateRecipeForm extends React.Component {
     })
   }
 
+  handleDelete() {
+    let {deleteRecipe, currentRecipeId, history} = this.props
+    deleteRecipe(currentRecipeId)
+      .then(res => history.push('/feed'))
+  }
+
   render() {
     return(
       <div className='recipe-form-div'>
@@ -53,6 +59,9 @@ class UpdateRecipeForm extends React.Component {
               type="submit" 
               value={this.props.formType} />
             <br />
+            <button className='black-button' onClick={() => this.handleDelete()}>
+              Delete Recipe
+            </button> 
         </form>
       </div>
     )
