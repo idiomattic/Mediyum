@@ -36,7 +36,8 @@ class UserShow extends React.Component {
     let {followers, currentUserId, receivedFollows} = this.props
     let following = Boolean(followers[currentUserId])
     if (following) {
-      let followToDelete = Object.values(receivedFollows).filter(follow => follow.follower_id === 1)[0]
+      let followToDelete = Object.values(receivedFollows).filter(follow => follow.follower_id === currentUserId)[0]
+      console.log(followToDelete)
       this.props.deleteFollow(followToDelete)
         .then(this.setState({
           following: false
@@ -54,7 +55,7 @@ class UserShow extends React.Component {
     // debugger
     let buttonText = followers[currentUserId] ? 'Following' : 'Follow'
     return (
-      <button className='green-button' onClick={() => this.toggleFollow()}>{buttonText}</button>
+      <button className='green-button' id={buttonText} onClick={() => this.toggleFollow()}>{buttonText}</button>
     )
   }
 

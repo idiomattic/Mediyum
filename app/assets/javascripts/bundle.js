@@ -686,9 +686,6 @@ var App = function App() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
     path: "/recipes",
     component: _header_header_container__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
-    path: "/users",
-    component: _header_header_container__WEBPACK_IMPORTED_MODULE_2__["default"]
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "app-body"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
@@ -2846,7 +2843,7 @@ var UserRecipesIndexItem = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this2.handleClick();
         },
-        className: "recipe-item-title"
+        className: "user-recipe-item-title"
       }, this.props.recipe.title));
     }
   }]);
@@ -3377,8 +3374,9 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
 
       if (following) {
         var followToDelete = Object.values(receivedFollows).filter(function (follow) {
-          return follow.follower_id === 1;
+          return follow.follower_id === currentUserId;
         })[0];
+        console.log(followToDelete);
         this.props.deleteFollow(followToDelete).then(this.setState({
           following: false
         }));
@@ -3401,6 +3399,7 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
       var buttonText = followers[currentUserId] ? 'Following' : 'Follow';
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "green-button",
+        id: buttonText,
         onClick: function onClick() {
           return _this2.toggleFollow();
         }

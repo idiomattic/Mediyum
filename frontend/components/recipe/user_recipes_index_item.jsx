@@ -15,7 +15,7 @@ class UserRecipesIndexItem extends React.Component {
     let {recipe} = this.props
     return(
       <li className='recipe-list-item'>
-        <h3 onClick={() => this.handleClick()} className='recipe-item-title'>{this.props.recipe.title}</h3>
+        <h3 onClick={() => this.handleClick()} className='user-recipe-item-title'>{this.props.recipe.title}</h3>
       </li>
     )
   }

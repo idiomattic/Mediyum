@@ -6,6 +6,10 @@
 @import 'comments.css';
 @import 'user_show.css';
 
+body {
+  min-height: 100%;
+}
+
 a, u {
   text-decoration: none;
   color: black;
@@ -20,11 +24,18 @@ a, u {
 }
 
 .green-button {
+  border-width: 1px;
   background-color: rgb(26, 137, 23);
-  border-color: rgb(26, 137, 23);;
+  border-color: rgb(26, 137, 23);
   color: white;
   padding: 7px 16px 9px;
   border-radius: 99em;
+}
+
+.green-button#Following {
+  border-color: rgb(26, 137, 23);
+  background-color: white;
+  color: rgb(26, 137, 23);
 }
 
 h2 {
