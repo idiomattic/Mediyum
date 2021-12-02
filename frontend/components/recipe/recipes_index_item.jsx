@@ -43,10 +43,13 @@ class RecipesIndexItem extends React.Component {
     return(
       <li className='recipe-list-item'>
         <div className='recipe-info-wrapper'>
-          <div className='author-link-wrapper'>
-            <img className='author-photo' src={this.authorPhoto(author)} alt="img" />
-            <Link to={`/users/${author.id}`} >{author.name}</Link>
-          </div>
+          {/* <div className='author-link-wrapper'> */}
+            <Link to={`/users/${author.id}`} className='author-link-wrapper'>
+              <img className='author-photo' src={this.authorPhoto(author)} alt="img" />
+              <div className='author-name'>{author.name}</div>
+            </Link>
+            {/* <Link to={`/users/${author.id}`} className='author-name'>{author.name}</Link> */}
+          {/* </div> */}
           <h3 onClick={() => this.handleClick()} className='recipe-item-title'>
             {this.props.recipe.title}
           </h3>

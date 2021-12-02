@@ -44,9 +44,16 @@
 
 .author-link-wrapper {
   padding-bottom: 8px;
+  display: flex;
+  align-items: center;
 }
 
 .author-photo {
-  width: 20px;
   height: 20px;
+  width: auto;
+  border-radius: 10px;
+}
+
+.author-name {
+  margin-left: 8px;
 }
