@@ -2340,8 +2340,7 @@ var RecipesIndex = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "showAll",
-    value: function showAll() {
-      var recipes = this.props.recipes;
+    value: function showAll(recipes) {
       return recipes.map(function (recipe, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_recipes_index_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: i,
@@ -2350,9 +2349,19 @@ var RecipesIndex = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "showFeed",
+    value: function showFeed() {
+      var recipes = this.props.recipes;
+      var followed_recipes = this.props.currentUser.followed_recipes;
+
+      if (this.state.whichFeed === 'recommended') {
+        return this.showAll(recipes);
+      }
+    }
+  }, {
     key: "feed",
     value: function feed() {
-      return this.state.whichFeed === 'recommended' ? this.showAll() : this.filterForFollowing();
+      return this.state.whichFeed === 'recommended' ? this.showFeed() : this.filterForFollowing();
     }
   }, {
     key: "showFollowing",

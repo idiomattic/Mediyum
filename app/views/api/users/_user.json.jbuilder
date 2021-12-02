@@ -17,7 +17,7 @@ json.users_following user.users_following
 
 json.followed_recipes do
   json.array!(user.followed_recipes) do |followed_recipe|
-    json.followed_recipe followed_recipe
+    json.(followed_recipe, :id)
   end
 end
 

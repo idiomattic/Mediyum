@@ -23,8 +23,7 @@ class RecipesIndex extends React.Component {
     )
   }
 
-  showAll() {
-    const {recipes} = this.props
+  showAll(recipes) {
     return(
       recipes.map((recipe, i) => 
         <RecipesIndexItemContainer key={i} recipe={recipe} />
@@ -32,9 +31,17 @@ class RecipesIndex extends React.Component {
     )
   }
 
+  showFeed() {
+    const {recipes} = this.props
+    const {followed_recipes} = this.props.currentUser
+    if (this.state.whichFeed === 'recommended') {
+      return(this.showAll(recipes))
+    }
+  }
+
   feed() {
     return this.state.whichFeed === 'recommended' ? 
-      this.showAll() 
+      this.showFeed() 
       : this.filterForFollowing()
   }
 
