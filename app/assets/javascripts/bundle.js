@@ -2325,19 +2325,16 @@ var RecipesIndex = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchRecipes();
-    }
-  }, {
-    key: "filterForFollowing",
-    value: function filterForFollowing() {
-      var followed_recipes = this.props.currentUser.followed_recipes;
-      console.log(followed_recipes);
-      return followed_recipes.map(function (recipe, i) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_recipes_index_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          key: i,
-          recipe: recipe.followed_recipe
-        });
-      });
-    }
+    } // filterForFollowing() {
+    //   const {followed_recipes} = this.props.currentUser
+    //   console.log(followed_recipes)
+    //   return(
+    //     followed_recipes.map((recipe, i) => 
+    //       <RecipesIndexItemContainer key={i} recipe={recipe.followed_recipe} />
+    //     )
+    //   )
+    // }
+
   }, {
     key: "showAll",
     value: function showAll(recipes) {
@@ -2357,31 +2354,25 @@ var RecipesIndex = /*#__PURE__*/function (_React$Component) {
       if (this.state.whichFeed === 'recommended') {
         return this.showAll(recipes);
       }
-    }
-  }, {
-    key: "feed",
-    value: function feed() {
-      return this.state.whichFeed === 'recommended' ? this.showFeed() : this.filterForFollowing();
-    }
-  }, {
-    key: "showFollowing",
-    value: function showFollowing() {
-      this.setState({
-        whichFeed: 'following'
-      });
-    }
-  }, {
-    key: "showRecommended",
-    value: function showRecommended() {
-      this.setState({
-        whichFeed: 'recommended'
-      });
-    }
+    } // feed() {
+    //   return this.state.whichFeed === 'recommended' ? 
+    //     this.showFeed() 
+    //     : this.filterForFollowing()
+    // }
+    // showFollowing() {
+    //   this.setState({
+    //     whichFeed: 'following'
+    //   })
+    // }
+    // showRecommended() {
+    //   this.setState({
+    //     whichFeed: 'recommended'
+    //   })
+    // }
+
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
       var recipes = this.props.recipes;
 
       if (!recipes) {
@@ -2393,21 +2384,13 @@ var RecipesIndex = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "index-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-        className: "following-recipes",
-        onClick: function onClick() {
-          return _this2.showFollowing();
-        }
-      }, "FOLLOWING"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-        className: "recommended-recipes",
-        onClick: function onClick() {
-          return _this2.showRecommended();
-        }
+        className: "recommended-recipes"
       }, "RECOMMENDED FOR YOU"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "right-padding"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "recipes-list",
         id: this.state.whichFeed
-      }, this.feed()));
+      }, this.showFeed()));
     }
   }]);
 
@@ -2527,8 +2510,12 @@ var RecipesIndexItem = /*#__PURE__*/function (_React$Component) {
       this.props.history.push("/users/".concat(recipe.author.id));
     }
   }, {
-    key: "getDate",
-    value: function getDate() {}
+    key: "authorPhoto",
+    value: function authorPhoto(author) {
+      // let {author} = this.props
+      debugger;
+      return author.photoURL ? author.photoURL : 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png';
+    }
   }, {
     key: "render",
     value: function render() {
@@ -2547,7 +2534,10 @@ var RecipesIndexItem = /*#__PURE__*/function (_React$Component) {
         className: "recipe-info-wrapper"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "author-link-wrapper"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        src: this.authorPhoto(author),
+        alt: "img"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
         to: "/users/".concat(author.id)
       }, author.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
         onClick: function onClick() {
@@ -3376,7 +3366,8 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
       var _this$props2 = this.props,
           followers = _this$props2.followers,
           userId = _this$props2.userId,
-          currentUserId = _this$props2.currentUserId;
+          currentUserId = _this$props2.currentUserId; // debugger
+
       var buttonText = followers[currentUserId] ? 'Following' : 'Follow';
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "green-button",
@@ -3420,7 +3411,9 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
         className: "user-show-header"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
         className: "user-title"
-      }, user.name), this.followerCount(), this.isSelf(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+      }, user.name), this.followerCount(), this.isSelf(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "user-show-nav-spacer"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
         to: "/feed"
       }, "Feed")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.myRecipes());
     }

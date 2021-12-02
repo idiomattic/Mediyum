@@ -51,6 +51,7 @@ class UserShow extends React.Component {
 
   displayFollowButton() {
     let {followers, userId, currentUserId} = this.props
+    // debugger
     let buttonText = followers[currentUserId] ? 'Following' : 'Follow'
     return (
       <button className='green-button' onClick={() => this.toggleFollow()}>{buttonText}</button>
@@ -82,6 +83,7 @@ class UserShow extends React.Component {
           <h2 className='user-title'>{user.name}</h2>
           {this.followerCount()}
           {this.isSelf()}
+          <div className='user-show-nav-spacer'></div>
           <Link to='/feed'>Feed</Link>
         </div>
         <br />
