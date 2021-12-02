@@ -48,6 +48,10 @@ class User < ApplicationRecord
     foreign_key: :yummer_id,
     class_name: :Yum
 
+  has_many :followed_recipes,
+    through: :users_followed,
+    source: :recipes
+
   has_one_attached :photo
 
   after_initialize :ensure_session_token

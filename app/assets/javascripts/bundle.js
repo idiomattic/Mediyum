@@ -2431,7 +2431,8 @@ var mSTP = function mSTP(state) {
   return {
     currentUserId: currentUserId,
     recipes: Object.values(state.entities.recipes) || _nullRecipes,
-    currentUser: state.entities.users[currentUserId]
+    currentUser: state.entities.users[currentUserId],
+    follows: state.entities.follows
   };
 };
 
@@ -3613,8 +3614,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _actions_follow_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/follow_actions */ "./frontend/actions/follow_actions.js");
-/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/user_actions */ "./frontend/actions/user_actions.js");
+/* harmony import */ var _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/recipe_actions */ "./frontend/actions/recipe_actions.js");
+/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/user_actions */ "./frontend/actions/user_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -3635,11 +3638,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       delete nextState[action.follow.id];
       return nextState;
 
-    case _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__.RECEIVE_USER:
+    case _actions_user_actions__WEBPACK_IMPORTED_MODULE_2__.RECEIVE_USER:
       action.user.received_follows.forEach(function (receivedFollow) {
         nextState[receivedFollow.id] = receivedFollow;
       });
       return nextState;
+    // case RECEIVE_RECIPES:
+    //   debugger
 
     default:
       return state;

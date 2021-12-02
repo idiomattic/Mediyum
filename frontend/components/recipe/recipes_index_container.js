@@ -9,7 +9,8 @@ const mSTP = state => {
   return({
     currentUserId,
     recipes: Object.values(state.entities.recipes) || _nullRecipes,
-    currentUser: state.entities.users[currentUserId]
+    currentUser: state.entities.users[currentUserId],
+    follows: state.entities.follows
   })
 }
 
