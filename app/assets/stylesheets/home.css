@@ -45,3 +45,8 @@
 .author-link-wrapper {
   padding-bottom: 8px;
 }
+
+.author-photo {
+  width: 20px;
+  height: 20px;
+}
