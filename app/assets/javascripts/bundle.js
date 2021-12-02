@@ -711,6 +711,19 @@ var App = function App() {
     exact: true,
     path: "/users/:userId",
     component: _users_user_show_container__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("footer", {
+    className: "app-footer"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
+    className: "footer-message"
+  }, "More from Matthew Lese"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+    href: "https://github.com/matthewlese",
+    className: "github-link"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "github"
+  }, "GitHub"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    src: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+    alt: "GitHub",
+    className: "github-link"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_modal_modal_container__WEBPACK_IMPORTED_MODULE_4__["default"], null));
 };
 
@@ -2093,12 +2106,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     key: "editRecipe",
     value: function editRecipe() {
       this.props.history.push("/recipes/".concat(this.props.recipeId, "/edit"));
-    } // handleDelete() {
-    //   let { deleteRecipe, recipeId, history } = this.props
-    //   deleteRecipe(recipeId)
-    //     .then(res => history.push('/feed'))
-    // }
-
+    }
   }, {
     key: "isOwner",
     value: function isOwner() {

@@ -12,14 +12,12 @@ import UserShowContainer from './users/user_show_container'
 const App = () => {
   return(
   <div id='app'>
-    {/* <header className='app-header'> */}
-      <Switch>
-        <AuthRoute exact path='/' component={HeaderContainer}/>
-        <Route path='/feed' component={HeaderContainer}/>
-        <Route path='/recipes' component={HeaderContainer}/>
-        <Route path='/users' component={HeaderContainer}/>
-      </Switch>
-    {/* </header> */}
+    <Switch>
+      <AuthRoute exact path='/' component={HeaderContainer}/>
+      <Route path='/feed' component={HeaderContainer}/>
+      <Route path='/recipes' component={HeaderContainer}/>
+      <Route path='/users' component={HeaderContainer}/>
+    </Switch>
     <div className='app-body'>
       <Switch>
         <ProtectedRoute exact path='/feed' component={HomeContainer}/>
@@ -29,6 +27,14 @@ const App = () => {
         <ProtectedRoute exact path='/users/:userId' component={UserShowContainer}/>
       </Switch>
     </div>
+    <footer className='app-footer'>
+      <h3 className='footer-message'>More from Matthew Lese</h3>
+      {/* <div className='footer-spacer'></div> */}
+      <a href="https://github.com/matthewlese" className='github-link'>
+        <div className='github'>GitHub</div>
+        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" className='github-link'/>
+      </a>
+    </footer>
     <Modal />
   </div>
   )

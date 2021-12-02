@@ -22,22 +22,13 @@ class RecipeShow extends React.Component {
     this.props.history.push(`/recipes/${this.props.recipeId}/edit`)
   }
 
-  // handleDelete() {
-  //   let { deleteRecipe, recipeId, history } = this.props
-  //   deleteRecipe(recipeId)
-  //     .then(res => history.push('/feed'))
-  // }
-
   isOwner() {
     let { deleteRecipe, recipe, recipeId, currentUserId } = this.props
     return recipe.author_id === currentUserId ? (
       <div>
         <button className='black-button' onClick={() => this.editRecipe()}>
           Edit Recipe
-        </button> 
-        {/* <button className='black-button' onClick={() => this.handleDelete()}>
-          Delete Recipe
-        </button>  */}
+        </button>
       </div>
       ) : null
   }

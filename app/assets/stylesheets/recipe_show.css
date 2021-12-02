@@ -7,7 +7,7 @@
 }
 
 .recipe-title {
-  margin-top: 20px;
+  margin-top: 40px;
   font-family: fell, Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 48px;
 }
@@ -19,8 +19,9 @@
 
 .recipe-footer {
   display: flex;
-  position: absolute;
-  bottom: 10%;
+  margin-bottom: 40px;
+  /* position: absolute; */
+  /* bottom: 10%; */
 }
 
 .comments-button {
@@ -31,6 +32,7 @@
   height: 40px;
   width: auto;
   border-radius: 20px;
+  margin-right: 10px;
 }
 
 .author {
@@ -41,6 +43,12 @@
   display: flex;
   align-items: center;
   margin-bottom: 40px;
+}
+
+.recipe-photo {
+  vertical-align: middle;
+  max-width: 300px;
+  margin-bottom: 20px;
 }
 
 .yum-nav {
