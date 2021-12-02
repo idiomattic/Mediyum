@@ -1,6 +1,8 @@
 # json.extract! recipe, :id, :title, :body, :author_id
 json.(recipe, :id, :title, :body, :author_id)
 
+# json.photoUrl url_for(recipe.photo)
+
 json.author recipe.author
 
 json.comments recipe.comments

@@ -7,14 +7,27 @@ class RecipeForm extends React.Component {
     this.state = {
       title: '',
       body: '',
-      author_id: this.props.currentUserId
+      author_id: this.props.currentUserId,
+      photoFile: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleFile = this.handleFile.bind(this)
+  }
+
+  handleFile(e) {
+    this.setState({
+      photoFile: e.currentTarget.files[0]
+    })
   }
 
   handleSubmit(e) {
     e.preventDefault()
-    this.props.action(this.state)
+    const formData = new FormData()
+    formData.append('recipe[title]', this.state.title)
+    formData.append('recipe[body]', this.state.body)
+    formData.append('recipe[author_id]', this.state.author_id)
+    formData.append('recipe[photo]', this.state.photoFile)
+    this.props.action(formData)
       .then(res => this.props.history.push(`/feed`))
   }
 
@@ -43,6 +56,8 @@ class RecipeForm extends React.Component {
                 value={this.state.body} 
                 onChange={this.update('body')} />
             </label>
+            <br />
+            <input type="file" onChange={e => this.handleFile(e)}/>
             <br />
             <input className='black-button' 
               type="submit" 

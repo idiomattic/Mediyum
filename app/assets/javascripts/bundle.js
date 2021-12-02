@@ -1931,19 +1931,33 @@ var RecipeForm = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       title: '',
       body: '',
-      author_id: _this.props.currentUserId
+      author_id: _this.props.currentUserId,
+      photoFile: null
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleFile = _this.handleFile.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(RecipeForm, [{
+    key: "handleFile",
+    value: function handleFile(e) {
+      this.setState({
+        photoFile: e.currentTarget.files[0]
+      });
+    }
+  }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       var _this2 = this;
 
       e.preventDefault();
-      this.props.action(this.state).then(function (res) {
+      var formData = new FormData();
+      formData.append('recipe[title]', this.state.title);
+      formData.append('recipe[body]', this.state.body);
+      formData.append('recipe[author_id]', this.state.author_id);
+      formData.append('recipe[photo]', this.state.photoFile);
+      this.props.action(formData).then(function (res) {
         return _this2.props.history.push("/feed");
       });
     }
@@ -1959,6 +1973,8 @@ var RecipeForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "recipe-form-div"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
@@ -1975,6 +1991,11 @@ var RecipeForm = /*#__PURE__*/function (_React$Component) {
         value: this.state.body,
         onChange: this.update('body')
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "file",
+        onChange: function onChange(e) {
+          return _this4.handleFile(e);
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         className: "black-button",
         type: "submit",
         value: this.props.formType
@@ -4041,9 +4062,10 @@ var createRecipe = function createRecipe(recipe) {
   return $.ajax({
     method: 'POST',
     url: '/api/recipes',
-    data: {
-      recipe: recipe
-    }
+    // data: {recipe}
+    data: recipe,
+    contentType: false,
+    processData: false
   });
 };
 var fetchRecipes = function fetchRecipes() {

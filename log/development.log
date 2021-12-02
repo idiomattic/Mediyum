@@ -56088,3 +56088,1711 @@ Processing by Api::CommentsController#index as JSON
 Completed 200 OK in 21ms (Views: 18.0ms | ActiveRecord: 2.9ms)
 
 
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Matthew Lese"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Matt Lese"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+[36m  Disk Storage (6.2ms) [0m[32mUploaded file to key: Tr2qvB5niPB136ZZfbzcWSpj (checksum: Ut7Uh2bGrWowS1JQFVrOSQ==)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Create (1.8ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "Tr2qvB5niPB136ZZfbzcWSpj"], ["filename", "better_pic.JPG"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 525848], ["checksum", "Ut7Uh2bGrWowS1JQFVrOSQ=="], ["created_at", "2021-12-01 23:30:03.123944"]]
+  [1m[35m (14.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Attachment Create (2.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "photo"], ["record_type", "User"], ["record_id", 2], ["blob_id", 1], ["created_at", "2021-12-01 23:30:03.165630"]]
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1 WHERE "users"."id" = $2[0m  [["updated_at", "2021-12-01 23:30:03.170041"], ["id", 2]]
+  [1m[35m (3.6ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 63d17fab-2554-49cc-8c5c-5fbde9a2657e) to Async(default) with arguments: #<GlobalID:0x0000558b5d890038 @uri=#<URI::GID gid://mediyum/ActiveStorage::Blob/1>>
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [63d17fab-2554-49cc-8c5c-5fbde9a2657e] Performing ActiveStorage::AnalyzeJob (Job ID: 63d17fab-2554-49cc-8c5c-5fbde9a2657e) from Async(default) with arguments: #<GlobalID:0x00007f2df8428010 @uri=#<URI::GID gid://mediyum/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [63d17fab-2554-49cc-8c5c-5fbde9a2657e] [36m  Disk Storage (0.8ms) [0m[34mDownloaded file from key: Tr2qvB5niPB136ZZfbzcWSpj[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [63d17fab-2554-49cc-8c5c-5fbde9a2657e] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [63d17fab-2554-49cc-8c5c-5fbde9a2657e]   [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [63d17fab-2554-49cc-8c5c-5fbde9a2657e]   [1m[36mActiveStorage::Blob Update (0.5ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [63d17fab-2554-49cc-8c5c-5fbde9a2657e]   [1m[35m (4.0ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [63d17fab-2554-49cc-8c5c-5fbde9a2657e] Performed ActiveStorage::AnalyzeJob (Job ID: 63d17fab-2554-49cc-8c5c-5fbde9a2657e) from Async(default) in 19.71ms
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Matt Lese"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[36m  Disk Storage (3.3ms) [0m[32mUploaded file to key: oZmc5uuiMhQwU8YrDYxy36Li (checksum: Ut7Uh2bGrWowS1JQFVrOSQ==)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Blob Create (0.7ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "oZmc5uuiMhQwU8YrDYxy36Li"], ["filename", "better_pic.JPG"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 525848], ["checksum", "Ut7Uh2bGrWowS1JQFVrOSQ=="], ["created_at", "2021-12-01 23:36:20.401187"]]
+  [1m[35m (12.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveStorage::Attachment Destroy (0.4ms)[0m  [1m[31mDELETE FROM "active_storage_attachments" WHERE "active_storage_attachments"."id" = $1[0m  [["id", 1]]
+  [1m[36mActiveStorage::Attachment Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "photo"], ["record_type", "User"], ["record_id", 2], ["blob_id", 2], ["created_at", "2021-12-01 23:36:20.419840"]]
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1 WHERE "users"."id" = $2[0m  [["updated_at", "2021-12-01 23:36:20.421267"], ["id", 2]]
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 1d80bc62-f40a-49d6-bfb7-fe233b210e5b) to Async(default) with arguments: #<GlobalID:0x0000558b5fee26a0 @uri=#<URI::GID gid://mediyum/ActiveStorage::Blob/2>>
+[ActiveJob] Enqueued ActiveStorage::PurgeJob (Job ID: a0760457-ec21-4baa-92c9-e8b75d3047a3) to Async(default) with arguments: #<GlobalID:0x0000558b5de11ae8 @uri=#<URI::GID gid://mediyum/ActiveStorage::Blob/1>>
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1d80bc62-f40a-49d6-bfb7-fe233b210e5b] Performing ActiveStorage::AnalyzeJob (Job ID: 1d80bc62-f40a-49d6-bfb7-fe233b210e5b) from Async(default) with arguments: #<GlobalID:0x00007f2df8845120 @uri=#<URI::GID gid://mediyum/ActiveStorage::Blob/2>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1d80bc62-f40a-49d6-bfb7-fe233b210e5b] [36m  Disk Storage (0.7ms) [0m[34mDownloaded file from key: oZmc5uuiMhQwU8YrDYxy36Li[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1d80bc62-f40a-49d6-bfb7-fe233b210e5b] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1d80bc62-f40a-49d6-bfb7-fe233b210e5b]   [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1d80bc62-f40a-49d6-bfb7-fe233b210e5b]   [1m[36mActiveStorage::Blob Update (0.8ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 2]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1d80bc62-f40a-49d6-bfb7-fe233b210e5b]   [1m[35m (3.7ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1d80bc62-f40a-49d6-bfb7-fe233b210e5b] Performed ActiveStorage::AnalyzeJob (Job ID: 1d80bc62-f40a-49d6-bfb7-fe233b210e5b) from Async(default) in 14.3ms
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PurgeJob] [a0760457-ec21-4baa-92c9-e8b75d3047a3] Performing ActiveStorage::PurgeJob (Job ID: a0760457-ec21-4baa-92c9-e8b75d3047a3) from Async(default) with arguments: #<GlobalID:0x00007f2df8477e80 @uri=#<URI::GID gid://mediyum/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::PurgeJob] [a0760457-ec21-4baa-92c9-e8b75d3047a3]   [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [a0760457-ec21-4baa-92c9-e8b75d3047a3]   [1m[36mActiveStorage::Attachment Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = $1 LIMIT $2[0m  [["blob_id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PurgeJob] [a0760457-ec21-4baa-92c9-e8b75d3047a3]   [1m[36mActiveStorage::Blob Destroy (0.7ms)[0m  [1m[31mDELETE FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1[0m  [["id", 1]]
+[ActiveJob] [ActiveStorage::PurgeJob] [a0760457-ec21-4baa-92c9-e8b75d3047a3]   [1m[35m (9.9ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [a0760457-ec21-4baa-92c9-e8b75d3047a3]   [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "ActiveStorage::Blob"], ["name", "preview_image"], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PurgeJob] [a0760457-ec21-4baa-92c9-e8b75d3047a3] [36m  Disk Storage (0.2ms) [0m[31mDeleted file from key: Tr2qvB5niPB136ZZfbzcWSpj[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [a0760457-ec21-4baa-92c9-e8b75d3047a3] [36m  Disk Storage (0.1ms) [0m[31mDeleted files by key prefix: variants/Tr2qvB5niPB136ZZfbzcWSpj/[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [a0760457-ec21-4baa-92c9-e8b75d3047a3] Performed ActiveStorage::PurgeJob (Job ID: a0760457-ec21-4baa-92c9-e8b75d3047a3) from Async(default) in 24.48ms
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Matt Lese"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Started GET "/users/2" for ::1 at 2021-12-01 16:08:42 -0800
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/matthew/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (No route matches [GET] "/users/2"):
+  
+actionpack (5.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.6) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/users/2" for ::1 at 2021-12-01 16:09:05 -0800
+
+ActionController::RoutingError - uninitialized constant UsersController:
+
+Started POST "/__better_errors/36268f43faf0762b/variables" for ::1 at 2021-12-01 16:09:05 -0800
+Started GET "/users/2" for ::1 at 2021-12-01 16:09:42 -0800
+
+ActionController::RoutingError - uninitialized constant UsersController:
+
+Started POST "/__better_errors/87a70ebb8e4df7c3/variables" for ::1 at 2021-12-01 16:09:42 -0800
+Started GET "/users/2" for ::1 at 2021-12-01 16:09:49 -0800
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/matthew/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+
+ActionController::RoutingError - uninitialized constant UsersController:
+
+Started POST "/__better_errors/48bd06b00a56a81e/variables" for ::1 at 2021-12-01 16:09:49 -0800
+Started GET "/" for ::1 at 2021-12-01 16:10:36 -0800
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/matthew/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mRecipe Load (0.9ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mFollow Load (0.8ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mFollow Load (0.9ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:15
+  Rendered api/users/_user.json.jbuilder (64.1ms)
+  Rendered static_pages/root.html.erb within layouts/application (93.6ms)
+Completed 200 OK in 1224ms (Views: 1205.0ms | ActiveRecord: 18.2ms)
+
+
+Started GET "/api/recipes" for ::1 at 2021-12-01 16:10:38 -0800
+Processing by Api::RecipesController#index as JSON
+  Rendering api/recipes/index.json.jbuilder
+  [1m[36mRecipe Load (1.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/api/recipes/index.json.jbuilder:1
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  Rendered api/recipes/_recipe.json.jbuilder (46.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  Rendered api/recipes/_recipe.json.jbuilder (2.2ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  Rendered api/recipes/_recipe.json.jbuilder (2.9ms)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mYum Load (1.0ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 1]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mYum Load (0.3ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 2]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."recipe_id" = $1[0m  [["recipe_id", 3]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mYum Load (0.5ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 3]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 3]]
+  ↳ app/views/api/recipes/index.json.jbuilder:6
+  Rendered api/recipes/index.json.jbuilder (104.0ms)
+Completed 200 OK in 109ms (Views: 93.7ms | ActiveRecord: 14.3ms)
+
+
+Started GET "/api/users/2" for ::1 at 2021-12-01 16:16:30 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:3
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  Rendered api/users/_user.json.jbuilder (84.3ms)
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  Rendered api/users/show.json.jbuilder (104.0ms)
+Completed 200 OK in 111ms (Views: 92.6ms | ActiveRecord: 14.1ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 16:18:31 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (22.9ms)
+  Rendered static_pages/root.html.erb within layouts/application (27.2ms)
+Completed 200 OK in 388ms (Views: 382.9ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/api/users/2" for ::1 at 2021-12-01 16:18:32 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:3
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.9ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  Rendered api/users/_user.json.jbuilder (9.3ms)
+  [1m[36mRecipe Load (0.7ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mFollow Load (0.9ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mFollow Load (1.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  Rendered api/users/show.json.jbuilder (50.0ms)
+Completed 200 OK in 59ms (Views: 46.1ms | ActiveRecord: 9.6ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 16:32:15 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (35.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (40.3ms)
+Completed 200 OK in 400ms (Views: 392.3ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 16:33:16 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.9ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (26.2ms)
+  Rendered static_pages/root.html.erb within layouts/application (31.3ms)
+Completed 200 OK in 386ms (Views: 379.2ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/api/users/2" for ::1 at 2021-12-01 16:33:17 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:3
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (1.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (1.9ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  Rendered api/users/_user.json.jbuilder (18.3ms)
+  [1m[36mRecipe Load (0.8ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mComment Load (2.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mFollow Load (0.6ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mFollow Load (0.7ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mUser Load (13.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  Rendered api/users/show.json.jbuilder (77.9ms)
+Completed 200 OK in 106ms (Views: 73.5ms | ActiveRecord: 24.5ms)
+
+
+Started GET "/api/users/2" for ::1 at 2021-12-01 16:33:17 -0800
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1eaab955e50dc077acb5adbc1b2441128ae9458a/better_pic.JPG" for ::1 at 2021-12-01 16:33:17 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:3
+  Rendering api/users/show.json.jbuilder
+Processing by ActiveStorage::BlobsController#show as 
+  [1m[36mActiveStorage::Attachment Load (41.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1eaab955e50dc077acb5adbc1b2441128ae9458a", "filename"=>"better_pic"}
+  [1m[36mActiveStorage::Blob Load (3.0ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  Rendered api/users/_user.json.jbuilder (51.9ms)
+  [1m[36mActiveStorage::Blob Load (1.9ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/matthew/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mRecipe Load (0.9ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+[36m  S3 Storage (10.1ms) [0m[34mGenerated URL for file at key: oZmc5uuiMhQwU8YrDYxy36Li (https://mediyum-dev.s3.us-west-1.amazonaws.com/oZmc5uuiMhQwU8YrDYxy36Li?response-content-disposition=inline%3B%20filename%3D%22better_pic.JPG%22%3B%20filename%2A%3DUTF-8%27%27better_pic.JPG&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUXB6RHWZMNXUFCY4%2F20211202%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20211202T003317Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=a47e8b28583b9b6cc53991132a2964b522bddd8edfb87d9f11cbd2154d49c6db)[0m
+Redirected to https://mediyum-dev.s3.us-west-1.amazonaws.com/oZmc5uuiMhQwU8YrDYxy36Li?response-content-disposition=inline%3B%20filename%3D%22better_pic.JPG%22%3B%20filename%2A%3DUTF-8%27%27better_pic.JPG&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUXB6RHWZMNXUFCY4%2F20211202%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20211202T003317Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=a47e8b28583b9b6cc53991132a2964b522bddd8edfb87d9f11cbd2154d49c6db
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+Completed 302 Found in 23ms (ActiveRecord: 2.3ms)
+
+
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mFollow Load (0.7ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  Rendered api/users/show.json.jbuilder (101.2ms)
+Completed 200 OK in 118ms (Views: 59.2ms | ActiveRecord: 50.7ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1eaab955e50dc077acb5adbc1b2441128ae9458a/better_pic.JPG" for ::1 at 2021-12-01 16:33:33 -0800
+Processing by ActiveStorage::BlobsController#show as 
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1eaab955e50dc077acb5adbc1b2441128ae9458a", "filename"=>"better_pic"}
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/matthew/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+[36m  S3 Storage (2.4ms) [0m[34mGenerated URL for file at key: oZmc5uuiMhQwU8YrDYxy36Li (https://mediyum-dev.s3.us-west-1.amazonaws.com/oZmc5uuiMhQwU8YrDYxy36Li?response-content-disposition=inline%3B%20filename%3D%22better_pic.JPG%22%3B%20filename%2A%3DUTF-8%27%27better_pic.JPG&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUXB6RHWZMNXUFCY4%2F20211202%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20211202T003333Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=f23df43c6c1f8675d77d191c2ae8fba1e411c4785cf7e88f86e69d0496600c48)[0m
+Redirected to https://mediyum-dev.s3.us-west-1.amazonaws.com/oZmc5uuiMhQwU8YrDYxy36Li?response-content-disposition=inline%3B%20filename%3D%22better_pic.JPG%22%3B%20filename%2A%3DUTF-8%27%27better_pic.JPG&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUXB6RHWZMNXUFCY4%2F20211202%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20211202T003333Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=f23df43c6c1f8675d77d191c2ae8fba1e411c4785cf7e88f86e69d0496600c48
+Completed 302 Found in 6ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 16:35:38 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.9ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (32.6ms)
+  Rendered static_pages/root.html.erb within layouts/application (37.1ms)
+Completed 200 OK in 414ms (Views: 408.9ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 16:36:21 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (1.0ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (27.8ms)
+  Rendered static_pages/root.html.erb within layouts/application (33.1ms)
+Completed 200 OK in 380ms (Views: 374.0ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 16:38:21 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (1.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (1.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.6ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (29.6ms)
+  Rendered static_pages/root.html.erb within layouts/application (33.6ms)
+Completed 200 OK in 398ms (Views: 389.9ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 16:39:05 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.6ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.8ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (23.0ms)
+  Rendered static_pages/root.html.erb within layouts/application (28.8ms)
+Completed 200 OK in 50ms (Views: 44.6ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 16:42:34 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.8ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (29.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (35.7ms)
+Completed 200 OK in 389ms (Views: 380.8ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 16:43:00 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.6ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.6ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (30.9ms)
+  Rendered static_pages/root.html.erb within layouts/application (34.4ms)
+Completed 200 OK in 392ms (Views: 385.4ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 16:43:41 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (1.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.9ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (28.8ms)
+  Rendered static_pages/root.html.erb within layouts/application (33.5ms)
+Completed 200 OK in 415ms (Views: 407.6ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 16:44:18 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (1.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.6ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.9ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.6ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (37.0ms)
+  Rendered static_pages/root.html.erb within layouts/application (46.1ms)
+Completed 200 OK in 569ms (Views: 560.5ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 16:45:21 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.7ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (32.8ms)
+  Rendered static_pages/root.html.erb within layouts/application (37.2ms)
+Completed 200 OK in 389ms (Views: 383.2ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 16:54:52 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (79.1ms)
+  Rendered static_pages/root.html.erb within layouts/application (106.4ms)
+Completed 200 OK in 424ms (Views: 398.9ms | ActiveRecord: 24.6ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 16:55:17 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.7ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.7ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (27.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (34.5ms)
+Completed 200 OK in 383ms (Views: 375.1ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 16:57:32 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.8ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (27.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (32.5ms)
+Completed 200 OK in 439ms (Views: 431.7ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 16:58:01 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.6ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (29.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (32.9ms)
+Completed 200 OK in 470ms (Views: 464.2ms | ActiveRecord: 5.2ms)
+
+
+Started POST "/api/recipes" for ::1 at 2021-12-01 16:58:07 -0800
+Processing by Api::RecipesController#create as JSON
+  Parameters: {"recipe"=>{"title"=>"eg", "body"=>"eg", "author_id"=>"2"}}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/recipes_controller.rb:4
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/recipes_controller.rb:4
+  [1m[36mRecipe Create (1.6ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "body", "author_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "eg"], ["body", "eg"], ["author_id", 2], ["created_at", "2021-12-02 00:58:07.773410"], ["updated_at", "2021-12-02 00:58:07.773410"]]
+  ↳ app/controllers/api/recipes_controller.rb:4
+  [1m[35m (3.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/recipes_controller.rb:4
+  Rendering api/recipes/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Recipe"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:12
+  Rendered api/recipes/_recipe.json.jbuilder (10.5ms)
+  Rendered api/recipes/show.json.jbuilder (11.7ms)
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 7.2ms)
+
+
+
+Module::DelegationError - to_model delegated to attachment, but attachment is nil:
+  app/views/api/recipes/_recipe.json.jbuilder:12:in `_app_views_api_recipes__recipe_json_jbuilder___1792320316468134527_30300'
+  app/views/api/recipes/show.json.jbuilder:1:in `_app_views_api_recipes_show_json_jbuilder___3079392309330342717_30260'
+  app/controllers/api/recipes_controller.rb:5:in `create'
+
+Started GET "/api/recipes" for ::1 at 2021-12-01 16:58:23 -0800
+Processing by Api::RecipesController#index as JSON
+  Rendering api/recipes/index.json.jbuilder
+  [1m[36mRecipe Load (0.6ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/api/recipes/index.json.jbuilder:1
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Recipe"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:12
+  Rendered api/recipes/_recipe.json.jbuilder (8.2ms)
+  Rendered api/recipes/index.json.jbuilder (12.2ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 2.0ms)
+
+
+
+Module::DelegationError - to_model delegated to attachment, but attachment is nil:
+  app/views/api/recipes/_recipe.json.jbuilder:12:in `_app_views_api_recipes__recipe_json_jbuilder___1792320316468134527_30420'
+  app/views/api/recipes/index.json.jbuilder:3:in `block (2 levels) in _app_views_api_recipes_index_json_jbuilder__1354384818330714765_30380'
+  app/views/api/recipes/index.json.jbuilder:2:in `block in _app_views_api_recipes_index_json_jbuilder__1354384818330714765_30380'
+  app/views/api/recipes/index.json.jbuilder:1:in `_app_views_api_recipes_index_json_jbuilder__1354384818330714765_30380'
+  app/controllers/api/recipes_controller.rb:13:in `index'
+
+Started GET "/" for ::1 at 2021-12-01 16:58:25 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.9ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.6ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (25.6ms)
+  Rendered static_pages/root.html.erb within layouts/application (31.0ms)
+Completed 200 OK in 58ms (Views: 51.2ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/api/recipes" for ::1 at 2021-12-01 16:58:26 -0800
+Processing by Api::RecipesController#index as JSON
+  Rendering api/recipes/index.json.jbuilder
+  [1m[36mRecipe Load (0.6ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/api/recipes/index.json.jbuilder:1
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  [1m[36mActiveStorage::Attachment Load (1.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Recipe"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:12
+  Rendered api/recipes/_recipe.json.jbuilder (16.9ms)
+  Rendered api/recipes/index.json.jbuilder (21.1ms)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 4.7ms)
+
+
+
+Module::DelegationError - to_model delegated to attachment, but attachment is nil:
+  app/views/api/recipes/_recipe.json.jbuilder:12:in `_app_views_api_recipes__recipe_json_jbuilder___1792320316468134527_30620'
+  app/views/api/recipes/index.json.jbuilder:3:in `block (2 levels) in _app_views_api_recipes_index_json_jbuilder__1354384818330714765_30580'
+  app/views/api/recipes/index.json.jbuilder:2:in `block in _app_views_api_recipes_index_json_jbuilder__1354384818330714765_30580'
+  app/views/api/recipes/index.json.jbuilder:1:in `_app_views_api_recipes_index_json_jbuilder__1354384818330714765_30580'
+  app/controllers/api/recipes_controller.rb:13:in `index'
+
+Started GET "/" for ::1 at 2021-12-01 16:58:36 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.7ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.7ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (22.1ms)
+  Rendered static_pages/root.html.erb within layouts/application (26.6ms)
+Completed 200 OK in 52ms (Views: 45.2ms | ActiveRecord: 5.6ms)
+
+
+Started POST "/api/recipes" for ::1 at 2021-12-01 16:58:40 -0800
+Processing by Api::RecipesController#create as JSON
+  Parameters: {"recipe"=>{"title"=>"eg", "body"=>"eg", "author_id"=>"2"}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/recipes_controller.rb:4
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/recipes_controller.rb:4
+  [1m[36mRecipe Create (0.8ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "body", "author_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "eg"], ["body", "eg"], ["author_id", 2], ["created_at", "2021-12-02 00:58:40.871436"], ["updated_at", "2021-12-02 00:58:40.871436"]]
+  ↳ app/controllers/api/recipes_controller.rb:4
+  [1m[35m (11.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/recipes_controller.rb:4
+  Rendering api/recipes/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Recipe"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:12
+  Rendered api/recipes/_recipe.json.jbuilder (4.7ms)
+  Rendered api/recipes/show.json.jbuilder (5.7ms)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 14.3ms)
+
+
+
+Module::DelegationError - to_model delegated to attachment, but attachment is nil:
+  app/views/api/recipes/_recipe.json.jbuilder:12:in `_app_views_api_recipes__recipe_json_jbuilder___1792320316468134527_30820'
+  app/views/api/recipes/show.json.jbuilder:1:in `_app_views_api_recipes_show_json_jbuilder___3079392309330342717_30780'
+  app/controllers/api/recipes_controller.rb:5:in `create'
+
+Started POST "/api/recipes" for ::1 at 2021-12-01 16:59:42 -0800
+Processing by Api::RecipesController#create as JSON
+  Parameters: {"recipe"=>{"title"=>"eg", "body"=>"eg", "author_id"=>"2"}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/recipes_controller.rb:4
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/recipes_controller.rb:4
+  [1m[36mRecipe Create (0.6ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "body", "author_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "eg"], ["body", "eg"], ["author_id", 2], ["created_at", "2021-12-02 00:59:42.956071"], ["updated_at", "2021-12-02 00:59:42.956071"]]
+  ↳ app/controllers/api/recipes_controller.rb:4
+  [1m[35m (11.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/recipes_controller.rb:4
+  Rendering api/recipes/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Recipe"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:12
+  Rendered api/recipes/_recipe.json.jbuilder (4.2ms)
+  Rendered api/recipes/show.json.jbuilder (5.4ms)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 13.9ms)
+
+
+
+Module::DelegationError - to_model delegated to attachment, but attachment is nil:
+  app/views/api/recipes/_recipe.json.jbuilder:12:in `_app_views_api_recipes__recipe_json_jbuilder___1792320316468134527_30920'
+  app/views/api/recipes/show.json.jbuilder:1:in `_app_views_api_recipes_show_json_jbuilder___3079392309330342717_30880'
+  app/controllers/api/recipes_controller.rb:5:in `create'
+
+Started GET "/" for ::1 at 2021-12-01 17:00:04 -0800
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/matthew/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (1.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (1.2ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (155.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (190.3ms)
+Completed 200 OK in 1005ms (Views: 975.3ms | ActiveRecord: 29.0ms)
+
+
+Started POST "/api/recipes" for ::1 at 2021-12-01 17:00:14 -0800
+Processing by Api::RecipesController#create as JSON
+  Parameters: {"recipe"=>{"title"=>"eg", "body"=>"eg", "author_id"=>"2"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/recipes_controller.rb:4
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/recipes_controller.rb:4
+  [1m[36mRecipe Create (0.8ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "body", "author_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "eg"], ["body", "eg"], ["author_id", 2], ["created_at", "2021-12-02 01:00:14.197087"], ["updated_at", "2021-12-02 01:00:14.197087"]]
+  ↳ app/controllers/api/recipes_controller.rb:4
+  [1m[35m (8.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/recipes_controller.rb:4
+  Rendering api/recipes/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Recipe"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:12
+  Rendered api/recipes/_recipe.json.jbuilder (13.8ms)
+  Rendered api/recipes/show.json.jbuilder (15.0ms)
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 11.5ms)
+
+
+
+Module::DelegationError - to_model delegated to attachment, but attachment is nil:
+  app/views/api/recipes/_recipe.json.jbuilder:12:in `_app_views_api_recipes__recipe_json_jbuilder___3983833264122910260_20540'
+  app/views/api/recipes/show.json.jbuilder:1:in `_app_views_api_recipes_show_json_jbuilder__3544189211311963253_20500'
+  app/controllers/api/recipes_controller.rb:5:in `create'
+
+Started GET "/api/recipes" for ::1 at 2021-12-01 17:02:16 -0800
+Processing by Api::RecipesController#index as JSON
+  Rendering api/recipes/index.json.jbuilder
+  [1m[36mRecipe Load (0.6ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/api/recipes/index.json.jbuilder:1
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Recipe"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:12
+  Rendered api/recipes/_recipe.json.jbuilder (11.8ms)
+  Rendered api/recipes/index.json.jbuilder (15.8ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 2.0ms)
+
+
+
+Module::DelegationError - to_model delegated to attachment, but attachment is nil:
+  app/views/api/recipes/_recipe.json.jbuilder:12:in `_app_views_api_recipes__recipe_json_jbuilder___3983833264122910260_20660'
+  app/views/api/recipes/index.json.jbuilder:3:in `block (2 levels) in _app_views_api_recipes_index_json_jbuilder__837373277813449663_20620'
+  app/views/api/recipes/index.json.jbuilder:2:in `block in _app_views_api_recipes_index_json_jbuilder__837373277813449663_20620'
+  app/views/api/recipes/index.json.jbuilder:1:in `_app_views_api_recipes_index_json_jbuilder__837373277813449663_20620'
+  app/controllers/api/recipes_controller.rb:13:in `index'
+
+Started GET "/" for ::1 at 2021-12-01 17:02:18 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.6ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.6ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (29.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (33.1ms)
+Completed 200 OK in 59ms (Views: 52.4ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/api/recipes" for ::1 at 2021-12-01 17:02:19 -0800
+Processing by Api::RecipesController#index as JSON
+  Rendering api/recipes/index.json.jbuilder
+  [1m[36mRecipe Load (1.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/api/recipes/index.json.jbuilder:1
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  [1m[36mActiveStorage::Attachment Load (1.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Recipe"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:12
+  Rendered api/recipes/_recipe.json.jbuilder (21.3ms)
+  Rendered api/recipes/index.json.jbuilder (27.7ms)
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 6.9ms)
+
+
+
+Module::DelegationError - to_model delegated to attachment, but attachment is nil:
+  app/views/api/recipes/_recipe.json.jbuilder:12:in `_app_views_api_recipes__recipe_json_jbuilder___3983833264122910260_20860'
+  app/views/api/recipes/index.json.jbuilder:3:in `block (2 levels) in _app_views_api_recipes_index_json_jbuilder__837373277813449663_20820'
+  app/views/api/recipes/index.json.jbuilder:2:in `block in _app_views_api_recipes_index_json_jbuilder__837373277813449663_20820'
+  app/views/api/recipes/index.json.jbuilder:1:in `_app_views_api_recipes_index_json_jbuilder__837373277813449663_20820'
+  app/controllers/api/recipes_controller.rb:13:in `index'
+
+  [1m[36mRecipe Load (1.1ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" ORDER BY "recipes"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mRecipe Load (0.9ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" ORDER BY "recipes"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Recipe"], ["name", "photo"], ["LIMIT", 1]]
+Started GET "/" for ::1 at 2021-12-01 17:13:33 -0800
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/matthew/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (1.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.6ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (131.7ms)
+  Rendered static_pages/root.html.erb within layouts/application (160.0ms)
+Completed 200 OK in 609ms (Views: 582.5ms | ActiveRecord: 25.9ms)
+
+
+Started GET "/api/recipes" for ::1 at 2021-12-01 17:13:34 -0800
+Processing by Api::RecipesController#index as JSON
+  Rendering api/recipes/index.json.jbuilder
+  [1m[36mRecipe Load (2.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/api/recipes/index.json.jbuilder:1
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Recipe"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:12
+  Rendered api/recipes/_recipe.json.jbuilder (31.5ms)
+  Rendered api/recipes/index.json.jbuilder (40.1ms)
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 4.1ms)
+
+
+
+Module::DelegationError - to_model delegated to attachment, but attachment is nil:
+  app/views/api/recipes/_recipe.json.jbuilder:12:in `_app_views_api_recipes__recipe_json_jbuilder__122850171329558996_20520'
+  app/views/api/recipes/index.json.jbuilder:3:in `block (2 levels) in _app_views_api_recipes_index_json_jbuilder__2392454980354687338_20480'
+  app/views/api/recipes/index.json.jbuilder:2:in `block in _app_views_api_recipes_index_json_jbuilder__2392454980354687338_20480'
+  app/views/api/recipes/index.json.jbuilder:1:in `_app_views_api_recipes_index_json_jbuilder__2392454980354687338_20480'
+  app/controllers/api/recipes_controller.rb:13:in `index'
+
+Started GET "/api/recipes/7" for ::1 at 2021-12-01 17:13:41 -0800
+Processing by Api::RecipesController#show as JSON
+  Parameters: {"id"=>"7"}
+  [1m[36mRecipe Load (0.5ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/recipes_controller.rb:17
+  Rendering api/recipes/show.json.jbuilder
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Recipe"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:12
+  Rendered api/recipes/_recipe.json.jbuilder (9.7ms)
+  Rendered api/recipes/show.json.jbuilder (11.3ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 1.5ms)
+
+
+
+Module::DelegationError - to_model delegated to attachment, but attachment is nil:
+  app/views/api/recipes/_recipe.json.jbuilder:12:in `_app_views_api_recipes__recipe_json_jbuilder__122850171329558996_20640'
+  app/views/api/recipes/show.json.jbuilder:1:in `_app_views_api_recipes_show_json_jbuilder__1134086189504935677_20600'
+  app/controllers/api/recipes_controller.rb:18:in `show'
+
+Started GET "/" for ::1 at 2021-12-01 17:13:43 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.8ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.7ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (29.1ms)
+  Rendered static_pages/root.html.erb within layouts/application (33.9ms)
+Completed 200 OK in 59ms (Views: 52.7ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/api/recipes/7" for ::1 at 2021-12-01 17:13:44 -0800
+Processing by Api::RecipesController#show as JSON
+  Parameters: {"id"=>"7"}
+  [1m[36mRecipe Load (1.0ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/recipes_controller.rb:17
+  Rendering api/recipes/show.json.jbuilder
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  [1m[36mActiveStorage::Attachment Load (1.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Recipe"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:12
+  Rendered api/recipes/_recipe.json.jbuilder (19.0ms)
+  Rendered api/recipes/show.json.jbuilder (21.1ms)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 3.7ms)
+
+
+
+Module::DelegationError - to_model delegated to attachment, but attachment is nil:
+  app/views/api/recipes/_recipe.json.jbuilder:12:in `_app_views_api_recipes__recipe_json_jbuilder__122850171329558996_20840'
+  app/views/api/recipes/show.json.jbuilder:1:in `_app_views_api_recipes_show_json_jbuilder__1134086189504935677_20800'
+  app/controllers/api/recipes_controller.rb:18:in `show'
+
+Started GET "/" for ::1 at 2021-12-01 17:14:29 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  Rendered api/users/_user.json.jbuilder (7.1ms)
+  Rendered static_pages/root.html.erb within layouts/application (28.7ms)
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 5.1ms)
+
+
+
+ArgumentError - unknown keyword: :optional:
+  app/models/recipe.rb:34:in `<class:Recipe>'
+  app/models/recipe.rb:12:in `<main>'
+  app/views/api/users/_user.json.jbuilder:4:in `_app_views_api_users__user_json_jbuilder___2588342526787649003_25580'
+  app/views/static_pages/root.html.erb:4:in `_app_views_static_pages_root_html_erb__58074647847085085_25500'
+
+Started POST "/__better_errors/f1816fbf0d78e031/variables" for ::1 at 2021-12-01 17:14:30 -0800
+Started GET "/" for ::1 at 2021-12-01 17:16:35 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (82.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (103.2ms)
+Completed 200 OK in 131ms (Views: 107.6ms | ActiveRecord: 23.1ms)
+
+
+Started GET "/api/recipes/7" for ::1 at 2021-12-01 17:16:36 -0800
+Processing by Api::RecipesController#show as JSON
+  Parameters: {"id"=>"7"}
+  [1m[36mRecipe Load (2.0ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/recipes_controller.rb:17
+  Rendering api/recipes/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (1.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Recipe"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  Rendered api/recipes/_recipe.json.jbuilder (12.9ms)
+  Rendered api/recipes/show.json.jbuilder (16.0ms)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 3.7ms)
+
+
+
+Module::DelegationError - to_model delegated to attachment, but attachment is nil:
+  app/views/api/recipes/_recipe.json.jbuilder:4:in `_app_views_api_recipes__recipe_json_jbuilder__122850171329558996_31660'
+  app/views/api/recipes/show.json.jbuilder:1:in `_app_views_api_recipes_show_json_jbuilder__1134086189504935677_31620'
+  app/controllers/api/recipes_controller.rb:18:in `show'
+
+Started GET "/" for ::1 at 2021-12-01 17:30:29 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.7ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.6ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (27.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (32.8ms)
+Completed 200 OK in 61ms (Views: 53.3ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/api/recipes/2" for ::1 at 2021-12-01 17:30:29 -0800
+Processing by Api::RecipesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mRecipe Load (0.8ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/recipes_controller.rb:17
+  Rendering api/recipes/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (2.8ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Recipe"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  Rendered api/recipes/_recipe.json.jbuilder (14.3ms)
+  Rendered api/recipes/show.json.jbuilder (19.3ms)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 3.9ms)
+
+
+
+Module::DelegationError - to_model delegated to attachment, but attachment is nil:
+  app/views/api/recipes/_recipe.json.jbuilder:4:in `_app_views_api_recipes__recipe_json_jbuilder__122850171329558996_31960'
+  app/views/api/recipes/show.json.jbuilder:1:in `_app_views_api_recipes_show_json_jbuilder__1134086189504935677_31920'
+  app/controllers/api/recipes_controller.rb:18:in `show'
+
+Started GET "/" for ::1 at 2021-12-01 17:30:36 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.6ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.7ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (27.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (32.4ms)
+Completed 200 OK in 60ms (Views: 53.2ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/api/recipes/1" for ::1 at 2021-12-01 17:30:37 -0800
+Processing by Api::RecipesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mRecipe Load (0.7ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/recipes_controller.rb:17
+  Rendering api/recipes/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (1.9ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Recipe"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  Rendered api/recipes/_recipe.json.jbuilder (13.1ms)
+  Rendered api/recipes/show.json.jbuilder (20.6ms)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 3.0ms)
+
+
+
+Module::DelegationError - to_model delegated to attachment, but attachment is nil:
+  app/views/api/recipes/_recipe.json.jbuilder:4:in `_app_views_api_recipes__recipe_json_jbuilder__122850171329558996_32160'
+  app/views/api/recipes/show.json.jbuilder:1:in `_app_views_api_recipes_show_json_jbuilder__1134086189504935677_32120'
+  app/controllers/api/recipes_controller.rb:18:in `show'
+
+Started GET "/api/users/7" for ::1 at 2021-12-01 17:32:19 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:3
+Completed 404 Not Found in 4ms (ActiveRecord: 0.6ms)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find User with 'id'=7:
+  app/controllers/api/users_controller.rb:3:in `show'
+
+Started GET "/api/recipes/7" for ::1 at 2021-12-01 17:32:37 -0800
+Processing by Api::RecipesController#show as JSON
+  Parameters: {"id"=>"7"}
+  [1m[36mRecipe Load (0.7ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/recipes_controller.rb:17
+  Rendering api/recipes/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Recipe"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  Rendered api/recipes/_recipe.json.jbuilder (4.4ms)
+  Rendered api/recipes/show.json.jbuilder (5.9ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 1.1ms)
+
+
+
+Module::DelegationError - to_model delegated to attachment, but attachment is nil:
+  app/views/api/recipes/_recipe.json.jbuilder:4:in `_app_views_api_recipes__recipe_json_jbuilder__122850171329558996_32280'
+  app/views/api/recipes/show.json.jbuilder:1:in `_app_views_api_recipes_show_json_jbuilder__1134086189504935677_32240'
+  app/controllers/api/recipes_controller.rb:18:in `show'
+
+Started GET "/api/users/2" for ::1 at 2021-12-01 17:32:40 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:3
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  Rendered api/users/_user.json.jbuilder (9.3ms)
+  [1m[36mRecipe Load (0.8ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  Rendered api/users/show.json.jbuilder (28.3ms)
+Completed 200 OK in 34ms (Views: 26.4ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/api/recipes" for ::1 at 2021-12-01 17:36:23 -0800
+Processing by Api::RecipesController#index as JSON
+  Rendering api/recipes/index.json.jbuilder
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  ↳ app/views/api/recipes/index.json.jbuilder:1
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Recipe"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  Rendered api/recipes/_recipe.json.jbuilder (4.6ms)
+  Rendered api/recipes/index.json.jbuilder (7.6ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.9ms)
+
+
+
+Module::DelegationError - to_model delegated to attachment, but attachment is nil:
+  app/views/api/recipes/_recipe.json.jbuilder:4:in `_app_views_api_recipes__recipe_json_jbuilder__122850171329558996_32480'
+  app/views/api/recipes/index.json.jbuilder:3:in `block (2 levels) in _app_views_api_recipes_index_json_jbuilder__2392454980354687338_32440'
+  app/views/api/recipes/index.json.jbuilder:2:in `block in _app_views_api_recipes_index_json_jbuilder__2392454980354687338_32440'
+  app/views/api/recipes/index.json.jbuilder:1:in `_app_views_api_recipes_index_json_jbuilder__2392454980354687338_32440'
+  app/controllers/api/recipes_controller.rb:13:in `index'
+
+Started GET "/api/users/2" for ::1 at 2021-12-01 17:36:26 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:3
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  Rendered api/users/_user.json.jbuilder (4.3ms)
+  [1m[36mRecipe Load (0.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  Rendered api/users/show.json.jbuilder (18.7ms)
+Completed 200 OK in 23ms (Views: 16.7ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 17:36:43 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.9ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (25.7ms)
+  Rendered static_pages/root.html.erb within layouts/application (29.9ms)
+Completed 200 OK in 55ms (Views: 49.5ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/api/users/1" for ::1 at 2021-12-01 17:36:44 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:3
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (2.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  Rendered api/users/_user.json.jbuilder (13.2ms)
+  Rendered api/users/show.json.jbuilder (14.9ms)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 3.2ms)
+
+
+
+Module::DelegationError - to_model delegated to attachment, but attachment is nil:
+  app/views/api/users/_user.json.jbuilder:16:in `_app_views_api_users__user_json_jbuilder___2588342526787649003_32860'
+  app/views/api/users/show.json.jbuilder:1:in `_app_views_api_users_show_json_jbuilder___3271366605356111624_32820'
+  app/controllers/api/users_controller.rb:5:in `show'
+
+Started GET "/" for ::1 at 2021-12-01 17:48:44 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.7ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.7ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (28.7ms)
+  Rendered static_pages/root.html.erb within layouts/application (34.1ms)
+Completed 200 OK in 75ms (Views: 67.2ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/api/users/2" for ::1 at 2021-12-01 17:48:44 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:3
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (1.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (1.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  Rendered api/users/_user.json.jbuilder (16.5ms)
+  [1m[36mRecipe Load (0.7ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mFollow Load (0.8ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mFollow Load (0.7ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  Rendered api/users/show.json.jbuilder (53.8ms)
+Completed 200 OK in 62ms (Views: 48.3ms | ActiveRecord: 9.7ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 17:49:26 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.6ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.6ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.7ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (31.7ms)
+  Rendered static_pages/root.html.erb within layouts/application (37.5ms)
+Completed 200 OK in 563ms (Views: 556.1ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/" for ::1 at 2021-12-01 17:53:55 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.6ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (32.1ms)
+  Rendered static_pages/root.html.erb within layouts/application (37.2ms)
+Completed 200 OK in 75ms (Views: 66.2ms | ActiveRecord: 7.7ms)
+
+
+Started GET "/api/users/2" for ::1 at 2021-12-01 17:53:55 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:3
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (2.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (1.0ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  Rendered api/users/_user.json.jbuilder (15.4ms)
+  [1m[36mRecipe Load (1.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mFollow Load (0.7ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  Rendered api/users/show.json.jbuilder (57.8ms)
+Completed 200 OK in 68ms (Views: 54.6ms | ActiveRecord: 8.8ms)
+
+
+Started GET "/api/users/2" for ::1 at 2021-12-01 17:53:55 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:3
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (2.0ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (2.8ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  Rendered api/users/_user.json.jbuilder (18.0ms)
+  [1m[36mRecipe Load (0.7ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mFollow Load (2.2ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mFollow Load (13.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  Rendered api/users/show.json.jbuilder (68.8ms)
+Completed 200 OK in 78ms (Views: 47.3ms | ActiveRecord: 26.2ms)
+
+
+Started GET "/api/recipes/7" for ::1 at 2021-12-01 18:04:33 -0800
+Processing by Api::RecipesController#show as JSON
+  Parameters: {"id"=>"7"}
+  [1m[36mRecipe Load (0.5ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/recipes_controller.rb:17
+  Rendering api/recipes/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Recipe"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  Rendered api/recipes/_recipe.json.jbuilder (7.6ms)
+  Rendered api/recipes/show.json.jbuilder (9.5ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 1.5ms)
+
+
+
+Module::DelegationError - to_model delegated to attachment, but attachment is nil:
+  app/views/api/recipes/_recipe.json.jbuilder:4:in `_app_views_api_recipes__recipe_json_jbuilder__122850171329558996_33680'
+  app/views/api/recipes/show.json.jbuilder:1:in `_app_views_api_recipes_show_json_jbuilder__1134086189504935677_33640'
+  app/controllers/api/recipes_controller.rb:18:in `show'
+
+Started POST "/api/recipes" for ::1 at 2021-12-01 18:06:01 -0800
+Processing by Api::RecipesController#create as JSON
+  Parameters: {"recipe"=>{"title"=>"eg!", "body"=>"eg", "author_id"=>"2"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/recipes_controller.rb:4
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/recipes_controller.rb:4
+  [1m[36mRecipe Create (1.2ms)[0m  [1m[32mINSERT INTO "recipes" ("title", "body", "author_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "eg!"], ["body", "eg"], ["author_id", 2], ["created_at", "2021-12-02 02:06:01.855843"], ["updated_at", "2021-12-02 02:06:01.855843"]]
+  ↳ app/controllers/api/recipes_controller.rb:4
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/recipes_controller.rb:4
+  Rendering api/recipes/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Recipe"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:4
+  Rendered api/recipes/_recipe.json.jbuilder (4.6ms)
+  Rendered api/recipes/show.json.jbuilder (5.7ms)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 6.0ms)
+
+
+
+Module::DelegationError - to_model delegated to attachment, but attachment is nil:
+  app/views/api/recipes/_recipe.json.jbuilder:4:in `_app_views_api_recipes__recipe_json_jbuilder__122850171329558996_33820'
+  app/views/api/recipes/show.json.jbuilder:1:in `_app_views_api_recipes_show_json_jbuilder__1134086189504935677_33780'
+  app/controllers/api/recipes_controller.rb:5:in `create'
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Started GET "/" for ::1 at 2021-12-01 18:16:02 -0800
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/matthew/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "5qeWz93qRwD1pRKZF8rmYQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.4ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/_user.json.jbuilder:17
+  Rendered api/users/_user.json.jbuilder (116.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (141.4ms)
+Completed 200 OK in 1229ms (Views: 1207.7ms | ActiveRecord: 20.6ms)
+
+
+Started GET "/api/users/2" for ::1 at 2021-12-01 18:16:03 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:3
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  [1m[36mActiveStorage::Blob Load (1.9ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/users/_user.json.jbuilder:16
+  Rendered api/users/_user.json.jbuilder (12.7ms)
+  [1m[36mRecipe Load (0.8ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes" WHERE "recipes"."author_id" = $1[0m  [["author_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commenter_id" = $1[0m  [["commenter_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mFollow Load (0.7ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mFollow Load (0.6ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."followed_user_id" WHERE "follows"."follower_id" = $1[0m  [["follower_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "follows" ON "users"."id" = "follows"."follower_id" WHERE "follows"."followed_user_id" = $1[0m  [["followed_user_id", 2]]
+  ↳ app/views/api/users/show.json.jbuilder:8
+  Rendered api/users/show.json.jbuilder (45.6ms)
+Completed 200 OK in 55ms (Views: 42.5ms | ActiveRecord: 8.4ms)
+
+
+Started GET "/api/recipes/8" for ::1 at 2021-12-01 18:16:46 -0800
+Processing by Api::RecipesController#show as JSON
+  Parameters: {"id"=>"8"}
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/recipes_controller.rb:17
+  Rendering api/recipes/show.json.jbuilder
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/api/recipes/_recipe.json.jbuilder:6
+  Rendered api/recipes/_recipe.json.jbuilder (6.8ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."recipe_id" = $1[0m  [["recipe_id", 8]]
+  ↳ app/views/api/recipes/show.json.jbuilder:2
+  [1m[36mYum Load (0.8ms)[0m  [1m[34mSELECT "yums".* FROM "yums" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 8]]
+  ↳ app/views/api/recipes/show.json.jbuilder:2
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "yums" ON "users"."id" = "yums"."yummer_id" WHERE "yums"."recipe_id" = $1[0m  [["recipe_id", 8]]
+  ↳ app/views/api/recipes/show.json.jbuilder:2
+  Rendered api/recipes/show.json.jbuilder (19.9ms)
+Completed 200 OK in 24ms (Views: 16.7ms | ActiveRecord: 5.3ms)
+
+

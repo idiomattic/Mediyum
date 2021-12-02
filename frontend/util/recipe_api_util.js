@@ -2,7 +2,10 @@ export const createRecipe = recipe => (
   $.ajax({
     method: 'POST',
     url: '/api/recipes',
-    data: {recipe}
+    // data: {recipe}
+    data: recipe,
+    contentType: false,
+    processData: false
   })
 )
 
