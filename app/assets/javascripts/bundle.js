@@ -2278,8 +2278,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _recipes_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./recipes_index_item */ "./frontend/components/recipe/recipes_index_item.jsx");
-/* harmony import */ var _recipes_index_item_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./recipes_index_item_container */ "./frontend/components/recipe/recipes_index_item_container.js");
+/* harmony import */ var _recipes_index_item_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./recipes_index_item_container */ "./frontend/components/recipe/recipes_index_item_container.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2301,7 +2300,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 
 
 
@@ -2331,18 +2329,21 @@ var RecipesIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "filterForFollowing",
     value: function filterForFollowing() {
-      var _this$props = this.props,
-          recipes = _this$props.recipes,
-          currentUser = _this$props.currentUser;
-      console.log(currentUser);
-      debugger;
+      var followed_recipes = this.props.currentUser.followed_recipes;
+      console.log(followed_recipes);
+      return followed_recipes.map(function (recipe, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_recipes_index_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: i,
+          recipe: recipe.followed_recipe
+        });
+      });
     }
   }, {
     key: "showAll",
     value: function showAll() {
       var recipes = this.props.recipes;
       return recipes.map(function (recipe, i) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_recipes_index_item_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_recipes_index_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: i,
           recipe: recipe
         });
@@ -2395,7 +2396,8 @@ var RecipesIndex = /*#__PURE__*/function (_React$Component) {
       }, "RECOMMENDED FOR YOU"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "right-padding"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
-        className: "recipes-list"
+        className: "recipes-list",
+        id: this.state.whichFeed
       }, this.feed()));
     }
   }]);

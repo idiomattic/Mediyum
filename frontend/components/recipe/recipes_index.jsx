@@ -1,5 +1,4 @@
 import React from "react"
-import RecipesIndexItem from "./recipes_index_item"
 import RecipesIndexItemContainer from "./recipes_index_item_container"
 
 class RecipesIndex extends React.Component {
@@ -15,9 +14,13 @@ class RecipesIndex extends React.Component {
   }
 
   filterForFollowing() {
-    const {recipes, currentUser} = this.props
-    console.log(currentUser)
-    debugger
+    const {followed_recipes} = this.props.currentUser
+    console.log(followed_recipes)
+    return(
+      followed_recipes.map((recipe, i) => 
+        <RecipesIndexItemContainer key={i} recipe={recipe.followed_recipe} />
+      )
+    )
   }
 
   showAll() {
@@ -59,12 +62,7 @@ class RecipesIndex extends React.Component {
           <h2 className='recommended-recipes' onClick={() => this.showRecommended()}>RECOMMENDED FOR YOU</h2>
           <div className='right-padding'></div>
         </div>
-        <ul className='recipes-list'>
-          {/* {
-            recipes.map((recipe, i) => 
-              <RecipesIndexItemContainer key={i} recipe={recipe} />
-            )
-          } */}
+        <ul className='recipes-list' id={this.state.whichFeed}>
           {this.feed()}
         </ul>
       </div>

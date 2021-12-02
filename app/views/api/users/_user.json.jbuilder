@@ -13,4 +13,12 @@ json.users_followed user.users_followed
 
 json.users_following user.users_following
 
+# json.followed_recipes user.followed_recipes
+
+json.followed_recipes do
+  json.array!(user.followed_recipes) do |followed_recipe|
+    json.followed_recipe followed_recipe
+  end
+end
+
 json.photoUrl url_for(user.photo) if user.photo.attached?
