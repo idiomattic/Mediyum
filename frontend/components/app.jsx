@@ -12,15 +12,14 @@ import UserShowContainer from './users/user_show_container'
 const App = () => {
   return(
   <div id='app'>
-    <header className='app-header'>
-      <h2 className='logo'>Mediyum</h2>
+    {/* <header className='app-header'> */}
       <Switch>
         <AuthRoute exact path='/' component={HeaderContainer}/>
         <Route path='/feed' component={HeaderContainer}/>
         <Route path='/recipes' component={HeaderContainer}/>
         <Route path='/users' component={HeaderContainer}/>
       </Switch>
-    </header>
+    {/* </header> */}
     <div className='app-body'>
       <Switch>
         <ProtectedRoute exact path='/feed' component={HomeContainer}/>
