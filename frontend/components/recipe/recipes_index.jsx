@@ -15,7 +15,8 @@ class RecipesIndex extends React.Component {
   }
 
   filterForFollowing() {
-    const {recipes} = this.props
+    const {recipes, currentUser} = this.props
+    console.log(currentUser)
     debugger
   }
 
@@ -28,10 +29,22 @@ class RecipesIndex extends React.Component {
     )
   }
 
-  toggleFeed() {
+  feed() {
     return this.state.whichFeed === 'recommended' ? 
       this.showAll() 
       : this.filterForFollowing()
+  }
+
+  showFollowing() {
+    this.setState({
+      whichFeed: 'following'
+    })
+  }
+
+  showRecommended() {
+    this.setState({
+      whichFeed: 'recommended'
+    })
   }
 
   render() {
@@ -42,9 +55,9 @@ class RecipesIndex extends React.Component {
     return(
       <div className='recipes-index'>
         <div className='index-nav'>
-          <h2 className='following-recipes'>FOLLOWING</h2>
-          <h2 className='recommended-recipes'>RECOMMENDED FOR YOU</h2>
-          <h2 className='right-padding'></h2>
+          <h2 className='following-recipes' onClick={() => this.showFollowing()} >FOLLOWING</h2>
+          <h2 className='recommended-recipes' onClick={() => this.showRecommended()}>RECOMMENDED FOR YOU</h2>
+          <div className='right-padding'></div>
         </div>
         <ul className='recipes-list'>
           {/* {
@@ -52,7 +65,7 @@ class RecipesIndex extends React.Component {
               <RecipesIndexItemContainer key={i} recipe={recipe} />
             )
           } */}
-          {this.toggleFeed()}
+          {this.feed()}
         </ul>
       </div>
     )

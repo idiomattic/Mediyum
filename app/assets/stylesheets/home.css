@@ -1,8 +1,11 @@
-.index-nav > h2 {
+.index-nav > h2, .index-nav > div {
   font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   padding: 0 12px 12px 0;
   border-bottom: 1px solid rgba(230, 230, 230, 1);
+}
+.index-nav > h2 {
+  cursor: pointer;
 }
 
 .index-nav > .recommended-recipes {

@@ -2331,7 +2331,10 @@ var RecipesIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "filterForFollowing",
     value: function filterForFollowing() {
-      var recipes = this.props.recipes;
+      var _this$props = this.props,
+          recipes = _this$props.recipes,
+          currentUser = _this$props.currentUser;
+      console.log(currentUser);
       debugger;
     }
   }, {
@@ -2346,13 +2349,29 @@ var RecipesIndex = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "toggleFeed",
-    value: function toggleFeed() {
+    key: "feed",
+    value: function feed() {
       return this.state.whichFeed === 'recommended' ? this.showAll() : this.filterForFollowing();
+    }
+  }, {
+    key: "showFollowing",
+    value: function showFollowing() {
+      this.setState({
+        whichFeed: 'following'
+      });
+    }
+  }, {
+    key: "showRecommended",
+    value: function showRecommended() {
+      this.setState({
+        whichFeed: 'recommended'
+      });
     }
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var recipes = this.props.recipes;
 
       if (!recipes) {
@@ -2364,14 +2383,20 @@ var RecipesIndex = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "index-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-        className: "following-recipes"
+        className: "following-recipes",
+        onClick: function onClick() {
+          return _this2.showFollowing();
+        }
       }, "FOLLOWING"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-        className: "recommended-recipes"
-      }, "RECOMMENDED FOR YOU"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+        className: "recommended-recipes",
+        onClick: function onClick() {
+          return _this2.showRecommended();
+        }
+      }, "RECOMMENDED FOR YOU"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "right-padding"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "recipes-list"
-      }, this.toggleFeed()));
+      }, this.feed()));
     }
   }]);
 
@@ -2402,9 +2427,11 @@ __webpack_require__.r(__webpack_exports__);
 var _nullRecipes = [];
 
 var mSTP = function mSTP(state) {
+  var currentUserId = state.session.currentUserId;
   return {
-    currentUserId: state.session.currentUserId,
-    recipes: Object.values(state.entities.recipes) || _nullRecipes
+    currentUserId: currentUserId,
+    recipes: Object.values(state.entities.recipes) || _nullRecipes,
+    currentUser: state.entities.users[currentUserId]
   };
 };
 

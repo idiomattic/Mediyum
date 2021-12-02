@@ -4,10 +4,14 @@ import { fetchRecipes } from "../../actions/recipe_actions";
 
 const _nullRecipes = []
 
-const mSTP = state => ({
-  currentUserId: state.session.currentUserId,
-  recipes: Object.values(state.entities.recipes) || _nullRecipes
-})
+const mSTP = state => {
+  const currentUserId = state.session.currentUserId
+  return({
+    currentUserId,
+    recipes: Object.values(state.entities.recipes) || _nullRecipes,
+    currentUser: state.entities.users[currentUserId]
+  })
+}
 
 const mDTP = dispatch => ({
   fetchRecipes: () => dispatch(fetchRecipes())

@@ -13,4 +13,4 @@ json.users_followed user.users_followed
 
 json.users_following user.users_following
 
-# json.photoUrl url_for(user.photo)
+json.photoUrl url_for(user.photo) if user.photo.attached?
