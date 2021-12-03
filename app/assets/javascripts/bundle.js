@@ -1807,18 +1807,26 @@ function Modal(_ref) {
   }
 
   var component;
+  var backgroundClass;
+  var childClass;
 
   switch (modal) {
     case 'Sign In':
       component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_session_signin_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], null);
+      backgroundClass = 'modal-background';
+      childClass = 'modal-child';
       break;
 
     case 'Sign Up':
       component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_session_signup_form_container__WEBPACK_IMPORTED_MODULE_3__["default"], null);
+      backgroundClass = 'modal-background';
+      childClass = 'modal-child';
       break;
 
     case 'Dropdown':
       component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_dropdown_modal_dropdown_modal_container__WEBPACK_IMPORTED_MODULE_1__["default"], null);
+      backgroundClass = 'dropdown modal-background';
+      childClass = 'dropdown modal-child';
       break;
 
     case 'Comments':
@@ -1830,10 +1838,10 @@ function Modal(_ref) {
   }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "modal-background",
+    className: backgroundClass,
     onClick: hideModal
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "modal-child",
+    className: childClass,
     onClick: function onClick(e) {
       return e.stopPropagation();
     }
