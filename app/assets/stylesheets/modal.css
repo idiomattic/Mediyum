@@ -8,12 +8,10 @@
   z-index: 100;
 }
 
-.dropdown-list li:not(:last-child) {
-  margin: 0 0 20px 0;
-}
 
 .modal-child {
   position: absolute;
+  background: rgba(255, 255, 255, 0.95);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -21,6 +19,7 @@
   padding: 44px 56px;
   width: 360px;
   box-shadow: rgb(0 0 0 / 15%) 0px 2px 10px;
+
 }
 
 .session-form label, .session-form p {
@@ -65,4 +64,72 @@
   top: 4px;
   right: 12px;
   font-size: 32px;
+}
+
+.dropdown.modal-background {
+  background: transparent;
+}
+
+.dropdown.modal-child {
+  width: 240px;
+  padding: 0;
+  position: absolute;
+  inset: 0px auto auto 0px;
+  transform: translate(420%, 35%);
+  background: rgba(255, 255, 255, 0.95);
+  z-index: 100;
+  border-radius: 4px;
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(117, 117, 117, 1);
+}
+
+.dropdown-list {
+  padding: 20px 0 20px 0;
+  text-align: left;
+}
+
+.dropdown-list li:not(:last-child) {
+  margin: 0 0 20px 0;
+}
+
+.dropdown-list li {
+  padding: 0 20px 0 20px;
+}
+
+.dropdown-list > li.user-show-button {
+  align-items: center;
+}
+
+.user-photo {
+  width: 40px;
+  height: auto;
+  padding-top: 0;
+  padding-right: 10px;
+}
+
+li.user-show-button, li.recipes-link {
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(230, 230, 230, 1);
+}
+
+.user-name-link {
+  vertical-align: middle;
+}
+
+.sign-out {
+  padding: 0 0 20px 0;
+}
+
+.comments.modal-background {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.comments.modal-child {
+  position: absolute;
+  left: 100%;
+  transform: translateX(-100%);
+  box-shadow: rgb(0 0 0 / 15%) 0px 4px 12px;
+  background: rgb(255, 255, 255);
 }

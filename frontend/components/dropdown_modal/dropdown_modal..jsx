@@ -31,13 +31,14 @@ class DropdownModal extends React.Component {
     let { modal, currentUserId, currentUser } = this.props
     return !modal ? null : (
       <ul className='dropdown-list'>
-        <li className='user-show-button'>
-          <Link to={`/users/${currentUserId}`} onClick={() => this.redirectToShow()}>{currentUser.name}</Link>
+        <li className='user-show-button' onClick={() => this.redirectToShow()} >
+          <img className='user-photo' src={currentUser.photoUrl} alt="img" />
+          <Link className='user-name-link' to={`/users/${currentUserId}`} >{currentUser.name}</Link>
         </li>
         <li className='write-recipe'>
           <Link to='/recipes/new' onClick={() => this.redirectToRecipeForm()}>Write a recipe</Link>
         </li>
-        <li>
+        <li className='recipes-link'>
           <Link to='/feed' onClick={() => this.redirectToFeed()}>Recipes</Link>
         </li>
         <li className='sign-out'>

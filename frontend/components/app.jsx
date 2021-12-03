@@ -17,9 +17,9 @@ const App = () => {
       <Route path='/feed' component={HeaderContainer}/>
       <Route path='/recipes' component={HeaderContainer}/>
     </Switch>
+    <Route exact path='/' component={HomeContainer}/>
     <div className='app-body'>
       <Switch>
-        <Route exact path='/' component={HomeContainer}/>
         <ProtectedRoute exact path='/feed' component={HomeContainer}/>
         <ProtectedRoute exact path='/recipes/new' component={RecipeFormContainer}/>
         <ProtectedRoute exact path='/recipes/:recipeId' component={RecipeShowContainer}/>

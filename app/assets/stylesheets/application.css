@@ -22,29 +22,33 @@ div.app-body {
 }
 
 .app-footer {
-  margin-top: 40px;
+  /* margin-top: 40px;
   padding: 40px 64px 40px 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* height: 2.5rem; */
+  position: absolute;
+  bottom: 0;
   font-family: medium-content-sans-serif-font, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background-color: rgba(250, 250, 250, 1);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* position: relative; */
-  position: absolute;
-  bottom: 0;
-  height: 2.5rem;
-  /* left: 0; */
-  width: 100%;
+  padding: 25px 64px;
 }
 
 .footer-message {
   font-size: 20px;
   font-weight: 500;
+  width: 100%;
+
+  padding-right: 100px;
 }
 
-.footer-spacer {
-  width: 40%;
-}
+/* .footer-spacer {
+  width: 100%;
+} */
 
 .github-link, .linkedin-link {
   height: 50px;
@@ -56,6 +60,7 @@ div.app-body {
 
 .github, .linkedin {
   padding-right: 10px;
+  padding-left: 10px;
 }
 
 .welcome {

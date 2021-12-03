@@ -29,6 +29,8 @@ function Modal({modal, hideModal}) {
       break
     case 'Comments':
       component = <CommentsModalContainer />
+      backgroundClass = 'comments modal-background'
+      childClass = 'comments modal-child'
       break
     default:
       return null;

@@ -11,7 +11,8 @@ class Home extends React.Component {
     if (!currentUserId) {
       return (
         <div className='welcome'>
-          Welcome!
+          <h1>Mediyum is a place to write, read, and connect</h1>
+          <p>It's easy and free to post your recipes.</p>
         </div>
       )
     }
