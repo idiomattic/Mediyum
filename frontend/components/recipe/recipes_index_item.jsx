@@ -27,7 +27,7 @@ class RecipesIndexItem extends React.Component {
   }
   
 
-  render() {
+render() {
     let {recipe} = this.props
     let {author} = this.props.recipe
     if (!recipe || !author) {
@@ -36,13 +36,10 @@ class RecipesIndexItem extends React.Component {
     return(
       <li className='recipe-list-item'>
         <div className='recipe-info-wrapper'>
-          {/* <div className='author-link-wrapper'> */}
-            <Link to={`/users/${author.id}`} className='author-link-wrapper'>
-              <img className='author-photo' src={this.authorPhoto(author)} alt="img" />
-              <div className='author-name'>{author.name}</div>
-            </Link>
-            {/* <Link to={`/users/${author.id}`} className='author-name'>{author.name}</Link> */}
-          {/* </div> */}
+          <Link to={`/users/${author.id}`} className='author-link-wrapper'>
+            <img className='author-photo' src={this.authorPhoto(author)} alt="img" />
+            <div className='author-name'>{author.name}</div>
+          </Link>
           <h3 onClick={() => this.handleClick()} className='recipe-item-title'>
             {this.props.recipe.title}
           </h3>

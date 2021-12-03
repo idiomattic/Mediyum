@@ -54,7 +54,7 @@ class SessionForm extends React.Component {
   nameField() {
     return this.props.formType === 'Sign Up' ? 
       <>
-        <label>Your Name
+        <label>First, your name?
           <br />
           <input type="text" className='credentials' value={this.state.name} onChange={this.update('name')}/>
         </label>
@@ -70,7 +70,7 @@ class SessionForm extends React.Component {
         <form className='session-form' onSubmit={this.handleSubmit}>
           <span className='close-button' onClick={() => this.props.hideModal()}>&times;</span>
           {this.nameField()}
-          <label>Your Email
+          <label>Enter your email here:
             <br />
             <input className='credentials' 
               type="email" 
@@ -78,7 +78,7 @@ class SessionForm extends React.Component {
               onChange={this.update('email')} />
           </label>
           <br />
-          <label>Your Password
+          <label>Your password:
             <br />
             <input className='credentials' 
               type="password" 

@@ -40,3 +40,9 @@
   flex-direction: row;
   font-weight: 400;
 }
+
+.user-photo {
+  cursor: pointer;
+  height: 32px;
+  width: auto;
+}

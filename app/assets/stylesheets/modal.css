@@ -35,7 +35,16 @@
   /* -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3); */
 }
 
+.session-form label, .session-form p {
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+
+
 .credentials {
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-align: center;
   outline: none;
   width: 270px;
