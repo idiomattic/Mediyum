@@ -8,9 +8,13 @@ class UserNav extends React.Component {
   }
   
   render() {
+    let {currentUserId, currentUser} = this.props
+    if (!currentUserId) {
+      return null
+    }
     return(
-      <div className='user-nav'>
-        <div className='user-dropdown'onClick={() => this.props.displayModal()}>User Dropdown</div>
+      <div className='user-nav' onClick={() => this.props.displayModal()}>
+        <img className='user-photo' src={currentUser.photoUrl} alt="img" />
       </div>
     )
   }

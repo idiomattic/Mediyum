@@ -10,11 +10,23 @@ class Header extends React.Component {
   render() {
     // console.log(this.props.history)
     const {currentUserId} = this.props
-    const barDisplay = currentUserId ? <UserNavContainer /> : <GuestNavContainer history={this.props.history}/>
+    // const barDisplay = currentUserId ? <UserNavContainer /> : <GuestNavContainer history={this.props.history}/>
+    let barDisplay
+    let headerClass
+    if (currentUserId) {
+      barDisplay = <UserNavContainer />
+      headerClass = 'user-header'
+    } else {
+      barDisplay = <GuestNavContainer history={this.props.history}/>
+      headerClass = 'guest-header'
+    }
     return(
-      <div className='header-navbar'>
-        {barDisplay}
-      </div>
+      <header className={headerClass}>
+        <h2 className='logo'>Mediyum</h2>
+        <div className='header-navbar'>
+          {barDisplay}
+        </div>
+      </header>
     )
   }
 }

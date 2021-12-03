@@ -8,7 +8,7 @@ const _nullComments = []
 const mSTP = state => ({
   modal: state.ui.modal,
   comments: Object.values(state.entities.comments) || _nullComments,
-  story: Object.values(state.entities.stories)[0],
+  recipe: Object.values(state.entities.recipes)[0],
   currentUserId: state.session.currentUserId
 });
 

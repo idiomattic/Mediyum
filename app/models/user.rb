@@ -15,15 +15,44 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true}
 
-  has_many :stories,
+  has_many :recipes,
     primary_key: :id,
     foreign_key: :author_id,
-    class_name: :Story
+    class_name: :Recipe
 
   has_many :comments,
     primary_key: :id,
     foreign_key: :commenter_id,
     class_name: :Comment
+
+  has_many :follows, #their own follows
+    primary_key: :id,
+    foreign_key: :follower_id,
+    class_name: :Follow
+
+  has_many :received_follows, #follows of them
+    primary_key: :id,
+    foreign_key: :followed_user_id,
+    class_name: :Follow
+
+  has_many :users_followed, #users they are following
+    through: :follows,
+    source: :followed_user
+
+  has_many :users_following, #users following them
+    through: :received_follows,
+    source: :follower
+
+  has_many :yums,
+    primary_key: :id,
+    foreign_key: :yummer_id,
+    class_name: :Yum
+
+  has_many :followed_recipes,
+    through: :users_followed,
+    source: :recipes
+
+  has_one_attached :photo
 
   after_initialize :ensure_session_token
 

@@ -5,20 +5,29 @@ class CommentForm extends React.Component {
     super(props)
     this.state = this.props.comment || {
         body: '',
-        story_id: this.props.story.id,
+        recipe_id: this.props.recipe.id,
         commenter_id: this.props.currentUserId
       }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  resetState() {
+    this.setState({
+      body: '',
+      recipe_id: this.props.recipe.id,
+      commenter_id: this.props.currentUserId
+    })
+  }
+
   handleSubmit(e) {
     e.preventDefault()
-    this.props.comment ? (
-      this.props.updateComment(this.state)
-        .then(this.setState(this.state))
+    let { comment, toggleEditing, updateComment, createComment } = this.props
+    comment ? (
+      updateComment(this.state)
+        .then(this.resetState())
     ) : (
-      this.props.createComment(this.state)
-        .then(this.setState(this.state))
+      createComment(this.state)
+        .then(this.resetState())
     )
   }
 

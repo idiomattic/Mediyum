@@ -1,0 +1,64 @@
+.recipe-show {
+  margin: 0 64px 0 64px;
+}
+
+.recipe-info {
+  display: flex;
+}
+
+.recipe-title {
+  margin-top: 40px;
+  font-family: fell, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 48px;
+}
+
+.recipe-body {
+  font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 21px;
+}
+
+.recipe-footer {
+  display: flex;
+  margin-bottom: 40px;
+  /* position: absolute; */
+  /* bottom: 10%; */
+}
+
+.comments-button {
+  margin-left: 24px;
+}
+
+.recipe-author-photo {
+  height: 40px;
+  width: auto;
+  border-radius: 20px;
+  margin-right: 10px;
+}
+
+.author {
+  cursor: pointer;
+}
+
+.recipe-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.recipe-photo {
+  vertical-align: middle;
+  max-width: 300px;
+  margin-bottom: 20px;
+}
+
+.yum-nav {
+  display: flex;
+}
+
+.yum-nav :first-child {
+  margin-right: 5px;
+}
+
+.yum-button {
+  cursor: pointer;
+}

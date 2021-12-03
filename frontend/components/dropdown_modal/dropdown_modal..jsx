@@ -12,9 +12,9 @@ class DropdownModal extends React.Component {
     this.props.hideModal()
   }
 
-  redirectToStoryForm() {
+  redirectToRecipeForm() {
     this.props.hideModal()
-    this.props.history.push('/stories/new')
+    this.props.history.push('/recipes/new')
   }
 
   redirectToFeed() {
@@ -22,15 +22,24 @@ class DropdownModal extends React.Component {
     this.props.history.push('/feed')
   }
 
+  redirectToShow() {
+    this.props.hideModal()
+    this.props.history.push(`/users/${this.props.currentUserId}`)
+  }
+
   render() {
-    let { modal, hideModal, signOut } = this.props
+    let { modal, currentUserId, currentUser } = this.props
     return !modal ? null : (
       <ul className='dropdown-list'>
-        <li className='write-story'>
-          <Link to='/stories/new' onClick={() => this.redirectToStoryForm()}>Write a story</Link>
+        <li className='user-show-button' onClick={() => this.redirectToShow()} >
+          <img className='user-photo' src={currentUser.photoUrl} alt="img" />
+          <Link className='user-name-link' to={`/users/${currentUserId}`} >{currentUser.name}</Link>
         </li>
-        <li>
-          <Link to='/feed' onClick={() => this.redirectToFeed()}>Stories</Link>
+        <li className='write-recipe'>
+          <Link to='/recipes/new' onClick={() => this.redirectToRecipeForm()}>Write a recipe</Link>
+        </li>
+        <li className='recipes-link'>
+          <Link to='/feed' onClick={() => this.redirectToFeed()}>Recipes</Link>
         </li>
         <li className='sign-out'>
           <Link to='/' onClick={() => this.handleSignout()}>Sign Out</Link>

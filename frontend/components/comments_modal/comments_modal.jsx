@@ -1,54 +1,55 @@
 import React from "react";
 import { withRouter } from "react-router";
-import CommentsIndexItem from "./comments_index_item";
+import CommentsIndexItemContainer from "./comments_index_item_container";
 import CommentFormContainer from "./comment_form_container";
 
 class CommentsModal extends React.Component {
   constructor(props) {
     super(props),
     this.state = {
-      body: '',
-      story_id: this.props.story.id,
-      commenter_id: this.props.currentUserId
+      commentsArr: [],
+      comment: {
+        body: '',
+        recipe_id: this.props.recipe.id,
+        commenter_id: this.props.currentUserId
+      }
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
+    let {fetchComments, recipe} = this.props
+    let filteredCommentsArr
     this.props.fetchComments()
-  }
-
-  handleSubmit(e) {
-    e.preventDefault()
-    this.props.createComment(this.state)
-      .then(this.setState(this.state))
+      .then(res => {
+        filteredCommentsArr = this.filterComments()
+      })
+    this.setState({
+      commentsArr: filteredCommentsArr
+    })
   }
 
   updateBody() {
     return e => this.setState({
-      body: e.target.value
+      comment: {body: e.target.value}
     })
   }
 
   filterComments() {
     let { comments } = this.props
-    return comments.filter(comment => comment.story_id === this.state.story_id)
+    let filteredComments = comments.filter(comment => comment.recipe_id === this.state.comment.recipe_id)
+    return(filteredComments)
   }
 
   render() {
-    let { modal, hideModal, comments, updateComment, deleteComment } = this.props
-    const storyComments = this.filterComments()
+    let { modal } = this.props
+    const recipeComments = this.filterComments()
     return !modal ? null : (
       <div className='comments-modal'>
         {<CommentFormContainer />}
         <ul className="comments-list">
           {
-            storyComments.map((comment, i) => 
-              <CommentsIndexItem key={i} 
-                comment={comment} 
-                currentUserId={this.props.currentUserId}
-                updateComment={updateComment}
-                deleteComment={deleteComment}/>
+            recipeComments.map((comment, i) => 
+              <CommentsIndexItemContainer key={i} comment={comment} />
             )
           }
         </ul>

@@ -9,7 +9,7 @@ const mSTP = state => {
   
   return({
     modal: state.ui.modal,
-    story: Object.values(state.entities.stories)[0],
+    recipe: Object.values(state.entities.recipes)[0],
     currentUserId: state.session.currentUserId
   })
 };

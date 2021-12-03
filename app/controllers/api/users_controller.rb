@@ -1,4 +1,10 @@
 class Api::UsersController < ApplicationController
+  def show
+    @user = User.find(params[:id])
+    @users_following = @user.users_following
+    render :template => 'api/users/show'
+  end
+  
   def create
     @user = User.new(user_params)
     if @user.save
