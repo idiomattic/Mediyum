@@ -3255,16 +3255,21 @@ var UserNav = /*#__PURE__*/function (_React$Component) {
   _createClass(UserNav, [{
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this$props = this.props,
+          currentUserId = _this$props.currentUserId,
+          currentUser = _this$props.currentUser;
+
+      if (!currentUserId) {
+        return null;
+      }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "user-nav"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "user-dropdown",
-        onClick: function onClick() {
-          return _this.props.displayModal();
-        }
-      }, "User Dropdown"));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        className: "user-photo",
+        src: currentUser.photoUrl,
+        alt: "img"
+      }));
     }
   }]);
 
@@ -3296,8 +3301,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state) {
+  var currentUserId = state.session.currentUserId;
   return {
-    currentUserId: state.session.currentUserId
+    currentUserId: currentUserId,
+    currentUser: state.entities.users[currentUserId]
   };
 };
 

@@ -16,11 +16,8 @@ body, #root, #app {
 
 div.app-body {
   height: 100vh !important;
+  margin: 0 64px 0 64px;
 }
-
-/* .app-spacer {
-  height: 100vh !important;
-} */
 
 a, u {
   text-decoration: none;
