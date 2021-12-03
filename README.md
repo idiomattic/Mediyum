@@ -21,6 +21,8 @@
 - By using Rails associations and Jbuilder, the Redux state of Mediyum on any given page has access to relevant data that can be dynamically displayed without unneccessary Backend API queries.
 
 ## A code snippet, for the curious
+*This functional React component takes in the prop 'modal', which comes from the 'ui' slice of the Redux State.  This prop designates which type of modal, if any, should be present on the page.  The 'hideModal' prop is a function which, well, hides any present modal on dispatch!
+The switch statement governs which specific modal component to render on the page, and it defines classes which are interpolated into the HTML elements in the return statement so that each type of modal can have its own styling.*
 ```javascript
 function Modal({modal, hideModal}) {
   if (!modal) {
@@ -63,3 +65,6 @@ function Modal({modal, hideModal}) {
 }
 
 export default Modal
+```
+
+### If you've made it this far, I'd like to thank you so much for taking a look at my hard work!  Please reach out if you'd like to learn more about how this site was developed.
