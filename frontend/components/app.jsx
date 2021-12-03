@@ -16,11 +16,10 @@ const App = () => {
       <AuthRoute exact path='/' component={HeaderContainer}/>
       <Route path='/feed' component={HeaderContainer}/>
       <Route path='/recipes' component={HeaderContainer}/>
-      {/* <Route path='/users' component={HeaderContainer}/> */}
-      <Route path='/users' component={DummyHeader}/>
     </Switch>
     <div className='app-body'>
       <Switch>
+        <Route exact path='/' component={HomeContainer}/>
         <ProtectedRoute exact path='/feed' component={HomeContainer}/>
         <ProtectedRoute exact path='/recipes/new' component={RecipeFormContainer}/>
         <ProtectedRoute exact path='/recipes/:recipeId' component={RecipeShowContainer}/>
@@ -28,6 +27,7 @@ const App = () => {
         <ProtectedRoute exact path='/users/:userId' component={UserShowContainer}/>
       </Switch>
     </div>
+    <div className='app-spacer'></div>
     <footer className='app-footer'>
       <h3 className='footer-message'>More from Matthew Lese</h3>
       <div className='footer-spacer'></div>

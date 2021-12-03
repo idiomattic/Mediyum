@@ -1,14 +1,26 @@
-@import 'reset.css';
-@import 'modal.css';
-@import 'header.css';
-@import 'recipe_show.css';
-@import 'home.css';
 @import 'comments.css';
+@import 'header.css';
+@import 'home.css';
+@import 'modal.css';
+@import 'recipe_show.css';
+@import 'reset.css';
 @import 'user_show.css';
 
-body {
-  min-height: 100%;
+body, #root, #app {
+  height: 100%;
 }
+
+.welcome {
+  height: 80%;
+}
+
+div.app-body {
+  height: 100vh !important;
+}
+
+/* .app-spacer {
+  height: 100vh !important;
+} */
 
 a, u {
   text-decoration: none;

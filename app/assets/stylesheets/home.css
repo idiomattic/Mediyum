@@ -4,6 +4,7 @@
   padding: 0 12px 12px 0;
   border-bottom: 1px solid rgba(230, 230, 230, 1);
 }
+
 .index-nav > h2 {
   cursor: pointer;
 }
@@ -68,7 +69,8 @@
   justify-content: space-between;
   position: relative;
   bottom: 0;
-  vertical-align: baseline;
+  left: 0;
+  /* width: inherit; */
 }
 
 .footer-message {
