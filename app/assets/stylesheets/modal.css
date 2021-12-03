@@ -23,7 +23,7 @@
   box-shadow: rgba(0, 0, 0, 15%) 0px 2px 10px;
   /* -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3); */
 =======
-  box-shadow: rgb(0 0 0 / 15%) 0px 2px 10px;
+  box-shadow: rgba(0 0 0  15%) 0px 2px 10px;
 
 }
 
@@ -138,7 +138,7 @@ li.user-show-button, li.recipes-link {
   top: 0;
   height: 100%;
   transform: translateX(-100%);
-  box-shadow: rgb(0 0 0 / 15%) 0px 4px 12px;
+  box-shadow: rgba(0 0 0 15%) 0px 4px 12px;
   background: rgb(255, 255, 255);
 }
 
