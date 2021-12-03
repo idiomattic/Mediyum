@@ -686,6 +686,9 @@ var App = function App() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
     path: "/recipes",
     component: _header_header_container__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+    path: "/users",
+    component: DummyHeader
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "app-body"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
@@ -712,7 +715,9 @@ var App = function App() {
     className: "app-footer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
     className: "footer-message"
-  }, "More from Matthew Lese"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+  }, "More from Matthew Lese"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "footer-spacer"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
     href: "https://github.com/matthewlese",
     className: "github-link"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -721,6 +726,15 @@ var App = function App() {
     src: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
     alt: "GitHub",
     className: "github-link"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+    href: "https://www.linkedin.com/in/matthewlese/",
+    className: "linkedin-link"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "linkedin"
+  }, "LinkedIn"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/768px-LinkedIn_logo_initials.png",
+    alt: "LinkedIn",
+    className: "linkedin-link"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_modal_modal_container__WEBPACK_IMPORTED_MODULE_4__["default"], null));
 };
 
@@ -2829,7 +2843,19 @@ var UserRecipesIndexItem = /*#__PURE__*/function (_React$Component) {
   _createClass(UserRecipesIndexItem, [{
     key: "handleClick",
     value: function handleClick() {
-      this.props.history.push("/recipes/".concat(this.props.recipe.id));
+      var _this$props = this.props,
+          history = _this$props.history,
+          recipe = _this$props.recipe;
+      history.push("/recipes/".concat(recipe.id));
+    }
+  }, {
+    key: "truncatedBody",
+    value: function truncatedBody() {
+      var recipe = this.props.recipe;
+      var firstSentence = recipe.body.split(". ")[0] + '...';
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+        className: "story-preview"
+      }, firstSentence);
     }
   }, {
     key: "render",
@@ -2844,7 +2870,7 @@ var UserRecipesIndexItem = /*#__PURE__*/function (_React$Component) {
           return _this2.handleClick();
         },
         className: "user-recipe-item-title"
-      }, this.props.recipe.title));
+      }, this.props.recipe.title), this.truncatedBody());
     }
   }]);
 

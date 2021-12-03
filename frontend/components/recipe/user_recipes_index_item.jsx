@@ -8,7 +8,16 @@ class UserRecipesIndexItem extends React.Component {
   }
 
   handleClick() {
-    this.props.history.push(`/recipes/${this.props.recipe.id}`)
+    let {history, recipe} = this.props
+    history.push(`/recipes/${recipe.id}`)
+  }
+
+  truncatedBody() {
+    let {recipe} = this.props
+    let firstSentence = recipe.body.split(". ")[0] + '...'
+    return(
+      <p className='story-preview'>{firstSentence}</p>
+    )
   }
 
   render() {
@@ -16,6 +25,7 @@ class UserRecipesIndexItem extends React.Component {
     return(
       <li className='recipe-list-item'>
         <h3 onClick={() => this.handleClick()} className='user-recipe-item-title'>{this.props.recipe.title}</h3>
+        {this.truncatedBody()}
       </li>
     )
   }

@@ -68,6 +68,7 @@
   justify-content: space-between;
   position: relative;
   bottom: 0;
+  vertical-align: baseline;
 }
 
 .footer-message {
@@ -75,18 +76,18 @@
   font-weight: 500;
 }
 
-/* .footer-spacer {
+.footer-spacer {
   width: 40%;
-} */
+}
 
-.github-link {
+.github-link, .linkedin-link {
   height: 50px;
   width: auto;
-  border-radius: 50px;
+  border-radius: 20px;
   display: flex;
   align-items: center;
 }
 
-.github {
+.github, .linkedin {
   padding-right: 10px;
 }
