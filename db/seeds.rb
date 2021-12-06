@@ -33,14 +33,14 @@ lisa = URI.open('https://mediyum-dev.s3.us-west-1.amazonaws.com/lisa.jpg')
 kathy = URI.open('https://mediyum-dev.s3.us-west-1.amazonaws.com/Kathy.jpg')
 hannah = URI.open('https://mediyum-dev.s3.us-west-1.amazonaws.com/hannah.jpg')
 
-user1.photo.attach(io: sergio, filename: 'sergio.jpg')
-user2.photo.attach(io: jeff, filename: 'jeff.jpg')
-user3.photo.attach(io: suzie, filename: 'suzie.jpg')
-user4.photo.attach(io: kenm, filename: 'kenm.jpg')
-user5.photo.attach(io: kevin, filename: 'kevin.jpg')
-user6.photo.attach(io: lisa, filename: 'lisa.jpg')
-user7.photo.attach(io: kathy, filename: 'kathy.jpg')
-user8.photo.attach(io: hannah, filename: 'hannah.jpg')
+user2.photo.attach(io: sergio, filename: 'sergio.jpg')
+user3.photo.attach(io: jeff, filename: 'jeff.jpg')
+user4.photo.attach(io: suzie, filename: 'suzie.jpg')
+user5.photo.attach(io: kenm, filename: 'kenm.jpg')
+user6.photo.attach(io: kevin, filename: 'kevin.jpg')
+user7.photo.attach(io: lisa, filename: 'lisa.jpg')
+user8.photo.attach(io: kathy, filename: 'kathy.jpg')
+user9.photo.attach(io: hannah, filename: 'hannah.jpg')
 
 #starting at id=1
 recipe1 = Recipe.create(title: 'Cereal', body: 'milk, then bowl, then cereal', author_id: 1) #demo user
