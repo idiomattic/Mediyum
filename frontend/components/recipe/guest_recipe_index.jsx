@@ -1,5 +1,6 @@
 import React from "react"
 import RecipesIndexItemContainer from "./recipes_index_item_container"
+// const moment = require('moment')
 
 class GuestRecipesIndex extends React.Component {
   constructor(props) {
@@ -12,11 +13,15 @@ class GuestRecipesIndex extends React.Component {
   }
 
   showSix(recipes) {
-    console.log(recipes)
+    // console.log(moment(recipe.updated_at)._i)
     return(
-      recipes.map((recipe, i) => 
-        <RecipesIndexItemContainer key={i} recipe={recipe} />
-      )
+      recipes.sort((a, b) => {
+        return new Date(b.updated_at) - new Date(a.updated_at)
+      }).map((recipe, i) => {
+        return(
+          <RecipesIndexItemContainer key={i} recipe={recipe} />
+        )
+      })
     )
   }
 
@@ -26,12 +31,8 @@ class GuestRecipesIndex extends React.Component {
       return null
     }
     return(
-      <div className='recipes-index'>
-        <div className='index-nav'>
-          <h2 className='recommended-recipes'>RECOMMENDED FOR YOU</h2>
-          <div className='right-padding'></div>
-        </div>
-        <ul className='recipes-list'>
+      <div className='guest-recipes-index'>
+        <ul className='guest-recipes-list'>
           {this.showSix(recipes)}
         </ul>
       </div>
