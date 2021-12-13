@@ -2350,31 +2350,16 @@ var RecipesIndex = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(RecipesIndex);
 
   function RecipesIndex(props) {
-    var _this;
-
     _classCallCheck(this, RecipesIndex);
 
-    _this = _super.call(this, props);
-    _this.state = {
-      whichFeed: 'recommended'
-    };
-    return _this;
+    return _super.call(this, props);
   }
 
   _createClass(RecipesIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchRecipes();
-    } // filterForFollowing() {
-    //   const {followed_recipes} = this.props.currentUser
-    //   console.log(followed_recipes)
-    //   return(
-    //     followed_recipes.map((recipe, i) => 
-    //       <RecipesIndexItemContainer key={i} recipe={recipe.followed_recipe} />
-    //     )
-    //   )
-    // }
-
+    }
   }, {
     key: "showAll",
     value: function showAll(recipes) {
@@ -2384,30 +2369,12 @@ var RecipesIndex = /*#__PURE__*/function (_React$Component) {
           recipe: recipe
         });
       });
-    }
-  }, {
-    key: "showFeed",
-    value: function showFeed() {
-      var recipes = this.props.recipes;
-      var followed_recipes = this.props.currentUser.followed_recipes;
-
-      if (this.state.whichFeed === 'recommended') {
-        return this.showAll(recipes);
-      }
-    } // feed() {
-    //   return this.state.whichFeed === 'recommended' ? 
-    //     this.showFeed() 
-    //     : this.filterForFollowing()
-    // }
-    // showFollowing() {
-    //   this.setState({
-    //     whichFeed: 'following'
-    //   })
-    // }
-    // showRecommended() {
-    //   this.setState({
-    //     whichFeed: 'recommended'
-    //   })
+    } // showFeed() {
+    //   const {recipes} = this.props
+    //   const {followed_recipes} = this.props.currentUser
+    //   if (this.state.whichFeed === 'recommended') {
+    //     return(this.showAll(recipes))
+    //   }
     // }
 
   }, {
@@ -2428,9 +2395,8 @@ var RecipesIndex = /*#__PURE__*/function (_React$Component) {
       }, "RECOMMENDED FOR YOU"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "right-padding"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
-        className: "recipes-list",
-        id: this.state.whichFeed
-      }, this.showFeed()));
+        className: "recipes-list"
+      }, this.showAll(recipes)));
     }
   }]);
 
