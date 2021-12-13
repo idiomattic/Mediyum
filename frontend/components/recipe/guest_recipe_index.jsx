@@ -7,22 +7,17 @@ class GuestRecipesIndex extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props)
     this.props.fetchRecipes()
   }
 
-  showAll(recipes) {
+  showSix(recipes) {
+    console.log(recipes)
     return(
       recipes.map((recipe, i) => 
         <RecipesIndexItemContainer key={i} recipe={recipe} />
       )
     )
-  }
-
-  showFeed() {
-    const {recipes} = this.props
-    if (this.state.whichFeed === 'recommended') {
-      return(this.showAll(recipes))
-    }
   }
 
   render() {
@@ -37,7 +32,7 @@ class GuestRecipesIndex extends React.Component {
           <div className='right-padding'></div>
         </div>
         <ul className='recipes-list'>
-          {this.showFeed()}
+          {this.showSix(recipes)}
         </ul>
       </div>
     )

@@ -18,14 +18,6 @@ class RecipesIndex extends React.Component {
     )
   }
 
-  // showFeed() {
-  //   const {recipes} = this.props
-  //   const {followed_recipes} = this.props.currentUser
-  //   if (this.state.whichFeed === 'recommended') {
-  //     return(this.showAll(recipes))
-  //   }
-  // }
-
   render() {
     const { recipes } = this.props
     if (!recipes) { 
