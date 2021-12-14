@@ -18,7 +18,7 @@ class GuestRecipesIndex extends React.Component {
         .slice(0, 6)
         .map((recipe, i) => {
           return(
-            <RecipesIndexItemContainer key={i} recipe={recipe} />
+            <RecipesIndexItemContainer key={i} recipe={recipe}/>
           )
         })
     )
@@ -31,6 +31,7 @@ class GuestRecipesIndex extends React.Component {
     }
     return(
       <div className='guest-recipes-index'>
+        <h3 className='new-on'>New on Mediyum</h3>
         <ul className='guest-recipes-list'>
           {this.showSix(recipes)}
         </ul>

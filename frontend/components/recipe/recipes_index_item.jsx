@@ -23,16 +23,20 @@ class RecipesIndexItem extends React.Component {
   }
 
   authorPhoto(author) {
-    return author.photoUrl ? author.photoUrl : null //'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png'
+    return author.photoUrl ? author.photoUrl : null
   }
   
 
-render() {
+  render() {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
     let {recipe} = this.props
     let {author} = this.props.recipe
     if (!recipe || !author) {
       return null
     }
+    let createdAt = new Date(recipe.created_at)
+    let publishDate = months[createdAt.getMonth()] + ' ' + createdAt.getDate()
+  
     return(
       <li className='recipe-list-item'>
         <div className='recipe-info-wrapper'>
@@ -44,6 +48,7 @@ render() {
             {this.props.recipe.title}
           </h3>
         </div>
+        <div className="publish-date">{publishDate}</div>
       </li>
     )
   }

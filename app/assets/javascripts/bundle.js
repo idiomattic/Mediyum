@@ -2021,7 +2021,9 @@ var GuestRecipesIndex = /*#__PURE__*/function (_React$Component) {
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "guest-recipes-index"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
+        className: "new-on"
+      }, "New on Mediyum"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "guest-recipes-list"
       }, this.showSix(recipes)));
     }
@@ -2654,13 +2656,14 @@ var RecipesIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "authorPhoto",
     value: function authorPhoto(author) {
-      return author.photoUrl ? author.photoUrl : null; //'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png'
+      return author.photoUrl ? author.photoUrl : null;
     }
   }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
+      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
       var recipe = this.props.recipe;
       var author = this.props.recipe.author;
 
@@ -2668,6 +2671,8 @@ var RecipesIndexItem = /*#__PURE__*/function (_React$Component) {
         return null;
       }
 
+      var createdAt = new Date(recipe.created_at);
+      var publishDate = months[createdAt.getMonth()] + ' ' + createdAt.getDate();
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
         className: "recipe-list-item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2686,7 +2691,9 @@ var RecipesIndexItem = /*#__PURE__*/function (_React$Component) {
           return _this2.handleClick();
         },
         className: "recipe-item-title"
-      }, this.props.recipe.title)));
+      }, this.props.recipe.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "publish-date"
+      }, publishDate));
     }
   }]);
 
