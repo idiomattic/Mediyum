@@ -824,10 +824,13 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
           comment = _this$props.comment,
           toggleEditing = _this$props.toggleEditing,
           updateComment = _this$props.updateComment,
-          createComment = _this$props.createComment;
+          createComment = _this$props.createComment,
+          rerenderModal = _this$props.rerenderModal;
       comment ? updateComment(this.state).then(function (comment) {
         return toggleEditing();
-      }).then(this.resetState()) : createComment(this.state).then(this.resetState());
+      }).then(this.resetState()) : createComment(this.state).then(function (comment) {
+        return rerenderModal();
+      }).then(this.resetState());
     }
   }, {
     key: "updateBody",
@@ -1135,19 +1138,35 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
         commenter_id: _this.props.currentUserId
       }
     };
+    _this.filterComments = _this.filterComments.bind(_assertThisInitialized(_this));
+    _this.updateComments = _this.updateComments.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(CommentsModal, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      // let {fetchComments, recipe} = this.props
+      // let filteredCommentsArr
+      // fetchComments()
+      //   .then(comments => {
+      //     filteredCommentsArr = this.filterComments()
+      //   })
+      // this.setState({
+      //   commentsArr: filteredCommentsArr
+      // })
+      this.updateComments();
+    }
+  }, {
+    key: "updateComments",
+    value: function updateComments() {
       var _this2 = this;
 
       var _this$props = this.props,
           fetchComments = _this$props.fetchComments,
           recipe = _this$props.recipe;
       var filteredCommentsArr;
-      fetchComments().then(function (res) {
+      fetchComments().then(function (comments) {
         filteredCommentsArr = _this2.filterComments();
       });
       this.setState({
@@ -1183,14 +1202,16 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props2 = this.props,
           modal = _this$props2.modal,
-          recipe = _this$props2.recipe,
           comments = _this$props2.comments;
       var recipeComments = this.filterComments();
-      return !modal || !comments ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      console.log(comments);
+      return !modal || !recipeComments ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comments-modal"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
         className: "comments-count"
-      }, "Comments (", recipeComments.length, ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comment_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+      }, "Comments (", recipeComments.length, ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comment_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        rerenderModal: this.updateComments
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "comments-list"
       }, recipeComments.map(function (comment, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comments_index_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -1223,6 +1244,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _comments_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./comments_modal */ "./frontend/components/comments_modal/comments_modal.jsx");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/comment_actions */ "./frontend/actions/comment_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -1230,12 +1253,14 @@ __webpack_require__.r(__webpack_exports__);
 var _nullComments = [];
 
 var mSTP = function mSTP(state) {
-  return {
+  var _ref;
+
+  var recipe = Object.values(state.entities.recipes)[0];
+  return _ref = {
     modal: state.ui.modal,
     comments: Object.values(state.entities.comments) || _nullComments,
-    recipe: Object.values(state.entities.recipes)[0],
-    currentUserId: state.session.currentUserId
-  };
+    recipe: Object.values(state.entities.recipes)[0]
+  }, _defineProperty(_ref, "recipe", recipe), _defineProperty(_ref, "currentUserId", state.session.currentUserId), _ref;
 };
 
 var mDTP = function mDTP(dispatch) {

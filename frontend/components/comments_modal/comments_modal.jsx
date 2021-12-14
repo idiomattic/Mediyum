@@ -14,13 +14,28 @@ class CommentsModal extends React.Component {
         commenter_id: this.props.currentUserId
       }
     }
+    this.filterComments = this.filterComments.bind(this)
+    this.updateComments = this.updateComments.bind(this)
   }
 
   componentDidMount() {
+    // let {fetchComments, recipe} = this.props
+    // let filteredCommentsArr
+    // fetchComments()
+    //   .then(comments => {
+    //     filteredCommentsArr = this.filterComments()
+    //   })
+    // this.setState({
+    //   commentsArr: filteredCommentsArr
+    // })
+    this.updateComments()
+  }
+
+  updateComments() {
     let {fetchComments, recipe} = this.props
     let filteredCommentsArr
     fetchComments()
-      .then(res => {
+      .then(comments => {
         filteredCommentsArr = this.filterComments()
       })
     this.setState({
@@ -41,13 +56,13 @@ class CommentsModal extends React.Component {
   }
 
   render() {
-    let { modal, recipe, comments } = this.props
+    let { modal, comments } = this.props
     const recipeComments = this.filterComments()
-
-    return (!modal || !comments) ? null : (
+    console.log(comments)
+    return (!modal || !recipeComments) ? null : (
       <div className='comments-modal'>
         <h2 className='comments-count'>Comments ({recipeComments.length})</h2>
-        <CommentFormContainer />
+        <CommentFormContainer rerenderModal={this.updateComments}/>
         <ul className="comments-list">
           {
             recipeComments.map((comment, i) => 
