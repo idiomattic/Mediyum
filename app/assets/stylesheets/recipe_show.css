@@ -54,16 +54,26 @@
   margin-bottom: 20px;
 }
 
-.yum-nav {
+.yum-nav, .comment-nav {
   display: flex;
+  align-items: center;
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .yum-nav :first-child {
   margin-right: 5px;
 }
 
+div.comment-count {
+  margin-left: 5px;
+}
+
 .yum-button {
   cursor: pointer;
   width: 25px;
   height: 25px;
+}
+
+.yum-count, .comment-count {
+  color: rgba(117, 117, 117, 1);
 }

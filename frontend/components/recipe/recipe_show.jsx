@@ -80,7 +80,12 @@ class RecipeShow extends React.Component {
               {this.state.yumCount}
             </div>
           </div>
-          <img src='https://mediyum-dev.s3.us-west-1.amazonaws.com/comment.png' alt='comments' className='comments-button' onClick={() => this.showCommentsModal()}/>
+          <div className='comment-nav'>
+            <img src='https://mediyum-dev.s3.us-west-1.amazonaws.com/comment.png' alt='comments' className='comments-button' onClick={() => this.showCommentsModal()}/>
+            <div className='comment-count'>
+              {recipe.comments.length}
+            </div>
+          </div>
         </div>
         <br />
         {this.isOwner()}
