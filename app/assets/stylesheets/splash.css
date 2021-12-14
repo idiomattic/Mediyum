@@ -1,7 +1,6 @@
 .guest-recipes-index {
   padding-top: 40px;
   padding-bottom: 16px;
-
 }
 
 .new-on {
@@ -9,6 +8,7 @@
   font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 12px;
   font-weight: 700;
+  margin-bottom: 16px;
 }
 
 .guest-recipes-list {
