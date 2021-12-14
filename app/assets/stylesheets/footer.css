@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 25px 64px;
+  padding: 20px 64px;
 }
 
 .footer-message {
@@ -16,10 +16,6 @@
 
   padding-right: 100px;
 }
-
-/* .footer-spacer {
-  width: 100%;
-} */
 
 .github-link, .linkedin-link {
   height: 50px;

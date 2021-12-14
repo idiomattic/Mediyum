@@ -2663,6 +2663,15 @@ var RecipesIndexItem = /*#__PURE__*/function (_React$Component) {
       return author.photoUrl ? author.photoUrl : null;
     }
   }, {
+    key: "recipePhoto",
+    value: function recipePhoto(recipe) {
+      return this.props.currentUserId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        src: recipe.photoUrl,
+        alt: recipe.name,
+        className: "photo-preview"
+      }) : null;
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -2695,9 +2704,9 @@ var RecipesIndexItem = /*#__PURE__*/function (_React$Component) {
           return _this2.handleClick();
         },
         className: "recipe-item-title"
-      }, this.props.recipe.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, this.props.recipe.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "publish-date"
-      }, publishDate));
+      }, publishDate)), this.recipePhoto(recipe));
     }
   }]);
 

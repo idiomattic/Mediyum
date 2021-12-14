@@ -29,6 +29,10 @@ class RecipesIndexItem extends React.Component {
   authorPhoto(author) {
     return author.photoUrl ? author.photoUrl : null
   }
+
+  recipePhoto(recipe) {
+    return this.props.currentUserId ? <img src={recipe.photoUrl} alt={recipe.name} className='photo-preview'/> : null
+  }
   
 
   render() {
@@ -50,8 +54,9 @@ class RecipesIndexItem extends React.Component {
           <h3 onClick={() => this.handleClick()} className='recipe-item-title'>
             {this.props.recipe.title}
           </h3>
+          <div className="publish-date">{publishDate}</div>
         </div>
-        <div className="publish-date">{publishDate}</div>
+        {this.recipePhoto(recipe)}
       </li>
     )
   }
