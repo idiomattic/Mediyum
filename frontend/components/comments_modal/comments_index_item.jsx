@@ -22,7 +22,9 @@ class CommentsIndexItem extends React.Component {
           Delete
         </button>
       </div>
-    : null
+    : <div className="comment-clap-nav">
+      <div>Yum</div>
+    </div>
   }
 
   toggleEditing() {
@@ -42,7 +44,10 @@ class CommentsIndexItem extends React.Component {
       </li>
     ) : (
       <li className='comment-list-item'>
-        <p className='commenter-name'>{comment.commenter.name}</p>
+        <div className='comment-info'>
+          <img className='commenter-photo' src={comment.commenter.photoUrl} alt={comment.commenter.name} />
+          <p className='commenter-name'>{comment.commenter.name}</p>
+        </div>
         <p className='comment-item-body'>{comment.body}</p>
         {this.isOwner()}
       </li>

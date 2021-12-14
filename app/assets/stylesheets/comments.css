@@ -12,6 +12,7 @@
 .close-comments-button {
   font-size: 32px;
   color: rgb(117, 117, 117);
+  cursor: pointer;
 }
 
 .comments-button {
@@ -45,4 +46,24 @@
 li.comment-list-item {
   margin-left: 20px;
   margin-right: 20px;
+}
+
+.commenter-photo {
+  height: 32px;
+  width: auto;
+  border-radius: 16px;
+}
+
+div.comment-info {
+  display: flex;
+  align-items: center;
+}
+
+.commenter-name {
+  padding-left: 12px;
+}
+
+.comment-item-body {
+  margin-top: 20px;
+  text-align: left;
 }

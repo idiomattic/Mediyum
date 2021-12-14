@@ -998,7 +998,9 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return deleteComment(comment.id);
         }
-      }, "Delete")) : null;
+      }, "Delete")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "comment-clap-nav"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Yum"));
     }
   }, {
     key: "toggleEditing",
@@ -1023,9 +1025,15 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
         toggleEditing: this.toggleEditing
       })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
         className: "comment-list-item"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "comment-info"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        className: "commenter-photo",
+        src: comment.commenter.photoUrl,
+        alt: comment.commenter.name
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "commenter-name"
-      }, comment.commenter.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+      }, comment.commenter.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "comment-item-body"
       }, comment.body), this.isOwner());
     }
