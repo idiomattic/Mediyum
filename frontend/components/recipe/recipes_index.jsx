@@ -12,9 +12,11 @@ class RecipesIndex extends React.Component {
 
   showAll(recipes) {
     return(
-      recipes.map((recipe, i) => 
-        <RecipesIndexItemContainer key={i} recipe={recipe} />
-      )
+      recipes
+        .sort((a, b) => {return new Date(b.created_at) - new Date(a.created_at)})
+        .map((recipe, i) => 
+          <RecipesIndexItemContainer key={i} recipe={recipe}/>
+        )
     )
   }
 

@@ -1979,7 +1979,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
- // const moment = require('moment')
+
 
 var GuestRecipesIndex = /*#__PURE__*/function (_React$Component) {
   _inherits(GuestRecipesIndex, _React$Component);
@@ -2001,10 +2001,9 @@ var GuestRecipesIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "showSix",
     value: function showSix(recipes) {
-      // console.log(moment(recipe.updated_at)._i)
       return recipes.sort(function (a, b) {
-        return new Date(b.updated_at) - new Date(a.updated_at);
-      }).map(function (recipe, i) {
+        return new Date(b.created_at) - new Date(a.created_at);
+      }).slice(0, 6).map(function (recipe, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_recipes_index_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: i,
           recipe: recipe
@@ -2501,7 +2500,9 @@ var RecipesIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "showAll",
     value: function showAll(recipes) {
-      return recipes.map(function (recipe, i) {
+      return recipes.sort(function (a, b) {
+        return new Date(b.created_at) - new Date(a.created_at);
+      }).map(function (recipe, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_recipes_index_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: i,
           recipe: recipe
