@@ -41,11 +41,10 @@ class CommentsModal extends React.Component {
   }
 
   render() {
-    let { modal, recipe } = this.props
+    let { modal, recipe, comments } = this.props
     const recipeComments = this.filterComments()
-    // console.log(this.state.numComments)
 
-    return !modal ? null : (
+    return (!modal || !comments) ? null : (
       <div className='comments-modal'>
         <h2 className='comments-count'>Comments ({recipeComments.length})</h2>
         <CommentFormContainer />

@@ -825,7 +825,9 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
           toggleEditing = _this$props.toggleEditing,
           updateComment = _this$props.updateComment,
           createComment = _this$props.createComment;
-      comment ? updateComment(this.state).then(this.resetState()) : createComment(this.state).then(this.resetState());
+      comment ? updateComment(this.state).then(function (comment) {
+        return toggleEditing();
+      }).then(this.resetState()) : createComment(this.state).then(this.resetState());
     }
   }, {
     key: "updateBody",
@@ -967,6 +969,7 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       editing: false
     };
+    _this.toggleEditing = _this.toggleEditing.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1010,7 +1013,6 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
         return null;
       }
 
-      console.log(comment);
       return this.state.editing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
         className: "edit-comment-list-item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comment_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -1181,10 +1183,10 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props2 = this.props,
           modal = _this$props2.modal,
-          recipe = _this$props2.recipe;
-      var recipeComments = this.filterComments(); // console.log(this.state.numComments)
-
-      return !modal ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          recipe = _this$props2.recipe,
+          comments = _this$props2.comments;
+      var recipeComments = this.filterComments();
+      return !modal || !comments ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comments-modal"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
         className: "comments-count"

@@ -24,11 +24,12 @@ class CommentForm extends React.Component {
     let { comment, toggleEditing, updateComment, createComment } = this.props
     comment ? (
       updateComment(this.state)
+        .then(comment => toggleEditing())
         .then(this.resetState())
-    ) : (
-      createComment(this.state)
-        .then(this.resetState())
-    )
+      ) : (
+        createComment(this.state)
+          .then(this.resetState())
+      )
   }
 
   updateBody() {

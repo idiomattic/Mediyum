@@ -8,6 +8,7 @@ class CommentsIndexItem extends React.Component {
     this.state = {
       editing: false
     }
+    this.toggleEditing = this.toggleEditing.bind(this)
   }
 
   isOwner() {
@@ -35,7 +36,6 @@ class CommentsIndexItem extends React.Component {
     if (!comment || !comment.commenter) {
       return null
     }
-    console.log(comment)
     return this.state.editing ? (
       <li className='edit-comment-list-item'>
         <CommentFormContainer comment={comment} toggleEditing={this.toggleEditing}/>
