@@ -19,15 +19,6 @@ class CommentsModal extends React.Component {
   }
 
   componentDidMount() {
-    // let {fetchComments, recipe} = this.props
-    // let filteredCommentsArr
-    // fetchComments()
-    //   .then(comments => {
-    //     filteredCommentsArr = this.filterComments()
-    //   })
-    // this.setState({
-    //   commentsArr: filteredCommentsArr
-    // })
     this.updateComments()
   }
 
@@ -58,10 +49,12 @@ class CommentsModal extends React.Component {
   render() {
     let { modal, comments } = this.props
     const recipeComments = this.filterComments()
-    console.log(comments)
     return (!modal || !recipeComments) ? null : (
       <div className='comments-modal'>
-        <h2 className='comments-count'>Comments ({recipeComments.length})</h2>
+        <div className='comments-modal-nav'>
+          <h2 className='comments-count'>Comments ({recipeComments.length})</h2>
+          <span className='close-comments-button' onClick={() => this.props.hideModal()}>&times;</span>
+        </div>
         <CommentFormContainer rerenderModal={this.updateComments}/>
         <ul className="comments-list">
           {

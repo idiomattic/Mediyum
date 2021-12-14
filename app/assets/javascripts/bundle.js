@@ -1146,15 +1146,6 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
   _createClass(CommentsModal, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      // let {fetchComments, recipe} = this.props
-      // let filteredCommentsArr
-      // fetchComments()
-      //   .then(comments => {
-      //     filteredCommentsArr = this.filterComments()
-      //   })
-      // this.setState({
-      //   commentsArr: filteredCommentsArr
-      // })
       this.updateComments();
     }
   }, {
@@ -1200,16 +1191,24 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this5 = this;
+
       var _this$props2 = this.props,
           modal = _this$props2.modal,
           comments = _this$props2.comments;
       var recipeComments = this.filterComments();
-      console.log(comments);
       return !modal || !recipeComments ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comments-modal"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "comments-modal-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
         className: "comments-count"
-      }, "Comments (", recipeComments.length, ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comment_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, "Comments (", recipeComments.length, ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+        className: "close-comments-button",
+        onClick: function onClick() {
+          return _this5.props.hideModal();
+        }
+      }, "\xD7")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comment_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
         rerenderModal: this.updateComments
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "comments-list"
@@ -1244,8 +1243,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _comments_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./comments_modal */ "./frontend/components/comments_modal/comments_modal.jsx");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/comment_actions */ "./frontend/actions/comment_actions.js");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -1253,14 +1250,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var _nullComments = [];
 
 var mSTP = function mSTP(state) {
-  var _ref;
-
   var recipe = Object.values(state.entities.recipes)[0];
-  return _ref = {
+  return {
     modal: state.ui.modal,
     comments: Object.values(state.entities.comments) || _nullComments,
-    recipe: Object.values(state.entities.recipes)[0]
-  }, _defineProperty(_ref, "recipe", recipe), _defineProperty(_ref, "currentUserId", state.session.currentUserId), _ref;
+    recipe: recipe,
+    currentUserId: state.session.currentUserId
+  };
 };
 
 var mDTP = function mDTP(dispatch) {

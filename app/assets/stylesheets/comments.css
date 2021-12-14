@@ -1,3 +1,19 @@
+.comments-modal {
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.comments-modal-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+}
+
+.close-comments-button {
+  font-size: 32px;
+  color: rgb(117, 117, 117);
+}
+
 .comments-button {
   font-weight: 800;
   cursor: pointer;
@@ -13,4 +29,20 @@
 
 .comments-list li:not(:last-child){
   margin-bottom: 20px;
+}
+
+.comments-count {
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+
+}
+
+.comments.modal-child {
+  padding: 0 0;
+}
+
+li.comment-list-item {
+  margin-left: 20px;
+  margin-right: 20px;
 }

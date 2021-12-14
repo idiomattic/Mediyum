@@ -10,7 +10,6 @@ const mSTP = state => {
   return ({
     modal: state.ui.modal,
     comments: Object.values(state.entities.comments) || _nullComments,
-    recipe: Object.values(state.entities.recipes)[0],
     recipe,
     currentUserId: state.session.currentUserId
   })
