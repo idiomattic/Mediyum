@@ -1008,9 +1008,9 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
 
       if (!comment || !comment.commenter) {
         return null;
-      } // console.log(comment.commenter)
+      }
 
-
+      console.log(comment);
       return this.state.editing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
         className: "edit-comment-list-item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comment_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -1179,8 +1179,11 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var modal = this.props.modal;
-      var recipeComments = this.filterComments();
+      var _this$props2 = this.props,
+          modal = _this$props2.modal,
+          recipe = _this$props2.recipe;
+      var recipeComments = this.filterComments(); // console.log(this.state.numComments)
+
       return !modal ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comments-modal"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {

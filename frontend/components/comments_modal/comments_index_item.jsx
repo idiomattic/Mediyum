@@ -35,7 +35,7 @@ class CommentsIndexItem extends React.Component {
     if (!comment || !comment.commenter) {
       return null
     }
-    // console.log(comment.commenter)
+    console.log(comment)
     return this.state.editing ? (
       <li className='edit-comment-list-item'>
         <CommentFormContainer comment={comment} toggleEditing={this.toggleEditing}/>
