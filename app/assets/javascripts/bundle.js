@@ -2409,19 +2409,23 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
         className: "recipe-footer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "yum-nav"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        src: "https://mediyum-dev.s3.us-west-1.amazonaws.com/yum.png",
+        alt: "Yum",
         className: "yum-button",
         onClick: function onClick() {
           return _this5.handleYum();
         }
-      }, "Yum"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "yum-count"
-      }, this.state.yumCount)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, this.state.yumCount)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        src: "https://mediyum-dev.s3.us-west-1.amazonaws.com/comment.png",
+        alt: "comments",
         className: "comments-button",
         onClick: function onClick() {
           return _this5.showCommentsModal();
         }
-      }, "Comments")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.isOwner());
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.isOwner());
     }
   }]);
 

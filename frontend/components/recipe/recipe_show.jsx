@@ -75,16 +75,12 @@ class RecipeShow extends React.Component {
         <br />
         <div className='recipe-footer'>
           <div className='yum-nav'>
-            <div className='yum-button' onClick={() => this.handleYum()}>
-              Yum
-            </div>
+            <img src='https://mediyum-dev.s3.us-west-1.amazonaws.com/yum.png' alt='Yum' className='yum-button' onClick={() => this.handleYum()}/>
             <div className='yum-count'>
               {this.state.yumCount}
             </div>
           </div>
-          <div className='comments-button' onClick={() => this.showCommentsModal()}>
-            Comments
-          </div>
+          <img src='https://mediyum-dev.s3.us-west-1.amazonaws.com/comment.png' alt='comments' className='comments-button' onClick={() => this.showCommentsModal()}/>
         </div>
         <br />
         {this.isOwner()}
