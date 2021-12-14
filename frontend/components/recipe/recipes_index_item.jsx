@@ -13,7 +13,11 @@ class RecipesIndexItem extends React.Component {
   }
 
   handleClick() {
-    this.props.history.push(`/recipes/${this.props.recipe.id}`)
+    if (this.props.currentUserId) {
+      this.props.history.push(`/recipes/${this.props.recipe.id}`)
+    } else {
+      this.props.displayModal('Sign In')
+    }
   }
 
   redirectToShow() {
@@ -36,7 +40,6 @@ class RecipesIndexItem extends React.Component {
     }
     let createdAt = new Date(recipe.created_at)
     let publishDate = months[createdAt.getMonth()] + ' ' + createdAt.getDate()
-  
     return(
       <li className='recipe-list-item'>
         <div className='recipe-info-wrapper'>
