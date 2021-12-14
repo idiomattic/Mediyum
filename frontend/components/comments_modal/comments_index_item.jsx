@@ -31,13 +31,19 @@ class CommentsIndexItem extends React.Component {
   }
 
   render() {
+    let {comment} = this.props
+    if (!comment || !comment.commenter) {
+      return null
+    }
+    // console.log(comment.commenter)
     return this.state.editing ? (
       <li className='edit-comment-list-item'>
-        <CommentFormContainer comment={this.props.comment} toggleEditing={this.toggleEditing}/>
+        <CommentFormContainer comment={comment} toggleEditing={this.toggleEditing}/>
       </li>
     ) : (
       <li className='comment-list-item'>
-        <p className='comment-item-body'>{this.props.comment.body}</p>
+        <p className='commenter-name'>{comment.commenter.name}</p>
+        <p className='comment-item-body'>{comment.body}</p>
         {this.isOwner()}
       </li>
     )

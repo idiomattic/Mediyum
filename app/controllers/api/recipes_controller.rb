@@ -22,7 +22,6 @@ class Api::RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     if (@recipe && @recipe.update(recipe_params))
       render :template => 'api/recipes/show'
-      # render json: ['Updates saved.']
     else
       render json: @recipe.errors.full_messages, status: 422
     end

@@ -19,7 +19,7 @@ class CommentsModal extends React.Component {
   componentDidMount() {
     let {fetchComments, recipe} = this.props
     let filteredCommentsArr
-    this.props.fetchComments()
+    fetchComments()
       .then(res => {
         filteredCommentsArr = this.filterComments()
       })
@@ -45,6 +45,7 @@ class CommentsModal extends React.Component {
     const recipeComments = this.filterComments()
     return !modal ? null : (
       <div className='comments-modal'>
+        <h2 className='comments-count'>Comments ({recipeComments.length})</h2>
         {<CommentFormContainer />}
         <ul className="comments-list">
           {

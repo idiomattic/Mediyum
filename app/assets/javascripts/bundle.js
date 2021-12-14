@@ -1004,16 +1004,25 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var comment = this.props.comment;
+
+      if (!comment || !comment.commenter) {
+        return null;
+      } // console.log(comment.commenter)
+
+
       return this.state.editing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
         className: "edit-comment-list-item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comment_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        comment: this.props.comment,
+        comment: comment,
         toggleEditing: this.toggleEditing
       })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
         className: "comment-list-item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+        className: "commenter-name"
+      }, comment.commenter.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "comment-item-body"
-      }, this.props.comment.body), this.isOwner());
+      }, comment.body), this.isOwner());
     }
   }]);
 
@@ -1136,7 +1145,7 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
           fetchComments = _this$props.fetchComments,
           recipe = _this$props.recipe;
       var filteredCommentsArr;
-      this.props.fetchComments().then(function (res) {
+      fetchComments().then(function (res) {
         filteredCommentsArr = _this2.filterComments();
       });
       this.setState({
@@ -1174,7 +1183,9 @@ var CommentsModal = /*#__PURE__*/function (_React$Component) {
       var recipeComments = this.filterComments();
       return !modal ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comments-modal"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comment_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+        className: "comments-count"
+      }, "Comments (", recipeComments.length, ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comment_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "comments-list"
       }, recipeComments.map(function (comment, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comments_index_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
