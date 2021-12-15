@@ -19,7 +19,9 @@ export default (state={}, action) => {
     case HIDE_MODAL:
       return {}
     case RECEIVE_YUM:
-      nextState[action.yum.comment_id].yums.push(action.yum)
+      if (action.yum.comment_id) {
+        nextState[action.yum.comment_id].yums.push(action.yum)
+      }
       return nextState
     default:
       return state

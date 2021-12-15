@@ -4,7 +4,7 @@
 #
 #  id         :bigint           not null, primary key
 #  yummer_id  :integer          not null
-#  recipe_id  :integer          not null
+#  recipe_id  :integer
 #  comment_id :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

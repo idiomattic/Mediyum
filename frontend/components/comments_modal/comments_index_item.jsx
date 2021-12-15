@@ -10,7 +10,6 @@ class CommentsIndexItem extends React.Component {
       yumCount: props.yumCount,
       yum: {
         yummer_id: props.currentUserId,
-        recipe_id: props.recipeId,
         comment_id: props.comment.id
       }
     }

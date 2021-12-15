@@ -974,7 +974,6 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
       yumCount: props.yumCount,
       yum: {
         yummer_id: props.currentUserId,
-        recipe_id: props.recipeId,
         comment_id: props.comment.id
       }
     };
@@ -3849,7 +3848,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return {};
 
     case _actions_yum_actions__WEBPACK_IMPORTED_MODULE_2__.RECEIVE_YUM:
-      nextState[action.yum.comment_id].yums.push(action.yum);
+      if (action.yum.comment_id) {
+        nextState[action.yum.comment_id].yums.push(action.yum);
+      }
+
       return nextState;
 
     default:
@@ -4044,9 +4046,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     case _actions_yum_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_YUM:
       // Object.assign(nextState, {[action.yum.recipe.id]: action.yum.recipe})
       // debugger
-      nextState[action.yum.recipe.id].yums.push(action.yum); // nextState.recipes.yums[action.yum.id] = action.yum
+      if (action.yum.recipe) {
+        nextState[action.yum.recipe.id].yums.push(action.yum);
+      } // nextState.recipes.yums[action.yum.id] = action.yum
       // return Object.assign(nextState, { [action.yum.id]: action.yum })
       // debugger
+
 
       return nextState;
 
