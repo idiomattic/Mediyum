@@ -76,10 +76,6 @@
   border-radius: 10px;
 }
 
-.author-name {
-  margin-left: 8px;
-}
-
 .publish-date {
   font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
@@ -88,7 +84,8 @@
 }
 
 .author-name {
+  margin-left: 8px;
   font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
 }

@@ -1,6 +1,5 @@
 import React from "react"
-import SignUpFormContainer from '../session/signup_form_container'
-import { Link } from "react-router-dom"
+import { useLocation } from 'react-router-dom'
 
 class UserNav extends React.Component {
   constructor(props) {

@@ -8,8 +8,9 @@
 
 .recipe-title {
   margin-top: 40px;
-  font-family: fell, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 48px;
+  font-weight: 800;
 }
 
 .recipe-body {
@@ -40,6 +41,10 @@
 
 .author {
   cursor: pointer;
+  color: rgba(134, 132, 132, 1);
+  font-size: 14px;
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
 }
 
 .recipe-info {
