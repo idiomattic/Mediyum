@@ -1664,94 +1664,70 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _user_nav_user_nav_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../user_nav/user_nav_container */ "./frontend/components/user_nav/user_nav_container.js");
 /* harmony import */ var _guest_nav_guest_nav_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../guest_nav/guest_nav_container */ "./frontend/components/guest_nav/guest_nav_container.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+var _this = undefined;
 
 
 
 
+ // class Header extends React.Component {
+//   constructor(props) {
+//     super(props)
+//   }
+//   render() {
+//     const {currentUserId} = this.props
+//     let barDisplay
+//     let headerClass
+//     if (currentUserId) {
+//       barDisplay = <UserNavContainer />
+//       headerClass = 'user-header'
+//     } else {
+//       barDisplay = <GuestNavContainer history={this.props.history}/>
+//       headerClass = 'guest-header'
+//     }
+//     return(
+//       <header className={headerClass}>
+//         <h2 className='logo'>Mediyum</h2>
+//         <div className='header-navbar'>
+//           {barDisplay}
+//         </div>
+//       </header>
+//     )
+//   }
+// }
 
-var Header = /*#__PURE__*/function (_React$Component) {
-  _inherits(Header, _React$Component);
+var Header = function Header(props) {
+  var location = (0,react_router__WEBPACK_IMPORTED_MODULE_3__.useLocation)();
+  var className = ''; // if (location !== '/feed') {
+  //   className = ' recipe-show'
+  // }
 
-  var _super = _createSuper(Header);
+  var currentUserId = props.currentUserId,
+      currentUser = props.currentUser,
+      displayModal = props.displayModal;
+  var barDisplay;
+  var headerClass;
 
-  function Header(props) {
-    _classCallCheck(this, Header);
-
-    return _super.call(this, props);
+  if (!currentUserId) {
+    barDisplay = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_guest_nav_guest_nav_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      history: _this.props.history
+    });
+    headerClass = 'guest-header';
+  } else {
+    barDisplay = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_nav_user_nav_container__WEBPACK_IMPORTED_MODULE_1__["default"], null);
+    headerClass = 'user-header'; //+ className
   }
 
-  _createClass(Header, [{
-    key: "render",
-    value: function render() {
-      // console.log(this.props.history)
-      var currentUserId = this.props.currentUserId; // const barDisplay = currentUserId ? <UserNavContainer /> : <GuestNavContainer history={this.props.history}/>
-
-      var barDisplay;
-      var headerClass;
-
-      if (currentUserId) {
-        barDisplay = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_nav_user_nav_container__WEBPACK_IMPORTED_MODULE_1__["default"], null);
-        headerClass = 'user-header';
-      } else {
-        barDisplay = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_guest_nav_guest_nav_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          history: this.props.history
-        });
-        headerClass = 'guest-header';
-      }
-
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", {
-        className: headerClass
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-        className: "logo"
-      }, "Mediyum"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "header-navbar"
-      }, barDisplay));
-    }
-  }]);
-
-  return Header;
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", {
+    className: headerClass
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+    className: "logo"
+  }, "Mediyum"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "header-navbar"
+  }, barDisplay));
+};
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Header);
-/*
-const UserNav = props => {
-  const location = useLocation()
-  let className = 'user-nav'
-  if (location !== '/feed') {
-    className = 'user-nav recipe-show'
-  }
-  let {currentUserId, currentUser, displayModal} = props
-  if (!currentUserId) {
-    return null
-  }
-  return (
-    <div className={className} onClick={() => displayModal()}>
-      <img className='user-photo' src={currentUser.photoUrl} alt="img" />
-    </div>
-  )
-}
-*/
 
 /***/ }),
 
