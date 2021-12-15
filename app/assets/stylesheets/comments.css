@@ -66,6 +66,8 @@ div.comment-info {
 .comment-item-body {
   margin-top: 20px;
   text-align: left;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .comment-yum-nav, .comment-buttons {
@@ -78,4 +80,20 @@ div.comment-info {
 
 .comment-yum-count {
   margin-left: 5px;
+}
+
+.comment-edit-button {
+  font-size: 14px;
+  cursor: pointer;
+  padding: 7px 16px 9px 0;
+  border-radius: 99em;
+}
+
+.comment-delete-button {
+  font-size: 14px;
+  cursor: pointer;
+  background-color: red;
+  color: white;
+  padding: 7px 16px 9px;
+  border-radius: 99em;
 }

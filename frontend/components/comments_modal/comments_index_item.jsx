@@ -20,12 +20,12 @@ class CommentsIndexItem extends React.Component {
     let { comment, currentUserId, updateComment, deleteComment } = this.props
     return comment.commenter_id === currentUserId ? 
       <div className='comment-buttons'>
-        <button className='comment-edit-button' onClick={() => this.toggleEditing()}>
+        <div className='comment-edit-button' onClick={() => this.toggleEditing()}>
           Edit
-        </button>
-        <button className='comment-delete-button' onClick={() => deleteComment(comment.id)}>
+        </div>
+        <div className='comment-delete-button' onClick={() => deleteComment(comment.id)}>
           Delete
-        </button>
+        </div>
       </div>
     : <div className='comment-yum-nav'>
         <img src='https://mediyum-dev.s3.us-west-1.amazonaws.com/yum.png' alt='Yum' className='yum-button' onClick={() => this.handleYum()}/>

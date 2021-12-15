@@ -993,12 +993,12 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
           deleteComment = _this$props.deleteComment;
       return comment.commenter_id === currentUserId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comment-buttons"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comment-edit-button",
         onClick: function onClick() {
           return _this2.toggleEditing();
         }
-      }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comment-delete-button",
         onClick: function onClick() {
           return deleteComment(comment.id);
