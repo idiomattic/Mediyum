@@ -1670,37 +1670,15 @@ var _this = undefined;
 
 
 
- // class Header extends React.Component {
-//   constructor(props) {
-//     super(props)
-//   }
-//   render() {
-//     const {currentUserId} = this.props
-//     let barDisplay
-//     let headerClass
-//     if (currentUserId) {
-//       barDisplay = <UserNavContainer />
-//       headerClass = 'user-header'
-//     } else {
-//       barDisplay = <GuestNavContainer history={this.props.history}/>
-//       headerClass = 'guest-header'
-//     }
-//     return(
-//       <header className={headerClass}>
-//         <h2 className='logo'>Mediyum</h2>
-//         <div className='header-navbar'>
-//           {barDisplay}
-//         </div>
-//       </header>
-//     )
-//   }
-// }
+
 
 var Header = function Header(props) {
   var location = (0,react_router__WEBPACK_IMPORTED_MODULE_3__.useLocation)();
-  var className = ''; // if (location !== '/feed') {
-  //   className = ' recipe-show'
-  // }
+  var className = '';
+
+  if (location.pathname !== '/feed') {
+    className = ' recipe-show';
+  }
 
   var currentUserId = props.currentUserId,
       currentUser = props.currentUser,
@@ -1715,7 +1693,7 @@ var Header = function Header(props) {
     headerClass = 'guest-header';
   } else {
     barDisplay = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_nav_user_nav_container__WEBPACK_IMPORTED_MODULE_1__["default"], null);
-    headerClass = 'user-header'; //+ className
+    headerClass = 'user-header' + className;
   }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", {
