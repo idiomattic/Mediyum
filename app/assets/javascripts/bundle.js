@@ -1734,6 +1734,24 @@ var Header = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Header);
+/*
+const UserNav = props => {
+  const location = useLocation()
+  let className = 'user-nav'
+  if (location !== '/feed') {
+    className = 'user-nav recipe-show'
+  }
+  let {currentUserId, currentUser, displayModal} = props
+  if (!currentUserId) {
+    return null
+  }
+  return (
+    <div className={className} onClick={() => displayModal()}>
+      <img className='user-photo' src={currentUser.photoUrl} alt="img" />
+    </div>
+  )
+}
+*/
 
 /***/ }),
 

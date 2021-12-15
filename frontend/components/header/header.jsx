@@ -32,3 +32,22 @@ class Header extends React.Component {
 }
 
 export default Header
+
+/*
+const UserNav = props => {
+  const location = useLocation()
+  let className = 'user-nav'
+  if (location !== '/feed') {
+    className = 'user-nav recipe-show'
+  }
+  let {currentUserId, currentUser, displayModal} = props
+  if (!currentUserId) {
+    return null
+  }
+  return (
+    <div className={className} onClick={() => displayModal()}>
+      <img className='user-photo' src={currentUser.photoUrl} alt="img" />
+    </div>
+  )
+}
+*/ 
