@@ -3098,7 +3098,7 @@ var UserRecipesIndexItem = /*#__PURE__*/function (_React$Component) {
 
       var recipe = this.props.recipe;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-        className: "recipe-list-item"
+        className: "user-recipe-list-item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
         onClick: function onClick() {
           return _this2.handleClick();
@@ -3684,8 +3684,12 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
       var followersCount = !followers ? 0 : Object.values(followers).length;
       var unit = followersCount === 1 ? 'Follower' : 'Followers';
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "followerCount"
-      }, "".concat(followersCount, " ").concat(unit));
+        className: "follower-count"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+        className: "number-followers"
+      }, followersCount), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+        className: "unit"
+      }, unit));
     }
   }, {
     key: "isSelf",
@@ -3753,8 +3757,10 @@ var mSTP = function mSTP(state, _ref) {
   var match = _ref.match;
   var userId = parseInt(match.params.userId);
   var user = state.entities.users[userId];
+  var currentUserId = state.session.currentUserId;
   return {
-    currentUserId: state.session.currentUserId,
+    currentUserId: currentUserId,
+    currentUser: state.entities.users[currentUserId],
     user: user,
     userId: userId,
     followers: state.entities.users.followers,

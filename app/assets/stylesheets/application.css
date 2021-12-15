@@ -47,12 +47,18 @@ a, u {
   color: white;
   padding: 7px 16px 9px;
   border-radius: 99em;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .green-button#Following {
   border-color: rgb(26, 137, 23);
   background-color: white;
   color: rgb(26, 137, 23);
+  /* font-family: inherit;
+  font-size: 14px;
+  font-weight: 600; */
 }
 
 h2 {

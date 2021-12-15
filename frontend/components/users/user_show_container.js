@@ -7,8 +7,10 @@ import { createFollow, deleteFollow, fetchFollows } from "../../actions/follow_a
 const mSTP = (state, {match}) => {
   const userId = parseInt(match.params.userId)
   const user = state.entities.users[userId]
+  const currentUserId = state.session.currentUserId
   return({
-    currentUserId: state.session.currentUserId,
+    currentUserId,
+    currentUser: state.entities.users[currentUserId],
     user,
     userId,
     followers: state.entities.users.followers,
