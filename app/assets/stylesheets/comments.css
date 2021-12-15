@@ -67,3 +67,15 @@ div.comment-info {
   margin-top: 20px;
   text-align: left;
 }
+
+.comment-yum-nav, .comment-buttons {
+  margin-top: 18px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.comment-yum-count {
+  margin-left: 5px;
+}

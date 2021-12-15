@@ -74,6 +74,6 @@ div.comment-count {
   height: 25px;
 }
 
-.yum-count, .comment-count {
+.yum-count{
   color: rgba(117, 117, 117, 1);
 }

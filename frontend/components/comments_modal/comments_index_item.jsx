@@ -22,9 +22,12 @@ class CommentsIndexItem extends React.Component {
           Delete
         </button>
       </div>
-    : <div className="comment-clap-nav">
-      <div>Yum</div>
-    </div>
+    : <div className='comment-yum-nav'>
+        <img src='https://mediyum-dev.s3.us-west-1.amazonaws.com/yum.png' alt='Yum' className='yum-button' onClick={() => this.handleYum()}/>
+        <div className='comment-yum-count'>
+          {comment.yums.length}
+        </div>
+      </div>
   }
 
   toggleEditing() {
