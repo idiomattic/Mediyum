@@ -77,7 +77,7 @@ class UserShow extends React.Component {
   }
 
   render() {
-    let { user, userId } = this.props
+    let { user, userId, currentUser } = this.props
     if (!user) {
       return null
     }
@@ -88,7 +88,9 @@ class UserShow extends React.Component {
           {this.followerCount()}
           {this.isSelf()}
           <div className='user-show-nav-spacer'></div>
-          <Link to='/feed'>Feed</Link>
+          <div className='user-nav' onClick={() => this.props.displayModal()}>
+            <img className='user-photo' src={currentUser.photoUrl} alt="img" />
+          </div>
         </div>
         <br />
         {this.myRecipes()}
