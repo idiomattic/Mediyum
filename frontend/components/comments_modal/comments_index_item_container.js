@@ -7,9 +7,12 @@ const _nullComments = []
 
 const mSTP = (state, ownProps) => {
   const recipeId = ownProps.comment.recipe_id
+  let yumCount = ownProps.comment.yums ? ownProps.comment.yums.length : 0
+  console.log(yumCount)
   return ({
     recipeId,
-    currentUserId: state.session.currentUserId
+    currentUserId: state.session.currentUserId,
+    yumCount
   })
 };
 

@@ -7,7 +7,7 @@ class CommentsIndexItem extends React.Component {
     super(props)
     this.state = {
       editing: false,
-      // yumCount: this.props.yumCount,
+      yumCount: props.yumCount,
       yum: {
         yummer_id: props.currentUserId,
         recipe_id: props.recipeId,
@@ -31,18 +31,19 @@ class CommentsIndexItem extends React.Component {
     : <div className='comment-yum-nav'>
         <img src='https://mediyum-dev.s3.us-west-1.amazonaws.com/yum.png' alt='Yum' className='yum-button' onClick={() => this.handleYum()}/>
         <div className='comment-yum-count'>
-          {comment.yums.length}
+          {this.state.yumCount}
         </div>
       </div>
   }
 
   handleYum() {
-    console.log(this.state.yum)
     this.props.createYum(this.state.yum)
-      // .then(res => this.setState(
-      //   { yumCount: this.props.yumCount}
-      // ))
+      .then(res => this.setState(
+        { yumCount: this.props.yumCount}
+      ))
   }
+
+
 
   toggleEditing() {
     this.setState({

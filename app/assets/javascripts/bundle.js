@@ -971,7 +971,7 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       editing: false,
-      // yumCount: this.props.yumCount,
+      yumCount: props.yumCount,
       yum: {
         yummer_id: props.currentUserId,
         recipe_id: props.recipeId,
@@ -1015,15 +1015,18 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comment-yum-count"
-      }, comment.yums.length));
+      }, this.state.yumCount));
     }
   }, {
     key: "handleYum",
     value: function handleYum() {
-      console.log(this.state.yum);
-      this.props.createYum(this.state.yum); // .then(res => this.setState(
-      //   { yumCount: this.props.yumCount}
-      // ))
+      var _this3 = this;
+
+      this.props.createYum(this.state.yum).then(function (res) {
+        return _this3.setState({
+          yumCount: _this3.props.yumCount
+        });
+      });
     }
   }, {
     key: "toggleEditing",
@@ -1092,9 +1095,12 @@ var _nullComments = [];
 
 var mSTP = function mSTP(state, ownProps) {
   var recipeId = ownProps.comment.recipe_id;
+  var yumCount = ownProps.comment.yums ? ownProps.comment.yums.length : 0;
+  console.log(yumCount);
   return {
     recipeId: recipeId,
-    currentUserId: state.session.currentUserId
+    currentUserId: state.session.currentUserId,
+    yumCount: yumCount
   };
 };
 
@@ -3812,7 +3818,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/comment_actions */ "./frontend/actions/comment_actions.js");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _actions_yum_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/yum_actions */ "./frontend/actions/yum_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -3839,6 +3847,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__.HIDE_MODAL:
       return {};
+
+    case _actions_yum_actions__WEBPACK_IMPORTED_MODULE_2__.RECEIVE_YUM:
+      nextState[action.yum.comment_id].yums.push(action.yum);
+      return nextState;
 
     default:
       return state;
