@@ -6,7 +6,13 @@ class CommentsIndexItem extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      editing: false
+      editing: false,
+      // yumCount: this.props.yumCount,
+      yum: {
+        yummer_id: props.currentUserId,
+        recipe_id: props.recipeId,
+        comment_id: props.comment.id
+      }
     }
     this.toggleEditing = this.toggleEditing.bind(this)
   }
@@ -28,6 +34,14 @@ class CommentsIndexItem extends React.Component {
           {comment.yums.length}
         </div>
       </div>
+  }
+
+  handleYum() {
+    console.log(this.state.yum)
+    this.props.createYum(this.state.yum)
+      // .then(res => this.setState(
+      //   { yumCount: this.props.yumCount}
+      // ))
   }
 
   toggleEditing() {

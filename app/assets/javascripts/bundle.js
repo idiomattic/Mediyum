@@ -970,7 +970,13 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      editing: false
+      editing: false,
+      // yumCount: this.props.yumCount,
+      yum: {
+        yummer_id: props.currentUserId,
+        recipe_id: props.recipeId,
+        comment_id: props.comment.id
+      }
     };
     _this.toggleEditing = _this.toggleEditing.bind(_assertThisInitialized(_this));
     return _this;
@@ -1010,6 +1016,14 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comment-yum-count"
       }, comment.yums.length));
+    }
+  }, {
+    key: "handleYum",
+    value: function handleYum() {
+      console.log(this.state.yum);
+      this.props.createYum(this.state.yum); // .then(res => this.setState(
+      //   { yumCount: this.props.yumCount}
+      // ))
     }
   }, {
     key: "toggleEditing",
@@ -1069,13 +1083,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _comments_index_item__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./comments_index_item */ "./frontend/components/comments_modal/comments_index_item.jsx");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/comment_actions */ "./frontend/actions/comment_actions.js");
+/* harmony import */ var _actions_yum_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/yum_actions */ "./frontend/actions/yum_actions.js");
+
 
 
 
 var _nullComments = [];
 
-var mSTP = function mSTP(state) {
+var mSTP = function mSTP(state, ownProps) {
+  var recipeId = ownProps.comment.recipe_id;
   return {
+    recipeId: recipeId,
     currentUserId: state.session.currentUserId
   };
 };
@@ -1087,6 +1105,9 @@ var mDTP = function mDTP(dispatch) {
     },
     updateComment: function updateComment(comment) {
       return dispatch((0,_actions_comment_actions__WEBPACK_IMPORTED_MODULE_2__.updateComment)(comment));
+    },
+    createYum: function createYum(yum) {
+      return dispatch((0,_actions_yum_actions__WEBPACK_IMPORTED_MODULE_3__.createYum)(yum));
     }
   };
 };
