@@ -33,6 +33,7 @@ a, u {
 .black-button {
   background-color: black;
   border-color: black;
+  border-style: solid;
   color: white;
   padding: 7px 16px 9px;
   border-radius: 99em;
@@ -40,7 +41,8 @@ a, u {
 
 .green-button {
   border-width: 1px;
-  background-color: rgb(26, 137, 23);
+  border-style: solid;
+  background: rgb(26, 137, 23);
   border-color: rgb(26, 137, 23);
   color: white;
   padding: 7px 16px 9px;

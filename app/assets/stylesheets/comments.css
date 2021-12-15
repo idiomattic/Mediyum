@@ -91,9 +91,28 @@ div.comment-info {
 
 .comment-delete-button {
   font-size: 14px;
+  border-style: solid;
   cursor: pointer;
-  background-color: red;
+  background-color: rgb(201, 74, 74);;
   color: white;
   padding: 7px 16px 9px;
   border-radius: 99em;
+}
+
+.comment-form {
+  margin: 0 20px 0;
+  text-align: left;
+  box-shadow: rgb(0 0 0 / 12%) 0px 2px 8px;
+  padding: 12px;
+}
+
+.comment-form-body {
+  border: none;
+  overflow: auto;
+  outline: none;
+  resize: none;
+  width: 100%;
+  margin-bottom: 12px;
+  font: inherit;
+  font-size: 14px;
 }

@@ -49,7 +49,7 @@ class CommentForm extends React.Component {
             value={this.state.body}
             onChange={this.updateBody()}/>
           <br />
-          <input type="submit" value="Save" />
+          <input type="submit" value="Comment" className='comment green-button'/>
         </form>
       </div>
     )
