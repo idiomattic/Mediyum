@@ -14,13 +14,19 @@ class CommentsModal extends React.Component {
         commenter_id: this.props.currentUserId
       }
     }
+    this.filterComments = this.filterComments.bind(this)
+    this.updateComments = this.updateComments.bind(this)
   }
 
   componentDidMount() {
+    this.updateComments()
+  }
+
+  updateComments() {
     let {fetchComments, recipe} = this.props
     let filteredCommentsArr
-    this.props.fetchComments()
-      .then(res => {
+    fetchComments()
+      .then(comments => {
         filteredCommentsArr = this.filterComments()
       })
     this.setState({
@@ -41,11 +47,15 @@ class CommentsModal extends React.Component {
   }
 
   render() {
-    let { modal } = this.props
+    let { modal, comments } = this.props
     const recipeComments = this.filterComments()
-    return !modal ? null : (
+    return (!modal || !recipeComments) ? null : (
       <div className='comments-modal'>
-        {<CommentFormContainer />}
+        <div className='comments-modal-nav'>
+          <h2 className='comments-count'>Comments ({recipeComments.length})</h2>
+          <span className='close-comments-button' onClick={() => this.props.hideModal()}>&times;</span>
+        </div>
+        <CommentFormContainer rerenderModal={this.updateComments}/>
         <ul className="comments-list">
           {
             recipeComments.map((comment, i) => 

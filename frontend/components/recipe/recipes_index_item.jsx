@@ -13,7 +13,11 @@ class RecipesIndexItem extends React.Component {
   }
 
   handleClick() {
-    this.props.history.push(`/recipes/${this.props.recipe.id}`)
+    if (this.props.currentUserId) {
+      this.props.history.push(`/recipes/${this.props.recipe.id}`)
+    } else {
+      this.props.displayModal('Sign In')
+    }
   }
 
   redirectToShow() {
@@ -23,16 +27,23 @@ class RecipesIndexItem extends React.Component {
   }
 
   authorPhoto(author) {
-    return author.photoUrl ? author.photoUrl : null //'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png'
+    return author.photoUrl ? author.photoUrl : null
+  }
+
+  recipePhoto(recipe) {
+    return this.props.currentUserId ? <img src={recipe.photoUrl} alt={recipe.name} className='photo-preview'/> : null
   }
   
 
-render() {
+  render() {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
     let {recipe} = this.props
     let {author} = this.props.recipe
     if (!recipe || !author) {
       return null
     }
+    let createdAt = new Date(recipe.created_at)
+    let publishDate = months[createdAt.getMonth()] + ' ' + createdAt.getDate()
     return(
       <li className='recipe-list-item'>
         <div className='recipe-info-wrapper'>
@@ -43,7 +54,9 @@ render() {
           <h3 onClick={() => this.handleClick()} className='recipe-item-title'>
             {this.props.recipe.title}
           </h3>
+          <div className="publish-date">{publishDate}</div>
         </div>
+        {this.recipePhoto(recipe)}
       </li>
     )
   }

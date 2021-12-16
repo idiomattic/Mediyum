@@ -8,6 +8,7 @@ import RecipeFormContainer from './recipe/create_recipe_form_container'
 import UpdateRecipeFormContainer from './recipe/update_recipe_form_container'
 import RecipeShowContainer from './recipe/recipe_show_container'
 import UserShowContainer from './users/user_show_container'
+import GuestRecipesIndexContainer from './recipe/guest_recipe_index_container'
 
 const App = () => {
   return(
@@ -17,9 +18,10 @@ const App = () => {
       <Route path='/feed' component={HeaderContainer}/>
       <Route path='/recipes' component={HeaderContainer}/>
     </Switch>
-    <Route exact path='/' component={HomeContainer}/>
+    <AuthRoute exact path='/' component={HomeContainer}/>
     <div className='app-body'>
       <Switch>
+        <AuthRoute exact path='/' component={GuestRecipesIndexContainer}/>
         <ProtectedRoute exact path='/feed' component={HomeContainer}/>
         <ProtectedRoute exact path='/recipes/new' component={RecipeFormContainer}/>
         <ProtectedRoute exact path='/recipes/:recipeId' component={RecipeShowContainer}/>

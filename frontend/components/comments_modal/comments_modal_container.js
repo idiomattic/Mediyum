@@ -5,12 +5,15 @@ import { fetchComments, createComment, deleteComment, updateComment } from "../.
 
 const _nullComments = []
 
-const mSTP = state => ({
-  modal: state.ui.modal,
-  comments: Object.values(state.entities.comments) || _nullComments,
-  recipe: Object.values(state.entities.recipes)[0],
-  currentUserId: state.session.currentUserId
-});
+const mSTP = state => {
+  const recipe = Object.values(state.entities.recipes)[0]
+  return ({
+    modal: state.ui.modal,
+    comments: Object.values(state.entities.comments) || _nullComments,
+    recipe,
+    currentUserId: state.session.currentUserId
+  })
+};
 
 const mDTP = dispatch => ({
   hideModal: () => dispatch(hideModal()),

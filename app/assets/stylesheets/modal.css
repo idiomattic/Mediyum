@@ -61,14 +61,18 @@
 
 .dropdown.modal-background {
   background: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .dropdown.modal-child {
   width: 240px;
   padding: 0;
   position: absolute;
-  inset: 0px auto auto 0px;
-  transform: translate(420%, 35%);
+  left: 100%;
+  top: 10%;
+  transform: translateX(-100%);
   background: rgba(255, 255, 255, 0.95);
   z-index: 100;
   border-radius: 4px;
@@ -81,6 +85,10 @@
 .dropdown-list {
   padding: 20px 0 20px 0;
   text-align: left;
+}
+
+.dropdown-list li:not(:first-child) a {
+  color: rgba(117, 117, 117, 1);
 }
 
 .dropdown-list li:not(:last-child) {

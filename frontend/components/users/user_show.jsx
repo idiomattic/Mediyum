@@ -53,7 +53,12 @@ class UserShow extends React.Component {
   displayFollowButton() {
     let {followers, userId, currentUserId} = this.props
     // debugger
-    let buttonText = followers[currentUserId] ? 'Following' : 'Follow'
+    let buttonText
+    if (followers) {
+      buttonText = followers[currentUserId] ? 'Following' : 'Follow'
+    } else {
+      buttonText = ''
+    }
     return (
       <button className='green-button' id={buttonText} onClick={() => this.toggleFollow()}>{buttonText}</button>
     )
@@ -64,7 +69,10 @@ class UserShow extends React.Component {
     let followersCount = !followers ? 0 : Object.values(followers).length
     let unit = (followersCount === 1) ? 'Follower' : 'Followers'
     return(
-      <div className='followerCount'>{`${followersCount} ${unit}`}</div>
+      <div className='follower-count'>
+        <p className='number-followers'>{followersCount}</p>
+        <p className="unit">{unit}</p>
+      </div>
     )
   }
 
@@ -74,7 +82,7 @@ class UserShow extends React.Component {
   }
 
   render() {
-    let { user, userId } = this.props
+    let { user, userId, currentUser } = this.props
     if (!user) {
       return null
     }
@@ -85,7 +93,9 @@ class UserShow extends React.Component {
           {this.followerCount()}
           {this.isSelf()}
           <div className='user-show-nav-spacer'></div>
-          <Link to='/feed'>Feed</Link>
+          <div className='user-nav' onClick={() => this.props.displayModal()}>
+            <img className='user-photo' src={currentUser.photoUrl} alt="img" />
+          </div>
         </div>
         <br />
         {this.myRecipes()}

@@ -46,6 +46,14 @@
 
 .recipe-list-item {
   margin: 0 0 48px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.photo-preview {
+  height: 134px;
+  width: auto;
 }
 
 .recipe-item-title {
@@ -53,6 +61,7 @@
   font-size: 22px;
   font-weight: 800;
   cursor: pointer;
+  margin-bottom: 8px;
 }
 
 .author-link-wrapper {
@@ -67,6 +76,16 @@
   border-radius: 10px;
 }
 
+.publish-date {
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(117, 117, 117, 1);
+}
+
 .author-name {
   margin-left: 8px;
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
 }

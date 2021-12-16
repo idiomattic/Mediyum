@@ -23,7 +23,7 @@ class UserRecipesIndexItem extends React.Component {
   render() {
     let {recipe} = this.props
     return(
-      <li className='recipe-list-item'>
+      <li className='user-recipe-list-item'>
         <h3 onClick={() => this.handleClick()} className='user-recipe-item-title'>{this.props.recipe.title}</h3>
         {this.truncatedBody()}
       </li>

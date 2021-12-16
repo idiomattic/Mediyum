@@ -1,3 +1,20 @@
+.comments-modal {
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.comments-modal-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+}
+
+.close-comments-button {
+  font-size: 32px;
+  color: rgb(117, 117, 117);
+  cursor: pointer;
+}
+
 .comments-button {
   font-weight: 800;
   cursor: pointer;
@@ -13,4 +30,89 @@
 
 .comments-list li:not(:last-child){
   margin-bottom: 20px;
+}
+
+.comments-count {
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+
+}
+
+.comments.modal-child {
+  padding: 0 0;
+}
+
+li.comment-list-item {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.commenter-photo {
+  height: 32px;
+  width: auto;
+  border-radius: 16px;
+}
+
+div.comment-info {
+  display: flex;
+  align-items: center;
+}
+
+.commenter-name {
+  padding-left: 12px;
+}
+
+.comment-item-body {
+  margin-top: 20px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.comment-yum-nav, .comment-buttons {
+  margin-top: 18px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.comment-yum-count {
+  margin-left: 5px;
+}
+
+.comment-edit-button {
+  font-size: 14px;
+  cursor: pointer;
+  padding: 7px 16px 9px 0;
+  border-radius: 99em;
+}
+
+.comment-delete-button {
+  font-size: 14px;
+  border-style: solid;
+  cursor: pointer;
+  background-color: rgb(201, 74, 74);;
+  color: white;
+  padding: 7px 16px 9px;
+  border-radius: 99em;
+}
+
+.comment-form {
+  margin: 0 20px 0;
+  text-align: left;
+  box-shadow: rgb(0 0 0 / 12%) 0px 2px 8px;
+  padding: 12px;
+}
+
+.comment-form-body {
+  border: none;
+  overflow: auto;
+  outline: none;
+  resize: none;
+  width: 100%;
+  margin-bottom: 12px;
+  font: inherit;
+  font-size: 14px;
 }

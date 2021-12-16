@@ -1,5 +1,6 @@
 .user-show > * {
   padding: 0 64px 0 64px;
+  margin: 0 -64px 0 -64px;
   font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -19,7 +20,7 @@
   margin-bottom: 20px;
 }
 
-.user-show-header :not(:last-child) {
+.user-show-header > :not(:last-child) {
   margin: 0 25px 0 0;
 }
 
@@ -31,4 +32,20 @@
   font-size: 36px;
   font-weight: bolder;
   cursor: pointer;
+}
+
+.follower-count {
+  display: flex;
+  align-items: center;
+}
+
+.number-followers {
+  margin-right: 5px;
+}
+
+.user-recipe-list-item {
+  margin: 0 0 48px 0;
+  /* display: flex; */
+  justify-content: space-between;
+  align-items: center;
 }

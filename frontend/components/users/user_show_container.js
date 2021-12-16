@@ -3,12 +3,15 @@ import { fetchUser, updateUser, deleteUser } from "../../actions/user_actions";
 import { fetchRecipes } from "../../actions/recipe_actions";
 import UserShow from "./user_show";
 import { createFollow, deleteFollow, fetchFollows } from "../../actions/follow_actions";
+import { displayModal } from "../../actions/modal_actions";
 
 const mSTP = (state, {match}) => {
   const userId = parseInt(match.params.userId)
   const user = state.entities.users[userId]
+  const currentUserId = state.session.currentUserId
   return({
-    currentUserId: state.session.currentUserId,
+    currentUserId,
+    currentUser: state.entities.users[currentUserId],
     user,
     userId,
     followers: state.entities.users.followers,
@@ -17,7 +20,7 @@ const mSTP = (state, {match}) => {
 }
 
 const mDTP = dispatch => ({
-  displayModal: () => dispatch(displayModal('Comments')),
+  displayModal: () => dispatch(displayModal('Dropdown')),
   fetchUser: userId => dispatch(fetchUser(userId)),
   updateUser: user => dispatch(updateUser(user)),
   deleteUser: userId => dispatch(deleteUser(userId)),
