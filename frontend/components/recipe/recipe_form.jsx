@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router";
+import UserNavContainer from "../user_nav/user_nav_container";
 
 class RecipeForm extends React.Component {
   constructor(props) {
@@ -38,11 +39,15 @@ class RecipeForm extends React.Component {
   }
 
   render() {
+    let {author} = this.props
     return(
       <div className='recipe-form-div'>
         <div className='recipe-form-header'>
-          <h2 className='logo'>Mediyum</h2>
-          
+          <div className="recipe-form-header-left">
+            <h2 className='logo'>Mediyum</h2>
+            <p className="draft">Draft in {author.name}</p>
+          </div>
+          <UserNavContainer/>
         </div>
         <form className='recipe-form' onSubmit={this.handleSubmit}>
           <input className='recipe-title' 

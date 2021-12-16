@@ -15,6 +15,19 @@
   background: white;
 }
 
+.recipe-form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  margin: 20px -30px;
+}
+
+.recipe-form-header-left {
+  display: flex;
+  align-items: center;
+}
+
 .user-header {
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 5%);
 }
