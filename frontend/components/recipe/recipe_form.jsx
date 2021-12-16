@@ -40,29 +40,29 @@ class RecipeForm extends React.Component {
   render() {
     return(
       <div className='recipe-form-div'>
+        <div className='recipe-form-header'>
+          <h2 className='logo'>Mediyum</h2>
+          
+        </div>
         <form className='recipe-form' onSubmit={this.handleSubmit}>
-            <label>Title
-              <br />
-              <input className='recipe-title' 
-                type="text" 
-                value={this.state.title} 
-                onChange={this.update('title')} />
-            </label>
-            <br />
-            <label>Body
-              <br />
-              <textarea className='recipe-body' 
-                type="text" 
-                value={this.state.body} 
-                onChange={this.update('body')} />
-            </label>
-            <br />
-            <input type="file" onChange={e => this.handleFile(e)}/>
-            <br />
-            <input className='black-button' 
-              type="submit" 
-              value={this.props.formType} />
-            <br />
+          <input className='recipe-title' 
+            type="text" 
+            value={this.state.title} 
+            onChange={this.update('title')} 
+            placeholder="Title" />
+          <br />
+          <textarea className='recipe-body' 
+            type="text" 
+            value={this.state.body} 
+            onChange={this.update('body')} 
+            placeholder="Share your recipe..."/>
+          <br />
+          <input type="file" onChange={e => this.handleFile(e)}/>
+          <br />
+          <input className='black-button' 
+            type="submit" 
+            value={this.props.formType} />
+          <br />
         </form>
       </div>
     )
