@@ -53,7 +53,12 @@ class UserShow extends React.Component {
   displayFollowButton() {
     let {followers, userId, currentUserId} = this.props
     // debugger
-    let buttonText = followers[currentUserId] ? 'Following' : 'Follow'
+    let buttonText
+    if (followers) {
+      buttonText = followers[currentUserId] ? 'Following' : 'Follow'
+    } else {
+      buttonText = ''
+    }
     return (
       <button className='green-button' id={buttonText} onClick={() => this.toggleFollow()}>{buttonText}</button>
     )

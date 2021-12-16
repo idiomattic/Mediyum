@@ -3599,7 +3599,14 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
           userId = _this$props2.userId,
           currentUserId = _this$props2.currentUserId; // debugger
 
-      var buttonText = followers[currentUserId] ? 'Following' : 'Follow';
+      var buttonText;
+
+      if (followers) {
+        buttonText = followers[currentUserId] ? 'Following' : 'Follow';
+      } else {
+        buttonText = '';
+      }
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "green-button",
         id: buttonText,
