@@ -2229,6 +2229,7 @@ var RecipeForm = /*#__PURE__*/function (_React$Component) {
       var _this4 = this;
 
       var author = this.props.author;
+      var fileLabel = this.state.photoFile ? this.state.photoFile.name : 'Choose File';
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "recipe-form-div"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2262,12 +2263,15 @@ var RecipeForm = /*#__PURE__*/function (_React$Component) {
         value: this.state.body,
         onChange: this.update('body'),
         placeholder: "Share your recipe..."
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+        className: "recipe-photo"
+      }, fileLabel, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "file",
+        className: "recipe-photo-input",
         onChange: function onChange(e) {
           return _this4.handleFile(e);
         }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null)));
+      }))));
     }
   }]);
 

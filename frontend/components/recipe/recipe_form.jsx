@@ -40,6 +40,7 @@ class RecipeForm extends React.Component {
 
   render() {
     let {author} = this.props
+    let fileLabel = this.state.photoFile ? this.state.photoFile.name : 'Choose File'
     return(
       <div className='recipe-form-div'>
         <div className='recipe-form-header'>
@@ -65,12 +66,9 @@ class RecipeForm extends React.Component {
             onChange={this.update('body')} 
             placeholder="Share your recipe..."/>
           <br />
-          <input type="file" onChange={e => this.handleFile(e)}/>
-          <br />
-          {/* <input className='black-button' 
-            type="submit" 
-            value={this.props.formType} />
-          <br /> */}
+          <label className="recipe-photo">{fileLabel}
+            <input type="file" className="recipe-photo-input" onChange={e => this.handleFile(e)}/>
+          </label>
         </form>
       </div>
     )
