@@ -21,8 +21,13 @@
 .recipe-footer {
   display: flex;
   margin-bottom: 40px;
+  justify-content: space-between;
   /* position: absolute; */
   /* bottom: 10%; */
+}
+
+.left-buttons {
+  display: flex;
 }
 
 .comments-button {

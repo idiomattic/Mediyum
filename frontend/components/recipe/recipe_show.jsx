@@ -74,21 +74,19 @@ class RecipeShow extends React.Component {
         <p className='recipe-body'>{recipe.body}</p>
         <br />
         <div className='recipe-footer'>
-          <div className='yum-nav'>
-            <img src='https://mediyum-dev.s3.us-west-1.amazonaws.com/yum.png' alt='Yum' className='yum-button' onClick={() => this.handleYum()}/>
-            <div className='yum-count'>
-              {this.state.yumCount}
+          <div className='left-buttons'>
+            <div className='yum-nav'>
+              <img title='add yum' src='https://mediyum-dev.s3.us-west-1.amazonaws.com/yum.png' alt='Yum' className='yum-button' onClick={() => this.handleYum()}/>
+              <div className='yum-count'>
+                {this.state.yumCount}
+              </div>
+            </div>
+            <div className='comment-nav'>
+              <img src='https://mediyum-dev.s3.us-west-1.amazonaws.com/comment.png' alt='comments' className='comments-button' onClick={() => this.showCommentsModal()}/>
             </div>
           </div>
-          <div className='comment-nav'>
-            <img src='https://mediyum-dev.s3.us-west-1.amazonaws.com/comment.png' alt='comments' className='comments-button' onClick={() => this.showCommentsModal()}/>
-            {/* <div className='comment-count'>
-              {recipe.comments.length}
-            </div> */}
-          </div>
+          {this.isOwner()}
         </div>
-        <br />
-        {this.isOwner()}
       </div>
     )
   }

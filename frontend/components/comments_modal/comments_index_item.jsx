@@ -28,7 +28,7 @@ class CommentsIndexItem extends React.Component {
         </div>
       </div>
     : <div className='comment-yum-nav'>
-        <img src='https://mediyum-dev.s3.us-west-1.amazonaws.com/yum.png' alt='Yum' className='yum-button' onClick={() => this.handleYum()}/>
+        <img title='add yum' src='https://mediyum-dev.s3.us-west-1.amazonaws.com/yum.png' alt='Yum' className='yum-button' onClick={() => this.handleYum()}/>
         <div className='comment-yum-count'>
           {this.state.yumCount}
         </div>

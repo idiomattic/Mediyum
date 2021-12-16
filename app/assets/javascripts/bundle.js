@@ -1007,6 +1007,7 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
       }, "Delete")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comment-yum-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        title: "add yum",
         src: "https://mediyum-dev.s3.us-west-1.amazonaws.com/yum.png",
         alt: "Yum",
         className: "yum-button",
@@ -2416,8 +2417,11 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
       }, recipe.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "recipe-footer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "left-buttons"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "yum-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        title: "add yum",
         src: "https://mediyum-dev.s3.us-west-1.amazonaws.com/yum.png",
         alt: "Yum",
         className: "yum-button",
@@ -2435,7 +2439,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this5.showCommentsModal();
         }
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.isOwner());
+      }))), this.isOwner()));
     }
   }]);
 
