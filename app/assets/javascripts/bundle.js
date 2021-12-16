@@ -2239,9 +2239,17 @@ var RecipeForm = /*#__PURE__*/function (_React$Component) {
         className: "logo"
       }, "Mediyum"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "draft"
-      }, "Draft in ", author.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_nav_user_nav_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+      }, "Draft in ", author.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "recipe-form-header-right"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "submit",
+        form: "story-form",
+        className: "publish-story",
+        value: "Publish"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_nav_user_nav_container__WEBPACK_IMPORTED_MODULE_1__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         className: "recipe-form",
-        onSubmit: this.handleSubmit
+        onSubmit: this.handleSubmit,
+        id: "story-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         className: "recipe-title",
         type: "text",
@@ -2259,10 +2267,6 @@ var RecipeForm = /*#__PURE__*/function (_React$Component) {
         onChange: function onChange(e) {
           return _this4.handleFile(e);
         }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        className: "black-button",
-        type: "submit",
-        value: this.props.formType
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null)));
     }
   }]);

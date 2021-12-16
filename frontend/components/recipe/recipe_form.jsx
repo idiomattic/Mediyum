@@ -47,9 +47,12 @@ class RecipeForm extends React.Component {
             <h2 className='logo'>Mediyum</h2>
             <p className="draft">Draft in {author.name}</p>
           </div>
-          <UserNavContainer/>
+          <div className="recipe-form-header-right">
+            <input type="submit" form='story-form' className='publish-story' value='Publish' />
+            <UserNavContainer/>
+          </div>
         </div>
-        <form className='recipe-form' onSubmit={this.handleSubmit}>
+        <form className='recipe-form' onSubmit={this.handleSubmit} id='story-form'>
           <input className='recipe-title' 
             type="text" 
             value={this.state.title} 
@@ -64,10 +67,10 @@ class RecipeForm extends React.Component {
           <br />
           <input type="file" onChange={e => this.handleFile(e)}/>
           <br />
-          <input className='black-button' 
+          {/* <input className='black-button' 
             type="submit" 
             value={this.props.formType} />
-          <br />
+          <br /> */}
         </form>
       </div>
     )
