@@ -29,7 +29,7 @@ const App = () => {
         <ProtectedRoute exact path='/users/:userId' component={UserShowContainer}/>
       </Switch>
     </div>
-    <div className='app-spacer'></div>
+    {/* <div className='app-spacer'></div> */}
     <footer className='app-footer'>
       <h3 className='footer-message'>More from Matthew Lese</h3>
       <div className='footer-spacer'></div>

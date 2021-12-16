@@ -715,9 +715,7 @@ var App = function App() {
     exact: true,
     path: "/users/:userId",
     component: _users_user_show_container__WEBPACK_IMPORTED_MODULE_8__["default"]
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "app-spacer"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("footer", {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("footer", {
     className: "app-footer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
     className: "footer-message"
@@ -2242,7 +2240,16 @@ var RecipeForm = /*#__PURE__*/function (_React$Component) {
         className: "draft"
       }, "Draft in ", author.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "recipe-form-header-right"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+        className: "recipe-photo-label"
+      }, fileLabel, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "file",
+        form: "story-form",
+        className: "recipe-photo-input",
+        onChange: function onChange(e) {
+          return _this4.handleFile(e);
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "submit",
         form: "story-form",
         className: "publish-story",
@@ -2263,15 +2270,7 @@ var RecipeForm = /*#__PURE__*/function (_React$Component) {
         value: this.state.body,
         onChange: this.update('body'),
         placeholder: "Share your recipe..."
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-        className: "recipe-photo"
-      }, fileLabel, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        type: "file",
-        className: "recipe-photo-input",
-        onChange: function onChange(e) {
-          return _this4.handleFile(e);
-        }
-      }))));
+      })));
     }
   }]);
 
