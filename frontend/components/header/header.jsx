@@ -9,11 +9,12 @@ const Header = props => {
   if (location.pathname !== '/feed') {
     className = ' recipe-show'
   }
+  // debugger
   let {currentUserId, currentUser, displayModal} = props
   let barDisplay
   let headerClass
   if (!currentUserId) {
-    barDisplay = <GuestNavContainer history={this.props.history}/>
+    barDisplay = <GuestNavContainer history={props.history}/>
     headerClass = 'guest-header'
   } else {
     barDisplay = <UserNavContainer />

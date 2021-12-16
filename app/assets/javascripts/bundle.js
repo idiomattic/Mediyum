@@ -1666,8 +1666,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _user_nav_user_nav_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../user_nav/user_nav_container */ "./frontend/components/user_nav/user_nav_container.js");
 /* harmony import */ var _guest_nav_guest_nav_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../guest_nav/guest_nav_container */ "./frontend/components/guest_nav/guest_nav_container.js");
 /* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
-var _this = undefined;
-
 
 
 
@@ -1679,7 +1677,8 @@ var Header = function Header(props) {
 
   if (location.pathname !== '/feed') {
     className = ' recipe-show';
-  }
+  } // debugger
+
 
   var currentUserId = props.currentUserId,
       currentUser = props.currentUser,
@@ -1689,7 +1688,7 @@ var Header = function Header(props) {
 
   if (!currentUserId) {
     barDisplay = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_guest_nav_guest_nav_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      history: _this.props.history
+      history: props.history
     });
     headerClass = 'guest-header';
   } else {
