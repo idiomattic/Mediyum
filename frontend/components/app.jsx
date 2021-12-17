@@ -16,7 +16,8 @@ const App = () => {
     <Switch>
       <AuthRoute exact path='/' component={HeaderContainer}/>
       <Route path='/feed' component={HeaderContainer}/>
-      {/* <Route path='/recipes' component={HeaderContainer}/> */}
+      <Route exact path='/recipes/new' component={null}/>
+      <Route exact path='/recipes/:recipeId' component={HeaderContainer}/>
     </Switch>
     <AuthRoute exact path='/' component={HomeContainer}/>
     <div className='app-body'>
