@@ -38,26 +38,30 @@ class UpdateRecipeForm extends React.Component {
   render() {
     return(
       <div className='recipe-form-div'>
-        <form className='recipe-form' onSubmit={this.handleSubmit}>
-            <label>Title
-              <br />
-              <input className='recipe-title' 
-                type="text" 
-                value={this.state.title} 
-                onChange={this.update('title')} />
-            </label>
+        <div className='recipe-form-header'>
+          <div className="recipe-form-header-left">
+            <h2 className='logo'>Mediyum</h2>
+            {/* <p className="draft">Draft in {author.name}</p> */}
+          </div>
+          <div className="recipe-form-header-right">
+            <input type="submit" form='story-form' className='publish-story' value='Update' />
+            {/* <UserNavContainer/> */}
+          </div>
+        </div>
+        <form className='recipe-form' onSubmit={this.handleSubmit} id='story-form'>
+            <input className='recipe-title' 
+              type="text" 
+              value={this.state.title} 
+              onChange={this.update('title')} />
             <br />
-            <label>Body
-              <br />
-              <textarea className='recipe-body' 
-                type="text" 
-                value={this.state.body} 
-                onChange={this.update('body')} />
-            </label>
+            <textarea className='recipe-body' 
+              type="text" 
+              value={this.state.body} 
+              onChange={this.update('body')} />
             <br />
-            <input className='black-button' 
+            {/* <input className='black-button' 
               type="submit" 
-              value={this.props.formType} />
+              value={this.props.formType} /> */}
             <br />
             <button className='black-button' onClick={() => this.handleDelete()}>
               Delete Recipe
