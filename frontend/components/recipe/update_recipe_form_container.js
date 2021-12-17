@@ -4,8 +4,11 @@ import { updateRecipe, clearErrors, deleteRecipe } from "../../actions/recipe_ac
 
 const mSTP = state => {
   let currentRecipeId = Object.keys(state.entities.recipes)[0]
+  const currentUserId = state.session.currentUserId
+  const author = state.entities.users[currentUserId]
   return({
-    currentUserId: state.session.currentUserId,
+    currentUserId,
+    author,
     formType: 'Update Recipe',
     preloadedInfo: state.entities.recipes[currentRecipeId],
     currentRecipeId

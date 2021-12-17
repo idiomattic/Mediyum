@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router";
+import UserNavContainer from "../user_nav/user_nav_container";
 
 class UpdateRecipeForm extends React.Component {
   constructor(props) {
@@ -36,16 +37,20 @@ class UpdateRecipeForm extends React.Component {
   }
 
   render() {
+    let {author} = this.props
     return(
       <div className='recipe-form-div'>
         <div className='recipe-form-header'>
           <div className="recipe-form-header-left">
             <h2 className='logo'>Mediyum</h2>
-            {/* <p className="draft">Draft in {author.name}</p> */}
+            <p className="draft">Updating in {author.name}</p>
           </div>
           <div className="recipe-form-header-right">
             <input type="submit" form='story-form' className='publish-story' value='Update' />
-            {/* <UserNavContainer/> */}
+            <button className='recipe-delete-button' onClick={() => this.handleDelete()}>
+              Delete Recipe
+            </button> 
+            <UserNavContainer/>
           </div>
         </div>
         <form className='recipe-form' onSubmit={this.handleSubmit} id='story-form'>
@@ -59,13 +64,9 @@ class UpdateRecipeForm extends React.Component {
               value={this.state.body} 
               onChange={this.update('body')} />
             <br />
-            {/* <input className='black-button' 
-              type="submit" 
-              value={this.props.formType} /> */}
-            <br />
-            <button className='black-button' onClick={() => this.handleDelete()}>
+            {/* <button className='black-button' onClick={() => this.handleDelete()}>
               Delete Recipe
-            </button> 
+            </button>  */}
         </form>
       </div>
     )

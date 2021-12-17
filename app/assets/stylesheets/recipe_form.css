@@ -43,3 +43,17 @@ textarea.recipe-body {
   position: absolute;
   z-index: -1;
 }
+
+.recipe-delete-button {
+  border: none;
+  border-radius: 99em;
+  font-size: 15px;
+  height: 25px;
+  line-height: 25px;
+  margin-right: 15px;
+  padding: 0 8px;
+  cursor: pointer;
+  background-color: rgb(201, 74, 74);
+  color: white;
+  border-radius: 99em;
+}

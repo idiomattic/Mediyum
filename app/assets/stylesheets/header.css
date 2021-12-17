@@ -34,6 +34,7 @@
 }
 
 .publish-story {
+  cursor: pointer;
   background: #1a8917;
   border: 1px solid rgba(0,0,0,.15);
   border-color: #1a8917;
