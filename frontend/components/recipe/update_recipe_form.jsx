@@ -37,7 +37,11 @@ class UpdateRecipeForm extends React.Component {
   }
 
   render() {
-    let {author} = this.props
+    let {author, currentUserId, currentRecipeId} = this.props
+    debugger
+    if (author.id !== currentUserId) {
+      this.props.history.push(`/recipes/${currentRecipeId}`)
+    }
     return(
       <div className='recipe-form-div'>
         <div className='recipe-form-header'>

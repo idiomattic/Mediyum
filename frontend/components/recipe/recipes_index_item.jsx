@@ -22,7 +22,6 @@ class RecipesIndexItem extends React.Component {
 
   redirectToShow() {
     let {recipe} = this.props
-    console.log('in redirect', this.props)
     this.props.history.push(`/users/${recipe.author.id}`)
   }
 

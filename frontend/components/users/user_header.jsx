@@ -21,7 +21,6 @@ class UserHeader extends React.Component {
     let following = Boolean(followers[currentUserId])
     if (following) {
       let followToDelete = Object.values(receivedFollows).filter(follow => follow.follower_id === currentUserId)[0]
-      console.log(followToDelete)
       this.props.deleteFollow(followToDelete)
         .then(this.setState({
           following: false

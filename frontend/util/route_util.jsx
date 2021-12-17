@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { Route, Redirect, withRouter } from "react-router";
 
 const Auth = ({ component: Component, path, signedIn, exact }) => {
-  // console.log('in auth route', path)
   return(
   <Route path={path}
     exact={exact} 
@@ -14,7 +13,6 @@ const Auth = ({ component: Component, path, signedIn, exact }) => {
 )}
 
 const Protected = ({ component: Component, path, signedIn, exact }) => {
-  // console.log('in protected route', path)
   return(
   <Route path={path} 
     exact={exact} 

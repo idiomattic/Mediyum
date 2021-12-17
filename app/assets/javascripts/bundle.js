@@ -1100,7 +1100,6 @@ var _nullComments = [];
 var mSTP = function mSTP(state, ownProps) {
   var recipeId = ownProps.comment.recipe_id;
   var yumCount = ownProps.comment.yums ? ownProps.comment.yums.length : 0;
-  console.log(yumCount);
   return {
     recipeId: recipeId,
     currentUserId: state.session.currentUserId,
@@ -2053,7 +2052,6 @@ var GuestRecipesIndex = /*#__PURE__*/function (_React$Component) {
   _createClass(GuestRecipesIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log(this.props);
       this.props.fetchRecipes();
     }
   }, {
@@ -2745,7 +2743,6 @@ var RecipesIndexItem = /*#__PURE__*/function (_React$Component) {
     key: "redirectToShow",
     value: function redirectToShow() {
       var recipe = this.props.recipe;
-      console.log('in redirect', this.props);
       this.props.history.push("/users/".concat(recipe.author.id));
     }
   }, {
@@ -2946,7 +2943,16 @@ var UpdateRecipeForm = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this4 = this;
 
-      var author = this.props.author;
+      var _this$props2 = this.props,
+          author = _this$props2.author,
+          currentUserId = _this$props2.currentUserId,
+          currentRecipeId = _this$props2.currentRecipeId;
+      debugger;
+
+      if (author.id !== currentUserId) {
+        this.props.history.push("/recipes/".concat(currentRecipeId));
+      }
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "recipe-form-div"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -3026,7 +3032,7 @@ __webpack_require__.r(__webpack_exports__);
 var mSTP = function mSTP(state) {
   var currentRecipeId = Object.keys(state.entities.recipes)[0];
   var currentUserId = state.session.currentUserId;
-  var author = state.entities.users[currentUserId];
+  var author = state.entities.recipes[currentRecipeId].author;
   return {
     currentUserId: currentUserId,
     author: author,
@@ -3636,7 +3642,6 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
         var followToDelete = Object.values(receivedFollows).filter(function (follow) {
           return follow.follower_id === currentUserId;
         })[0];
-        console.log(followToDelete);
         this.props.deleteFollow(followToDelete).then(this.setState({
           following: false
         }));
@@ -4518,7 +4523,6 @@ var Auth = function Auth(_ref) {
       path = _ref.path,
       signedIn = _ref.signedIn,
       exact = _ref.exact;
-  // console.log('in auth route', path)
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router__WEBPACK_IMPORTED_MODULE_2__.Route, {
     path: path,
     exact: exact,
@@ -4535,7 +4539,6 @@ var Protected = function Protected(_ref2) {
       path = _ref2.path,
       signedIn = _ref2.signedIn,
       exact = _ref2.exact;
-  // console.log('in protected route', path)
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router__WEBPACK_IMPORTED_MODULE_2__.Route, {
     path: path,
     exact: exact,
