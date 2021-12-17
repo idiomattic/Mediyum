@@ -55,25 +55,22 @@ class UpdateRecipeForm extends React.Component {
           </div>
         </div>
         <form className='recipe-form' onSubmit={this.handleSubmit} id='story-form'>
-            <input className='recipe-title' 
-              type="text" 
-              value={this.state.title} 
-              onChange={this.update('title')} />
-            <br />
-            <textarea className='recipe-body'
-              autoFocus
-              type="text" 
-              value={this.state.body} 
-              onChange={this.update('body')} 
-              onFocus={function(e) {
-                let val = e.target.value;
-                e.target.value = '';
-                e.target.value = val;
-              }}/>
-            <br />
-            {/* <button className='black-button' onClick={() => this.handleDelete()}>
-              Delete Recipe
-            </button>  */}
+          <input className='recipe-title' 
+            type="text" 
+            value={this.state.title} 
+            onChange={this.update('title')} />
+          <br />
+          <textarea className='recipe-body'
+            autoFocus
+            type="text" 
+            value={this.state.body} 
+            onChange={this.update('body')} 
+            onFocus={function(e) {
+              let val = e.target.value;
+              e.target.value = '';
+              e.target.value = val;
+            }}/>
+          <br />
         </form>
       </div>
     )

@@ -63,7 +63,10 @@ class RecipeShow extends React.Component {
     }
     return(
       <div className='recipe-show'>
-        <h2 className='recipe-title'>{recipe.title}</h2>
+        <div className='title-wrapper'>
+          <h2 className='recipe-title'>{recipe.title}</h2>
+          {this.isOwner()}
+        </div>
         <br />
         <div className='recipe-info'>
           <img className='recipe-author-photo' src={recipe.author.photoUrl}/>
@@ -85,7 +88,6 @@ class RecipeShow extends React.Component {
               <img src='https://mediyum-dev.s3.us-west-1.amazonaws.com/comment.png' alt='comments' className='comments-button' onClick={() => this.showCommentsModal()}/>
             </div>
           </div>
-          {this.isOwner()}
         </div>
       </div>
     )

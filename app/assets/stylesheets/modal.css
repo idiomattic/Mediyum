@@ -73,7 +73,7 @@
   left: 100%;
   top: 10%;
   transform: translateX(-100%);
-  background: rgba(255, 255, 255, 0.95);
+  background: rgb(255, 255, 255);
   z-index: 100;
   border-radius: 4px;
   font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;

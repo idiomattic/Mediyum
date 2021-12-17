@@ -6,8 +6,14 @@
   display: flex;
 }
 
-.recipe-title {
+.title-wrapper {
   margin-top: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.recipe-title {
+  margin-right: 20px;
   font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 48px;
   font-weight: 800;
@@ -22,8 +28,6 @@
   display: flex;
   margin-bottom: 40px;
   justify-content: space-between;
-  /* position: absolute; */
-  /* bottom: 10%; */
 }
 
 .left-buttons {
