@@ -2983,9 +2983,15 @@ var UpdateRecipeForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.update('title')
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
         className: "recipe-body",
+        autoFocus: true,
         type: "text",
         value: this.state.body,
-        onChange: this.update('body')
+        onChange: this.update('body'),
+        onFocus: function onFocus(e) {
+          var val = e.target.value;
+          e.target.value = '';
+          e.target.value = val;
+        }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null)));
     }
   }]);
