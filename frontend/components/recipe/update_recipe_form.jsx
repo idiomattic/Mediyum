@@ -46,6 +46,7 @@ class UpdateRecipeForm extends React.Component {
             <p className="draft">Updating in {author.name}</p>
           </div>
           <div className="recipe-form-header-right">
+            <div className='cancel-update' onClick={() => this.redirectToShow()}>Cancel</div>
             <input type="submit" form='story-form' className='publish-story' value='Update' />
             <button className='recipe-delete-button' onClick={() => this.handleDelete()}>
               Delete Recipe

@@ -2957,7 +2957,12 @@ var UpdateRecipeForm = /*#__PURE__*/function (_React$Component) {
         className: "draft"
       }, "Updating in ", author.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "recipe-form-header-right"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "cancel-update",
+        onClick: function onClick() {
+          return _this4.redirectToShow();
+        }
+      }, "Cancel"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "submit",
         form: "story-form",
         className: "publish-story",
