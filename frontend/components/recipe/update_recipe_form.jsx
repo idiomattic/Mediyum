@@ -8,7 +8,17 @@ class UpdateRecipeForm extends React.Component {
     let { preloadedInfo } = this.props
     this.state = preloadedInfo
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
     this.changed = false
+  }
+
+  componentDidMount() {
+    let {fetchRecipe, currentRecipeId, history} = this.props
+    fetchRecipe(currentRecipeId)
+      .then(res => { 
+        if (res.type === 'RECEIVE_RECIPE_ERRORS') {
+          this.props.history.push('/feed')
+        }})
   }
 
   redirectToShow() {
@@ -33,11 +43,16 @@ class UpdateRecipeForm extends React.Component {
   handleDelete() {
     let {deleteRecipe, currentRecipeId, history} = this.props
     deleteRecipe(currentRecipeId)
-      .then(res => history.push('/feed'))
+      .then(res => {
+        history.push('/feed')
+      })
   }
 
   render() {
     let {author, currentUserId, currentRecipeId} = this.props
+    if (!currentRecipeId) {
+      return null
+    }
     if (author.id !== currentUserId) {
       this.props.history.push(`/recipes/${currentRecipeId}`)
     }
@@ -50,7 +65,7 @@ class UpdateRecipeForm extends React.Component {
           </div>
           <div className="recipe-form-header-right">
             <div className='cancel-update' onClick={() => this.redirectToShow()}>Cancel</div>
-            <input type="submit" form='story-form' className='publish-story' value='Update' />
+            <input type="submit" form='story-form' className='publish' value='Update' />
             <button className='recipe-delete-button' onClick={() => this.handleDelete()}>
               Delete Recipe
             </button> 

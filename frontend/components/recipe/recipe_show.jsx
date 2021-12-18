@@ -15,7 +15,8 @@ class RecipeShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchRecipe(this.props.recipeId)
-      .then(res => this.setYumCount())
+      .then(res => this.setYumCount(),
+        err => this.props.history.push('/feed'))
   }
   
   editRecipe() {

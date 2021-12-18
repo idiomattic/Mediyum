@@ -30,6 +30,8 @@ class Api::RecipesController < ApplicationController
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.delete if @recipe
+    # @recipes = Recipe.all
+    # render :template => 'api/recipes/index'
   end
 
   def recipe_params

@@ -2353,6 +2353,8 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
 
       this.props.fetchRecipe(this.props.recipeId).then(function (res) {
         return _this2.setYumCount();
+      }, function (err) {
+        return _this2.props.history.push('/feed');
       });
     }
   }, {
@@ -2748,7 +2750,9 @@ var RecipesIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "authorPhoto",
     value: function authorPhoto(author) {
-      return author.photoUrl ? author.photoUrl : null;
+      'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png';
+
+      return author.photoUrl ? author.photoUrl : 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png';
     }
   }, {
     key: "recipePhoto",
@@ -2898,11 +2902,27 @@ var UpdateRecipeForm = /*#__PURE__*/function (_React$Component) {
     var preloadedInfo = _this.props.preloadedInfo;
     _this.state = preloadedInfo;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
     _this.changed = false;
     return _this;
   }
 
   _createClass(UpdateRecipeForm, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      var _this$props = this.props,
+          fetchRecipe = _this$props.fetchRecipe,
+          currentRecipeId = _this$props.currentRecipeId,
+          history = _this$props.history;
+      fetchRecipe(currentRecipeId).then(function (res) {
+        if (res.type === 'RECEIVE_RECIPE_ERRORS') {
+          _this2.props.history.push('/feed');
+        }
+      });
+    }
+  }, {
     key: "redirectToShow",
     value: function redirectToShow() {
       this.props.history.push("/recipes/".concat(this.state.id));
@@ -2910,43 +2930,47 @@ var UpdateRecipeForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      var _this2 = this;
+      var _this3 = this;
 
       e.preventDefault();
       this.changed ? this.props.action(this.state).then(function (res) {
-        return _this2.redirectToShow();
+        return _this3.redirectToShow();
       }) : this.redirectToShow();
     }
   }, {
     key: "update",
     value: function update(field) {
-      var _this3 = this;
+      var _this4 = this;
 
       this.changed = true;
       return function (e) {
-        return _this3.setState(_defineProperty({}, field, e.target.value));
+        return _this4.setState(_defineProperty({}, field, e.target.value));
       };
     }
   }, {
     key: "handleDelete",
     value: function handleDelete() {
-      var _this$props = this.props,
-          deleteRecipe = _this$props.deleteRecipe,
-          currentRecipeId = _this$props.currentRecipeId,
-          history = _this$props.history;
+      var _this$props2 = this.props,
+          deleteRecipe = _this$props2.deleteRecipe,
+          currentRecipeId = _this$props2.currentRecipeId,
+          history = _this$props2.history;
       deleteRecipe(currentRecipeId).then(function (res) {
-        return history.push('/feed');
+        history.push('/feed');
       });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this5 = this;
 
-      var _this$props2 = this.props,
-          author = _this$props2.author,
-          currentUserId = _this$props2.currentUserId,
-          currentRecipeId = _this$props2.currentRecipeId;
+      var _this$props3 = this.props,
+          author = _this$props3.author,
+          currentUserId = _this$props3.currentUserId,
+          currentRecipeId = _this$props3.currentRecipeId;
+
+      if (!currentRecipeId) {
+        return null;
+      }
 
       if (author.id !== currentUserId) {
         this.props.history.push("/recipes/".concat(currentRecipeId));
@@ -2967,17 +2991,17 @@ var UpdateRecipeForm = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "cancel-update",
         onClick: function onClick() {
-          return _this4.redirectToShow();
+          return _this5.redirectToShow();
         }
       }, "Cancel"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "submit",
         form: "story-form",
-        className: "publish-story",
+        className: "publish",
         value: "Update"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "recipe-delete-button",
         onClick: function onClick() {
-          return _this4.handleDelete();
+          return _this5.handleDelete();
         }
       }, "Delete Recipe"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_nav_user_nav_container__WEBPACK_IMPORTED_MODULE_1__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         className: "recipe-form",
@@ -3029,9 +3053,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state) {
+  var _state$entities$recip;
+
   var currentRecipeId = Object.keys(state.entities.recipes)[0];
-  var currentUserId = state.session.currentUserId;
-  var author = state.entities.recipes[currentRecipeId].author;
+  var currentUserId = state.session.currentUserId; // debugger
+
+  var author = (_state$entities$recip = state.entities.recipes[currentRecipeId]) === null || _state$entities$recip === void 0 ? void 0 : _state$entities$recip.author;
   return {
     currentUserId: currentUserId,
     author: author,
@@ -3051,6 +3078,9 @@ var mDTP = function mDTP(dispatch) {
     },
     deleteRecipe: function deleteRecipe(recipeId) {
       return dispatch((0,_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_2__.deleteRecipe)(recipeId));
+    },
+    fetchRecipe: function fetchRecipe(recipeId) {
+      return dispatch((0,_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_2__.fetchRecipe)(recipeId));
     }
   };
 };
@@ -3608,6 +3638,7 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
       },
       photoFile: _this.props.user.photoUrl || null
     };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -3751,9 +3782,11 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
       var _this4 = this;
 
       e.preventDefault();
+      var user = this.props.user;
       var formData = new FormData();
-      debugger;
+      Object.assign(formData, user);
       formData.append('user[photo]', this.state.photoFile);
+      debugger;
       this.props.updateUser(formData).then(function (res) {
         return _this4.props.history.push("/feed");
       });
@@ -4692,7 +4725,9 @@ var updateUser = function updateUser(user) {
     url: "/api/users/".concat(user.id),
     data: {
       user: user
-    }
+    },
+    contentType: false,
+    processData: false
   });
 };
 var deleteUser = function deleteUser(userId) {

@@ -14,6 +14,7 @@ class UserShow extends React.Component {
       },
       photoFile: this.props.user.photoUrl || null
     }
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -109,9 +110,11 @@ class UserShow extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
+    let {user} = this.props
     const formData = new FormData()
-    debugger
+    Object.assign(formData, user)
     formData.append('user[photo]', this.state.photoFile)
+    debugger
     this.props.updateUser(formData)
       .then(res => this.props.history.push(`/feed`))
   }
