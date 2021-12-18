@@ -16,8 +16,6 @@ export default (state={}, action) => {
     case RECEIVE_USER:
       action.user.received_follows.forEach(receivedFollow => {nextState[receivedFollow.id] = receivedFollow})
       return nextState
-    // case RECEIVE_RECIPES:
-    //   debugger
     default:
       return state
   }

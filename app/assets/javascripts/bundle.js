@@ -1414,6 +1414,7 @@ var DropdownModal = /*#__PURE__*/function (_React$Component) {
           modal = _this$props.modal,
           currentUserId = _this$props.currentUserId,
           currentUser = _this$props.currentUser;
+      var userPhoto = currentUser.photoUrl ? currentUser.photoUrl : 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png';
       return !modal ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "dropdown-list"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
@@ -1423,7 +1424,7 @@ var DropdownModal = /*#__PURE__*/function (_React$Component) {
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         className: "user-photo",
-        src: currentUser.photoUrl,
+        src: userPhoto,
         alt: "img"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
         className: "user-name-link",
@@ -1679,8 +1680,7 @@ var Header = function Header(props) {
 
   if (location.pathname !== '/feed') {
     className = ' recipe-show';
-  } // debugger
-
+  }
 
   var currentUserId = props.currentUserId,
       currentUser = props.currentUser,
@@ -1798,7 +1798,7 @@ var Home = /*#__PURE__*/function (_React$Component) {
       if (!currentUserId) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "welcome"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Mediyum is a place to write, read, and connect"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "It's easy and free to post your recipes."));
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Mediyum is a place to write, read, and connect"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "It's easy and free to post your short-form recipes."));
       }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2947,7 +2947,6 @@ var UpdateRecipeForm = /*#__PURE__*/function (_React$Component) {
           author = _this$props2.author,
           currentUserId = _this$props2.currentUserId,
           currentRecipeId = _this$props2.currentRecipeId;
-      debugger;
 
       if (author.id !== currentUserId) {
         this.props.history.push("/recipes/".concat(currentRecipeId));
@@ -3485,6 +3484,7 @@ var UserNav = function UserNav(props) {
   var currentUserId = props.currentUserId,
       currentUser = props.currentUser,
       displayModal = props.displayModal;
+  var userPhoto = currentUser.photoUrl ? currentUser.photoUrl : 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png';
 
   if (!currentUserId) {
     return null;
@@ -3497,7 +3497,7 @@ var UserNav = function UserNav(props) {
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
     className: "user-photo",
-    src: currentUser.photoUrl,
+    src: userPhoto,
     alt: "img"
   }));
 };
@@ -3618,7 +3618,15 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "myRecipes",
     value: function myRecipes() {
-      var recipes = this.props.user.recipes || [];
+      var user = this.props.user;
+      var recipes = user.recipes || [];
+
+      if (recipes.length === 0) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+          className: "down-bad-user"
+        }, user.name, " has not shared any recipes yet.");
+      }
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "users-recipes-list"
       }, recipes.map(function (recipe, i) {
@@ -3659,8 +3667,7 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
       var _this$props2 = this.props,
           followers = _this$props2.followers,
           userId = _this$props2.userId,
-          currentUserId = _this$props2.currentUserId; // debugger
-
+          currentUserId = _this$props2.currentUserId;
       var buttonText;
 
       if (followers) {
@@ -3708,6 +3715,7 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
           user = _this$props4.user,
           userId = _this$props4.userId,
           currentUser = _this$props4.currentUser;
+      var userPhoto = currentUser.photoUrl ? currentUser.photoUrl : 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png';
 
       if (!user) {
         return null;
@@ -3728,7 +3736,7 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         className: "user-photo",
-        src: currentUser.photoUrl,
+        src: userPhoto,
         alt: "img"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.myRecipes());
     }
@@ -3965,8 +3973,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         nextState[receivedFollow.id] = receivedFollow;
       });
       return nextState;
-    // case RECEIVE_RECIPES:
-    //   debugger
 
     default:
       return state;
@@ -4053,14 +4059,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return nextState;
 
     case _actions_yum_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_YUM:
-      // Object.assign(nextState, {[action.yum.recipe.id]: action.yum.recipe})
-      // debugger
       if (action.yum.recipe) {
         nextState[action.yum.recipe.id].yums.push(action.yum);
-      } // nextState.recipes.yums[action.yum.id] = action.yum
-      // return Object.assign(nextState, { [action.yum.id]: action.yum })
-      // debugger
-
+      }
 
       return nextState;
 
@@ -4132,6 +4133,9 @@ var _nullErrors = [];
       return _nullErrors;
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__.CLEAR_SESSION_ERRORS:
+      return _nullErrors;
+
+    case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__.DISPLAY_MODAL:
       return _nullErrors;
 
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__.HIDE_MODAL:

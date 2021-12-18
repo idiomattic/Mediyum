@@ -20,7 +20,13 @@ class UserShow extends React.Component {
   }
 
   myRecipes() {
-    const recipes = this.props.user.recipes || []
+    let {user} = this.props
+    const recipes = user.recipes || []
+    if (recipes.length === 0) {
+      return(
+        <p className='down-bad-user'>{user.name} has not shared any recipes yet.</p>
+      )
+    }
     return(
       <ul className='users-recipes-list'>
         {
@@ -51,7 +57,6 @@ class UserShow extends React.Component {
 
   displayFollowButton() {
     let {followers, userId, currentUserId} = this.props
-    // debugger
     let buttonText
     if (followers) {
       buttonText = followers[currentUserId] ? 'Following' : 'Follow'
@@ -82,6 +87,7 @@ class UserShow extends React.Component {
 
   render() {
     let { user, userId, currentUser } = this.props
+    let userPhoto = currentUser.photoUrl ? currentUser.photoUrl : 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png'
     if (!user) {
       return null
     }
@@ -93,7 +99,7 @@ class UserShow extends React.Component {
           {this.isSelf()}
           <div className='user-show-nav-spacer'></div>
           <div className='user-nav' onClick={() => this.props.displayModal()}>
-            <img className='user-photo' src={currentUser.photoUrl} alt="img" />
+            <img className='user-photo' src={userPhoto} alt="img" />
           </div>
         </div>
         <br />

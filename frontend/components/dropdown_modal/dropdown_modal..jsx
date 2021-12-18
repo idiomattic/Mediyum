@@ -29,10 +29,11 @@ class DropdownModal extends React.Component {
 
   render() {
     let { modal, currentUserId, currentUser } = this.props
+    let userPhoto = currentUser.photoUrl ? currentUser.photoUrl : 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png'
     return !modal ? null : (
       <ul className='dropdown-list'>
         <li className='user-show-button' onClick={() => this.redirectToShow()} >
-          <img className='user-photo' src={currentUser.photoUrl} alt="img" />
+          <img className='user-photo' src={userPhoto} alt="img" />
           <Link className='user-name-link' to={`/users/${currentUserId}`} >{currentUser.name}</Link>
         </li>
         <li className='write-recipe'>

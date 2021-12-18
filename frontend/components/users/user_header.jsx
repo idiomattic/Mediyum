@@ -35,7 +35,6 @@ class UserHeader extends React.Component {
 
   displayFollowButton() {
     let {followers, userId, currentUserId} = this.props
-    // debugger
     let buttonText = followers[currentUserId] ? 'Following' : 'Follow'
     return (
       <button className='green-button' id={buttonText} onClick={() => this.toggleFollow()}>{buttonText}</button>

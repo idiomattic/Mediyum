@@ -9,7 +9,6 @@ const Header = props => {
   if (location.pathname !== '/feed') {
     className = ' recipe-show'
   }
-  // debugger
   let {currentUserId, currentUser, displayModal} = props
   let barDisplay
   let headerClass

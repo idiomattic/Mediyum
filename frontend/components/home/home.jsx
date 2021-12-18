@@ -12,7 +12,7 @@ class Home extends React.Component {
       return (
         <div className='welcome'>
           <h1>Mediyum is a place to write, read, and connect</h1>
-          <p>It's easy and free to post your recipes.</p>
+          <p>It's easy and free to post your short-form recipes.</p>
         </div>
       )
     }
