@@ -8,6 +8,7 @@
   font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 27px;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .user-show-header {
@@ -54,4 +55,8 @@
   font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 22px;
   font-weight: 500;
+}
+
+.user-show-header > .photo-label {
+  white-space: nowrap;
 }

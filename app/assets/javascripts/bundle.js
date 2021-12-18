@@ -2247,11 +2247,11 @@ var RecipeForm = /*#__PURE__*/function (_React$Component) {
       }, "Draft in ", author.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "recipe-form-header-right"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-        className: "recipe-photo-label"
+        className: "photo-label"
       }, fileLabel, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "file",
         form: "story-form",
-        className: "recipe-photo-input",
+        className: "photo-input",
         onChange: function onChange(e) {
           return _this4.handleFile(e);
         }
@@ -3605,7 +3605,8 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
       follow: {
         follower_id: _this.props.currentUserId,
         followed_user_id: _this.props.userId
-      }
+      },
+      photoFile: _this.props.user.photoUrl || null
     };
     return _this;
   }
@@ -3704,17 +3705,57 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
       var _this$props3 = this.props,
           userId = _this$props3.userId,
           currentUserId = _this$props3.currentUserId;
+      var fileLabel = this.state.photoFile ? this.state.photoFile.name : 'Choose your photo';
       return userId === currentUserId ? null : this.displayFollowButton();
+    }
+  }, {
+    key: "photoButton",
+    value: function photoButton() {
+      var _this3 = this;
+
+      var _this$props4 = this.props,
+          userId = _this$props4.userId,
+          currentUserId = _this$props4.currentUserId;
+      var fileLabel = this.state.photoFile ? this.state.photoFile.name : 'Choose your photo';
+      return userId === currentUserId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+        className: "photo-label"
+      }, fileLabel, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "file",
+        form: "user-photo-form",
+        className: "photo-input",
+        onChange: function onChange(e) {
+          return _this3.handleFile(e);
+        }
+      })) : null;
+    }
+  }, {
+    key: "handleFile",
+    value: function handleFile(e) {
+      this.setState({
+        photoFile: e.currentTarget.files[0]
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var _this4 = this;
+
+      e.preventDefault();
+      var formData = new FormData();
+      formData.append('user[photo]', this.state.photoFile);
+      this.props.updateUser(formData).then(function (res) {
+        return _this4.props.history.push("/feed");
+      });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this5 = this;
 
-      var _this$props4 = this.props,
-          user = _this$props4.user,
-          userId = _this$props4.userId,
-          currentUser = _this$props4.currentUser;
+      var _this$props5 = this.props,
+          user = _this$props5.user,
+          userId = _this$props5.userId,
+          currentUser = _this$props5.currentUser;
       var userPhoto = currentUser.photoUrl ? currentUser.photoUrl : 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png';
 
       if (!user) {
@@ -3729,16 +3770,20 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
         className: "user-title"
       }, user.name), this.followerCount(), this.isSelf(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "user-show-nav-spacer"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }), this.photoButton(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "user-nav",
         onClick: function onClick() {
-          return _this3.props.displayModal();
+          return _this5.props.displayModal();
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         className: "user-photo",
         src: userPhoto,
         alt: "img"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.myRecipes());
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+        className: "user-photo-form",
+        onSubmit: this.handleSubmit,
+        id: "user-photo-form"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.myRecipes());
     }
   }]);
 
