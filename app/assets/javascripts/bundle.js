@@ -2258,7 +2258,7 @@ var RecipeForm = /*#__PURE__*/function (_React$Component) {
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "submit",
         form: "story-form",
-        className: "publish-story",
+        className: "publish",
         value: "Publish"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_nav_user_nav_container__WEBPACK_IMPORTED_MODULE_1__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         className: "recipe-form",
@@ -3736,12 +3736,23 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "showSaveButton",
+    value: function showSaveButton() {
+      return this.state.photoFile ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "publish",
+        type: "submit",
+        value: "Save",
+        form: "user-photo-form"
+      }) : null;
+    }
+  }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       var _this4 = this;
 
       e.preventDefault();
       var formData = new FormData();
+      debugger;
       formData.append('user[photo]', this.state.photoFile);
       this.props.updateUser(formData).then(function (res) {
         return _this4.props.history.push("/feed");
@@ -3770,7 +3781,7 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
         className: "user-title"
       }, user.name), this.followerCount(), this.isSelf(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "user-show-nav-spacer"
-      }), this.photoButton(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }), this.showSaveButton(), this.photoButton(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "user-nav",
         onClick: function onClick() {
           return _this5.props.displayModal();

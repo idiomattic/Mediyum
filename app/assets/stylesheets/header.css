@@ -33,7 +33,7 @@
   align-items: center;
 }
 
-.publish-story {
+.publish {
   cursor: pointer;
   background: #1a8917;
   border: 1px solid rgba(0,0,0,.15);

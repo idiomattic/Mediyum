@@ -103,9 +103,14 @@ class UserShow extends React.Component {
     })
   }
 
+  showSaveButton() {
+    return this.state.photoFile ? <input className='publish' type="submit" value='Save' form='user-photo-form' /> : null
+  }
+
   handleSubmit(e) {
     e.preventDefault()
     const formData = new FormData()
+    debugger
     formData.append('user[photo]', this.state.photoFile)
     this.props.updateUser(formData)
       .then(res => this.props.history.push(`/feed`))
@@ -124,6 +129,7 @@ class UserShow extends React.Component {
           {this.followerCount()}
           {this.isSelf()}
           <div className='user-show-nav-spacer'></div>
+          {this.showSaveButton()}
           {this.photoButton()}
           <div className='user-nav' onClick={() => this.props.displayModal()}>
             <img className='user-photo' src={userPhoto} alt="img" />
