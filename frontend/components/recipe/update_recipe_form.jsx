@@ -5,10 +5,12 @@ import UserNavContainer from "../user_nav/user_nav_container";
 class UpdateRecipeForm extends React.Component {
   constructor(props) {
     super(props)
-    let { preloadedInfo } = this.props
-    this.state = preloadedInfo
+    let { recipe } = this.props
+    this.state = recipe
+    // console.log('state/preloadedInfo', this.state) // undefined at first render
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
+    this.componentDidMount = this.componentDidMount.bind(this)
     this.changed = false
   }
 
@@ -18,6 +20,9 @@ class UpdateRecipeForm extends React.Component {
       .then(res => { 
         if (res.type === 'RECEIVE_RECIPE_ERRORS') {
           this.props.history.push('/feed')
+        } else {
+          console.log('res', res)
+          this.setState(res.recipe)
         }})
   }
 
@@ -49,8 +54,8 @@ class UpdateRecipeForm extends React.Component {
   }
 
   render() {
-    let {author, currentUserId, currentRecipeId} = this.props
-    if (!currentRecipeId) {
+    let {author, currentUserId, currentRecipeId, recipe} = this.props
+    if (!currentRecipeId || !recipe || !this.state) {
       return null
     }
     if (author.id !== currentUserId) {

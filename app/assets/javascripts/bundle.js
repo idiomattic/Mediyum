@@ -2899,10 +2899,12 @@ var UpdateRecipeForm = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, UpdateRecipeForm);
 
     _this = _super.call(this, props);
-    var preloadedInfo = _this.props.preloadedInfo;
-    _this.state = preloadedInfo;
+    var recipe = _this.props.recipe;
+    _this.state = recipe; // console.log('state/preloadedInfo', this.state) // undefined at first render
+
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
+    _this.componentDidMount = _this.componentDidMount.bind(_assertThisInitialized(_this));
     _this.changed = false;
     return _this;
   }
@@ -2919,6 +2921,10 @@ var UpdateRecipeForm = /*#__PURE__*/function (_React$Component) {
       fetchRecipe(currentRecipeId).then(function (res) {
         if (res.type === 'RECEIVE_RECIPE_ERRORS') {
           _this2.props.history.push('/feed');
+        } else {
+          console.log('res', res);
+
+          _this2.setState(res.recipe);
         }
       });
     }
@@ -2966,9 +2972,10 @@ var UpdateRecipeForm = /*#__PURE__*/function (_React$Component) {
       var _this$props3 = this.props,
           author = _this$props3.author,
           currentUserId = _this$props3.currentUserId,
-          currentRecipeId = _this$props3.currentRecipeId;
+          currentRecipeId = _this$props3.currentRecipeId,
+          recipe = _this$props3.recipe;
 
-      if (!currentRecipeId) {
+      if (!currentRecipeId || !recipe || !this.state) {
         return null;
       }
 
@@ -3052,19 +3059,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mSTP = function mSTP(state) {
-  var _state$entities$recip;
+var mSTP = function mSTP(state, ownProps) {
+  // let currentRecipeId = Object.keys(state.entities.recipes)[0]
+  var currentRecipeId = parseInt(ownProps.match.params.recipeId); // debugger
 
-  var currentRecipeId = Object.keys(state.entities.recipes)[0];
-  var currentUserId = state.session.currentUserId; // debugger
-
-  var author = (_state$entities$recip = state.entities.recipes[currentRecipeId]) === null || _state$entities$recip === void 0 ? void 0 : _state$entities$recip.author;
+  var currentUserId = state.session.currentUserId;
+  var recipe = state.entities.recipes[currentRecipeId];
+  console.log('in mSTP', recipe);
   return {
     currentUserId: currentUserId,
-    author: author,
-    formType: 'Update Recipe',
-    preloadedInfo: state.entities.recipes[currentRecipeId],
-    currentRecipeId: currentRecipeId
+    currentRecipeId: currentRecipeId,
+    recipe: recipe,
+    author: recipe === null || recipe === void 0 ? void 0 : recipe.author,
+    formType: 'Update Recipe'
   };
 };
 

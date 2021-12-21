@@ -2,17 +2,19 @@ import { connect } from "react-redux";
 import UpdateRecipeForm from "./update_recipe_form";
 import { updateRecipe, clearErrors, deleteRecipe, fetchRecipe } from "../../actions/recipe_actions";
 
-const mSTP = state => {
-  let currentRecipeId = Object.keys(state.entities.recipes)[0]
-  const currentUserId = state.session.currentUserId
+const mSTP = (state, ownProps) => {
+  // let currentRecipeId = Object.keys(state.entities.recipes)[0]
+  let currentRecipeId = parseInt(ownProps.match.params.recipeId)
   // debugger
-  const author = state.entities.recipes[currentRecipeId]?.author
+  const currentUserId = state.session.currentUserId
+  const recipe = state.entities.recipes[currentRecipeId]
+  console.log('in mSTP',recipe)
   return({
     currentUserId,
-    author,
-    formType: 'Update Recipe',
-    preloadedInfo: state.entities.recipes[currentRecipeId],
-    currentRecipeId
+    currentRecipeId,
+    recipe,
+    author: recipe?.author,
+    formType: 'Update Recipe'
   })
 } 
 
