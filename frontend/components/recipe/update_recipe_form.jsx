@@ -7,10 +7,8 @@ class UpdateRecipeForm extends React.Component {
     super(props)
     let { recipe } = this.props
     this.state = recipe
-    // console.log('state/preloadedInfo', this.state) // undefined at first render
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
-    this.componentDidMount = this.componentDidMount.bind(this)
     this.changed = false
   }
 

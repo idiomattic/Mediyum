@@ -2900,11 +2900,9 @@ var UpdateRecipeForm = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     var recipe = _this.props.recipe;
-    _this.state = recipe; // console.log('state/preloadedInfo', this.state) // undefined at first render
-
+    _this.state = recipe;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
-    _this.componentDidMount = _this.componentDidMount.bind(_assertThisInitialized(_this));
     _this.changed = false;
     return _this;
   }
