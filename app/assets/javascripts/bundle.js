@@ -3669,7 +3669,6 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
       },
       photoFile: _this.props.user.photoUrl || null
     };
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -3681,13 +3680,17 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "myRecipes",
     value: function myRecipes() {
-      var user = this.props.user;
+      var _this$props = this.props,
+          user = _this$props.user,
+          currentUserId = _this$props.currentUserId,
+          userId = _this$props.userId;
+      var message = currentUserId === userId ? 'You have' : "".concat(user.name, " has");
       var recipes = user.recipes || [];
 
       if (recipes.length === 0) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
           className: "down-bad-user"
-        }, user.name, " has not shared any recipes yet.");
+        }, message, " not shared any recipes yet.");
       }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
@@ -3703,10 +3706,10 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "toggleFollow",
     value: function toggleFollow() {
-      var _this$props = this.props,
-          followers = _this$props.followers,
-          currentUserId = _this$props.currentUserId,
-          receivedFollows = _this$props.receivedFollows;
+      var _this$props2 = this.props,
+          followers = _this$props2.followers,
+          currentUserId = _this$props2.currentUserId,
+          receivedFollows = _this$props2.receivedFollows;
       var following = Boolean(followers[currentUserId]);
 
       if (following) {
@@ -3727,10 +3730,10 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
     value: function displayFollowButton() {
       var _this2 = this;
 
-      var _this$props2 = this.props,
-          followers = _this$props2.followers,
-          userId = _this$props2.userId,
-          currentUserId = _this$props2.currentUserId;
+      var _this$props3 = this.props,
+          followers = _this$props3.followers,
+          userId = _this$props3.userId,
+          currentUserId = _this$props3.currentUserId;
       var buttonText;
 
       if (followers) {
@@ -3764,73 +3767,47 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "isSelf",
     value: function isSelf() {
-      var _this$props3 = this.props,
-          userId = _this$props3.userId,
-          currentUserId = _this$props3.currentUserId;
-      var fileLabel = this.state.photoFile ? this.state.photoFile.name : 'Choose your photo';
-      return userId === currentUserId ? null : this.displayFollowButton();
-    }
-  }, {
-    key: "photoButton",
-    value: function photoButton() {
-      var _this3 = this;
-
       var _this$props4 = this.props,
           userId = _this$props4.userId,
           currentUserId = _this$props4.currentUserId;
-      var fileLabel = this.state.photoFile ? this.state.photoFile.name : 'Choose your photo';
-      return userId === currentUserId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-        className: "photo-label"
-      }, fileLabel, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        type: "file",
-        form: "user-photo-form",
-        className: "photo-input",
-        onChange: function onChange(e) {
-          return _this3.handleFile(e);
-        }
-      })) : null;
-    }
-  }, {
-    key: "handleFile",
-    value: function handleFile(e) {
-      this.setState({
-        photoFile: e.currentTarget.files[0]
-      });
-    }
-  }, {
-    key: "showSaveButton",
-    value: function showSaveButton() {
-      return this.state.photoFile ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        className: "publish",
-        type: "submit",
-        value: "Save",
-        form: "user-photo-form"
-      }) : null;
-    }
-  }, {
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      var _this4 = this;
+      return userId === currentUserId ? null : this.displayFollowButton();
+    } // photoButton() {
+    //   let {userId, currentUserId} = this.props
+    //   let fileLabel = this.state.photoFile ? this.state.photoFile.name : 'Choose your photo'
+    //   return userId === currentUserId ?             
+    //   <label className="photo-label">{fileLabel}
+    //     <input type="file" form='user-photo-form' className="photo-input" onChange={e => this.handleFile(e)}/>
+    //   </label>
+    //   : null
+    // }
+    // handleFile(e) {
+    //   this.setState({
+    //     photoFile: e.currentTarget.files[0]
+    //   })
+    // }
+    // showSaveButton() {
+    //   return this.state.photoFile ? <input className='publish' type="submit" value='Save' form='user-photo-form' /> : null
+    // }
+    // handleSubmit(e) {
+    //   e.preventDefault()
+    //   let {user} = this.props
+    //   // const formData = {}
+    //   // Object.assign(formData, user)
+    //   // formData['photo'] = this.state.photoFile
+    //   // let params = {user: formData}
+    //   // console.log('handleSubmit params',params)
+    //   const formData = new FormData()
+    //   formData.append('user[id]', user.id)
+    //   formData.append('user[photo]', this.state.photoFile)
+    //   console.log('formData', formData)
+    //   this.props.updateUser(formData, user.id)
+    //     .then(res => this.props.history.push(`/users/${user.id}`))
+    // }
 
-      e.preventDefault();
-      var user = this.props.user; // const formData = {}
-      // Object.assign(formData, user)
-      // formData['photo'] = this.state.photoFile
-      // let params = {user: formData}
-      // console.log('handleSubmit params',params)
-
-      var formData = new FormData();
-      formData.append('user[id]', user.id);
-      formData.append('user[photo]', this.state.photoFile);
-      console.log('formData', formData);
-      this.props.updateUser(formData, user.id).then(function (res) {
-        return _this4.props.history.push("/users/".concat(user.id));
-      });
-    }
   }, {
     key: "render",
     value: function render() {
-      var _this5 = this;
+      var _this3 = this;
 
       var _this$props5 = this.props,
           user = _this$props5.user,
@@ -3850,10 +3827,10 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
         className: "user-title"
       }, user.name), this.followerCount(), this.isSelf(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "user-show-nav-spacer"
-      }), this.showSaveButton(), this.photoButton(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "user-nav",
         onClick: function onClick() {
-          return _this5.props.displayModal();
+          return _this3.props.displayModal();
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         className: "user-photo",
@@ -4707,9 +4684,9 @@ var signIn = function signIn(user) {
   return $.ajax({
     method: 'POST',
     url: '/api/session',
-    data: {
-      user: user
-    }
+    data: user,
+    contentType: false,
+    processData: false
   });
 };
 var signUp = function signUp(user) {

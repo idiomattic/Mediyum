@@ -2,7 +2,9 @@ export const signIn = user => (
   $.ajax({
     method: 'POST',
     url: '/api/session',
-    data: {user}
+    data: user,
+    contentType: false,
+    processData: false
   })
 )
 

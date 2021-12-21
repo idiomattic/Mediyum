@@ -14,7 +14,6 @@ class UserShow extends React.Component {
       },
       photoFile: this.props.user.photoUrl || null
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -22,11 +21,12 @@ class UserShow extends React.Component {
   }
 
   myRecipes() {
-    let {user} = this.props
+    let {user, currentUserId, userId} = this.props
+    let message = currentUserId === userId ? 'You have' : `${user.name} has`
     const recipes = user.recipes || []
     if (recipes.length === 0) {
       return(
-        <p className='down-bad-user'>{user.name} has not shared any recipes yet.</p>
+        <p className='down-bad-user'>{message} not shared any recipes yet.</p>
       )
     }
     return(
@@ -84,45 +84,44 @@ class UserShow extends React.Component {
 
   isSelf() {
     let {userId, currentUserId} = this.props
-    let fileLabel = this.state.photoFile ? this.state.photoFile.name : 'Choose your photo'
     return userId === currentUserId ? null : this.displayFollowButton()
   }
 
-  photoButton() {
-    let {userId, currentUserId} = this.props
-    let fileLabel = this.state.photoFile ? this.state.photoFile.name : 'Choose your photo'
-    return userId === currentUserId ?             
-    <label className="photo-label">{fileLabel}
-      <input type="file" form='user-photo-form' className="photo-input" onChange={e => this.handleFile(e)}/>
-    </label>
-    : null
-  }
+  // photoButton() {
+  //   let {userId, currentUserId} = this.props
+  //   let fileLabel = this.state.photoFile ? this.state.photoFile.name : 'Choose your photo'
+  //   return userId === currentUserId ?             
+  //   <label className="photo-label">{fileLabel}
+  //     <input type="file" form='user-photo-form' className="photo-input" onChange={e => this.handleFile(e)}/>
+  //   </label>
+  //   : null
+  // }
 
-  handleFile(e) {
-    this.setState({
-      photoFile: e.currentTarget.files[0]
-    })
-  }
+  // handleFile(e) {
+  //   this.setState({
+  //     photoFile: e.currentTarget.files[0]
+  //   })
+  // }
 
-  showSaveButton() {
-    return this.state.photoFile ? <input className='publish' type="submit" value='Save' form='user-photo-form' /> : null
-  }
+  // showSaveButton() {
+  //   return this.state.photoFile ? <input className='publish' type="submit" value='Save' form='user-photo-form' /> : null
+  // }
 
-  handleSubmit(e) {
-    e.preventDefault()
-    let {user} = this.props
-    // const formData = {}
-    // Object.assign(formData, user)
-    // formData['photo'] = this.state.photoFile
-    // let params = {user: formData}
-    // console.log('handleSubmit params',params)
-    const formData = new FormData()
-    formData.append('user[id]', user.id)
-    formData.append('user[photo]', this.state.photoFile)
-    console.log('formData', formData)
-    this.props.updateUser(formData, user.id)
-      .then(res => this.props.history.push(`/users/${user.id}`))
-  }
+  // handleSubmit(e) {
+  //   e.preventDefault()
+  //   let {user} = this.props
+  //   // const formData = {}
+  //   // Object.assign(formData, user)
+  //   // formData['photo'] = this.state.photoFile
+  //   // let params = {user: formData}
+  //   // console.log('handleSubmit params',params)
+  //   const formData = new FormData()
+  //   formData.append('user[id]', user.id)
+  //   formData.append('user[photo]', this.state.photoFile)
+  //   console.log('formData', formData)
+  //   this.props.updateUser(formData, user.id)
+  //     .then(res => this.props.history.push(`/users/${user.id}`))
+  // }
 
   render() {
     let { user, userId, currentUser } = this.props
@@ -137,8 +136,6 @@ class UserShow extends React.Component {
           {this.followerCount()}
           {this.isSelf()}
           <div className='user-show-nav-spacer'></div>
-          {this.showSaveButton()}
-          {this.photoButton()}
           <div className='user-nav' onClick={() => this.props.displayModal()}>
             <img className='user-photo' src={userPhoto} alt="img" />
           </div>
