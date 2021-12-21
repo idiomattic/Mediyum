@@ -12,7 +12,7 @@ class UserShow extends React.Component {
         follower_id: this.props.currentUserId,
         followed_user_id: this.props.userId
       },
-      photoFile: this.props.user.photoUrl || null
+      // photoFile: this.props.user.photoUrl || null
     }
   }
 
