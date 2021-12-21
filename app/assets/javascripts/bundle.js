@@ -3926,6 +3926,40 @@ var mDTP = function mDTP(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/reducers/comment_errors_reducer.js":
+/*!*****************************************************!*\
+  !*** ./frontend/reducers/comment_errors_reducer.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/comment_actions */ "./frontend/actions/comment_actions.js");
+
+var _nullErrors = [];
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  var nextState = state.slice();
+
+  switch (action.type) {
+    case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_COMMENT_ERRORS:
+      return action.errors;
+
+    case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__.CLEAR_COMMENT_ERRORS:
+      return _nullErrors;
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
 /***/ "./frontend/reducers/comments_reducer.js":
 /*!***********************************************!*\
   !*** ./frontend/reducers/comments_reducer.js ***!
@@ -4027,12 +4061,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./session_errors_reducer */ "./frontend/reducers/session_errors_reducer.js");
+/* harmony import */ var _yum_errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./yum_errors_reducer */ "./frontend/reducers/yum_errors_reducer.js");
+/* harmony import */ var _comment_errors_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./comment_errors_reducer */ "./frontend/reducers/comment_errors_reducer.js");
+/* harmony import */ var _recipe_errors_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./recipe_errors_reducer */ "./frontend/reducers/recipe_errors_reducer.js");
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_1__.combineReducers)({
-  session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__["default"]
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_4__.combineReducers)({
+  session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__["default"],
+  yums: _yum_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  comments: _comment_errors_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  recipes: _recipe_errors_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 }));
 
 /***/ }),
@@ -4111,6 +4154,46 @@ __webpack_require__.r(__webpack_exports__);
 
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__.HIDE_MODAL:
       return null;
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./frontend/reducers/recipe_errors_reducer.js":
+/*!****************************************************!*\
+  !*** ./frontend/reducers/recipe_errors_reducer.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/recipe_actions */ "./frontend/actions/recipe_actions.js");
+
+var _nullErrors = [];
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  var nextState = state.slice();
+
+  switch (action.type) {
+    case _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_RECIPE_ERRORS:
+      return action.errors;
+
+    case _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_0__.CLEAR_RECIPE_ERRORS:
+      return _nullErrors;
+
+    case _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_RECIPE:
+      return _nullErrors;
+
+    case _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_RECIPES:
+      return _nullErrors;
 
     default:
       return state;
@@ -4378,6 +4461,48 @@ var currentUserId = null;
     case _actions_follow_actions__WEBPACK_IMPORTED_MODULE_3__.REMOVE_FOLLOW:
       delete nextState['followers'][action.follow.follower_id];
       return nextState;
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./frontend/reducers/yum_errors_reducer.js":
+/*!*************************************************!*\
+  !*** ./frontend/reducers/yum_errors_reducer.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_yum_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/yum_actions */ "./frontend/actions/yum_actions.js");
+/* harmony import */ var _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/recipe_actions */ "./frontend/actions/recipe_actions.js");
+
+
+var _nullErrors = [];
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  var nextState = state.slice();
+
+  switch (action.type) {
+    case _actions_yum_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_YUM_ERRORS:
+      return action.errors;
+
+    case _actions_yum_actions__WEBPACK_IMPORTED_MODULE_0__.CLEAR_YUM_ERRORS:
+      return _nullErrors;
+
+    case _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__.RECEIVE_RECIPE:
+      return _nullErrors;
+
+    case _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__.RECEIVE_RECIPES:
+      return _nullErrors;
 
     default:
       return state;
