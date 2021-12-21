@@ -3666,8 +3666,7 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
       follow: {
         follower_id: _this.props.currentUserId,
         followed_user_id: _this.props.userId
-      } // photoFile: this.props.user.photoUrl || null
-
+      }
     };
     return _this;
   }
