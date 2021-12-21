@@ -30,17 +30,16 @@ const App = () => {
         <ProtectedRoute exact path='/users/:userId' component={UserShowContainer}/>
       </Switch>
     </div>
-    {/* <div className='app-spacer'></div> */}
     <footer className='app-footer'>
       <h3 className='footer-message'>More from Matthew Lese</h3>
       <div className='footer-spacer'></div>
       <a href="https://github.com/matthewlese" className='github-link'>
         <div className='github'>GitHub</div>
-        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" className='github-link'/>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" className='github-link'/>
       </a>
       <a href="https://www.linkedin.com/in/matthewlese/" className='linkedin-link'>
         <div className='linkedin'>LinkedIn</div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/768px-LinkedIn_logo_initials.png" alt="LinkedIn" className='linkedin-link'/>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" className='linkedin-link'/>
       </a>
     </footer>
     <Modal />
