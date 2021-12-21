@@ -2214,6 +2214,7 @@ var RecipeForm = /*#__PURE__*/function (_React$Component) {
       formData.append('recipe[body]', this.state.body);
       formData.append('recipe[author_id]', this.state.author_id);
       formData.append('recipe[photo]', this.state.photoFile);
+      console.log('formData', formData);
       this.props.action(formData).then(function (res) {
         return _this2.props.history.push("/feed");
       });
@@ -3783,11 +3784,19 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
 
       e.preventDefault();
       var user = this.props.user;
-      var formData = new FormData();
+      var formData = {};
       Object.assign(formData, user);
-      formData.append('user[photo]', this.state.photoFile);
-      debugger;
-      this.props.updateUser(formData).then(function (res) {
+      formData['photo'] = this.state.photoFile;
+      var params = {
+        user: formData
+      };
+      console.log('handleSubmit params', params); // const formData = new FormData()
+      // formData.append('user[title]', this.state.title)
+      // formData.append('user[body]', this.state.body)
+      // formData.append('user[author_id]', this.state.author_id)
+      // formData.append('user[photo]', this.state.photoFile)
+
+      this.props.updateUser(params).then(function (res) {
         return _this4.props.history.push("/feed");
       });
     }
@@ -4553,10 +4562,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "deleteRecipe": () => (/* binding */ deleteRecipe)
 /* harmony export */ });
 var createRecipe = function createRecipe(recipe) {
+  console.log('recipe api util (data: recipe)', recipe);
   return $.ajax({
     method: 'POST',
     url: '/api/recipes',
-    // data: {recipe}
     data: recipe,
     contentType: false,
     processData: false
@@ -4720,12 +4729,11 @@ var fetchUser = function fetchUser(userId) {
   });
 };
 var updateUser = function updateUser(user) {
+  console.log('api util user.user', user.user);
   return $.ajax({
     method: 'PATCH',
-    url: "/api/users/".concat(user.id),
-    data: {
-      user: user
-    },
+    url: "/api/users/".concat(user.user.id),
+    data: user.user,
     contentType: false,
     processData: false
   });

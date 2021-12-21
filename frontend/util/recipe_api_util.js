@@ -1,13 +1,14 @@
-export const createRecipe = recipe => (
+export const createRecipe = recipe => {
+  console.log('recipe api util (data: recipe)', recipe)
+  return (
   $.ajax({
     method: 'POST',
     url: '/api/recipes',
-    // data: {recipe}
     data: recipe,
     contentType: false,
     processData: false
   })
-)
+)}
 
 export const fetchRecipes = () => (
   $.ajax({

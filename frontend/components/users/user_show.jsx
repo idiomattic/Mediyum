@@ -111,11 +111,17 @@ class UserShow extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     let {user} = this.props
-    const formData = new FormData()
+    const formData = {}
     Object.assign(formData, user)
-    formData.append('user[photo]', this.state.photoFile)
-    debugger
-    this.props.updateUser(formData)
+    formData['photo'] = this.state.photoFile
+    let params = {user: formData}
+    console.log('handleSubmit params',params)
+    // const formData = new FormData()
+    // formData.append('user[title]', this.state.title)
+    // formData.append('user[body]', this.state.body)
+    // formData.append('user[author_id]', this.state.author_id)
+    // formData.append('user[photo]', this.state.photoFile)
+    this.props.updateUser(params)
       .then(res => this.props.history.push(`/feed`))
   }
 

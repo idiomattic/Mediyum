@@ -28,6 +28,7 @@ class RecipeForm extends React.Component {
     formData.append('recipe[body]', this.state.body)
     formData.append('recipe[author_id]', this.state.author_id)
     formData.append('recipe[photo]', this.state.photoFile)
+    console.log('formData', formData)
     this.props.action(formData)
       .then(res => this.props.history.push(`/feed`))
   }

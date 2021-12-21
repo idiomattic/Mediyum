@@ -12,15 +12,16 @@ export const fetchUser = userId => (
   })
 )
 
-export const updateUser = user => (
-  $.ajax({
+export const updateUser = user => {
+  console.log('api util user.user', user.user)
+  return ($.ajax({
     method: 'PATCH',
-    url: `/api/users/${user.id}`,
-    data: {user},
+    url: `/api/users/${user.user.id}`,
+    data: user.user,
     contentType: false,
     processData: false
   })
-)
+)}
 
 export const deleteUser = userId => (
   $.ajax({
