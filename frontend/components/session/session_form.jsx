@@ -7,9 +7,11 @@ class SessionForm extends React.Component {
     this.state = {
       email: '',
       password: '',
-      name: ''
+      name: '',
+      photoFile: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleFile = this.handleFile.bind(this)
   }
 
   demoState() {
@@ -23,9 +25,20 @@ class SessionForm extends React.Component {
     this.props.history.push('/feed')
   }
 
+  handleFile(e) {
+    this.setState({
+      photoFile: e.currentTarget.files[0]
+    })
+  }
+
   handleSubmit(e) {
     e.preventDefault()
-    this.props.action(this.state)
+    const formData = new FormData()
+    formData.append('user[email]', this.state.email)
+    formData.append('user[password]', this.state.password)
+    formData.append('user[name]', this.state.name)
+    formData.append('user[photo]', this.state.photoFile)
+    this.props.action(formData)
       .then(() => this.props.hideModal())
       .then(() => this.props.clearErrors())
       .then(() => this.redirectToFeed())
@@ -53,7 +66,7 @@ class SessionForm extends React.Component {
 
   nameField() {
     return this.props.formType === 'Sign Up' ? 
-      <>
+    <>
         <label>First, your name?
           <br />
           <input type="text" className='credentials' value={this.state.name} onChange={this.update('name')}/>
@@ -61,6 +74,15 @@ class SessionForm extends React.Component {
         <br />
       </>
       : null
+  }
+
+  photoButton() {
+    let fileLabel = this.state.photoFile ? this.state.photoFile.name : 'Choose your photo'
+    return this.props.formType === 'Sign Up' ?             
+    <label className="photo-label">{fileLabel}
+      <input type="file" form='user-photo-form' className="photo-input" onChange={e => this.handleFile(e)}/>
+    </label>
+    : null
   }
 
   render() {
@@ -87,6 +109,8 @@ class SessionForm extends React.Component {
           </label>
           <br />
           {this.handleErrors()}
+          <br />
+          {this.photoButton()}
           <br />
           <input className='black-button' 
             type="submit" 

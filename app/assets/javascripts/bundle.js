@@ -3268,9 +3268,11 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       email: '',
       password: '',
-      name: ''
+      name: '',
+      photoFile: null
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleFile = _this.handleFile.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -3288,12 +3290,24 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       this.props.history.push('/feed');
     }
   }, {
+    key: "handleFile",
+    value: function handleFile(e) {
+      this.setState({
+        photoFile: e.currentTarget.files[0]
+      });
+    }
+  }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       var _this2 = this;
 
       e.preventDefault();
-      this.props.action(this.state).then(function () {
+      var formData = new FormData();
+      formData.append('user[email]', this.state.email);
+      formData.append('user[password]', this.state.password);
+      formData.append('user[name]', this.state.name);
+      formData.append('user[photo]', this.state.photoFile);
+      this.props.action(formData).then(function () {
         return _this2.props.hideModal();
       }).then(function () {
         return _this2.props.clearErrors();
@@ -3337,9 +3351,26 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null)) : null;
     }
   }, {
+    key: "photoButton",
+    value: function photoButton() {
+      var _this4 = this;
+
+      var fileLabel = this.state.photoFile ? this.state.photoFile.name : 'Choose your photo';
+      return this.props.formType === 'Sign Up' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+        className: "photo-label"
+      }, fileLabel, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "file",
+        form: "user-photo-form",
+        className: "photo-input",
+        onChange: function onChange(e) {
+          return _this4.handleFile(e);
+        }
+      })) : null;
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this5 = this;
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "session-form-div"
@@ -3351,7 +3382,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
         className: "close-button",
         onClick: function onClick() {
-          return _this4.props.hideModal();
+          return _this5.props.hideModal();
         }
       }, "\xD7"), this.nameField(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Enter your email here:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         className: "credentials",
@@ -3363,7 +3394,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         type: "password",
         value: this.state.password,
         onChange: this.update('password')
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.handleErrors(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.handleErrors(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), this.photoButton(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         className: "black-button",
         type: "submit",
         value: this.props.formType
@@ -4685,9 +4716,9 @@ var signUp = function signUp(user) {
   return $.ajax({
     method: 'POST',
     url: '/api/users',
-    data: {
-      user: user
-    }
+    data: user,
+    contentType: false,
+    processData: false
   });
 };
 var signOut = function signOut() {
@@ -4731,9 +4762,7 @@ var updateUser = function updateUser(user, userId) {
   return $.ajax({
     method: 'PATCH',
     url: "/api/users/".concat(userId),
-    data: user,
-    contentType: false,
-    processData: false
+    data: user
   });
 };
 var deleteUser = function deleteUser(userId) {
