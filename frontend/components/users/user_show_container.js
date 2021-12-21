@@ -22,7 +22,7 @@ const mSTP = (state, {match}) => {
 const mDTP = dispatch => ({
   displayModal: () => dispatch(displayModal('Dropdown')),
   fetchUser: userId => dispatch(fetchUser(userId)),
-  updateUser: user => dispatch(updateUser(user)),
+  updateUser: (user, userId) => dispatch(updateUser(user, userId)),
   deleteUser: userId => dispatch(deleteUser(userId)),
   fetchRecipes: () => dispatch(fetchRecipes()),
   createFollow: follow => dispatch(createFollow(follow)),

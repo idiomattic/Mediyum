@@ -5,6 +5,8 @@
 //   })
 // )
 
+import user_recipes_index_item from "../components/recipe/user_recipes_index_item"
+
 export const fetchUser = userId => (
   $.ajax({
     method: 'GET',
@@ -12,12 +14,12 @@ export const fetchUser = userId => (
   })
 )
 
-export const updateUser = user => {
-  console.log('api util user.user', user.user)
+export const updateUser = (user, userId) => {
+  console.log('api util user.id', user.id)
   return ($.ajax({
     method: 'PATCH',
-    url: `/api/users/${user.user.id}`,
-    data: user.user,
+    url: `/api/users/${userId}`,
+    data: user,
     contentType: false,
     processData: false
   })

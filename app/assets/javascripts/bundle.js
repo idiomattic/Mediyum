@@ -519,9 +519,9 @@ var fetchUser = function fetchUser(userId) {
     });
   };
 };
-var updateUser = function updateUser(user) {
+var updateUser = function updateUser(user, userId) {
   return function (dispatch) {
-    return _util_user_api_util__WEBPACK_IMPORTED_MODULE_0__.updateUser(user).then(function (user) {
+    return _util_user_api_util__WEBPACK_IMPORTED_MODULE_0__.updateUser(user, userId).then(function (user) {
       return dispatch(receiveUser(user));
     }, function (errors) {
       return dispatch(receiveUserErrors(errors.responseJSON));
@@ -2214,7 +2214,6 @@ var RecipeForm = /*#__PURE__*/function (_React$Component) {
       formData.append('recipe[body]', this.state.body);
       formData.append('recipe[author_id]', this.state.author_id);
       formData.append('recipe[photo]', this.state.photoFile);
-      console.log('formData', formData);
       this.props.action(formData).then(function (res) {
         return _this2.props.history.push("/feed");
       });
@@ -3783,21 +3782,18 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
       var _this4 = this;
 
       e.preventDefault();
-      var user = this.props.user;
-      var formData = {};
-      Object.assign(formData, user);
-      formData['photo'] = this.state.photoFile;
-      var params = {
-        user: formData
-      };
-      console.log('handleSubmit params', params); // const formData = new FormData()
-      // formData.append('user[title]', this.state.title)
-      // formData.append('user[body]', this.state.body)
-      // formData.append('user[author_id]', this.state.author_id)
-      // formData.append('user[photo]', this.state.photoFile)
+      var user = this.props.user; // const formData = {}
+      // Object.assign(formData, user)
+      // formData['photo'] = this.state.photoFile
+      // let params = {user: formData}
+      // console.log('handleSubmit params',params)
 
-      this.props.updateUser(params).then(function (res) {
-        return _this4.props.history.push("/feed");
+      var formData = new FormData();
+      formData.append('user[id]', user.id);
+      formData.append('user[photo]', this.state.photoFile);
+      console.log('formData', formData);
+      this.props.updateUser(formData, user.id).then(function (res) {
+        return _this4.props.history.push("/users/".concat(user.id));
       });
     }
   }, {
@@ -3894,8 +3890,8 @@ var mDTP = function mDTP(dispatch) {
     fetchUser: function fetchUser(userId) {
       return dispatch((0,_actions_user_actions__WEBPACK_IMPORTED_MODULE_1__.fetchUser)(userId));
     },
-    updateUser: function updateUser(user) {
-      return dispatch((0,_actions_user_actions__WEBPACK_IMPORTED_MODULE_1__.updateUser)(user));
+    updateUser: function updateUser(user, userId) {
+      return dispatch((0,_actions_user_actions__WEBPACK_IMPORTED_MODULE_1__.updateUser)(user, userId));
     },
     deleteUser: function deleteUser(userId) {
       return dispatch((0,_actions_user_actions__WEBPACK_IMPORTED_MODULE_1__.deleteUser)(userId));
@@ -4716,24 +4712,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "updateUser": () => (/* binding */ updateUser),
 /* harmony export */   "deleteUser": () => (/* binding */ deleteUser)
 /* harmony export */ });
+/* harmony import */ var _components_recipe_user_recipes_index_item__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/recipe/user_recipes_index_item */ "./frontend/components/recipe/user_recipes_index_item.jsx");
 // export const fetchUsers = () => (
 //   $.ajax({
 //     method: 'GET',
 //     url: '/api/users'
 //   })
 // )
+
 var fetchUser = function fetchUser(userId) {
   return $.ajax({
     method: 'GET',
     url: "/api/users/".concat(userId)
   });
 };
-var updateUser = function updateUser(user) {
-  console.log('api util user.user', user.user);
+var updateUser = function updateUser(user, userId) {
+  console.log('api util user.id', user.id);
   return $.ajax({
     method: 'PATCH',
-    url: "/api/users/".concat(user.user.id),
-    data: user.user,
+    url: "/api/users/".concat(userId),
+    data: user,
     contentType: false,
     processData: false
   });
