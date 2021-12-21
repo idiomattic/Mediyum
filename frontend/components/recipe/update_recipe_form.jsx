@@ -19,7 +19,6 @@ class UpdateRecipeForm extends React.Component {
         if (res.type === 'RECEIVE_RECIPE_ERRORS') {
           this.props.history.push('/feed')
         } else {
-          console.log('res', res)
           this.setState(res.recipe)
         }})
   }

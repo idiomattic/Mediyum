@@ -2920,8 +2920,6 @@ var UpdateRecipeForm = /*#__PURE__*/function (_React$Component) {
         if (res.type === 'RECEIVE_RECIPE_ERRORS') {
           _this2.props.history.push('/feed');
         } else {
-          console.log('res', res);
-
           _this2.setState(res.recipe);
         }
       });
@@ -3058,12 +3056,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state, ownProps) {
-  // let currentRecipeId = Object.keys(state.entities.recipes)[0]
-  var currentRecipeId = parseInt(ownProps.match.params.recipeId); // debugger
-
+  var currentRecipeId = parseInt(ownProps.match.params.recipeId);
   var currentUserId = state.session.currentUserId;
   var recipe = state.entities.recipes[currentRecipeId];
-  console.log('in mSTP', recipe);
   return {
     currentUserId: currentUserId,
     currentRecipeId: currentRecipeId,
