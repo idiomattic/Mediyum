@@ -1676,6 +1676,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var Header = function Header(props) {
   var location = (0,react_router__WEBPACK_IMPORTED_MODULE_3__.useLocation)();
+  var history = (0,react_router__WEBPACK_IMPORTED_MODULE_3__.useHistory)();
   var className = '';
 
   if (location.pathname !== '/feed') {
@@ -1701,7 +1702,12 @@ var Header = function Header(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", {
     className: headerClass
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-    className: "logo"
+    className: "logo",
+    onClick: function onClick() {
+      return history.push({
+        pathname: '/feed'
+      });
+    }
   }, "Mediyum"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "header-navbar"
   }, barDisplay));
