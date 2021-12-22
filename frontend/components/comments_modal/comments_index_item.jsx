@@ -55,6 +55,7 @@ class CommentsIndexItem extends React.Component {
     if (!comment || !comment.commenter) {
       return null
     }
+    let userPhoto = comment.commenter.photoUrl ? comment.commenter.photoUrl : 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png'
     return this.state.editing ? (
       <li className='edit-comment-list-item'>
         <CommentFormContainer comment={comment} toggleEditing={this.toggleEditing}/>
@@ -62,7 +63,7 @@ class CommentsIndexItem extends React.Component {
     ) : (
       <li className='comment-list-item'>
         <div className='comment-info'>
-          <img className='commenter-photo' src={comment.commenter.photoUrl} alt={comment.commenter.name} />
+          <img className='commenter-photo' src={userPhoto} alt={comment.commenter.name} />
           <p className='commenter-name'>{comment.commenter.name}</p>
         </div>
         <p className='comment-item-body'>{comment.body}</p>

@@ -1,5 +1,4 @@
 export const createRecipe = recipe => {
-  console.log('recipe api util (data: recipe)', recipe)
   return (
   $.ajax({
     method: 'POST',

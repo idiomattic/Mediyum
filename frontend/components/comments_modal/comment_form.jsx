@@ -39,10 +39,21 @@ class CommentForm extends React.Component {
     })
   }
 
+  handleErrors() {
+    return(
+      <ul className='comment-error-list'>
+        {this.props.errors.map((error, i) => (
+          <li key={i}>{error}</li>
+        ))}
+      </ul>
+    )
+  }
+
   render() {
     let { modal } = this.props
     return !modal ? null : (
       <div className='comment-form-box'>
+        {this.handleErrors()}
         <form className='comment-form' onSubmit={this.handleSubmit}>
           <textarea className='comment-form-body'
             placeholder='What are your thoughts?' 

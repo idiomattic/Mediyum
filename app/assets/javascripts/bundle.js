@@ -845,12 +845,23 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
+    key: "handleErrors",
+    value: function handleErrors() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+        className: "comment-error-list"
+      }, this.props.errors.map(function (error, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+          key: i
+        }, error);
+      }));
+    }
+  }, {
     key: "render",
     value: function render() {
       var modal = this.props.modal;
       return !modal ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comment-form-box"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+      }, this.handleErrors(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         className: "comment-form",
         onSubmit: this.handleSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
@@ -898,7 +909,8 @@ var mSTP = function mSTP(state) {
   return {
     modal: state.ui.modal,
     recipe: Object.values(state.entities.recipes)[0],
-    currentUserId: state.session.currentUserId
+    currentUserId: state.session.currentUserId,
+    errors: state.errors.comments
   };
 };
 
@@ -1046,6 +1058,7 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
         return null;
       }
 
+      var userPhoto = comment.commenter.photoUrl ? comment.commenter.photoUrl : 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png';
       return this.state.editing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
         className: "edit-comment-list-item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_comment_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -1057,7 +1070,7 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
         className: "comment-info"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         className: "commenter-photo",
-        src: comment.commenter.photoUrl,
+        src: userPhoto,
         alt: comment.commenter.name
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "commenter-name"
@@ -1985,7 +1998,8 @@ var mSTP = function mSTP(state) {
   return {
     currentUserId: currentUserId,
     formType: 'Create Recipe',
-    author: state.entities.users[currentUserId]
+    author: state.entities.users[currentUserId],
+    errors: state.errors.recipes
   };
 };
 
@@ -2232,6 +2246,17 @@ var RecipeForm = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
+    key: "handleErrors",
+    value: function handleErrors() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+        className: "recipe-error-list"
+      }, this.props.errors.map(function (error, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+          key: i
+        }, error);
+      }));
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this4 = this;
@@ -2264,7 +2289,7 @@ var RecipeForm = /*#__PURE__*/function (_React$Component) {
         form: "story-form",
         className: "publish",
         value: "Publish"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_nav_user_nav_container__WEBPACK_IMPORTED_MODULE_1__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_nav_user_nav_container__WEBPACK_IMPORTED_MODULE_1__["default"], null))), this.handleErrors(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         className: "recipe-form",
         onSubmit: this.handleSubmit,
         id: "story-form"
@@ -3068,7 +3093,8 @@ var mSTP = function mSTP(state, ownProps) {
     currentRecipeId: currentRecipeId,
     recipe: recipe,
     author: recipe === null || recipe === void 0 ? void 0 : recipe.author,
-    formType: 'Update Recipe'
+    formType: 'Update Recipe',
+    errors: state.errors.recipes
   };
 };
 
@@ -4694,7 +4720,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "deleteRecipe": () => (/* binding */ deleteRecipe)
 /* harmony export */ });
 var createRecipe = function createRecipe(recipe) {
-  console.log('recipe api util (data: recipe)', recipe);
   return $.ajax({
     method: 'POST',
     url: '/api/recipes',

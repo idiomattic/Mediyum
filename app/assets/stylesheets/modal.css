@@ -31,8 +31,13 @@
   margin: 10px 0 30px 0;
 }
 
-.session-error-list {
+.session-error-list, .comment-error-list {
   color: rgb(201, 74, 74);
+}
+
+.comment-error-list > li {
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
 .other-form-prompt {

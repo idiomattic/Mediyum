@@ -38,6 +38,16 @@ class RecipeForm extends React.Component {
     })
   }
 
+  handleErrors() {
+    return(
+      <ul className='recipe-error-list'>
+        {this.props.errors.map((error, i) => (
+          <li key={i}>{error}</li>
+        ))}
+      </ul>
+    )
+  }
+
   render() {
     let {author} = this.props
     let fileLabel = this.state.photoFile ? this.state.photoFile.name : 'Choose File'
@@ -56,6 +66,7 @@ class RecipeForm extends React.Component {
             <UserNavContainer/>
           </div>
         </div>
+        {this.handleErrors()}
         <form className='recipe-form' onSubmit={this.handleSubmit} id='story-form'>
           <input className='recipe-title' 
             type="text" 

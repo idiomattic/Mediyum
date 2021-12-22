@@ -7,7 +7,8 @@ const mSTP = state => {
   return ({
     currentUserId,
     formType: 'Create Recipe',
-    author: state.entities.users[currentUserId]
+    author: state.entities.users[currentUserId],
+    errors: state.errors.recipes
   })
 }
 

@@ -11,7 +11,8 @@ const mSTP = (state, ownProps) => {
     currentRecipeId,
     recipe,
     author: recipe?.author,
-    formType: 'Update Recipe'
+    formType: 'Update Recipe',
+    errors: state.errors.recipes
   })
 } 
 
