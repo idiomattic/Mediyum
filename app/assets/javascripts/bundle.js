@@ -3993,6 +3993,12 @@ var _nullErrors = [];
     case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__.CLEAR_COMMENT_ERRORS:
       return _nullErrors;
 
+    case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_COMMENT:
+      return _nullErrors;
+
+    case _actions_comment_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_COMMENTS:
+      return _nullErrors;
+
     default:
       return state;
   }

@@ -1,4 +1,4 @@
-import { RECEIVE_COMMENT_ERRORS, CLEAR_COMMENT_ERRORS } from "../actions/comment_actions";
+import { RECEIVE_COMMENT_ERRORS, CLEAR_COMMENT_ERRORS, RECEIVE_COMMENT, RECEIVE_COMMENTS } from "../actions/comment_actions";
 
 const _nullErrors = []
 
@@ -9,6 +9,10 @@ export default (state=[], action) => {
     case RECEIVE_COMMENT_ERRORS:
       return action.errors
     case CLEAR_COMMENT_ERRORS:
+      return _nullErrors
+    case RECEIVE_COMMENT:
+      return _nullErrors
+    case RECEIVE_COMMENTS:
       return _nullErrors
     default:
       return state
