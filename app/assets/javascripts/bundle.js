@@ -856,6 +856,11 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
       }));
     }
   }, {
+    key: "showErrorsHere",
+    value: function showErrorsHere() {
+      var showErrorsHere = false;
+    }
+  }, {
     key: "render",
     value: function render() {
       var modal = this.props.modal;

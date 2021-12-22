@@ -49,6 +49,10 @@ class CommentForm extends React.Component {
     )
   }
 
+  showErrorsHere() {
+    const showErrorsHere = false
+  }
+
   render() {
     let { modal } = this.props
     return !modal ? null : (
