@@ -40,7 +40,7 @@ class RecipeForm extends React.Component {
 
   handleErrors() {
     return(
-      <ul className='recipe-error-list'>
+      <ul className='recipe error-list'>
         {this.props.errors.map((error, i) => (
           <li key={i}>{error}</li>
         ))}

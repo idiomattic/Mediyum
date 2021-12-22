@@ -13,7 +13,10 @@ class GuestNav extends React.Component {
   }
 
   handleSignIn() {
-    this.props.signIn(this.state)
+    const formData = new FormData()
+    formData.append('user[email]', this.state.email)
+    formData.append('user[password]', this.state.password)
+    this.props.signIn(formData)
       .then(res => this.props.history.push('/feed'))
   }
 

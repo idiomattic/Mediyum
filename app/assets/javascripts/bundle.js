@@ -848,7 +848,7 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
     key: "handleErrors",
     value: function handleErrors() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
-        className: "comment-error-list"
+        className: "comment error-list"
       }, this.props.errors.map(function (error, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
           key: i
@@ -1581,7 +1581,10 @@ var GuestNav = /*#__PURE__*/function (_React$Component) {
     value: function handleSignIn() {
       var _this2 = this;
 
-      this.props.signIn(this.state).then(function (res) {
+      var formData = new FormData();
+      formData.append('user[email]', this.state.email);
+      formData.append('user[password]', this.state.password);
+      this.props.signIn(formData).then(function (res) {
         return _this2.props.history.push('/feed');
       });
     }
@@ -2249,7 +2252,7 @@ var RecipeForm = /*#__PURE__*/function (_React$Component) {
     key: "handleErrors",
     value: function handleErrors() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
-        className: "recipe-error-list"
+        className: "recipe error-list"
       }, this.props.errors.map(function (error, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
           key: i
@@ -2990,6 +2993,17 @@ var UpdateRecipeForm = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "handleErrors",
+    value: function handleErrors() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+        className: "recipe error-list"
+      }, this.props.errors.map(function (error, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+          key: i
+        }, error);
+      }));
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this5 = this;
@@ -3035,7 +3049,7 @@ var UpdateRecipeForm = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this5.handleDelete();
         }
-      }, "Delete Recipe"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_nav_user_nav_container__WEBPACK_IMPORTED_MODULE_1__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+      }, "Delete Recipe"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_nav_user_nav_container__WEBPACK_IMPORTED_MODULE_1__["default"], null))), this.handleErrors(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         className: "recipe-form",
         onSubmit: this.handleSubmit,
         id: "story-form"
@@ -3358,7 +3372,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     key: "handleErrors",
     value: function handleErrors() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
-        className: "session-error-list"
+        className: "session error-list"
       }, this.props.errors.map(function (error, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
           key: i

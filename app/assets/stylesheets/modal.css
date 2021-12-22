@@ -21,6 +21,12 @@
   box-shadow: rgba(0, 0, 0, 15%) 0px 2px 10px;
 }
 
+.session-form > label {
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
 .credentials {
   font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-align: center;
@@ -35,7 +41,7 @@
   display: none;
 } */
 
-.session-error-list, .comment-error-list {
+.error-list {
   color: rgb(201, 74, 74);
 }
 

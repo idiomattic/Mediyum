@@ -41,7 +41,7 @@ class CommentForm extends React.Component {
 
   handleErrors() {
     return(
-      <ul className='comment-error-list'>
+      <ul className='comment error-list'>
         {this.props.errors.map((error, i) => (
           <li key={i}>{error}</li>
         ))}

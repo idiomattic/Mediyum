@@ -50,6 +50,16 @@ class UpdateRecipeForm extends React.Component {
       })
   }
 
+  handleErrors() {
+    return(
+      <ul className='recipe error-list'>
+        {this.props.errors.map((error, i) => (
+          <li key={i}>{error}</li>
+        ))}
+      </ul>
+    )
+  }
+
   render() {
     let {author, currentUserId, currentRecipeId, recipe} = this.props
     if (!currentRecipeId || !recipe || !this.state) {
@@ -74,6 +84,7 @@ class UpdateRecipeForm extends React.Component {
             <UserNavContainer/>
           </div>
         </div>
+        {this.handleErrors()}
         <form className='recipe-form' onSubmit={this.handleSubmit} id='story-form'>
           <input className='recipe-title' 
             type="text" 
