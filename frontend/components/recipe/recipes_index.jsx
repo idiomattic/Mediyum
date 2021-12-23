@@ -27,7 +27,6 @@ class RecipesIndex extends React.Component {
     const { recipes } = this.props
     let tempNumRecipes = this.state.numRecipes
     let recipesSlice = recipes.reverse().slice(0, tempNumRecipes)
-    console.log(recipesSlice)
     if (!recipesSlice) { 
       return null
     }
@@ -40,8 +39,8 @@ class RecipesIndex extends React.Component {
         <ul className='recipes-list'>
           {this.showAll(recipesSlice)}
         </ul>
-        <button className='show-more' 
-          onClick={() => this.setState({numRecipes : (tempNumRecipes + 10)})}>See More Recipes</button>
+        <div className='show-more' 
+          onClick={() => this.setState({numRecipes : (tempNumRecipes + 10)})}>See More Recipes</div>
       </div>
     )
   }

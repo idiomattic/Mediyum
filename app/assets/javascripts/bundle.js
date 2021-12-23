@@ -2668,7 +2668,6 @@ var RecipesIndex = /*#__PURE__*/function (_React$Component) {
       var recipes = this.props.recipes;
       var tempNumRecipes = this.state.numRecipes;
       var recipesSlice = recipes.reverse().slice(0, tempNumRecipes);
-      console.log(recipesSlice);
 
       if (!recipesSlice) {
         return null;
@@ -2684,7 +2683,7 @@ var RecipesIndex = /*#__PURE__*/function (_React$Component) {
         className: "right-padding"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "recipes-list"
-      }, this.showAll(recipesSlice)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      }, this.showAll(recipesSlice)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "show-more",
         onClick: function onClick() {
           return _this2.setState({
