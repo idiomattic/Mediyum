@@ -79,7 +79,7 @@ class SessionForm extends React.Component {
   photoButton() {
     let fileLabel = this.state.photoFile ? this.state.photoFile.name : 'Choose your photo'
     return this.props.formType === 'Sign Up' ?             
-    <label className="photo-label">{fileLabel}
+    <label className="user photo-label">{fileLabel}
       <input type="file" form='user-photo-form' className="photo-input" onChange={e => this.handleFile(e)}/>
     </label>
     : null
@@ -102,7 +102,7 @@ class SessionForm extends React.Component {
           <br />
           <label>Your password:
             <br />
-            <input className='credentials' 
+            <input className='credentials password' 
               type="password" 
               value={this.state.password} 
               onChange={this.update('password')} />

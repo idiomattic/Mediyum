@@ -37,9 +37,17 @@
   margin: 10px 0 30px 0;
 }
 
-/* .comment-form-box > ul.comment-error-list > li:first-child {
-  display: none;
-} */
+.credentials.password {
+  margin-bottom: 10px;
+}
+
+.user.photo-label {
+  margin: 0;
+}
+
+.session-form > .black-button {
+  margin-top: 15px;
+}
 
 .error-list {
   color: rgb(201, 74, 74);
