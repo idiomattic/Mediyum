@@ -1,5 +1,5 @@
 import React from "react"
-import { Redirect, withRouter } from "react-router"
+import { withRouter } from "react-router"
 
 class RecipeShow extends React.Component {
   constructor(props) {

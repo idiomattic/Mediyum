@@ -48,6 +48,14 @@ class RecipeForm extends React.Component {
     )
   }
 
+  allowSubmit() {
+    if (this.state.title.length > 0 && this.state.body.length > 0 && this.state.photoFile) {
+      return <input type="submit" form='story-form' className='publish' value='Publish' />
+    } else {
+      return <input type="submit" form='story-form' className='disabled publish' value='Publish' disabled/>
+    }
+  }
+
   render() {
     let {author} = this.props
     let fileLabel = this.state.photoFile ? this.state.photoFile.name : 'Choose File'
@@ -62,7 +70,8 @@ class RecipeForm extends React.Component {
             <label className="photo-label">{fileLabel}
               <input type="file" form='story-form' className="photo-input" onChange={e => this.handleFile(e)}/>
             </label>
-            <input type="submit" form='story-form' className='publish' value='Publish' />
+            {/* <input type="submit" form='story-form' className='publish' value='Publish' /> */}
+            {this.allowSubmit()}
             <UserNavContainer/>
           </div>
         </div>

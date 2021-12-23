@@ -2265,6 +2265,26 @@ var RecipeForm = /*#__PURE__*/function (_React$Component) {
       }));
     }
   }, {
+    key: "allowSubmit",
+    value: function allowSubmit() {
+      if (this.state.title.length > 0 && this.state.body.length > 0 && this.state.photoFile) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+          type: "submit",
+          form: "story-form",
+          className: "publish",
+          value: "Publish"
+        });
+      } else {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+          type: "submit",
+          form: "story-form",
+          className: "disabled publish",
+          value: "Publish",
+          disabled: true
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this4 = this;
@@ -2292,12 +2312,7 @@ var RecipeForm = /*#__PURE__*/function (_React$Component) {
         onChange: function onChange(e) {
           return _this4.handleFile(e);
         }
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        type: "submit",
-        form: "story-form",
-        className: "publish",
-        value: "Publish"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_nav_user_nav_container__WEBPACK_IMPORTED_MODULE_1__["default"], null))), this.handleErrors(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+      })), this.allowSubmit(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_user_nav_user_nav_container__WEBPACK_IMPORTED_MODULE_1__["default"], null))), this.handleErrors(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         className: "recipe-form",
         onSubmit: this.handleSubmit,
         id: "story-form"

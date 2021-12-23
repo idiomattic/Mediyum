@@ -47,6 +47,14 @@
   padding: 0 8px;
 }
 
+.disabled.publish {
+  cursor: not-allowed;
+  border: 1px solid rgba(0,0,0,.15);
+  border-color: rgb(201, 74, 74);
+  background-color: rgb(201, 74, 74);
+  color: white;
+}
+
 .draft {
   margin-left: 10px;
   font-size: 16px;
