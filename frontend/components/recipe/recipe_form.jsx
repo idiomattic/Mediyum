@@ -70,7 +70,6 @@ class RecipeForm extends React.Component {
             <label className="photo-label">{fileLabel}
               <input type="file" form='story-form' className="photo-input" onChange={e => this.handleFile(e)}/>
             </label>
-            {/* <input type="submit" form='story-form' className='publish' value='Publish' /> */}
             {this.allowSubmit()}
             <UserNavContainer/>
           </div>

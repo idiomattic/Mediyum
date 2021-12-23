@@ -4,6 +4,9 @@ import RecipesIndexItemContainer from "./recipes_index_item_container"
 class RecipesIndex extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      numRecipes: 10
+    }
   }
 
   componentDidMount() {
@@ -22,7 +25,10 @@ class RecipesIndex extends React.Component {
 
   render() {
     const { recipes } = this.props
-    if (!recipes) { 
+    let tempNumRecipes = this.state.numRecipes
+    let recipesSlice = recipes.reverse().slice(0, tempNumRecipes)
+    console.log(recipesSlice)
+    if (!recipesSlice) { 
       return null
     }
     return(
@@ -32,8 +38,10 @@ class RecipesIndex extends React.Component {
           <div className='right-padding'></div>
         </div>
         <ul className='recipes-list'>
-          {this.showAll(recipes)}
+          {this.showAll(recipesSlice)}
         </ul>
+        <button className='show-more' 
+          onClick={() => this.setState({numRecipes : (tempNumRecipes + 10)})}>See More Recipes</button>
       </div>
     )
   }

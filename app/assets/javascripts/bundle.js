@@ -2632,9 +2632,15 @@ var RecipesIndex = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(RecipesIndex);
 
   function RecipesIndex(props) {
+    var _this;
+
     _classCallCheck(this, RecipesIndex);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      numRecipes: 10
+    };
+    return _this;
   }
 
   _createClass(RecipesIndex, [{
@@ -2657,9 +2663,14 @@ var RecipesIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var recipes = this.props.recipes;
+      var _this2 = this;
 
-      if (!recipes) {
+      var recipes = this.props.recipes;
+      var tempNumRecipes = this.state.numRecipes;
+      var recipesSlice = recipes.reverse().slice(0, tempNumRecipes);
+      console.log(recipesSlice);
+
+      if (!recipesSlice) {
         return null;
       }
 
@@ -2673,7 +2684,14 @@ var RecipesIndex = /*#__PURE__*/function (_React$Component) {
         className: "right-padding"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "recipes-list"
-      }, this.showAll(recipes)));
+      }, this.showAll(recipesSlice)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "show-more",
+        onClick: function onClick() {
+          return _this2.setState({
+            numRecipes: tempNumRecipes + 10
+          });
+        }
+      }, "See More Recipes"));
     }
   }]);
 
