@@ -3350,8 +3350,8 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       email: '',
       password: '',
       name: '',
-      photoFile: 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png' // photoFile: null
-
+      // photoFile: 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png'
+      photoFile: null
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleFile = _this.handleFile.bind(_assertThisInitialized(_this));
@@ -3387,9 +3387,11 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       var formData = new FormData();
       formData.append('user[email]', this.state.email);
       formData.append('user[password]', this.state.password);
-      formData.append('user[name]', this.state.name); // if (this.state.photoFile) {
+      formData.append('user[name]', this.state.name);
 
-      formData.append('user[photo]', this.state.photoFile); // }
+      if (this.state.photoFile) {
+        formData.append('user[photo]', this.state.photoFile);
+      }
 
       this.props.action(formData).then(function () {
         return _this2.props.hideModal();
@@ -3439,15 +3441,13 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     value: function photoButton() {
       var _this4 = this;
 
-      var fileLabel;
-
-      if (this.state.photoFile === 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png') {
-        fileLabel = 'Choose your photo';
-      } else {
-        fileLabel = this.state.photoFile.name;
-      } // let fileLabel = this.state.photoFile ? this.state.photoFile.name : 'Choose your photo'
-
-
+      // let fileLabel
+      // if (this.state.photoFile === 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png') {
+      //   fileLabel = 'Choose your photo'
+      // } else {
+      //   fileLabel = this.state.photoFile.name
+      // }
+      var fileLabel = this.state.photoFile ? this.state.photoFile.name : 'Choose your photo';
       return this.props.formType === 'Sign Up' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
         className: "user photo-label"
       }, fileLabel, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {

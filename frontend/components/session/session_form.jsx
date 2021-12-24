@@ -8,8 +8,8 @@ class SessionForm extends React.Component {
       email: '',
       password: '',
       name: '',
-      photoFile: 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png'
-      // photoFile: null
+      // photoFile: 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png'
+      photoFile: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleFile = this.handleFile.bind(this)
@@ -38,9 +38,9 @@ class SessionForm extends React.Component {
     formData.append('user[email]', this.state.email)
     formData.append('user[password]', this.state.password)
     formData.append('user[name]', this.state.name)
-    // if (this.state.photoFile) {
+    if (this.state.photoFile) {
       formData.append('user[photo]', this.state.photoFile)
-    // }
+    }
     this.props.action(formData)
       .then(() => this.props.hideModal())
       .then(() => this.props.clearErrors())
@@ -80,13 +80,13 @@ class SessionForm extends React.Component {
   }
 
   photoButton() {
-    let fileLabel
-    if (this.state.photoFile === 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png') {
-      fileLabel = 'Choose your photo'
-    } else {
-      fileLabel = this.state.photoFile.name
-    }
-    // let fileLabel = this.state.photoFile ? this.state.photoFile.name : 'Choose your photo'
+    // let fileLabel
+    // if (this.state.photoFile === 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png') {
+    //   fileLabel = 'Choose your photo'
+    // } else {
+    //   fileLabel = this.state.photoFile.name
+    // }
+    let fileLabel = this.state.photoFile ? this.state.photoFile.name : 'Choose your photo'
     return this.props.formType === 'Sign Up' ?             
     <label className="user photo-label">{fileLabel}
       <input type="file" form='user-photo-form' className="photo-input" onChange={e => this.handleFile(e)}/>
