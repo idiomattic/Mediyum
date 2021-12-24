@@ -22,6 +22,7 @@
 .recipe-body {
   font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 21px;
+  white-space: pre-line;
 }
 
 .recipe-footer {
