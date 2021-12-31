@@ -33,11 +33,11 @@ const App = () => {
     <footer className='app-footer'>
       <h3 className='footer-message'>More from Matthew Lese</h3>
       <div className='footer-spacer'></div>
-      <a href="https://github.com/matthewlese" className='github-link'>
+      <a href="https://github.com/matthewlese" className='github-link' target="_blank" rel="noopener noreferrer">
         <div className='github'>GitHub</div>
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" className='github-link'/>
       </a>
-      <a href="https://www.linkedin.com/in/matthewlese/" className='linkedin-link'>
+      <a href="https://www.linkedin.com/in/matthewlese/" className='linkedin-link' target="_blank" rel="noopener noreferrer">
         <div className='linkedin'>LinkedIn</div>
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" className='linkedin-link'/>
       </a>
