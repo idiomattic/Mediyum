@@ -9,6 +9,7 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  color_code      :string
 #
 class User < ApplicationRecord
   validates :email, :session_token, :password_digest, presence: true

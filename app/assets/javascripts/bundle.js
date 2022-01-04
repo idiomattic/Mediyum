@@ -1829,6 +1829,7 @@ var UserShowHeader = function UserShowHeader(props) {
       currentUserId = props.currentUserId,
       followers = props.followers,
       history = props.history;
+  var headerColorOptions = ['#FFFFFF', '#FEF9E7', '#F9EBEA', '#FDEDEC', '#F5EEF8', '#EAF2F8', '#EBF5FB', '#E8F8F5', '#E9F7EF', '#EAFAF1', '#FBEEE6'];
 
   if (!user || !followers) {
     return null;
@@ -1859,8 +1860,19 @@ var UserShowHeader = function UserShowHeader(props) {
   var isSelf = function isSelf() {
     var userId = props.userId,
         currentUserId = props.currentUserId;
-    return userId == currentUserId ? null : displayFollowButton();
+    return userId == currentUserId ? changeColorButton() : displayFollowButton();
   };
+
+  var changeColorButton = function changeColorButton() {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      className: "change-color-button",
+      onClick: function onClick() {
+        return changeColor();
+      }
+    }, "Change my Color Theme");
+  };
+
+  var changeColor = function changeColor() {};
 
   var displayFollowButton = function displayFollowButton() {
     var followers = props.followers;

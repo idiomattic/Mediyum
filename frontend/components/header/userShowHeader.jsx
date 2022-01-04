@@ -4,6 +4,20 @@ import { withRouter } from "react-router"
 
 const UserShowHeader = props => {
   const {user, currentUserId, followers, history} = props
+
+  const headerColorOptions = [
+    '#FFFFFF',
+    '#FEF9E7',
+    '#F9EBEA',
+    '#FDEDEC',
+    '#F5EEF8',
+    '#EAF2F8',
+    '#EBF5FB',
+    '#E8F8F5',
+    '#E9F7EF',
+    '#EAFAF1',
+    '#FBEEE6'
+  ]
   
   if (!user || !followers) {return null}
   
@@ -27,7 +41,17 @@ const UserShowHeader = props => {
 
   const isSelf = () => {
     let {userId, currentUserId} = props
-    return userId == currentUserId ? null : displayFollowButton()
+    return userId == currentUserId ? changeColorButton() : displayFollowButton()
+  }
+
+  const changeColorButton = () => {
+    return(
+      <button className="change-color-button" onClick={() => changeColor()} >Change my Color Theme</button>
+    )
+  }
+
+  const changeColor = () => {
+
   }
 
   const displayFollowButton = () => {
