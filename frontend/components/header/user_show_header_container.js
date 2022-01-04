@@ -4,7 +4,12 @@ import { displayModal } from "../../actions/modal_actions";
 import { createFollow, deleteFollow } from '../../actions/follow_actions'
 
 const mSTP = (state, {match}) => {
-  const userId = parseInt(match.params.userId)
+  let userId
+  if (match.params.userId) {
+    userId = parseInt(match.params.userId)
+  } else if (match.params.recipeId) {
+    userId = state.entities.users[match.params.recipeId]
+  }
   const user = state.entities.users[userId]
   const currentUserId = state.session.currentUserId
   return({

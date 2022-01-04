@@ -4,6 +4,7 @@ import { withRouter } from "react-router"
 
 const UserShowHeader = props => {
   const {user, currentUser} = props
+  console.log('user prop in UserShowHeader', user)
   if (!user) {return null}
   
   const follow = {

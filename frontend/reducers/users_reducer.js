@@ -1,6 +1,6 @@
 import { RECEIVE_CURRENT_USER, SIGNOUT_CURRENT_USER } from "../actions/session_actions"
 import { RECEIVE_USER, RECEIVE_USERS } from '../actions/user_actions'
-import { RECEIVE_RECIPES } from '../actions/recipe_actions'
+import { RECEIVE_RECIPE, RECEIVE_RECIPES } from '../actions/recipe_actions'
 import { RECEIVE_FOLLOW, REMOVE_FOLLOW } from "../actions/follow_actions"
 
 let currentUserId = null
@@ -29,6 +29,8 @@ export default (state={}, action) => {
       Object.values(action.recipes).forEach(recipe => {
         Object.assign(nextState, {[recipe.author.id]: recipe.author})
       })
+      return nextState
+    case RECEIVE_RECIPE:
       return nextState
     case RECEIVE_FOLLOW:
       nextState['followers'][action.follow.follower_id] = action.follow.follower

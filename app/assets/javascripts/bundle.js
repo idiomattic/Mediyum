@@ -688,11 +688,6 @@ var App = function App() {
     path: "/feed",
     component: _header_header_container__WEBPACK_IMPORTED_MODULE_2__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
-    exact: true,
-    path: "/recipes/create/new",
-    component: null
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
-    exact: true,
     path: "/recipes/show/:recipeId",
     component: _header_user_show_header_container__WEBPACK_IMPORTED_MODULE_10__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
@@ -1827,6 +1822,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var UserShowHeader = function UserShowHeader(props) {
   var user = props.user,
       currentUser = props.currentUser;
+  console.log('user prop in UserShowHeader', user);
 
   if (!user) {
     return null;
@@ -1944,7 +1940,14 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(state, _ref) {
   var match = _ref.match;
-  var userId = parseInt(match.params.userId);
+  var userId;
+
+  if (match.params.userId) {
+    userId = parseInt(match.params.userId);
+  } else if (match.params.recipeId) {
+    userId = state.entities.users[match.params.recipeId];
+  }
+
   var user = state.entities.users[userId];
   var currentUserId = state.session.currentUserId;
   return {
@@ -4717,6 +4720,9 @@ var currentUserId = null;
       Object.values(action.recipes).forEach(function (recipe) {
         Object.assign(nextState, _defineProperty({}, recipe.author.id, recipe.author));
       });
+      return nextState;
+
+    case _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_2__.RECEIVE_RECIPE:
       return nextState;
 
     case _actions_follow_actions__WEBPACK_IMPORTED_MODULE_3__.RECEIVE_FOLLOW:
