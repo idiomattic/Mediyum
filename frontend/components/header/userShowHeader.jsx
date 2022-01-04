@@ -28,7 +28,7 @@ const UserShowHeader = props => {
 
   const [following, setFollowing] = useState(Boolean(followers[currentUserId]))
   const [headerColorChanged, setHeaderColorChanged] = useState(false)
-  const [headerColor, setHeaderColor] = useState(user.color_code)
+  const [headerColor, setHeaderColor] = useState(user.color_code || '#FFFFFF')
   
   const followerCount = () => {
     let followersCount = !followers ? 0 : Object.values(followers).length
@@ -60,11 +60,10 @@ const UserShowHeader = props => {
   const changeColor = () => {
     setHeaderColorChanged(true)
     setHeaderColor(headerColorOptions[Math.floor(Math.random() * headerColorOptions.length)])
-    console.log(headerColor)
   }
 
   const saveColor = () => {
-    console.log('saving color')
+    console.log('saving color', headerColor)
   }
 
   const displayFollowButton = () => {
@@ -100,7 +99,7 @@ const UserShowHeader = props => {
   }
   
   return (
-    <div className='user-show-header'>
+    <div className='user-show-header' style={{background: headerColor}}>
       <div className="user-show-header-left">
         <h2 className='user-title' onClick={() => redirectToShow()}>{user.name}</h2>
         {followerCount()}

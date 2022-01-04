@@ -1850,7 +1850,7 @@ var UserShowHeader = function UserShowHeader(props) {
       headerColorChanged = _useState4[0],
       setHeaderColorChanged = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(user.color_code),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(user.color_code || '#FFFFFF'),
       _useState6 = _slicedToArray(_useState5, 2),
       headerColor = _useState6[0],
       setHeaderColor = _useState6[1];
@@ -1890,11 +1890,10 @@ var UserShowHeader = function UserShowHeader(props) {
   var changeColor = function changeColor() {
     setHeaderColorChanged(true);
     setHeaderColor(headerColorOptions[Math.floor(Math.random() * headerColorOptions.length)]);
-    console.log(headerColor);
   };
 
   var saveColor = function saveColor() {
-    console.log('saving color');
+    console.log('saving color', headerColor);
   };
 
   var displayFollowButton = function displayFollowButton() {
@@ -1941,7 +1940,10 @@ var UserShowHeader = function UserShowHeader(props) {
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "user-show-header"
+    className: "user-show-header",
+    style: {
+      background: headerColor
+    }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "user-show-header-left"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
