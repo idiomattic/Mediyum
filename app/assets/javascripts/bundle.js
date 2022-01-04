@@ -1606,12 +1606,14 @@ var GuestNav = /*#__PURE__*/function (_React$Component) {
         to: "/",
         onClick: function onClick() {
           return _this3.handleSignIn();
-        }
+        },
+        className: "header-link"
       }, "Demo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
         to: "/",
         onClick: function onClick() {
           return _this3.props.displayModal('Sign In');
-        }
+        },
+        className: "header-link"
       }, "Sign In"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
         className: "black-button",
         to: "/",

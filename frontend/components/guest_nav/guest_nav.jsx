@@ -24,8 +24,8 @@ class GuestNav extends React.Component {
     return(
       <div className='guest-nav'>
         <div className='nav-buttons'>
-          <Link to='/' onClick={() => this.handleSignIn()}>Demo</Link>
-          <Link to='/' onClick={() => this.props.displayModal('Sign In')}>Sign In</Link>
+          <Link to='/' onClick={() => this.handleSignIn()} className='header-link'>Demo</Link>
+          <Link to='/' onClick={() => this.props.displayModal('Sign In')} className='header-link'>Sign In</Link>
           <Link className='black-button' 
             to='/' onClick={() => this.props.displayModal('Sign Up')}>Get Started</Link>
 
