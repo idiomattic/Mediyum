@@ -58,10 +58,13 @@ class RecipeShow extends React.Component {
   }
   
   render() {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
     let { recipe } = this.props
     if (!recipe || !recipe.author) {
       return null
     }
+    let createdAt = new Date(recipe.created_at)
+    let publishDate = months[createdAt.getMonth()] + ' ' + createdAt.getDate() + ', ' + createdAt.getFullYear()
     return(
       <div className='recipe-show'>
         <div className='title-wrapper'>
@@ -72,6 +75,7 @@ class RecipeShow extends React.Component {
         <div className='recipe-info' >
           <img className='recipe-author-photo' src={recipe.author.photoUrl} onClick={() => this.redirectToShow(recipe.author_id)}/>
           <div className='author' onClick={() => this.redirectToShow(recipe.author_id)}>{recipe.author.name}</div>
+        <div className='publish-date'>{publishDate}</div>
         </div>
         <img src={recipe.photoUrl} alt={recipe.title} className='recipe-photo'/>
         <br />

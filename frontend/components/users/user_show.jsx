@@ -37,56 +37,8 @@ class UserShow extends React.Component {
     )
   }
 
-  toggleFollow() {
-    let {followers, currentUserId, receivedFollows} = this.props
-    let following = Boolean(followers[currentUserId])
-    if (following) {
-      let followToDelete = Object.values(receivedFollows).filter(follow => follow.follower_id === currentUserId)[0]
-      this.props.deleteFollow(followToDelete)
-        .then(this.setState({
-          following: false
-        }))
-    } else {
-      this.props.createFollow(this.state.follow)
-        .then(this.setState({
-          following: true
-        }))
-    }
-  }
-
-  displayFollowButton() {
-    let {followers, userId, currentUserId} = this.props
-    let buttonText
-    if (followers) {
-      buttonText = followers[currentUserId] ? 'Following' : 'Follow'
-    } else {
-      buttonText = ''
-    }
-    return (
-      <button className='green-button' id={buttonText} onClick={() => this.toggleFollow()}>{buttonText}</button>
-    )
-  }
-
-  followerCount() {
-    let {followers} = this.props
-    let followersCount = !followers ? 0 : Object.values(followers).length
-    let unit = (followersCount === 1) ? 'Follower' : 'Followers'
-    return(
-      <div className='follower-count'>
-        <p className='number-followers'>{followersCount}</p>
-        <p className="unit">{unit}</p>
-      </div>
-    )
-  }
-
-  isSelf() {
-    let {userId, currentUserId} = this.props
-    return userId === currentUserId ? null : this.displayFollowButton()
-  }
-
   render() {
-    let { user, userId, currentUser } = this.props
-    let userPhoto = currentUser.photoUrl ? currentUser.photoUrl : 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png'
+    let { user } = this.props
     if (!user) {
       return null
     }

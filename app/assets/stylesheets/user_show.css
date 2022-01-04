@@ -37,6 +37,10 @@
   align-items: center;
 }
 
+.user-recipe-list-item:first-child {
+  margin-top: 48px;
+}
+
 .down-bad-user {
   font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 22px;

@@ -6,6 +6,20 @@
   display: flex;
 }
 
+.recipe-info > :not(:last-child) {
+  margin-right: 10px;
+}
+
+.recipe-info > .publish-date {
+  font-size: 14px;
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+}
+
+.recipe-info > div.author {
+  color: black;
+}
+
 .title-wrapper {
   margin-top: 40px;
   display: flex;
@@ -52,7 +66,6 @@
   height: 40px;
   width: auto;
   border-radius: 20px;
-  margin-right: 10px;
 }
 
 .author {
@@ -71,7 +84,7 @@
 
 .recipe-photo {
   vertical-align: middle;
-  max-width: 300px;
+  width: 100%;
   margin-bottom: 20px;
 }
 

@@ -1859,7 +1859,7 @@ var UserShowHeader = function UserShowHeader(props) {
   var isSelf = function isSelf() {
     var userId = props.userId,
         currentUserId = props.currentUserId;
-    return userId === currentUserId ? null : displayFollowButton();
+    return userId == currentUserId ? null : displayFollowButton();
   };
 
   var displayFollowButton = function displayFollowButton() {
@@ -2714,12 +2714,15 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this5 = this;
 
+      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
       var recipe = this.props.recipe;
 
       if (!recipe || !recipe.author) {
         return null;
       }
 
+      var createdAt = new Date(recipe.created_at);
+      var publishDate = months[createdAt.getMonth()] + ' ' + createdAt.getDate() + ', ' + createdAt.getFullYear();
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "recipe-show"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2739,7 +2742,9 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this5.redirectToShow(recipe.author_id);
         }
-      }, recipe.author.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      }, recipe.author.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "publish-date"
+      }, publishDate)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         src: recipe.photoUrl,
         alt: recipe.title,
         className: "recipe-photo"
@@ -4054,82 +4059,9 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
       }));
     }
   }, {
-    key: "toggleFollow",
-    value: function toggleFollow() {
-      var _this$props2 = this.props,
-          followers = _this$props2.followers,
-          currentUserId = _this$props2.currentUserId,
-          receivedFollows = _this$props2.receivedFollows;
-      var following = Boolean(followers[currentUserId]);
-
-      if (following) {
-        var followToDelete = Object.values(receivedFollows).filter(function (follow) {
-          return follow.follower_id === currentUserId;
-        })[0];
-        this.props.deleteFollow(followToDelete).then(this.setState({
-          following: false
-        }));
-      } else {
-        this.props.createFollow(this.state.follow).then(this.setState({
-          following: true
-        }));
-      }
-    }
-  }, {
-    key: "displayFollowButton",
-    value: function displayFollowButton() {
-      var _this2 = this;
-
-      var _this$props3 = this.props,
-          followers = _this$props3.followers,
-          userId = _this$props3.userId,
-          currentUserId = _this$props3.currentUserId;
-      var buttonText;
-
-      if (followers) {
-        buttonText = followers[currentUserId] ? 'Following' : 'Follow';
-      } else {
-        buttonText = '';
-      }
-
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        className: "green-button",
-        id: buttonText,
-        onClick: function onClick() {
-          return _this2.toggleFollow();
-        }
-      }, buttonText);
-    }
-  }, {
-    key: "followerCount",
-    value: function followerCount() {
-      var followers = this.props.followers;
-      var followersCount = !followers ? 0 : Object.values(followers).length;
-      var unit = followersCount === 1 ? 'Follower' : 'Followers';
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "follower-count"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-        className: "number-followers"
-      }, followersCount), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-        className: "unit"
-      }, unit));
-    }
-  }, {
-    key: "isSelf",
-    value: function isSelf() {
-      var _this$props4 = this.props,
-          userId = _this$props4.userId,
-          currentUserId = _this$props4.currentUserId;
-      return userId === currentUserId ? null : this.displayFollowButton();
-    }
-  }, {
     key: "render",
     value: function render() {
-      var _this$props5 = this.props,
-          user = _this$props5.user,
-          userId = _this$props5.userId,
-          currentUser = _this$props5.currentUser;
-      var userPhoto = currentUser.photoUrl ? currentUser.photoUrl : 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png';
+      var user = this.props.user;
 
       if (!user) {
         return null;
@@ -4179,19 +4111,13 @@ var mSTP = function mSTP(state, _ref) {
   var currentUserId = state.session.currentUserId;
   return {
     currentUserId: currentUserId,
-    currentUser: state.entities.users[currentUserId],
     user: user,
-    userId: userId,
-    followers: state.entities.users.followers,
-    receivedFollows: state.entities.follows
+    userId: userId
   };
 };
 
 var mDTP = function mDTP(dispatch) {
   return {
-    displayModal: function displayModal() {
-      return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__.displayModal)('Dropdown'));
-    },
     fetchUser: function fetchUser(userId) {
       return dispatch((0,_actions_user_actions__WEBPACK_IMPORTED_MODULE_1__.fetchUser)(userId));
     },
@@ -4203,15 +4129,6 @@ var mDTP = function mDTP(dispatch) {
     },
     fetchRecipes: function fetchRecipes() {
       return dispatch((0,_actions_recipe_actions__WEBPACK_IMPORTED_MODULE_2__.fetchRecipes)());
-    },
-    createFollow: function createFollow(follow) {
-      return dispatch((0,_actions_follow_actions__WEBPACK_IMPORTED_MODULE_4__.createFollow)(follow));
-    },
-    deleteFollow: function deleteFollow(followId) {
-      return dispatch((0,_actions_follow_actions__WEBPACK_IMPORTED_MODULE_4__.deleteFollow)(followId));
-    },
-    fetchFollows: function fetchFollows() {
-      return dispatch((0,_actions_follow_actions__WEBPACK_IMPORTED_MODULE_4__.fetchFollows)());
     }
   };
 };

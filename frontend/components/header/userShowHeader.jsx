@@ -27,7 +27,7 @@ const UserShowHeader = props => {
 
   const isSelf = () => {
     let {userId, currentUserId} = props
-    return userId === currentUserId ? null : displayFollowButton()
+    return userId == currentUserId ? null : displayFollowButton()
   }
 
   const displayFollowButton = () => {

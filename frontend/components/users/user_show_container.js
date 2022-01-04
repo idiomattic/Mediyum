@@ -11,23 +11,16 @@ const mSTP = (state, {match}) => {
   const currentUserId = state.session.currentUserId
   return({
     currentUserId,
-    currentUser: state.entities.users[currentUserId],
     user,
-    userId,
-    followers: state.entities.users.followers,
-    receivedFollows: state.entities.follows
+    userId
   })
 }
 
 const mDTP = dispatch => ({
-  displayModal: () => dispatch(displayModal('Dropdown')),
   fetchUser: userId => dispatch(fetchUser(userId)),
   updateUser: (user, userId) => dispatch(updateUser(user, userId)),
   deleteUser: userId => dispatch(deleteUser(userId)),
-  fetchRecipes: () => dispatch(fetchRecipes()),
-  createFollow: follow => dispatch(createFollow(follow)),
-  deleteFollow: followId => dispatch(deleteFollow(followId)),
-  fetchFollows: () => dispatch(fetchFollows())
+  fetchRecipes: () => dispatch(fetchRecipes())
 })
 
 export default connect(mSTP, mDTP)(UserShow)
