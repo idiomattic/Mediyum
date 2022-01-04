@@ -1823,7 +1823,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var UserShowHeader = function UserShowHeader(props) {
   var user = props.user,
       currentUser = props.currentUser,
-      fetchUser = props.fetchUser,
       followers = props.followers;
   console.log('user prop in UserShowHeader', user);
 
@@ -1834,7 +1833,7 @@ var UserShowHeader = function UserShowHeader(props) {
   var follow = {
     follower_id: props.currentUserId,
     followed_user_id: props.userId
-  };
+  }; // debugger
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(Boolean(followers[currentUser.id])),
       _useState2 = _slicedToArray(_useState, 2),
@@ -1842,7 +1841,6 @@ var UserShowHeader = function UserShowHeader(props) {
       setFollowing = _useState2[1];
 
   var followerCount = function followerCount() {
-    // let {followers} = props
     var followersCount = !followers ? 0 : Object.values(followers).length;
     var unit = followersCount === 1 ? 'Follower' : 'Followers';
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -4707,6 +4705,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var currentUserId = null;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
+  var _Object$assign4;
+
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
@@ -4744,7 +4744,11 @@ var currentUserId = null;
       return nextState;
 
     case _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_2__.RECEIVE_RECIPE:
-      return nextState;
+      var followers = {};
+      action.recipe.author.users_following.forEach(function (user) {
+        return followers[user.id] = user;
+      });
+      return Object.assign(nextState, (_Object$assign4 = {}, _defineProperty(_Object$assign4, action.recipe.author_id, action.recipe.author), _defineProperty(_Object$assign4, "followers", followers), _Object$assign4));
 
     case _actions_follow_actions__WEBPACK_IMPORTED_MODULE_3__.RECEIVE_FOLLOW:
       nextState['followers'][action.follow.follower_id] = action.follow.follower;

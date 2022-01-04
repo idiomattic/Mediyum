@@ -31,7 +31,12 @@ export default (state={}, action) => {
       })
       return nextState
     case RECEIVE_RECIPE:
-      return nextState
+      const followers = {}
+      action.recipe.author.users_following.forEach(user => followers[user.id] = user)
+      return Object.assign(nextState, {
+        [action.recipe.author_id]: action.recipe.author,
+        followers
+      })
     case RECEIVE_FOLLOW:
       nextState['followers'][action.follow.follower_id] = action.follow.follower
       return nextState

@@ -3,7 +3,7 @@ import UserNavContainer from "../user_nav/user_nav_container"
 import { withRouter } from "react-router"
 
 const UserShowHeader = props => {
-  const {user, currentUser, fetchUser, followers} = props
+  const {user, currentUser, followers} = props
   console.log('user prop in UserShowHeader', user)
   if (!user) {return null}
   
@@ -11,10 +11,10 @@ const UserShowHeader = props => {
     follower_id: props.currentUserId,
     followed_user_id: props.userId
   }
+  // debugger
   const [following, setFollowing] = useState(Boolean(followers[currentUser.id]))
   
   const followerCount = () => {
-    // let {followers} = props
     let followersCount = !followers ? 0 : Object.values(followers).length
     let unit = (followersCount === 1) ? 'Follower' : 'Followers'
     return(
