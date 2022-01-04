@@ -1896,11 +1896,18 @@ var UserShowHeader = function UserShowHeader(props) {
   };
 
   var userPhoto = currentUser.photoUrl ? currentUser.photoUrl : 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png';
-  console.log('in user show header before render');
+
+  var redirectToShow = function redirectToShow() {
+    console.log('in new func');
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "user-show-header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-    className: "user-title"
+    className: "user-title",
+    onClick: function onClick() {
+      return redirectToShow();
+    }
   }, user.name), followerCount(), isSelf(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "user-show-nav-spacer"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {

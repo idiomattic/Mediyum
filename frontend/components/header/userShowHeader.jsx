@@ -58,11 +58,13 @@ const UserShowHeader = props => {
 
   let userPhoto = currentUser.photoUrl ? currentUser.photoUrl : 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png'
 
-  console.log('in user show header before render')
+  const redirectToShow = () => {
+    console.log('in new func')
+  }
   
   return (
     <div className='user-show-header'>
-      <h2 className='user-title'>{user.name}</h2>
+      <h2 className='user-title' onClick={() => redirectToShow()}>{user.name}</h2>
       {followerCount()}
       {isSelf()}
       <div className='user-show-nav-spacer'></div>
