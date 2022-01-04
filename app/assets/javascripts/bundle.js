@@ -1880,15 +1880,21 @@ var UserShowHeader = function UserShowHeader(props) {
         return changeColor();
       }
     }, "Change my Color Theme"), headerColorChanged ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-      className: "save"
-    }, "Save Changes") : null);
+      className: "save",
+      onClick: function onClick() {
+        return saveColor();
+      }
+    }, "Save") : null);
   };
 
   var changeColor = function changeColor() {
     setHeaderColorChanged(true);
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-      className: "save"
-    }, "Save");
+    setHeaderColor(headerColorOptions[Math.floor(Math.random() * headerColorOptions.length)]);
+    console.log(headerColor);
+  };
+
+  var saveColor = function saveColor() {
+    console.log('saving color');
   };
 
   var displayFollowButton = function displayFollowButton() {

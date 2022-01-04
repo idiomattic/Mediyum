@@ -51,7 +51,7 @@ const UserShowHeader = props => {
       <>
         <button className="change-color-button" onClick={() => changeColor()} >Change my Color Theme</button>
         {
-          headerColorChanged ? <p className="save">Save Changes</p> : null
+          headerColorChanged ? <p className="save" onClick={() => saveColor()}>Save</p> : null
         }
       </>
       )
@@ -59,7 +59,12 @@ const UserShowHeader = props => {
     
   const changeColor = () => {
     setHeaderColorChanged(true)
-    return <p className="save">Save</p>
+    setHeaderColor(headerColorOptions[Math.floor(Math.random() * headerColorOptions.length)])
+    console.log(headerColor)
+  }
+
+  const saveColor = () => {
+    console.log('saving color')
   }
 
   const displayFollowButton = () => {
