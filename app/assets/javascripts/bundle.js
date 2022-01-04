@@ -1823,8 +1823,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var UserShowHeader = function UserShowHeader(props) {
   var user = props.user,
       currentUser = props.currentUser,
-      followers = props.followers;
-  console.log('user prop in UserShowHeader', user);
+      followers = props.followers,
+      history = props.history;
 
   if (!user) {
     return null;
@@ -1833,7 +1833,7 @@ var UserShowHeader = function UserShowHeader(props) {
   var follow = {
     follower_id: props.currentUserId,
     followed_user_id: props.userId
-  }; // debugger
+  };
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(Boolean(followers[currentUser.id])),
       _useState2 = _slicedToArray(_useState, 2),
@@ -1898,7 +1898,7 @@ var UserShowHeader = function UserShowHeader(props) {
   var userPhoto = currentUser.photoUrl ? currentUser.photoUrl : 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png';
 
   var redirectToShow = function redirectToShow() {
-    console.log('in new func');
+    history.push("/users/".concat(user.id));
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {

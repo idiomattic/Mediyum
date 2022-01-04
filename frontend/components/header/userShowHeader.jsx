@@ -3,15 +3,15 @@ import UserNavContainer from "../user_nav/user_nav_container"
 import { withRouter } from "react-router"
 
 const UserShowHeader = props => {
-  const {user, currentUser, followers} = props
-  console.log('user prop in UserShowHeader', user)
+  const {user, currentUser, followers, history} = props
+  
   if (!user) {return null}
   
   const follow = {
     follower_id: props.currentUserId,
     followed_user_id: props.userId
   }
-  // debugger
+
   const [following, setFollowing] = useState(Boolean(followers[currentUser.id]))
   
   const followerCount = () => {
@@ -59,7 +59,7 @@ const UserShowHeader = props => {
   let userPhoto = currentUser.photoUrl ? currentUser.photoUrl : 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png'
 
   const redirectToShow = () => {
-    console.log('in new func')
+    history.push(`/users/${user.id}`)
   }
   
   return (
