@@ -69,8 +69,8 @@ class RecipeShow extends React.Component {
           {this.isOwner()}
         </div>
         <br />
-        <div className='recipe-info'>
-          <img className='recipe-author-photo' src={recipe.author.photoUrl}/>
+        <div className='recipe-info' >
+          <img className='recipe-author-photo' src={recipe.author.photoUrl} onClick={() => this.redirectToShow(recipe.author_id)}/>
           <div className='author' onClick={() => this.redirectToShow(recipe.author_id)}>{recipe.author.name}</div>
         </div>
         <img src={recipe.photoUrl} alt={recipe.title} className='recipe-photo'/>

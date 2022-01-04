@@ -2504,7 +2504,10 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
         className: "recipe-info"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         className: "recipe-author-photo",
-        src: recipe.author.photoUrl
+        src: recipe.author.photoUrl,
+        onClick: function onClick() {
+          return _this5.redirectToShow(recipe.author_id);
+        }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "author",
         onClick: function onClick() {
