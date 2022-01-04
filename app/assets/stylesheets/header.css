@@ -116,6 +116,15 @@
   margin-bottom: 20px;
 }
 
+.user-show-header-left {
+  display: flex;
+  align-items: center;
+}
+
+.user-show-header-left > :not(:last-child) {
+  margin-right: 20px;
+}
+
 .user-show-header *, .user-show-header > button.green-button {
   font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

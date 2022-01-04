@@ -64,9 +64,11 @@ const UserShowHeader = props => {
   
   return (
     <div className='user-show-header'>
-      <h2 className='user-title' onClick={() => redirectToShow()}>{user.name}</h2>
-      {followerCount()}
-      {isSelf()}
+      <div className="user-show-header-left">
+        <h2 className='user-title' onClick={() => redirectToShow()}>{user.name}</h2>
+        {followerCount()}
+        {isSelf()}
+      </div>
       <div className='user-show-nav-spacer'></div>
       <div className='user-nav' onClick={() => props.displayModal()}>
         <img className='user-photo' src={userPhoto} alt="img" />
