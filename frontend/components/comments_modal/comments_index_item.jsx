@@ -43,8 +43,9 @@ class CommentsIndexItem extends React.Component {
   }
 
   redirectToShow() {
-    let {comment} = this.props
-    this.props.history.push(`/users/${comment.commenter_id}`)
+    let {comment, hideModal, history} = this.props
+    hideModal()
+    history.push(`/users/${comment.commenter_id}`)
   }
 
   toggleEditing() {

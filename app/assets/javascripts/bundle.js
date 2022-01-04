@@ -1050,8 +1050,12 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "redirectToShow",
     value: function redirectToShow() {
-      var comment = this.props.comment;
-      this.props.history.push("/users/".concat(comment.commenter_id));
+      var _this$props2 = this.props,
+          comment = _this$props2.comment,
+          hideModal = _this$props2.hideModal,
+          history = _this$props2.history;
+      hideModal();
+      history.push("/users/".concat(comment.commenter_id));
     }
   }, {
     key: "toggleEditing",
@@ -1118,6 +1122,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/comment_actions */ "./frontend/actions/comment_actions.js");
 /* harmony import */ var _actions_yum_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/yum_actions */ "./frontend/actions/yum_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+
 
 
 
@@ -1144,6 +1150,9 @@ var mDTP = function mDTP(dispatch) {
     },
     createYum: function createYum(yum) {
       return dispatch((0,_actions_yum_actions__WEBPACK_IMPORTED_MODULE_3__.createYum)(yum));
+    },
+    hideModal: function hideModal() {
+      return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__.hideModal)());
     }
   };
 };
