@@ -20,7 +20,7 @@ class RecipeShow extends React.Component {
   }
   
   editRecipe() {
-    this.props.history.push(`/recipes/${this.props.recipeId}/edit`)
+    this.props.history.push(`/recipes/show/${this.props.recipeId}/edit`)
   }
 
   isOwner() {

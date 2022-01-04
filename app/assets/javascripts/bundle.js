@@ -689,11 +689,11 @@ var App = function App() {
     component: _header_header_container__WEBPACK_IMPORTED_MODULE_2__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     exact: true,
-    path: "/recipes/new",
+    path: "/recipes/create/new",
     component: null
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     exact: true,
-    path: "/recipes/:recipeId",
+    path: "/recipes/show/:recipeId",
     component: _header_user_show_header_container__WEBPACK_IMPORTED_MODULE_10__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     exact: true,
@@ -715,15 +715,15 @@ var App = function App() {
     component: _home_home_container__WEBPACK_IMPORTED_MODULE_3__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     exact: true,
-    path: "/recipes/new",
+    path: "/recipes/create/new",
     component: _recipe_create_recipe_form_container__WEBPACK_IMPORTED_MODULE_5__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     exact: true,
-    path: "/recipes/:recipeId",
+    path: "/recipes/show/:recipeId",
     component: _recipe_recipe_show_container__WEBPACK_IMPORTED_MODULE_7__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     exact: true,
-    path: "/recipes/:recipeId/edit",
+    path: "/recipes/show/:recipeId/edit",
     component: _recipe_update_recipe_form_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     exact: true,
@@ -1433,7 +1433,7 @@ var DropdownModal = /*#__PURE__*/function (_React$Component) {
     key: "redirectToRecipeForm",
     value: function redirectToRecipeForm() {
       this.props.hideModal();
-      this.props.history.push('/recipes/new');
+      this.props.history.push('/recipes/create/new');
     }
   }, {
     key: "redirectToFeed",
@@ -1474,7 +1474,7 @@ var DropdownModal = /*#__PURE__*/function (_React$Component) {
       }, currentUser.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
         className: "write-recipe"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-        to: "/recipes/new",
+        to: "/recipes/create/new",
         onClick: function onClick() {
           return _this.redirectToRecipeForm();
         }
@@ -2634,7 +2634,7 @@ var RecipeShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "editRecipe",
     value: function editRecipe() {
-      this.props.history.push("/recipes/".concat(this.props.recipeId, "/edit"));
+      this.props.history.push("/recipes/show/".concat(this.props.recipeId, "/edit"));
     }
   }, {
     key: "isOwner",
@@ -3030,7 +3030,7 @@ var RecipesIndexItem = /*#__PURE__*/function (_React$Component) {
     key: "handleClick",
     value: function handleClick() {
       if (this.props.currentUserId) {
-        this.props.history.push("/recipes/".concat(this.props.recipe.id));
+        this.props.history.push("/recipes/show/".concat(this.props.recipe.id));
       } else {
         this.props.displayModal('Sign In');
       }
@@ -3221,7 +3221,7 @@ var UpdateRecipeForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "redirectToShow",
     value: function redirectToShow() {
-      this.props.history.push("/recipes/".concat(this.state.id));
+      this.props.history.push("/recipes/show/".concat(this.state.id));
     }
   }, {
     key: "handleSubmit",
@@ -3281,7 +3281,7 @@ var UpdateRecipeForm = /*#__PURE__*/function (_React$Component) {
       }
 
       if (author.id !== currentUserId) {
-        this.props.history.push("/recipes/".concat(currentRecipeId));
+        this.props.history.push("/recipes/show/".concat(currentRecipeId));
       }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -3454,7 +3454,7 @@ var UserRecipesIndexItem = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           history = _this$props.history,
           recipe = _this$props.recipe;
-      history.push("/recipes/".concat(recipe.id));
+      history.push("/recipes/show/".concat(recipe.id));
     }
   }, {
     key: "truncatedBody",
