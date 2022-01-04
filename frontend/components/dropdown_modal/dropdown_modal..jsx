@@ -14,7 +14,7 @@ class DropdownModal extends React.Component {
 
   redirectToRecipeForm() {
     this.props.hideModal()
-    this.props.history.push('/recipes/new')
+    this.props.history.push('/recipes/create/new')
   }
 
   redirectToFeed() {
@@ -37,7 +37,7 @@ class DropdownModal extends React.Component {
           <Link className='user-name-link' to={`/users/${currentUserId}`} >{currentUser.name}</Link>
         </li>
         <li className='write-recipe'>
-          <Link to='/recipes/new' onClick={() => this.redirectToRecipeForm()}>Write a recipe</Link>
+          <Link to='/recipes/create/new' onClick={() => this.redirectToRecipeForm()}>Write a recipe</Link>
         </li>
         <li className='recipes-link'>
           <Link to='/feed' onClick={() => this.redirectToFeed()}>Recipes</Link>

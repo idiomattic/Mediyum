@@ -13,10 +13,11 @@ class RecipesIndexItem extends React.Component {
   }
 
   handleClick() {
-    if (this.props.currentUserId) {
-      this.props.history.push(`/recipes/${this.props.recipe.id}`)
+    let {currentUserId, history, displayModal, recipe} = this.props
+    if (currentUserId) {
+      history.push(`/users/${recipe.author_id}/recipes/${recipe.id}`)
     } else {
-      this.props.displayModal('Sign In')
+      displayModal('Sign In')
     }
   }
 

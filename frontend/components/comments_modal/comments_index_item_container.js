@@ -2,6 +2,7 @@ import CommentsIndexItem from "./comments_index_item";
 import { connect } from "react-redux";
 import { fetchComments, createComment, deleteComment, updateComment } from "../../actions/comment_actions";
 import { createYum } from "../../actions/yum_actions";
+import { hideModal } from '../../actions/modal_actions'
 
 const _nullComments = []
 
@@ -18,7 +19,8 @@ const mSTP = (state, ownProps) => {
 const mDTP = dispatch => ({
   deleteComment: commentId => dispatch(deleteComment(commentId)),
   updateComment: comment => dispatch(updateComment(comment)),
-  createYum: yum => dispatch(createYum(yum))
+  createYum: yum => dispatch(createYum(yum)),
+  hideModal: () => dispatch(hideModal())
 });
 
 export default connect(mSTP, mDTP)(CommentsIndexItem);

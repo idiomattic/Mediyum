@@ -9,7 +9,7 @@ class UserRecipesIndexItem extends React.Component {
 
   handleClick() {
     let {history, recipe} = this.props
-    history.push(`/recipes/${recipe.id}`)
+    history.push(`/users/${recipe.author_id}/recipes/${recipe.id}`)
   }
 
   truncatedBody() {
