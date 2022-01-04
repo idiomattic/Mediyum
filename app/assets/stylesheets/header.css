@@ -137,6 +137,10 @@
   cursor: pointer;
 }
 
+.user-show-header-left > .save {
+  white-space: nowrap;
+}
+
 .change-color-button {
   white-space: nowrap;
   color: white;

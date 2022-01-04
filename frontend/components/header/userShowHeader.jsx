@@ -27,6 +27,8 @@ const UserShowHeader = props => {
   }
 
   const [following, setFollowing] = useState(Boolean(followers[currentUserId]))
+  const [headerColorChanged, setHeaderColorChanged] = useState(false)
+  const [headerColor, setHeaderColor] = useState(user.color_code)
   
   const followerCount = () => {
     let followersCount = !followers ? 0 : Object.values(followers).length
@@ -46,12 +48,18 @@ const UserShowHeader = props => {
 
   const changeColorButton = () => {
     return(
-      <button className="change-color-button" onClick={() => changeColor()} >Change my Color Theme</button>
-    )
-  }
-
+      <>
+        <button className="change-color-button" onClick={() => changeColor()} >Change my Color Theme</button>
+        {
+          headerColorChanged ? <p className="save">Save Changes</p> : null
+        }
+      </>
+      )
+    }
+    
   const changeColor = () => {
-
+    setHeaderColorChanged(true)
+    return <p className="save">Save</p>
   }
 
   const displayFollowButton = () => {

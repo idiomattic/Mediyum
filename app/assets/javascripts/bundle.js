@@ -1845,6 +1845,16 @@ var UserShowHeader = function UserShowHeader(props) {
       following = _useState2[0],
       setFollowing = _useState2[1];
 
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      headerColorChanged = _useState4[0],
+      setHeaderColorChanged = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(user.color_code),
+      _useState6 = _slicedToArray(_useState5, 2),
+      headerColor = _useState6[0],
+      setHeaderColor = _useState6[1];
+
   var followerCount = function followerCount() {
     var followersCount = !followers ? 0 : Object.values(followers).length;
     var unit = followersCount === 1 ? 'Follower' : 'Followers';
@@ -1864,15 +1874,22 @@ var UserShowHeader = function UserShowHeader(props) {
   };
 
   var changeColorButton = function changeColorButton() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
       className: "change-color-button",
       onClick: function onClick() {
         return changeColor();
       }
-    }, "Change my Color Theme");
+    }, "Change my Color Theme"), headerColorChanged ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+      className: "save"
+    }, "Save Changes") : null);
   };
 
-  var changeColor = function changeColor() {};
+  var changeColor = function changeColor() {
+    setHeaderColorChanged(true);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+      className: "save"
+    }, "Save");
+  };
 
   var displayFollowButton = function displayFollowButton() {
     var followers = props.followers;
