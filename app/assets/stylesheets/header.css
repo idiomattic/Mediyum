@@ -133,6 +133,6 @@
   margin: 0 25px 0 0;
 }
 
-.user-show-header > h2.user-title {
+.user-show-header-left > h2.user-title {
   cursor: pointer;
 }
