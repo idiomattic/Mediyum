@@ -1,8 +1,6 @@
 import React from "react"
 import { withRouter } from "react-router"
 import UserRecipesIndexItem from "../recipe/user_recipes_index_item"
-import UserShowHeaderContainer from "../header/user_show_header_container"
-
 
 class UserShow extends React.Component {
   constructor(props) {
@@ -94,18 +92,6 @@ class UserShow extends React.Component {
     }
     return(
       <div className='user-show'>
-        {/* <div className='user-show-header'>
-          <h2 className='user-title'>{user.name}</h2>
-          {this.followerCount()}
-          {this.isSelf()}
-          <div className='user-show-nav-spacer'></div>
-          <div className='user-nav' onClick={() => this.props.displayModal()}>
-            <img className='user-photo' src={userPhoto} alt="img" />
-          </div>
-          <form className='user-photo-form' onSubmit={this.handleSubmit} id='user-photo-form'></form>
-        </div> */}
-        {/* <UserShowHeaderContainer path={`/users/${userId}`}/> */}
-        <br />
         {this.myRecipes()}
       </div>
     )

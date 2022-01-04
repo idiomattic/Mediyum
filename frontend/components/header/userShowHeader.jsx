@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import UserNavContainer from "../user_nav/user_nav_container"
-import { useLocation, useHistory, withRouter } from "react-router"
+import { withRouter } from "react-router"
 
 const UserShowHeader = props => {
   const {user, currentUser} = props
@@ -56,6 +56,8 @@ const UserShowHeader = props => {
   }
 
   let userPhoto = currentUser.photoUrl ? currentUser.photoUrl : 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png'
+
+  console.log('in user show header')
   
   return (
     <div className='user-show-header'>

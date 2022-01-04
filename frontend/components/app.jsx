@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route, Redirect, Routes, Link, HashRouter } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import { AuthRoute, ProtectedRoute } from '../util/route_util'
 import HeaderContainer from './header/header_container'
 import HomeContainer from './home/home_container'
@@ -18,7 +18,7 @@ const App = () => {
       <AuthRoute exact path='/' component={HeaderContainer}/>
       <Route path='/feed' component={HeaderContainer}/>
       <Route exact path='/recipes/new' component={null}/>
-      <Route exact path='/recipes/:recipeId' component={HeaderContainer}/>
+      <Route exact path='/recipes/:recipeId' component={UserShowHeaderContainer}/>
       <Route exact path='/users/:userId' component={UserShowHeaderContainer}/>
     </Switch>
     <AuthRoute exact path='/' component={HomeContainer}/>
