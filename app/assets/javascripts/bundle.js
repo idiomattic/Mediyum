@@ -688,11 +688,12 @@ var App = function App() {
     path: "/feed",
     component: _header_header_container__WEBPACK_IMPORTED_MODULE_2__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
-    path: "/recipes/show/:recipeId",
+    exact: true,
+    path: "/users/:userId",
     component: _header_user_show_header_container__WEBPACK_IMPORTED_MODULE_10__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     exact: true,
-    path: "/users/:userId",
+    path: "/users/:authorId/recipes/:recipeId",
     component: _header_user_show_header_container__WEBPACK_IMPORTED_MODULE_10__["default"]
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.AuthRoute, {
     exact: true,
@@ -714,16 +715,16 @@ var App = function App() {
     component: _recipe_create_recipe_form_container__WEBPACK_IMPORTED_MODULE_5__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     exact: true,
-    path: "/recipes/show/:recipeId",
-    component: _recipe_recipe_show_container__WEBPACK_IMPORTED_MODULE_7__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
-    exact: true,
     path: "/recipes/show/:recipeId/edit",
     component: _recipe_update_recipe_form_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     exact: true,
     path: "/users/:userId",
     component: _users_user_show_container__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
+    exact: true,
+    path: "/users/:authorId/recipes/:recipeId",
+    component: _recipe_recipe_show_container__WEBPACK_IMPORTED_MODULE_7__["default"]
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("footer", {
     className: "app-footer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
@@ -1821,7 +1822,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var UserShowHeader = function UserShowHeader(props) {
   var user = props.user,
-      currentUser = props.currentUser;
+      currentUser = props.currentUser,
+      fetchUser = props.fetchUser;
   console.log('user prop in UserShowHeader', user);
 
   if (!user) {
@@ -1895,7 +1897,7 @@ var UserShowHeader = function UserShowHeader(props) {
   };
 
   var userPhoto = currentUser.photoUrl ? currentUser.photoUrl : 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png';
-  console.log('in user show header');
+  console.log('in user show header before render');
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "user-show-header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
@@ -1933,6 +1935,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _userShowHeader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./userShowHeader */ "./frontend/components/header/userShowHeader.jsx");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 /* harmony import */ var _actions_follow_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/follow_actions */ "./frontend/actions/follow_actions.js");
+/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/user_actions */ "./frontend/actions/user_actions.js");
+
 
 
 
@@ -1940,15 +1944,19 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(state, _ref) {
   var match = _ref.match;
-  var userId;
+  var _match$params = match.params,
+      authorId = _match$params.authorId,
+      recipeId = _match$params.recipeId,
+      userId = _match$params.userId;
+  var shownUserId;
 
-  if (match.params.userId) {
-    userId = parseInt(match.params.userId);
-  } else if (match.params.recipeId) {
-    userId = state.entities.users[match.params.recipeId];
+  if (userId) {
+    shownUserId = parseInt(userId);
+  } else if (authorId) {
+    shownUserId = parseInt(authorId);
   }
 
-  var user = state.entities.users[userId];
+  var user = state.entities.users[shownUserId];
   var currentUserId = state.session.currentUserId;
   return {
     currentUserId: currentUserId,
@@ -1964,6 +1972,9 @@ var mDTP = function mDTP(dispatch) {
   return {
     displayModal: function displayModal() {
       return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__.displayModal)('Dropdown'));
+    },
+    fetchUser: function fetchUser(userId) {
+      return dispatch((0,_actions_user_actions__WEBPACK_IMPORTED_MODULE_4__.fetchUser)(userId));
     },
     createFollow: function createFollow(follow) {
       return dispatch((0,_actions_follow_actions__WEBPACK_IMPORTED_MODULE_3__.createFollow)(follow));
@@ -3032,10 +3043,16 @@ var RecipesIndexItem = /*#__PURE__*/function (_React$Component) {
   _createClass(RecipesIndexItem, [{
     key: "handleClick",
     value: function handleClick() {
-      if (this.props.currentUserId) {
-        this.props.history.push("/recipes/show/".concat(this.props.recipe.id));
+      var _this$props = this.props,
+          currentUserId = _this$props.currentUserId,
+          history = _this$props.history,
+          displayModal = _this$props.displayModal,
+          recipe = _this$props.recipe;
+
+      if (currentUserId) {
+        history.push("/users/".concat(recipe.author_id, "/recipes/").concat(recipe.id));
       } else {
-        this.props.displayModal('Sign In');
+        displayModal('Sign In');
       }
     }
   }, {
@@ -3224,7 +3241,10 @@ var UpdateRecipeForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "redirectToShow",
     value: function redirectToShow() {
-      this.props.history.push("/recipes/show/".concat(this.state.id));
+      var _this$props2 = this.props,
+          history = _this$props2.history,
+          recipe = _this$props2.recipe;
+      history.push("/users/".concat(recipe.author_id, "/recipes/").concat(this.state.id));
     }
   }, {
     key: "handleSubmit",
@@ -3249,10 +3269,10 @@ var UpdateRecipeForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleDelete",
     value: function handleDelete() {
-      var _this$props2 = this.props,
-          deleteRecipe = _this$props2.deleteRecipe,
-          currentRecipeId = _this$props2.currentRecipeId,
-          history = _this$props2.history;
+      var _this$props3 = this.props,
+          deleteRecipe = _this$props3.deleteRecipe,
+          currentRecipeId = _this$props3.currentRecipeId,
+          history = _this$props3.history;
       deleteRecipe(currentRecipeId).then(function (res) {
         history.push('/feed');
       });
@@ -3273,18 +3293,18 @@ var UpdateRecipeForm = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this5 = this;
 
-      var _this$props3 = this.props,
-          author = _this$props3.author,
-          currentUserId = _this$props3.currentUserId,
-          currentRecipeId = _this$props3.currentRecipeId,
-          recipe = _this$props3.recipe;
+      var _this$props4 = this.props,
+          author = _this$props4.author,
+          currentUserId = _this$props4.currentUserId,
+          currentRecipeId = _this$props4.currentRecipeId,
+          recipe = _this$props4.recipe;
 
       if (!currentRecipeId || !recipe || !this.state) {
         return null;
       }
 
       if (author.id !== currentUserId) {
-        this.props.history.push("/recipes/show/".concat(currentRecipeId));
+        this.props.history.push("/users/".concat(author.id, "/recipes/").concat(currentRecipeId));
       }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -3457,7 +3477,7 @@ var UserRecipesIndexItem = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           history = _this$props.history,
           recipe = _this$props.recipe;
-      history.push("/recipes/show/".concat(recipe.id));
+      history.push("/users/".concat(recipe.author_id, "/recipes/").concat(recipe.id));
     }
   }, {
     key: "truncatedBody",

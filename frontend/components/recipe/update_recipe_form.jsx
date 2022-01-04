@@ -24,7 +24,8 @@ class UpdateRecipeForm extends React.Component {
   }
 
   redirectToShow() {
-    this.props.history.push(`/recipes/show/${this.state.id}`)
+    let {history, recipe} = this.props
+    history.push(`/users/${recipe.author_id}/recipes/${this.state.id}`)
   }
 
   handleSubmit(e) {
@@ -66,7 +67,7 @@ class UpdateRecipeForm extends React.Component {
       return null
     }
     if (author.id !== currentUserId) {
-      this.props.history.push(`/recipes/show/${currentRecipeId}`)
+      this.props.history.push(`/users/${author.id}/recipes/${currentRecipeId}`)
     }
     return(
       <div className='recipe-form-div'>

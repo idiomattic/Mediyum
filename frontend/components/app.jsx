@@ -17,9 +17,9 @@ const App = () => {
     <Switch>
       <AuthRoute exact path='/' component={HeaderContainer}/>
       <Route path='/feed' component={HeaderContainer}/>
-      <Route path='/recipes/show/:recipeId' component={UserShowHeaderContainer}/>
       {/* <Route exact path='/recipes/create/new' component={null}/> */}
       <Route exact path='/users/:userId' component={UserShowHeaderContainer}/>
+      <Route exact path='/users/:authorId/recipes/:recipeId' component={UserShowHeaderContainer}/>
     </Switch>
     <AuthRoute exact path='/' component={HomeContainer}/>
     <div className='app-body'>
@@ -27,9 +27,9 @@ const App = () => {
         <AuthRoute exact path='/' component={GuestRecipesIndexContainer}/>
         <ProtectedRoute exact path='/feed' component={HomeContainer}/>
         <ProtectedRoute exact path='/recipes/create/new' component={RecipeFormContainer}/>
-        <ProtectedRoute exact path='/recipes/show/:recipeId' component={RecipeShowContainer}/>
         <ProtectedRoute exact path='/recipes/show/:recipeId/edit' component={UpdateRecipeFormContainer}/>
         <ProtectedRoute exact path='/users/:userId' component={UserShowContainer}/>
+        <ProtectedRoute exact path='/users/:authorId/recipes/:recipeId' component={RecipeShowContainer}/>
       </Switch>
     </div>
     <footer className='app-footer'>
