@@ -1048,6 +1048,12 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "redirectToShow",
+    value: function redirectToShow() {
+      var comment = this.props.comment;
+      this.props.history.push("/users/".concat(comment.commenter_id));
+    }
+  }, {
     key: "toggleEditing",
     value: function toggleEditing() {
       this.setState({
@@ -1057,6 +1063,8 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
+
       var comment = this.props.comment;
 
       if (!comment || !comment.commenter) {
@@ -1072,7 +1080,10 @@ var CommentsIndexItem = /*#__PURE__*/function (_React$Component) {
       })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
         className: "comment-list-item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "comment-info"
+        className: "comment-info",
+        onClick: function onClick() {
+          return _this4.redirectToShow();
+        }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         className: "commenter-photo",
         src: userPhoto,

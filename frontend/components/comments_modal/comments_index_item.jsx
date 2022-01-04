@@ -42,7 +42,10 @@ class CommentsIndexItem extends React.Component {
       ))
   }
 
-
+  redirectToShow() {
+    let {comment} = this.props
+    this.props.history.push(`/users/${comment.commenter_id}`)
+  }
 
   toggleEditing() {
     this.setState({
@@ -62,7 +65,7 @@ class CommentsIndexItem extends React.Component {
       </li>
     ) : (
       <li className='comment-list-item'>
-        <div className='comment-info'>
+        <div className='comment-info' onClick={() => this.redirectToShow()}>
           <img className='commenter-photo' src={userPhoto} alt={comment.commenter.name} />
           <p className='commenter-name'>{comment.commenter.name}</p>
         </div>
