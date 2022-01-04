@@ -3887,39 +3887,7 @@ var UserShow = /*#__PURE__*/function (_React$Component) {
           userId = _this$props4.userId,
           currentUserId = _this$props4.currentUserId;
       return userId === currentUserId ? null : this.displayFollowButton();
-    } // photoButton() {
-    //   let {userId, currentUserId} = this.props
-    //   let fileLabel = this.state.photoFile ? this.state.photoFile.name : 'Choose your photo'
-    //   return userId === currentUserId ?             
-    //   <label className="photo-label">{fileLabel}
-    //     <input type="file" form='user-photo-form' className="photo-input" onChange={e => this.handleFile(e)}/>
-    //   </label>
-    //   : null
-    // }
-    // handleFile(e) {
-    //   this.setState({
-    //     photoFile: e.currentTarget.files[0]
-    //   })
-    // }
-    // showSaveButton() {
-    //   return this.state.photoFile ? <input className='publish' type="submit" value='Save' form='user-photo-form' /> : null
-    // }
-    // handleSubmit(e) {
-    //   e.preventDefault()
-    //   let {user} = this.props
-    //   // const formData = {}
-    //   // Object.assign(formData, user)
-    //   // formData['photo'] = this.state.photoFile
-    //   // let params = {user: formData}
-    //   // console.log('handleSubmit params',params)
-    //   const formData = new FormData()
-    //   formData.append('user[id]', user.id)
-    //   formData.append('user[photo]', this.state.photoFile)
-    //   console.log('formData', formData)
-    //   this.props.updateUser(formData, user.id)
-    //     .then(res => this.props.history.push(`/users/${user.id}`))
-    // }
-
+    }
   }, {
     key: "render",
     value: function render() {

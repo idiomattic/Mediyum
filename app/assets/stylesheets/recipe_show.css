@@ -15,13 +15,19 @@
 .recipe-title {
   margin-right: 20px;
   font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 48px;
-  font-weight: 800;
+  font-size: 46px;
+  font-weight: 750;
+  line-height: 56px;
 }
 
 .recipe-body {
   font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 21px;
+  line-height: 30px;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
 }
 
 .recipe-footer {
