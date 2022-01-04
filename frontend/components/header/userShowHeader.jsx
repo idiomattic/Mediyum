@@ -1,8 +1,11 @@
 import React, {useState} from "react"
 import UserNavContainer from "../user_nav/user_nav_container"
-import { useLocation, useHistory } from "react-router"
+import { useLocation, useHistory, withRouter } from "react-router"
 
 const UserShowHeader = props => {
+  const {user, currentUser} = props
+  if (!user) {return null}
+  
   const follow = {
     follower_id: props.currentUserId,
     followed_user_id: props.userId
@@ -51,6 +54,8 @@ const UserShowHeader = props => {
         .then(setFollowing(true))
     }
   }
+
+  let userPhoto = currentUser.photoUrl ? currentUser.photoUrl : 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png'
   
   return (
     <div className='user-show-header'>
@@ -61,9 +66,9 @@ const UserShowHeader = props => {
       <div className='user-nav' onClick={() => props.displayModal()}>
         <img className='user-photo' src={userPhoto} alt="img" />
       </div>
-      <form className='user-photo-form' onSubmit={handleSubmit} id='user-photo-form'></form>
+      {/* <form className='user-photo-form' onSubmit={handleSubmit} id='user-photo-form'></form> */}
     </div>
   )
 }
 
-export default UserShowHeader
+export default withRouter(UserShowHeader)
