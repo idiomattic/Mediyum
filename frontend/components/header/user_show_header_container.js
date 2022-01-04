@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import UserShowHeader from "./userShowHeader";
 import { displayModal } from "../../actions/modal_actions";
+import { createFollow, deleteFollow } from '../../actions/follow_actions'
 
 const mSTP = (state, {match}) => {
   const userId = parseInt(match.params.userId)

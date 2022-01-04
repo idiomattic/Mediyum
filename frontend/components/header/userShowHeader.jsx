@@ -43,14 +43,14 @@ const UserShowHeader = props => {
   }
 
   const toggleFollow = () => {
-    let {followers, currentUserId, receivedFollows} = props
+    let {followers, currentUserId, receivedFollows, deleteFollow, createFollow} = props
     let following = Boolean(followers[currentUserId])
     if (following) {
       let followToDelete = Object.values(receivedFollows).filter(follow => follow.follower_id === currentUserId)[0]
-      props.deleteFollow(followToDelete)
+      deleteFollow(followToDelete)
         .then(setFollowing(false))
     } else {
-      props.createFollow(follow)
+      createFollow(follow)
         .then(setFollowing(true))
     }
   }
@@ -66,7 +66,6 @@ const UserShowHeader = props => {
       <div className='user-nav' onClick={() => props.displayModal()}>
         <img className='user-photo' src={userPhoto} alt="img" />
       </div>
-      {/* <form className='user-photo-form' onSubmit={handleSubmit} id='user-photo-form'></form> */}
     </div>
   )
 }

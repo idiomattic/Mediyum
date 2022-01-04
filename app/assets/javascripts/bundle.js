@@ -1883,16 +1883,18 @@ var UserShowHeader = function UserShowHeader(props) {
   var toggleFollow = function toggleFollow() {
     var followers = props.followers,
         currentUserId = props.currentUserId,
-        receivedFollows = props.receivedFollows;
+        receivedFollows = props.receivedFollows,
+        deleteFollow = props.deleteFollow,
+        createFollow = props.createFollow;
     var following = Boolean(followers[currentUserId]);
 
     if (following) {
       var followToDelete = Object.values(receivedFollows).filter(function (follow) {
         return follow.follower_id === currentUserId;
       })[0];
-      props.deleteFollow(followToDelete).then(setFollowing(false));
+      deleteFollow(followToDelete).then(setFollowing(false));
     } else {
-      props.createFollow(follow).then(setFollowing(true));
+      createFollow(follow).then(setFollowing(true));
     }
   };
 
@@ -1933,6 +1935,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _userShowHeader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./userShowHeader */ "./frontend/components/header/userShowHeader.jsx");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _actions_follow_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/follow_actions */ "./frontend/actions/follow_actions.js");
+
 
 
 
@@ -1957,32 +1961,12 @@ var mDTP = function mDTP(dispatch) {
     displayModal: function displayModal() {
       return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__.displayModal)('Dropdown'));
     },
-    createFollow: function (_createFollow) {
-      function createFollow(_x) {
-        return _createFollow.apply(this, arguments);
-      }
-
-      createFollow.toString = function () {
-        return _createFollow.toString();
-      };
-
-      return createFollow;
-    }(function (follow) {
-      return dispatch(createFollow(follow));
-    }),
-    deleteFollow: function (_deleteFollow) {
-      function deleteFollow(_x2) {
-        return _deleteFollow.apply(this, arguments);
-      }
-
-      deleteFollow.toString = function () {
-        return _deleteFollow.toString();
-      };
-
-      return deleteFollow;
-    }(function (followId) {
-      return dispatch(deleteFollow(followId));
-    }),
+    createFollow: function createFollow(follow) {
+      return dispatch((0,_actions_follow_actions__WEBPACK_IMPORTED_MODULE_3__.createFollow)(follow));
+    },
+    deleteFollow: function deleteFollow(followId) {
+      return dispatch((0,_actions_follow_actions__WEBPACK_IMPORTED_MODULE_3__.deleteFollow)(followId));
+    },
     fetchFollows: function (_fetchFollows) {
       function fetchFollows() {
         return _fetchFollows.apply(this, arguments);
