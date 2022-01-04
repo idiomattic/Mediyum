@@ -1823,7 +1823,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var UserShowHeader = function UserShowHeader(props) {
   var user = props.user,
       currentUser = props.currentUser,
-      fetchUser = props.fetchUser;
+      fetchUser = props.fetchUser,
+      followers = props.followers;
   console.log('user prop in UserShowHeader', user);
 
   if (!user) {
@@ -1835,13 +1836,13 @@ var UserShowHeader = function UserShowHeader(props) {
     followed_user_id: props.userId
   };
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(Boolean(followers[currentUser.id])),
       _useState2 = _slicedToArray(_useState, 2),
       following = _useState2[0],
       setFollowing = _useState2[1];
 
   var followerCount = function followerCount() {
-    var followers = props.followers;
+    // let {followers} = props
     var followersCount = !followers ? 0 : Object.values(followers).length;
     var unit = followersCount === 1 ? 'Follower' : 'Followers';
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
