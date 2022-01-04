@@ -8,7 +8,6 @@ class SessionForm extends React.Component {
       email: '',
       password: '',
       name: '',
-      // photoFile: 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png'
       photoFile: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)

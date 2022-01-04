@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import UserShowHeader from "./userShowHeader";
 import { displayModal } from "../../actions/modal_actions";
 import { createFollow, deleteFollow } from '../../actions/follow_actions'
-import { fetchUser } from "../../actions/user_actions";
+import { fetchUser, updateUser } from "../../actions/user_actions";
 
 const mSTP = (state, {match}) => {
   let {authorId, recipeId, userId} = match.params
@@ -29,7 +29,8 @@ const mDTP = dispatch => ({
   fetchUser: userId => dispatch(fetchUser(userId)),
   createFollow: follow => dispatch(createFollow(follow)),
   deleteFollow: followId => dispatch(deleteFollow(followId)),
-  fetchFollows: () => dispatch(fetchFollows())
+  fetchFollows: () => dispatch(fetchFollows()),
+  updateUser: user => dispatch(updateUser(user))
 })
 
 export default connect(mSTP, mDTP)(UserShowHeader)

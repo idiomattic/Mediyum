@@ -3,7 +3,7 @@ import UserNavContainer from "../user_nav/user_nav_container"
 import { withRouter } from "react-router"
 
 const UserShowHeader = props => {
-  const {user, currentUserId, followers, history} = props
+  const {user, currentUserId, followers, history, updateUser} = props
 
   const headerColorOptions = [
     '#FFFFFF',
@@ -64,6 +64,11 @@ const UserShowHeader = props => {
 
   const saveColor = () => {
     console.log('saving color', headerColor)
+    updateUser({
+      id: currentUserId,
+      color_code: headerColor
+    })
+    setHeaderColorChanged(false)
   }
 
   const displayFollowButton = () => {

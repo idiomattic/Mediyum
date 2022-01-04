@@ -519,9 +519,9 @@ var fetchUser = function fetchUser(userId) {
     });
   };
 };
-var updateUser = function updateUser(user, userId) {
+var updateUser = function updateUser(user) {
   return function (dispatch) {
-    return _util_user_api_util__WEBPACK_IMPORTED_MODULE_0__.updateUser(user, userId).then(function (user) {
+    return _util_user_api_util__WEBPACK_IMPORTED_MODULE_0__.updateUser(user).then(function (user) {
       return dispatch(receiveUser(user));
     }, function (errors) {
       return dispatch(receiveUserErrors(errors.responseJSON));
@@ -1828,7 +1828,8 @@ var UserShowHeader = function UserShowHeader(props) {
   var user = props.user,
       currentUserId = props.currentUserId,
       followers = props.followers,
-      history = props.history;
+      history = props.history,
+      updateUser = props.updateUser;
   var headerColorOptions = ['#FFFFFF', '#FEF9E7', '#F9EBEA', '#FDEDEC', '#F5EEF8', '#EAF2F8', '#EBF5FB', '#E8F8F5', '#E9F7EF', '#EAFAF1', '#FBEEE6'];
 
   if (!user || !followers) {
@@ -1894,6 +1895,11 @@ var UserShowHeader = function UserShowHeader(props) {
 
   var saveColor = function saveColor() {
     console.log('saving color', headerColor);
+    updateUser({
+      id: currentUserId,
+      color_code: headerColor
+    });
+    setHeaderColorChanged(false);
   };
 
   var displayFollowButton = function displayFollowButton() {
@@ -2043,7 +2049,10 @@ var mDTP = function mDTP(dispatch) {
       return fetchFollows;
     }(function () {
       return dispatch(fetchFollows());
-    })
+    }),
+    updateUser: function updateUser(user) {
+      return dispatch((0,_actions_user_actions__WEBPACK_IMPORTED_MODULE_4__.updateUser)(user));
+    }
   };
 };
 
@@ -3652,7 +3661,6 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       email: '',
       password: '',
       name: '',
-      // photoFile: 'https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png'
       photoFile: null
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
@@ -5122,11 +5130,13 @@ var fetchUser = function fetchUser(userId) {
     url: "/api/users/".concat(userId)
   });
 };
-var updateUser = function updateUser(user, userId) {
+var updateUser = function updateUser(user) {
   return $.ajax({
     method: 'PATCH',
-    url: "/api/users/".concat(userId),
-    data: user
+    url: "/api/users/".concat(user.id),
+    data: {
+      user: user
+    }
   });
 };
 var deleteUser = function deleteUser(userId) {

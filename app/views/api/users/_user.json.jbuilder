@@ -1,5 +1,5 @@
 # json.extract! user, :id, :name, :email
-json.(user, :id, :name, :email)
+json.(user, :id, :name, :email, :color_code)
 
 json.recipes user.recipes
 
