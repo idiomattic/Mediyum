@@ -1834,8 +1834,7 @@ var UserShowHeader = function UserShowHeader(props) {
 
   if (!user || !followers) {
     return null;
-  } // console.log('user.color_code', user.color_code)
-
+  }
 
   var follow = {
     follower_id: currentUserId,
@@ -1857,8 +1856,7 @@ var UserShowHeader = function UserShowHeader(props) {
       headerColor = _useState6[0],
       setHeaderColor = _useState6[1];
 
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    console.log('in use effect');
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {// console.log('in use effect')
   }, [headerColor]);
 
   var followerCount = function followerCount() {
@@ -1875,9 +1873,9 @@ var UserShowHeader = function UserShowHeader(props) {
 
   var isSelf = function isSelf() {
     var user = props.user,
-        currentUserId = props.currentUserId; // debugger
-
-    return user.id == currentUserId ? changeColorButton() : displayFollowButton();
+        currentUserId = props.currentUserId,
+        path = props.path;
+    return user.id == currentUserId ? path === "/users/:userId" ? changeColorButton() : null : displayFollowButton();
   };
 
   var changeColorButton = function changeColorButton() {
@@ -1886,12 +1884,17 @@ var UserShowHeader = function UserShowHeader(props) {
       onClick: function onClick() {
         return changeColor();
       }
-    }, "Change my Color Theme"), headerColorChanged ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-      className: "save",
+    }, "Change my Color Theme"), headerColorChanged ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+      className: "save color-button",
       onClick: function onClick() {
         return saveColor();
       }
-    }, "Save") : null);
+    }, "Save"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+      className: "cancel color-button",
+      onClick: function onClick() {
+        return cancelColorChange();
+      }
+    }, "Cancel")) : null);
   };
 
   var changeColor = function changeColor() {
@@ -1900,11 +1903,15 @@ var UserShowHeader = function UserShowHeader(props) {
   };
 
   var saveColor = function saveColor() {
-    console.log('saving color', headerColor);
     updateUser({
       id: currentUserId,
       color_code: headerColor
     });
+    setHeaderColorChanged(false);
+  };
+
+  var cancelColorChange = function cancelColorChange() {
+    setHeaderColor(user.color_code || '#FFFFFF');
     setHeaderColorChanged(false);
   };
 
@@ -2020,6 +2027,7 @@ var mSTP = function mSTP(state, _ref) {
   var user = state.entities.users[shownUserId];
   var currentUserId = state.session.currentUserId;
   return {
+    path: match.path,
     currentUserId: currentUserId,
     currentUser: state.entities.users[currentUserId],
     user: user,

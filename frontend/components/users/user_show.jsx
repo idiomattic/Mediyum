@@ -17,6 +17,7 @@ class UserShow extends React.Component {
     this.props.fetchUser(this.props.userId)
   }
 
+
   myRecipes() {
     let {user, currentUserId, userId} = this.props
     let message = currentUserId === userId ? 'You have' : `${user.name} has`

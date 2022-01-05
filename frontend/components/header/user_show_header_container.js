@@ -15,6 +15,7 @@ const mSTP = (state, {match}) => {
   const user = state.entities.users[shownUserId]
   const currentUserId = state.session.currentUserId
   return({
+    path: match.path,
     currentUserId,
     currentUser: state.entities.users[currentUserId],
     user,

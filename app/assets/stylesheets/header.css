@@ -154,3 +154,11 @@
   background: rgb(54, 63, 63);
 
 }
+
+.color-button {
+  cursor: pointer;
+}
+
+.cancel.color-button {
+  color: rgb(201, 74, 74);;
+}

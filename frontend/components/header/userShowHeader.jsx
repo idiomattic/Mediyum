@@ -20,7 +20,7 @@ const UserShowHeader = props => {
   ]
   
   if (!user || !followers) {return null}
-  // console.log('user.color_code', user.color_code)
+
   const follow = {
     follower_id: currentUserId,
     followed_user_id: props.userId
@@ -31,7 +31,7 @@ const UserShowHeader = props => {
   const [headerColor, setHeaderColor] = useState(user.color_code || '#FFFFFF')
 
   useEffect(() => {
-    console.log('in use effect')
+    // console.log('in use effect')
   }, [headerColor])
   
   const followerCount = () => {
@@ -46,9 +46,10 @@ const UserShowHeader = props => {
   }
 
   const isSelf = () => {
-    let {user, currentUserId} = props
-    // debugger
-    return user.id == currentUserId ? changeColorButton() : displayFollowButton()
+    let {user, currentUserId, path} = props
+    return user.id == currentUserId ? 
+      path === "/users/:userId" ? changeColorButton() : null
+        : displayFollowButton()
   }
 
   const changeColorButton = () => {
@@ -56,7 +57,12 @@ const UserShowHeader = props => {
       <>
         <button className="change-color-button" onClick={() => changeColor()} >Change my Color Theme</button>
         {
-          headerColorChanged ? <p className="save" onClick={() => saveColor()}>Save</p> : null
+          headerColorChanged ? 
+            <>
+              <p className="save color-button" onClick={() => saveColor()}>Save</p>
+              <p className='cancel color-button' onClick={() => cancelColorChange()}>Cancel</p>
+            </>
+            : null
         }
       </>
       )
@@ -68,11 +74,15 @@ const UserShowHeader = props => {
   }
 
   const saveColor = () => {
-    console.log('saving color', headerColor)
     updateUser({
       id: currentUserId,
       color_code: headerColor
     })
+    setHeaderColorChanged(false)
+  }
+
+  const cancelColorChange = () => {
+    setHeaderColor(user.color_code || '#FFFFFF')
     setHeaderColorChanged(false)
   }
 
