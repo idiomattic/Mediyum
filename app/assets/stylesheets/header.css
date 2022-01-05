@@ -142,6 +142,7 @@
 }
 
 .change-color-button {
+  cursor: pointer;
   white-space: nowrap;
   color: white;
   border-color: rgb(54, 63, 63);
