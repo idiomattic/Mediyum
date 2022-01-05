@@ -1834,7 +1834,8 @@ var UserShowHeader = function UserShowHeader(props) {
 
   if (!user || !followers) {
     return null;
-  }
+  } // console.log('user.color_code', user.color_code)
+
 
   var follow = {
     follower_id: currentUserId,
@@ -1856,6 +1857,10 @@ var UserShowHeader = function UserShowHeader(props) {
       headerColor = _useState6[0],
       setHeaderColor = _useState6[1];
 
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    console.log('in use effect');
+  }, [headerColor]);
+
   var followerCount = function followerCount() {
     var followersCount = !followers ? 0 : Object.values(followers).length;
     var unit = followersCount === 1 ? 'Follower' : 'Followers';
@@ -1869,9 +1874,10 @@ var UserShowHeader = function UserShowHeader(props) {
   };
 
   var isSelf = function isSelf() {
-    var userId = props.userId,
-        currentUserId = props.currentUserId;
-    return userId == currentUserId ? changeColorButton() : displayFollowButton();
+    var user = props.user,
+        currentUserId = props.currentUserId; // debugger
+
+    return user.id == currentUserId ? changeColorButton() : displayFollowButton();
   };
 
   var changeColorButton = function changeColorButton() {

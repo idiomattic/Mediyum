@@ -24,6 +24,7 @@
   margin-top: 40px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .recipe-title {
@@ -84,7 +85,10 @@
 
 .recipe-photo {
   vertical-align: middle;
-  width: 100%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
   margin-bottom: 20px;
 }
 

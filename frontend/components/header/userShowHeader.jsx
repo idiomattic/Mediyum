@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import UserNavContainer from "../user_nav/user_nav_container"
 import { withRouter } from "react-router"
 
@@ -20,7 +20,7 @@ const UserShowHeader = props => {
   ]
   
   if (!user || !followers) {return null}
-  
+  // console.log('user.color_code', user.color_code)
   const follow = {
     follower_id: currentUserId,
     followed_user_id: props.userId
@@ -29,6 +29,10 @@ const UserShowHeader = props => {
   const [following, setFollowing] = useState(Boolean(followers[currentUserId]))
   const [headerColorChanged, setHeaderColorChanged] = useState(false)
   const [headerColor, setHeaderColor] = useState(user.color_code || '#FFFFFF')
+
+  useEffect(() => {
+    console.log('in use effect')
+  }, [headerColor])
   
   const followerCount = () => {
     let followersCount = !followers ? 0 : Object.values(followers).length
@@ -42,8 +46,9 @@ const UserShowHeader = props => {
   }
 
   const isSelf = () => {
-    let {userId, currentUserId} = props
-    return userId == currentUserId ? changeColorButton() : displayFollowButton()
+    let {user, currentUserId} = props
+    // debugger
+    return user.id == currentUserId ? changeColorButton() : displayFollowButton()
   }
 
   const changeColorButton = () => {
