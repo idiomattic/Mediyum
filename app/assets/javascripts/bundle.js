@@ -1946,7 +1946,6 @@ var UserShowHeader = function UserShowHeader(props) {
       var followToDelete = Object.values(receivedFollows).filter(function (follow) {
         return follow.follower_id === currentUserId;
       })[0];
-      debugger;
       deleteFollow(followToDelete).then(setFollowing(false));
     } else {
       createFollow(follow).then(setFollowing(true));
@@ -4395,6 +4394,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     case _actions_user_actions__WEBPACK_IMPORTED_MODULE_2__.RECEIVE_USER:
       action.user.received_follows.forEach(function (receivedFollow) {
+        nextState[receivedFollow.id] = receivedFollow;
+      });
+      return nextState;
+
+    case _actions_recipe_actions__WEBPACK_IMPORTED_MODULE_1__.RECEIVE_RECIPE:
+      action.recipe.author.received_follows.forEach(function (receivedFollow) {
         nextState[receivedFollow.id] = receivedFollow;
       });
       return nextState;
@@ -43458,7 +43463,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  // let store = configureStore()
   var store;
 
   if (window.currentUser) {

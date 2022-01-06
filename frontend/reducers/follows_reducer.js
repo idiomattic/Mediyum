@@ -1,5 +1,5 @@
 import { RECEIVE_FOLLOWS, RECEIVE_FOLLOW, REMOVE_FOLLOW } from "../actions/follow_actions";
-import { RECEIVE_RECIPES } from "../actions/recipe_actions";
+import { RECEIVE_RECIPE, RECEIVE_RECIPES } from "../actions/recipe_actions";
 import { RECEIVE_USER } from "../actions/user_actions";
 
 export default (state={}, action) => {
@@ -15,6 +15,9 @@ export default (state={}, action) => {
       return nextState
     case RECEIVE_USER:
       action.user.received_follows.forEach(receivedFollow => {nextState[receivedFollow.id] = receivedFollow})
+      return nextState
+    case RECEIVE_RECIPE:
+      action.recipe.author.received_follows.forEach(receivedFollow => {nextState[receivedFollow.id] = receivedFollow})
       return nextState
     default:
       return state
