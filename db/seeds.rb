@@ -11,18 +11,18 @@ ActiveRecord::Base.connection.reset_pk_sequence!('Follow')
 require 'open-uri'
 
 #starting at id=10 for some reason
-demo = User.create(email: 'demo@demo.demo', password: 'qwerty', name: 'Demo User')
+demo = User.create(email: 'demo@demo.demo', password: 'qwerty', name: 'Demo User', color_code: '#FEF9E7')
 file = URI.open('https://mediyum-dev.s3.us-west-1.amazonaws.com/placeholder_user_image.png')
 demo.photo.attach(io: file, filename: 'placeholder_user_image.png')
 
-user2 = User.create(email: 'sergio@demo.demo', password: '111111', name: 'Sergio')
-user3 = User.create(email: 'jeff@demo.demo', password: '111111', name: 'Jeff')
-user4 = User.create(email: 'suzie@demo.demo', password: '111111', name: 'Suzie')
-user5 = User.create(email: 'ken@demo.demo', password: '111111', name: 'Ken M')
-user6 = User.create(email: 'kevin@demo.demo', password: '111111', name: 'Kevin')
-user7 = User.create(email: 'Lisa@demo.demo', password: '111111', name: 'Lisa')
-user8 = User.create(email: 'Kathy@demo.demo', password: '111111', name: 'Kathy')
-user9 = User.create(email: 'hannah@demo.demo', password: '111111', name: 'Hannah')
+user2 = User.create(email: 'sergio@demo.demo', password: '111111', name: 'Sergio', color_code: '#FFFFFF')
+user3 = User.create(email: 'jeff@demo.demo', password: '111111', name: 'Jeff', color_code: '#F9EBEA')
+user4 = User.create(email: 'suzie@demo.demo', password: '111111', name: 'Suzie', color_code: '#FDEDEC')
+user5 = User.create(email: 'ken@demo.demo', password: '111111', name: 'Ken M', color_code: '#F5EEF8')
+user6 = User.create(email: 'kevin@demo.demo', password: '111111', name: 'Kevin', color_code: '#EAF2F8')
+user7 = User.create(email: 'Lisa@demo.demo', password: '111111', name: 'Lisa', color_code: '#EBF5FB')
+user8 = User.create(email: 'Kathy@demo.demo', password: '111111', name: 'Kathy', color_code: '#E8F8F5')
+user9 = User.create(email: 'hannah@demo.demo', password: '111111', name: 'Hannah', color_code: '#E9F7EF')
 
 sergio = URI.open('https://mediyum-dev.s3.us-west-1.amazonaws.com/sergio.jpg')
 jeff = URI.open('https://mediyum-dev.s3.us-west-1.amazonaws.com/jeff.jpg')
