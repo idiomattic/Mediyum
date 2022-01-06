@@ -1838,7 +1838,7 @@ var UserShowHeader = function UserShowHeader(props) {
 
   var follow = {
     follower_id: currentUserId,
-    followed_user_id: props.userId
+    followed_user_id: user.id
   };
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(Boolean(followers[currentUserId])),
@@ -1946,6 +1946,7 @@ var UserShowHeader = function UserShowHeader(props) {
       var followToDelete = Object.values(receivedFollows).filter(function (follow) {
         return follow.follower_id === currentUserId;
       })[0];
+      debugger;
       deleteFollow(followToDelete).then(setFollowing(false));
     } else {
       createFollow(follow).then(setFollowing(true));

@@ -23,7 +23,7 @@ const UserShowHeader = props => {
 
   const follow = {
     follower_id: currentUserId,
-    followed_user_id: props.userId
+    followed_user_id: user.id
   }
 
   const [following, setFollowing] = useState(Boolean(followers[currentUserId]))
@@ -104,6 +104,7 @@ const UserShowHeader = props => {
     let following = Boolean(followers[currentUserId])
     if (following) {
       let followToDelete = Object.values(receivedFollows).filter(follow => follow.follower_id === currentUserId)[0]
+      debugger
       deleteFollow(followToDelete)
         .then(setFollowing(false))
     } else {
